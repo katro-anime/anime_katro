@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KATRO Anime</title>
+
+  <title>anime_katro</title>
 
   <style>
     * {
@@ -19,23 +20,23 @@
 
     header {
       background: #15151c;
-      padding: 20px;
+      padding: 25px 15px;
       text-align: center;
-      border-bottom: 2px solid #333;
+      border-bottom: 2px solid #292933;
     }
 
     header h1 {
       margin: 0;
-      font-size: 32px;
+      font-size: 34px;
     }
 
     header p {
       color: #aaa;
-      margin-bottom: 0;
+      margin: 8px 0 0;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
       padding: 20px;
     }
@@ -43,10 +44,55 @@
     .search {
       width: 100%;
       padding: 15px;
-      border-radius: 10px;
+      border-radius: 12px;
       border: none;
+      outline: none;
       margin-bottom: 25px;
       font-size: 16px;
+    }
+
+    .section-title {
+      margin: 30px 0 15px;
+      border-right: 4px solid #e50914;
+      padding-right: 10px;
+    }
+
+    .anime-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+    .anime-card {
+      background: #17171f;
+      border-radius: 15px;
+      padding: 18px;
+      text-align: center;
+      transition: 0.2s;
+    }
+
+    .anime-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .anime-card h3 {
+      margin: 10px 0;
+    }
+
+    .anime-card p {
+      color: #999;
+      font-size: 14px;
+    }
+
+    .watch {
+      display: block;
+      background: #e50914;
+      color: white;
+      text-decoration: none;
+      padding: 11px;
+      border-radius: 8px;
+      margin-top: 12px;
+      font-weight: bold;
     }
 
     .card {
@@ -54,10 +100,6 @@
       border-radius: 15px;
       padding: 15px;
       margin-bottom: 20px;
-    }
-
-    .card h2 {
-      margin-top: 0;
     }
 
     .video {
@@ -86,7 +128,9 @@
     footer {
       text-align: center;
       color: #888;
-      padding: 30px;
+      padding: 35px 15px;
+      margin-top: 30px;
+      background: #15151c;
     }
   </style>
 </head>
@@ -94,42 +138,116 @@
 <body>
 
 <header>
-  <h1>🔥 KATRO Anime</h1>
+  <h1>🔥 anime_katro</h1>
   <p>عالم الأنمي بين يديك</p>
 </header>
 
 <div class="container">
 
   <input
+    id="search"
     class="search"
     type="text"
     placeholder="🔎 ابحث عن الأنمي..."
   >
 
+  <h2 class="section-title">🎬 أحدث الفيديوهات</h2>
+
   <div class="card">
-    <h2>🎬 فيديو تجريبي</h2>
+    <h2>🎥 الفيديو التجريبي</h2>
 
     <video class="video" controls>
-      <source src="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4" type="video/mp4">
+      <source
+        src="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
+        type="video/mp4"
+      >
       متصفحك لا يدعم تشغيل الفيديو.
     </video>
 
     <div class="buttons">
-      <a class="button" href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4">
+      <a
+        class="button"
+        href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
+      >
         ▶ مشاهدة
       </a>
 
-      <a class="button" href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4" download>
+      <a
+        class="button"
+        href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
+        download
+      >
         ⬇ تحميل
       </a>
     </div>
   </div>
 
+
+  <h2 class="section-title">🔥 أقسام الأنمي</h2>
+
+  <div class="anime-grid">
+
+    <div class="anime-card">
+      <h3>⚔️ Demon Slayer</h3>
+      <p>قاتل الشياطين</p>
+      <a class="watch" href="#">دخول القسم</a>
+    </div>
+
+    <div class="anime-card">
+      <h3>⚡ Solo Leveling</h3>
+      <p>سولو ليفلينج</p>
+      <a class="watch" href="#">دخول القسم</a>
+    </div>
+
+    <div class="anime-card">
+      <h3>🐉 Dragon Ball</h3>
+      <p>دراغون بول</p>
+      <a class="watch" href="#">دخول القسم</a>
+    </div>
+
+    <div class="anime-card">
+      <h3>🏴‍☠️ One Piece</h3>
+      <p>ون بيس</p>
+      <a class="watch" href="#">دخول القسم</a>
+    </div>
+
+    <div class="anime-card">
+      <h3>🍥 Naruto</h3>
+      <p>ناروتو</p>
+      <a class="watch" href="#">دخول القسم</a>
+    </div>
+
+  </div>
+
 </div>
 
 <footer>
-  © 2026 KATRO Anime
+  © 2026 anime_katro
 </footer>
 
+
+<script>
+  const search = document.getElementById("search");
+  const cards = document.querySelectorAll(".anime-card");
+
+  search.addEventListener("input", function () {
+
+    const text = search.value.toLowerCase();
+
+    cards.forEach(function(card) {
+
+      const name = card.innerText.toLowerCase();
+
+      if (name.includes(text)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+
+    });
+
+  });
+</script>
+
 </body>
-  </html>
+        </html>
