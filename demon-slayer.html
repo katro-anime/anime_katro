@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Demon Slayer | KATRO Anime</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -93,11 +96,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
       background: #1b1e27;
       padding: 14px;
       border-radius: 9px;
       margin-top: 10px;
+    }
+
+    .episode-info {
+      flex: 1;
     }
 
     .episode-info h3 {
@@ -110,13 +117,35 @@
       font-size: 13px;
     }
 
-    .watch {
-      background: #e50914;
+    .buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .watch,
+    .download {
       color: white;
       text-decoration: none;
-      padding: 10px 18px;
+      padding: 10px 15px;
       border-radius: 8px;
       white-space: nowrap;
+      font-weight: bold;
+    }
+
+    .watch {
+      background: #e50914;
+    }
+
+    .download {
+      background: #333844;
+    }
+
+    .watch:hover {
+      background: #ff1723;
+    }
+
+    .download:hover {
+      background: #454b59;
     }
 
     footer {
@@ -128,6 +157,7 @@
     }
 
     @media (max-width: 600px) {
+
       .header {
         gap: 10px;
       }
@@ -141,16 +171,28 @@
         flex-direction: column;
       }
 
-      .watch {
+      .buttons {
+        width: 100%;
+      }
+
+      .watch,
+      .download {
+        flex: 1;
         text-align: center;
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
   <div class="header">
 
     <div class="logo">
@@ -162,9 +204,13 @@
     </a>
 
   </div>
+
 </header>
 
+
+
 <div class="container">
+
 
   <div class="anime-header">
 
@@ -175,75 +221,414 @@
     </p>
 
     <p>
-      هنا ستجد مواسم وحلقات الأنمي مرتبة بطريقة سهلة
-      للمشاهدة.
+      جميع حلقات الموسم الأول مرتبة في مكان واحد.
     </p>
 
   </div>
 
+
+
   <h2 class="section-title">
-    📺 المواسم والحلقات
+    📺 الموسم الأول
   </h2>
+
+
 
   <div class="season">
 
-    <h2>الموسم الأول</h2>
+
+    <!-- الحلقة 1 -->
 
     <div class="episode">
 
       <div class="episode-info">
+
         <h3>الحلقة 1</h3>
-        <p>Demon Slayer - Episode 1</p>
+
+        <p>
+          Demon Slayer - Episode 1
+        </p>
+
       </div>
 
-      <a
-        class="watch"
-        href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
-      >
-        ▶ مشاهدة
-      </a>
+
+      <div class="buttons">
+
+        <a
+          class="watch"
+          href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
+        >
+          ▶ مشاهدة
+        </a>
+
+
+        <a
+          class="download"
+          href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
+          download
+        >
+          ⬇ تحميل
+        </a>
+
+      </div>
 
     </div>
+
+
+
+    <!-- الحلقة 2 -->
 
     <div class="episode">
 
       <div class="episode-info">
+
         <h3>الحلقة 2</h3>
-        <p>الحلقة الثانية</p>
+
+        <p>
+          Demon Slayer - Episode 2
+        </p>
+
       </div>
 
-      <a
-        class="watch"
-        href="#"
-      >
-        ▶ مشاهدة
-      </a>
+
+      <div class="buttons">
+
+        <a class="watch" href="#">
+          ▶ مشاهدة
+        </a>
+
+        <a class="download" href="#">
+          ⬇ تحميل
+        </a>
+
+      </div>
 
     </div>
+
+
+
+    <!-- الحلقة 3 -->
 
     <div class="episode">
 
       <div class="episode-info">
+
         <h3>الحلقة 3</h3>
-        <p>الحلقة الثالثة</p>
+
+        <p>
+          Demon Slayer - Episode 3
+        </p>
+
       </div>
 
-      <a
-        class="watch"
-        href="#"
-      >
-        ▶ مشاهدة
-      </a>
+
+      <div class="buttons">
+
+        <a class="watch" href="#">
+          ▶ مشاهدة
+        </a>
+
+        <a class="download" href="#">
+          ⬇ تحميل
+        </a>
+
+      </div>
 
     </div>
+
+
+
+    <!-- الحلقة 4 -->
+
+    <div class="episode">
+
+      <div class="episode-info">
+
+        <h3>الحلقة 4</h3>
+
+        <p>
+          Demon Slayer - Episode 4
+        </p>
+
+      </div>
+
+
+      <div class="buttons">
+
+        <a class="watch" href="#">
+          ▶ مشاهدة
+        </a>
+
+        <a class="download" href="#">
+          ⬇ تحميل
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- الحلقة 5 -->
+
+    <div class="episode">
+
+      <div class="episode-info">
+
+        <h3>الحلقة 5</h3>
+
+        <p>
+          Demon Slayer - Episode 5
+        </p>
+
+      </div>
+
+
+      <div class="buttons">
+
+        <a class="watch" href="#">
+          ▶ مشاهدة
+        </a>
+
+        <a class="download" href="#">
+          ⬇ تحميل
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- الحلقة 6 -->
+
+    <div class="episode">
+
+      <div class="episode-info">
+
+        <h3>الحلقة 6</h3>
+
+        <p>
+          Demon Slayer - Episode 6
+        </p>
+
+      </div>
+
+
+      <div class="buttons">
+
+        <a class="watch" href="#">
+          ▶ مشاهدة
+        </a>
+
+        <a class="download" href="#">
+          ⬇ تحميل
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- الحلقة 7 -->
+
+    <div class="episode">
+
+      <div class="episode-info">
+
+        <h3>الحلقة 7</h3>
+
+        <p>
+          Demon Slayer - Episode 7
+        </p>
+
+      </div>
+
+
+      <div class="buttons">
+
+        <a class="watch" href="#">
+          ▶ مشاهدة
+        </a>
+
+        <a class="download" href="#">
+          ⬇ تحميل
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- الحلقة 8 -->
+
+    <div class="episode">
+
+      <div class="episode-info">
+
+        <h3>الحلقة 8</h3>
+
+        <p>
+          Demon Slayer - Episode 8
+        </p>
+
+      </div>
+
+
+      <div class="buttons">
+
+        <a class="watch" href="#">
+          ▶ مشاهدة
+        </a>
+
+        <a class="download" href="#">
+          ⬇ تحميل
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- الحلقة 9 -->
+
+    <div class="episode">
+
+      <div class="episode-info">
+
+        <h3>الحلقة 9</h3>
+
+        <p>
+          Demon Slayer - Episode 9
+        </p>
+
+      </div>
+
+
+      <div class="buttons">
+
+        <a class="watch" href="#">
+          ▶ مشاهدة
+        </a>
+
+        <a class="download" href="#">
+          ⬇ تحميل
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- الحلقة 10 -->
+
+    <div class="episode">
+
+      <div class="episode-info">
+
+        <h3>الحلقة 10</h3>
+
+        <p>
+          Demon Slayer - Episode 10
+        </p>
+
+      </div>
+
+
+      <div class="buttons">
+
+        <a class="watch" href="#">
+          ▶ مشاهدة
+        </a>
+
+        <a class="download" href="#">
+          ⬇ تحميل
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- الحلقة 11 -->
+
+    <div class="episode">
+
+      <div class="episode-info">
+
+        <h3>الحلقة 11</h3>
+
+        <p>
+          Demon Slayer - Episode 11
+        </p>
+
+      </div>
+
+
+      <div class="buttons">
+
+        <a class="watch" href="#">
+          ▶ مشاهدة
+        </a>
+
+        <a class="download" href="#">
+          ⬇ تحميل
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- الحلقة 12 -->
+
+    <div class="episode">
+
+      <div class="episode-info">
+
+        <h3>الحلقة 12</h3>
+
+        <p>
+          Demon Slayer - Episode 12
+        </p>
+
+      </div>
+
+
+      <div class="buttons">
+
+        <a class="watch" href="#">
+          ▶ مشاهدة
+        </a>
+
+        <a class="download" href="#">
+          ⬇ تحميل
+        </a>
+
+      </div>
+
+    </div>
+
 
   </div>
 
 </div>
 
+
+
 <footer>
+
   © 2026 KATRO Anime
+
 </footer>
 
+
 </body>
-  </html>
+
+        </html>
