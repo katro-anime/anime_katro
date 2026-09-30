@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>One Piece | KATRO Anime</title>
 
+
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -28,6 +34,7 @@ header {
 .header-content {
     max-width: 1000px;
     margin: auto;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -56,16 +63,22 @@ header {
 .anime-top {
     display: flex;
     gap: 20px;
+
     background: #0d111c;
+
     padding: 20px;
+
     border-radius: 15px;
+
     margin-bottom: 25px;
 }
 
 .cover {
     width: 180px;
     height: 260px;
+
     object-fit: cover;
+
     border-radius: 12px;
 }
 
@@ -85,31 +98,45 @@ header {
 
 .badge {
     display: inline-block;
+
     margin-top: 15px;
+
     background: #17243b;
+
     color: #00b7ff;
+
     padding: 7px 12px;
+
     border-radius: 8px;
 }
 
 .season {
     background: #0d111c;
+
     border-radius: 15px;
+
     padding: 20px;
 }
 
 .season h2 {
     color: #00b7ff;
+
     margin-bottom: 18px;
 }
 
 .episode {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     background: #121827;
+
     padding: 14px;
+
     margin-bottom: 10px;
+
     border-radius: 10px;
 }
 
@@ -119,15 +146,20 @@ header {
 
 .buttons {
     display: flex;
+
     gap: 8px;
 }
 
 .watch,
 .download {
     text-decoration: none;
+
     color: white;
+
     padding: 8px 13px;
+
     border-radius: 8px;
+
     font-size: 14px;
 }
 
@@ -135,193 +167,246 @@ header {
     background: #1687d9;
 }
 
+.watch:hover {
+    background: #00b7ff;
+}
+
 .download {
     background: #263247;
 }
 
+.download:hover {
+    background: #34435e;
+}
+
 footer {
     text-align: center;
+
     color: #777;
+
     padding: 30px 10px;
 }
+
 
 @media (max-width: 600px) {
 
     .anime-top {
         flex-direction: column;
+
         align-items: center;
+
         text-align: center;
     }
 
     .cover {
         width: 160px;
+
         height: 230px;
+    }
+
+    .info h1 {
+        font-size: 25px;
     }
 
     .episode {
         flex-direction: column;
+
         gap: 12px;
+
         align-items: stretch;
     }
 
     .buttons {
         justify-content: center;
     }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
-    <div class="header-content">
 
-        <div class="logo">
-            KATRO Anime
-        </div>
+<div class="header-content">
 
-        <a class="home" href="index.html">
-            الرئيسية
-        </a>
 
-    </div>
+<div class="logo">
+KATRO Anime
+</div>
+
+
+<a class="home"
+href="index.html">
+
+الرئيسية
+
+</a>
+
+
+</div>
+
 </header>
+
+
 
 <div class="container">
 
+
 <section class="anime-top">
 
-    <img
-        class="cover"
-        src="one_piece.jpg"
-        alt="One Piece">
 
-    <div class="info">
+<img
 
-        <h1>One Piece</h1>
+class="cover"
 
-        <p>
-            جميع حلقات أنمي One Piece
-            مع إمكانية المشاهدة والتحميل.
-        </p>
+src="one_piece.jpg"
 
-        <span class="badge">
-            الموسم الأول
-        </span>
+alt="One Piece">
 
-    </div>
+
+<div class="info">
+
+
+<h1>
+One Piece
+</h1>
+
+
+<p>
+
+جميع حلقات أنمي One Piece
+مع إمكانية المشاهدة والتحميل.
+
+</p>
+
+
+<span class="badge">
+
+1180 حلقة
+
+</span>
+
+
+</div>
 
 </section>
+
+
 
 <section class="season">
 
-<h2>الموسم الأول</h2>
 
-<div class="episode">
-<span class="episode-number">الحلقة 1</span>
-<div class="buttons">
-<a class="watch" href="watch.html?anime=demonslayer&episode=${i}">
-    ▶ مشاهدة
-</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
+<h2>
+جميع حلقات One Piece
+</h2>
 
-<div class="episode">
-<span class="episode-number">الحلقة 2</span>
-<div class="buttons">
-<a class="watch" href="#">▶ مشاهدة</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
 
-<div class="episode">
-<span class="episode-number">الحلقة 3</span>
-<div class="buttons">
-<a class="watch" href="#">▶ مشاهدة</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
+<div id="episodes"></div>
 
-<div class="episode">
-<span class="episode-number">الحلقة 4</span>
-<div class="buttons">
-<a class="watch" href="#">▶ مشاهدة</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
-
-<div class="episode">
-<span class="episode-number">الحلقة 5</span>
-<div class="buttons">
-<a class="watch" href="#">▶ مشاهدة</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
-
-<div class="episode">
-<span class="episode-number">الحلقة 6</span>
-<div class="buttons">
-<a class="watch" href="#">▶ مشاهدة</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
-
-<div class="episode">
-<span class="episode-number">الحلقة 7</span>
-<div class="buttons">
-<a class="watch" href="#">▶ مشاهدة</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
-
-<div class="episode">
-<span class="episode-number">الحلقة 8</span>
-<div class="buttons">
-<a class="watch" href="#">▶ مشاهدة</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
-
-<div class="episode">
-<span class="episode-number">الحلقة 9</span>
-<div class="buttons">
-<a class="watch" href="#">▶ مشاهدة</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
-
-<div class="episode">
-<span class="episode-number">الحلقة 10</span>
-<div class="buttons">
-<a class="watch" href="#">▶ مشاهدة</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
-
-<div class="episode">
-<span class="episode-number">الحلقة 11</span>
-<div class="buttons">
-<a class="watch" href="#">▶ مشاهدة</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
-
-<div class="episode">
-<span class="episode-number">الحلقة 12</span>
-<div class="buttons">
-<a class="watch" href="#">▶ مشاهدة</a>
-<a class="download" href="#">⬇ تحميل</a>
-</div>
-</div>
 
 </section>
 
+
 </div>
 
+
+
 <footer>
+
 © 2026 KATRO Anime
+
 </footer>
 
+
+
+<script>
+
+
+const episodesContainer =
+document.getElementById("episodes");
+
+
+/*
+عدد الحلقات الحالية
+*/
+
+const totalEpisodes = 1180;
+
+
+
+/*
+إنشاء الحلقات تلقائيًا
+*/
+
+for (
+    let i = 1;
+    i <= totalEpisodes;
+    i++
+) {
+
+
+    const episode =
+    document.createElement("div");
+
+
+    episode.className =
+    "episode";
+
+
+    episode.innerHTML = `
+
+        <span class="episode-number">
+
+            الحلقة ${i}
+
+        </span>
+
+
+        <div class="buttons">
+
+
+            <a
+
+            class="watch"
+
+            href="watch.html?anime=onepiece&episode=${i}">
+
+                ▶ مشاهدة
+
+            </a>
+
+
+            <a
+
+            class="download"
+
+            href="#">
+
+                ⬇ تحميل
+
+            </a>
+
+
+        </div>
+
+    `;
+
+
+    episodesContainer.appendChild(
+        episode
+    );
+
+}
+
+
+</script>
+
+
 </body>
-  </html>
+
+    </html>
