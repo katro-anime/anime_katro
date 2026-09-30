@@ -1,253 +1,386 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>anime_katro</title>
+<title>KATRO Anime</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+*{
+  box-sizing:border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b0f;
-      color: white;
-    }
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#090b10;
+  color:white;
+}
 
-    header {
-      background: #15151c;
-      padding: 25px 15px;
-      text-align: center;
-      border-bottom: 2px solid #292933;
-    }
+/* الهيدر */
+header{
+  background:#11141c;
+  padding:18px 20px;
+  border-bottom:1px solid #252936;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 34px;
-    }
+.header{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
 
-    header p {
-      color: #aaa;
-      margin: 8px 0 0;
-    }
+.logo{
+  font-size:25px;
+  font-weight:bold;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
+.logo span{
+  color:#e50914;
+}
 
-    .search {
-      width: 100%;
-      padding: 15px;
-      border-radius: 12px;
-      border: none;
-      outline: none;
-      margin-bottom: 25px;
-      font-size: 16px;
-    }
+nav{
+  display:flex;
+  gap:18px;
+}
 
-    .section-title {
-      margin: 30px 0 15px;
-      border-right: 4px solid #e50914;
-      padding-right: 10px;
-    }
+nav a{
+  color:#ddd;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-    .anime-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
-    }
+nav a:hover{
+  color:#e50914;
+}
 
-    .anime-card {
-      background: #17171f;
-      border-radius: 15px;
-      padding: 18px;
-      text-align: center;
-      transition: 0.2s;
-    }
+/* البحث */
+.search-box{
+  max-width:1200px;
+  margin:25px auto 10px;
+  padding:0 15px;
+}
 
-    .anime-card:hover {
-      transform: translateY(-4px);
-    }
+.search{
+  width:100%;
+  padding:16px;
+  border:1px solid #292d38;
+  border-radius:12px;
+  background:#151821;
+  color:white;
+  font-size:16px;
+  outline:none;
+}
 
-    .anime-card h3 {
-      margin: 10px 0;
-    }
+/* البانر */
+.hero{
+  max-width:1200px;
+  margin:25px auto;
+  padding:45px 25px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#1a1d27,#310b12);
+}
 
-    .anime-card p {
-      color: #999;
-      font-size: 14px;
-    }
+.hero h1{
+  margin:0 0 10px;
+  font-size:35px;
+}
 
-    .watch {
-      display: block;
-      background: #e50914;
-      color: white;
-      text-decoration: none;
-      padding: 11px;
-      border-radius: 8px;
-      margin-top: 12px;
-      font-weight: bold;
-    }
+.hero p{
+  color:#bbb;
+  font-size:17px;
+}
 
-    .card {
-      background: #17171f;
-      border-radius: 15px;
-      padding: 15px;
-      margin-bottom: 20px;
-    }
+.hero button{
+  border:0;
+  background:#e50914;
+  color:white;
+  padding:13px 25px;
+  border-radius:9px;
+  font-weight:bold;
+  font-size:15px;
+}
 
-    .video {
-      width: 100%;
-      border-radius: 10px;
-      background: black;
-    }
+/* المحتوى */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 15px;
+}
 
-    .buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 12px;
-    }
+.title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:30px 0 18px;
+}
 
-    .button {
-      flex: 1;
-      text-align: center;
-      padding: 13px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: white;
-      background: #e50914;
-      font-weight: bold;
-    }
+.title h2{
+  margin:0;
+}
 
-    footer {
-      text-align: center;
-      color: #888;
-      padding: 35px 15px;
-      margin-top: 30px;
-      background: #15151c;
-    }
-  </style>
+.title span{
+  color:#999;
+}
+
+/* البطاقات */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.card{
+  background:#141720;
+  border-radius:13px;
+  overflow:hidden;
+  border:1px solid #222633;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  border-color:#e50914;
+}
+
+.poster{
+  height:230px;
+  background:linear-gradient(135deg,#252936,#0e1015);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:45px;
+}
+
+.card-content{
+  padding:13px;
+}
+
+.card h3{
+  margin:0 0 8px;
+  font-size:17px;
+}
+
+.card p{
+  margin:0;
+  color:#999;
+  font-size:13px;
+}
+
+/* الحلقات */
+.episode{
+  background:#141720;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.episode-info h3{
+  margin:0 0 6px;
+}
+
+.episode-info p{
+  margin:0;
+  color:#888;
+}
+
+.watch{
+  background:#e50914;
+  color:white;
+  text-decoration:none;
+  padding:10px 17px;
+  border-radius:8px;
+  white-space:nowrap;
+}
+
+/* الفوتر */
+footer{
+  margin-top:50px;
+  padding:30px;
+  text-align:center;
+  background:#11141c;
+  color:#777;
+}
+
+/* الهاتف */
+@media(max-width:800px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  nav{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:27px;
+  }
+}
+
+@media(max-width:450px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .poster{
+    height:170px;
+  }
+
+  .episode{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .watch{
+    width:100%;
+    text-align:center;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>🔥 anime_katro</h1>
-  <p>عالم الأنمي بين يديك</p>
+  <div class="header">
+
+    <div class="logo">
+      🔥 KATRO <span>Anime</span>
+    </div>
+
+    <nav>
+      <a href="#">الرئيسية</a>
+      <a href="#anime">الأنميات</a>
+      <a href="#episodes">الحلقات</a>
+    </nav>
+
+  </div>
 </header>
 
-<div class="container">
-
+<div class="search-box">
   <input
-    id="search"
     class="search"
     type="text"
     placeholder="🔎 ابحث عن الأنمي..."
   >
-
-  <h2 class="section-title">🎬 أحدث الفيديوهات</h2>
-
-  <div class="card">
-    <h2>🎥 الفيديو التجريبي</h2>
-
-    <video class="video" controls>
-      <source
-        src="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
-        type="video/mp4"
-      >
-      متصفحك لا يدعم تشغيل الفيديو.
-    </video>
-
-    <div class="buttons">
-      <a
-        class="button"
-        href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
-      >
-        ▶ مشاهدة
-      </a>
-
-      <a
-        class="button"
-        href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
-        download
-      >
-        ⬇ تحميل
-      </a>
-    </div>
-  </div>
-
-
-  <h2 class="section-title">🔥 أقسام الأنمي</h2>
-
-  <div class="anime-grid">
-
-    <div class="anime-card">
-      <h3>⚔️ Demon Slayer</h3>
-      <p>قاتل الشياطين</p>
-      <a class="watch" href="#">دخول القسم</a>
-    </div>
-
-    <div class="anime-card">
-      <h3>⚡ Solo Leveling</h3>
-      <p>سولو ليفلينج</p>
-      <a class="watch" href="#">دخول القسم</a>
-    </div>
-
-    <div class="anime-card">
-      <h3>🐉 Dragon Ball</h3>
-      <p>دراغون بول</p>
-      <a class="watch" href="#">دخول القسم</a>
-    </div>
-
-    <div class="anime-card">
-      <h3>🏴‍☠️ One Piece</h3>
-      <p>ون بيس</p>
-      <a class="watch" href="#">دخول القسم</a>
-    </div>
-
-    <div class="anime-card">
-      <h3>🍥 Naruto</h3>
-      <p>ناروتو</p>
-      <a class="watch" href="#">دخول القسم</a>
-    </div>
-
-  </div>
-
 </div>
 
+<section class="hero">
+
+  <h1>عالم الأنمي بين يديك 🔥</h1>
+
+  <p>
+    شاهد أحدث الأنميات والحلقات على KATRO Anime
+  </p>
+
+  <button onclick="location.href='#anime'">
+    استكشف الأنميات
+  </button>
+
+</section>
+
+<main class="container">
+
+  <div class="title" id="anime">
+    <h2>🔥 أشهر الأنميات</h2>
+    <span>عرض الكل</span>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="poster">⚔️</div>
+      <div class="card-content">
+        <h3>Demon Slayer</h3>
+        <p>قاتل الشياطين</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="poster">⚡</div>
+      <div class="card-content">
+        <h3>Solo Leveling</h3>
+        <p>Solo Leveling</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="poster">🐉</div>
+      <div class="card-content">
+        <h3>Dragon Ball</h3>
+        <p>دراغون بول</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="poster">🏴‍☠️</div>
+      <div class="card-content">
+        <h3>One Piece</h3>
+        <p>ون بيس</p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="title" id="episodes">
+    <h2>🎬 أحدث الحلقات</h2>
+    <span>جديد</span>
+  </div>
+
+
+  <div class="episode">
+
+    <div class="episode-info">
+      <h3>🎬 فيديو تجريبي</h3>
+      <p>الحلقة التجريبية</p>
+    </div>
+
+    <a
+      class="watch"
+      href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
+    >
+      ▶ مشاهدة
+    </a>
+
+  </div>
+
+
+  <div class="episode">
+
+    <div class="episode-info">
+      <h3>📺 الحلقة 1</h3>
+      <p>متاحة للمشاهدة</p>
+    </div>
+
+    <a
+      class="watch"
+      href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
+    >
+      ▶ مشاهدة
+    </a>
+
+  </div>
+
+</main>
+
 <footer>
-  © 2026 anime_katro
+  © 2026 KATRO Anime
+  <br>
+  جميع الحقوق محفوظة
 </footer>
 
-
-<script>
-  const search = document.getElementById("search");
-  const cards = document.querySelectorAll(".anime-card");
-
-  search.addEventListener("input", function () {
-
-    const text = search.value.toLowerCase();
-
-    cards.forEach(function(card) {
-
-      const name = card.innerText.toLowerCase();
-
-      if (name.includes(text)) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
-
-    });
-
-  });
-</script>
-
 </body>
-        </html>
+    </html>
