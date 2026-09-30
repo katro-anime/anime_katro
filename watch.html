@@ -10,7 +10,6 @@ content="width=device-width, initial-scale=1.0">
 
 <title>مشاهدة | KATRO Anime</title>
 
-
 <style>
 
 * {
@@ -60,7 +59,9 @@ header {
 }
 
 
-/* المشغل */
+/* =========================
+   المشغل
+========================= */
 
 .player {
     background: #000;
@@ -77,7 +78,9 @@ video {
 }
 
 
-/* معلومات الحلقة */
+/* =========================
+   معلومات الحلقة
+========================= */
 
 .episode-info {
     background: #0d111c;
@@ -96,7 +99,9 @@ video {
 }
 
 
-/* الخوادم */
+/* =========================
+   الخوادم
+========================= */
 
 .servers {
     background: #0d111c;
@@ -136,7 +141,9 @@ video {
 }
 
 
-/* الفوتر */
+/* =========================
+   الفوتر
+========================= */
 
 footer {
     text-align: center;
@@ -145,7 +152,9 @@ footer {
 }
 
 
-/* الهاتف */
+/* =========================
+   الهاتف
+========================= */
 
 @media (max-width: 600px) {
 
@@ -199,16 +208,16 @@ KATRO Anime
 <div class="player">
 
 <video
-    id="videoPlayer"
-    controls
-    poster="Solo leveling .jpg">
+id="videoPlayer"
+controls
+poster="Solo leveling .jpg">
 
-    <source
-        id="videoSource"
-        src=""
-        type="video/mp4">
+<source
+id="videoSource"
+src=""
+type="video/mp4">
 
-    متصفحك لا يدعم تشغيل الفيديو.
+متصفحك لا يدعم تشغيل الفيديو.
 
 </video>
 
@@ -248,11 +257,13 @@ KATRO Anime
 <div class="server-list">
 
 
-<!-- الخادم 1 -->
+<!-- =========================
+     SERVER 1 - MEGA
+========================= -->
 
 <button
-id="server1"
 class="server"
+id="megaServer"
 onclick="changeServer(1)">
 
 Mega ▶
@@ -260,10 +271,12 @@ Mega ▶
 </button>
 
 
-<!-- الخادم 2 -->
+
+<!-- =========================
+     SERVER 2
+========================= -->
 
 <button
-id="server2"
 class="server"
 onclick="changeServer(2)">
 
@@ -272,10 +285,12 @@ onclick="changeServer(2)">
 </button>
 
 
-<!-- الخادم 3 -->
+
+<!-- =========================
+     SERVER 3
+========================= -->
 
 <button
-id="server3"
 class="server"
 onclick="changeServer(3)">
 
@@ -284,10 +299,12 @@ onclick="changeServer(3)">
 </button>
 
 
-<!-- الخادم 4 -->
+
+<!-- =========================
+     SERVER 4
+========================= -->
 
 <button
-id="server4"
 class="server"
 onclick="changeServer(4)">
 
@@ -296,10 +313,12 @@ onclick="changeServer(4)">
 </button>
 
 
-<!-- الخادم 5 -->
+
+<!-- =========================
+     SERVER 5
+========================= -->
 
 <button
-id="server5"
 class="server"
 onclick="changeServer(5)">
 
@@ -308,10 +327,12 @@ onclick="changeServer(5)">
 </button>
 
 
-<!-- الخادم 6 -->
+
+<!-- =========================
+     SERVER 6
+========================= -->
 
 <button
-id="server6"
 class="server"
 onclick="changeServer(6)">
 
@@ -340,7 +361,7 @@ onclick="changeServer(6)">
 
 
 /* =========================================
-   قراءة معلومات الصفحة من الرابط
+   قراءة بيانات الحلقة من الرابط
 ========================================= */
 
 const params =
@@ -348,16 +369,16 @@ new URLSearchParams(window.location.search);
 
 
 const anime =
-params.get("anime") || "solo";
+params.get("anime") || "";
 
 
 const episode =
-params.get("episode") || "1";
+params.get("episode") || "";
 
 
 
 /* =========================================
-   عنوان الحلقة
+   عرض رقم الحلقة
 ========================================= */
 
 document.getElementById("episodeTitle").textContent =
@@ -366,35 +387,11 @@ document.getElementById("episodeTitle").textContent =
 
 
 /* =========================================
-   رابط Mega
-   مربوط بالحـلقة 1 من الموسم الثاني فقط
+   رابط Mega الحالي
 ========================================= */
 
 const megaSeason2Episode1 =
 "https://mega.nz/file/uF1HSQZQ#GhxjYVU5ELDW03p0oftqHXxLt-G7Z-dPzldP18Tyvw8";
-
-
-
-/* =========================================
-   إظهار/إخفاء اسم Mega حسب الموسم والحلقة
-========================================= */
-
-const server1 =
-document.getElementById("server1");
-
-
-if (
-    anime === "solo-s2" &&
-    episode === "1"
-) {
-
-    server1.style.display = "block";
-
-} else {
-
-    server1.style.display = "none";
-
-}
 
 
 
@@ -406,30 +403,45 @@ function changeServer(serverNumber) {
 
 
     /* =====================================
-       Mega
-
-       يعمل فقط:
-
+       الخادم 1 = Mega
+       
+       الزر ظاهر دائمًا
+       
+       لكن الرابط يعمل فقط:
+       
        Solo Leveling
        الموسم الثاني
-       الحلقة الأولى
+       الحلقة 1
     ===================================== */
 
-    if (
-        serverNumber === 1 &&
-        anime === "solo-s2" &&
-        episode === "1"
-    ) {
+    if (serverNumber === 1) {
 
 
-        window.open(
-            megaSeason2Episode1,
-            "_blank"
+        if (
+            anime === "solo-s2" &&
+            episode === "1"
+        ) {
+
+
+            window.open(
+                megaSeason2Episode1,
+                "_blank"
+            );
+
+
+            return;
+
+        }
+
+
+        /* باقي الأنميات والحلقات */
+
+        alert(
+            "رابط Mega لهذه الحلقة لم تتم إضافته بعد."
         );
 
 
         return;
-
     }
 
 
@@ -438,9 +450,15 @@ function changeServer(serverNumber) {
        الخوادم الأخرى
     ===================================== */
 
-    alert(
-        "لم يتم إضافة رابط لهذا الخادم بعد."
-    );
+    if (serverNumber >= 2) {
+
+        alert(
+            "لم يتم إضافة رابط لهذا الخادم بعد."
+        );
+
+        return;
+
+    }
 
 }
 
