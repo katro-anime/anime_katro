@@ -1,542 +1,437 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Demon Slayer | KATRO Anime</title>
+<title>One Piece | KATRO Anime</title>
 
-  <style>
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    * {
-      box-sizing: border-box;
+body {
+    font-family: Arial, sans-serif;
+    background: #080b12;
+    color: white;
+}
+
+header {
+    background: #0d111c;
+    padding: 15px 20px;
+    border-bottom: 1px solid #202738;
+}
+
+.header-content {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: #00b7ff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.home {
+    color: white;
+    text-decoration: none;
+    background: #151c2c;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.anime-top {
+    display: flex;
+    gap: 20px;
+    background: #0d111c;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.cover {
+    width: 180px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.info {
+    flex: 1;
+}
+
+.info h1 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.info p {
+    color: #b9c0ce;
+    line-height: 1.8;
+}
+
+.badge {
+    display: inline-block;
+    margin-top: 15px;
+    background: #17243b;
+    color: #00b7ff;
+    padding: 7px 12px;
+    border-radius: 8px;
+}
+
+.season {
+    background: #0d111c;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.season h2 {
+    color: #00b7ff;
+    margin-bottom: 18px;
+}
+
+.episode {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #121827;
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.episode-number {
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.watch,
+.download {
+    text-decoration: none;
+    color: white;
+    padding: 8px 13px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.watch {
+    background: #1687d9;
+}
+
+.download {
+    background: #1687d9;
+}
+
+footer {
+    text-align: center;
+    color: #777;
+    padding: 30px 10px;
+}
+
+@media (max-width: 600px) {
+
+    .anime-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #090b10;
-      color: white;
-    }
-
-    header {
-      background: #11141c;
-      padding: 18px;
-      border-bottom: 1px solid #292d38;
-    }
-
-    .header {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .logo span {
-      color: #e50914;
-    }
-
-    .home {
-      color: white;
-      text-decoration: none;
-      background: #e50914;
-      padding: 10px 16px;
-      border-radius: 8px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    /* الغلاف */
 
     .cover {
-      width: 100%;
-      max-width: 420px;
-      display: block;
-      margin: 0 auto 25px;
-      border-radius: 15px;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.5);
-    }
-
-    .anime-header {
-      background: linear-gradient(135deg, #1b1e28, #350c12);
-      padding: 25px;
-      border-radius: 18px;
-      margin-bottom: 25px;
-      text-align: center;
-    }
-
-    .anime-header h1 {
-      margin: 0 0 10px;
-      font-size: 32px;
-    }
-
-    .anime-header p {
-      color: #bbb;
-      line-height: 1.7;
-    }
-
-    .section-title {
-      margin: 25px 0 15px;
-      border-right: 4px solid #e50914;
-      padding-right: 10px;
-    }
-
-    .season {
-      background: #141720;
-      border: 1px solid #252936;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 15px;
-    }
-
-    .season h2 {
-      margin-top: 0;
+        width: 160px;
+        height: 230px;
     }
 
     .episode {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      background: #1b1e27;
-      padding: 14px;
-      border-radius: 9px;
-      margin-top: 10px;
-    }
-
-    .episode-info {
-      flex: 1;
-    }
-
-    .episode-info h3 {
-      margin: 0 0 5px;
-    }
-
-    .episode-info p {
-      margin: 0;
-      color: #888;
-      font-size: 13px;
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
     }
 
     .buttons {
-      display: flex;
-      gap: 8px;
+        justify-content: center;
     }
-
-    .watch,
-    .download {
-      color: white;
-      text-decoration: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      white-space: nowrap;
-      font-weight: bold;
-    }
-
-    .watch {
-      background: #e50914;
-    }
-
-    .download {
-      background: #333844;
-    }
-
-    .watch:hover {
-      background: #ff1723;
-    }
-
-    .download:hover {
-      background: #454b59;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding: 30px;
-      text-align: center;
-      color: #777;
-      background: #11141c;
-    }
-
-    @media (max-width: 600px) {
-
-      .header {
-        gap: 10px;
-      }
-
-      .anime-header h1 {
-        font-size: 25px;
-      }
-
-      .cover {
-        max-width: 100%;
-      }
-
-      .episode {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .buttons {
-        width: 100%;
-      }
-
-      .watch,
-      .download {
-        flex: 1;
-        text-align: center;
-      }
-
-    }
-
-  </style>
-
+}
+</style>
 </head>
-
 
 <body>
 
-
 <header>
+    <div class="header-content">
 
-  <div class="header">
+        <div class="logo">
+            KATRO Anime
+        </div>
 
-    <div class="logo">
-      🔥 KATRO <span>Anime</span>
+        <a class="home" href="index.html">
+            الرئيسية
+        </a>
+
     </div>
-
-    <a class="home" href="index.html">
-      الرئيسية
-    </a>
-
-  </div>
-
 </header>
-
-
 
 <div class="container">
 
+<section class="anime-top">
 
-  <!-- غلاف Demon Slayer -->
+    <img
+        class="cover"
+        src="one_piece.jpg"
+        alt="One Piece">
 
-  <img
-    class="cover"
-    src="5a02947aed465c5b6a721884a87cdeca.jpg"
-    alt="Demon Slayer"
-  >
+    <div class="info">
 
+        <h1>One Piece</h1>
 
-  <div class="anime-header">
+        <p>
+            جميع حلقات أنمي One Piece
+            مع إمكانية المشاهدة والتحميل.
+        </p>
 
-    <h1>⚔️ Demon Slayer</h1>
-
-    <p>
-      قاتل الشياطين
-    </p>
-
-    <p>
-      جميع حلقات الموسم الأول مرتبة في مكان واحد.
-    </p>
-
-  </div>
-
-
-
-  <h2 class="section-title">
-    📺 الموسم الأول
-  </h2>
-
-
-
-  <div class="season">
-
-
-    <!-- الحلقة 1 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-
-        <h3>الحلقة 1</h3>
-
-        <p>Demon Slayer - Episode 1</p>
-
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="watch.html?anime=demonslayer&episode=${i}">
-    ▶ مشاهدة
-        </a>
-
-        <a
-          class="download"
-          href="lv_0_٢٠٢٦٠٩٢٦١٥٢٠١٠.mp4"
-          download
-        >
-          ⬇ تحميل
-        </a>
-
-      </div>
+        <span class="badge">
+            الموسم الأول
+        </span>
 
     </div>
 
-
-
-    <!-- الحلقة 2 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-        <h3>الحلقة 2</h3>
-        <p>Demon Slayer - Episode 2</p>
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="#">▶ مشاهدة</a>
-
-        <a class="download" href="#">⬇ تحميل</a>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- الحلقة 3 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-        <h3>الحلقة 3</h3>
-        <p>Demon Slayer - Episode 3</p>
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="#">▶ مشاهدة</a>
-
-        <a class="download" href="#">⬇ تحميل</a>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- الحلقة 4 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-        <h3>الحلقة 4</h3>
-        <p>Demon Slayer - Episode 4</p>
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="#">▶ مشاهدة</a>
-
-        <a class="download" href="#">⬇ تحميل</a>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- الحلقة 5 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-        <h3>الحلقة 5</h3>
-        <p>Demon Slayer - Episode 5</p>
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="#">▶ مشاهدة</a>
-
-        <a class="download" href="#">⬇ تحميل</a>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- الحلقة 6 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-        <h3>الحلقة 6</h3>
-        <p>Demon Slayer - Episode 6</p>
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="#">▶ مشاهدة</a>
-
-        <a class="download" href="#">⬇ تحميل</a>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- الحلقة 7 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-        <h3>الحلقة 7</h3>
-        <p>Demon Slayer - Episode 7</p>
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="#">▶ مشاهدة</a>
-
-        <a class="download" href="#">⬇ تحميل</a>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- الحلقة 8 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-        <h3>الحلقة 8</h3>
-        <p>Demon Slayer - Episode 8</p>
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="#">▶ مشاهدة</a>
-
-        <a class="download" href="#">⬇ تحميل</a>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- الحلقة 9 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-        <h3>الحلقة 9</h3>
-        <p>Demon Slayer - Episode 9</p>
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="#">▶ مشاهدة</a>
-
-        <a class="download" href="#">⬇ تحميل</a>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- الحلقة 10 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-        <h3>الحلقة 10</h3>
-        <p>Demon Slayer - Episode 10</p>
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="#">▶ مشاهدة</a>
-
-        <a class="download" href="#">⬇ تحميل</a>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- الحلقة 11 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-        <h3>الحلقة 11</h3>
-        <p>Demon Slayer - Episode 11</p>
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="#">▶ مشاهدة</a>
-
-        <a class="download" href="#">⬇ تحميل</a>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- الحلقة 12 -->
-
-    <div class="episode">
-
-      <div class="episode-info">
-        <h3>الحلقة 12</h3>
-        <p>Demon Slayer - Episode 12</p>
-      </div>
-
-      <div class="buttons">
-
-        <a class="watch" href="#">▶ مشاهدة</a>
-
-        <a class="download" href="#">⬇ تحميل</a>
-
-      </div>
-
-    </div>
-
-
-  </div>
+</section>
+
+<section class="season">
+
+<h2>الموسم الأول</h2>
+
+<div class="episode">
+<span class="episode-number">الحلقة 1</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=1">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 2</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=2">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 3</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=3">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 4</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=4">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 5</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=5">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 6</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=6">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 7</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=7">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 8</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=8">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 9</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=9">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 10</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=10">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 11</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=11">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 12</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=12">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 13</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=13">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 14</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=14">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 15</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=15">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 16</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=16">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 17</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=17">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 18</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=18">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 19</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=19">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 20</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=20">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 21</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=21">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 22</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=22">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 23</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=23">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 24</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=24">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 25</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=25">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+<div class="episode">
+<span class="episode-number">الحلقة 26</span>
+<div class="buttons">
+<a class="watch" href="watch.html?anime=demonslayer&episode=26">▶ مشاهدة</a>
+<a class="download" href="#">⬇ تحميل</a>
+</div>
+</div>
+
+</section>
 
 </div>
 
-
-
 <footer>
-
-  © 2026 KATRO Anime
-
+© 2026 KATRO Anime
 </footer>
 
-
 </body>
-
-        </html>
+  </html>
