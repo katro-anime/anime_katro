@@ -2,12 +2,17 @@
 <html lang="ar" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>مشاهدة الحلقة | KATRO Anime</title>
 
+
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -72,6 +77,12 @@ video {
     border-radius: 12px;
 }
 
+.message {
+    margin-top: 15px;
+    color: #aeb7c7;
+    line-height: 1.7;
+}
+
 .back {
     display: inline-block;
     margin-top: 20px;
@@ -87,11 +98,14 @@ footer {
     color: #777;
     padding: 30px 10px;
 }
+
 </style>
 
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -110,76 +124,264 @@ KATRO Anime
 </header>
 
 
+
 <div class="container">
 
 <section class="video-box">
 
+
 <h1 id="episodeTitle">
-Dragon Ball Super - الحلقة
+جاري تحميل الحلقة...
 </h1>
 
 
-<video controls id="videoPlayer">
+<video id="videoPlayer" controls>
 
-<source id="videoSource" src="" type="video/mp4">
+<source
+id="videoSource"
+src=""
+type="video/mp4">
 
 متصفحك لا يدعم تشغيل الفيديو.
 
 </video>
 
 
-<a class="back" href="dragon-ball.html">
-⬅ العودة إلى الحلقات
+<p
+class="message"
+id="message">
+
+صفحة المشاهدة جاهزة.
+
+</p>
+
+
+<a
+class="back"
+id="backButton"
+href="index.html">
+
+⬅ العودة للحلقات
+
 </a>
+
 
 </section>
 
 </div>
 
 
+
 <footer>
+
 © 2026 KATRO Anime
+
 </footer>
+
 
 
 <script>
 
-const params = new URLSearchParams(window.location.search);
 
-const episode = params.get("episode") || "1";
+/* قراءة المعلومات من الرابط */
+
+const params =
+new URLSearchParams(
+window.location.search
+);
 
 
-document.getElementById("episodeTitle").textContent =
-"Dragon Ball Super - الحلقة " + episode;
+const anime =
+params.get("anime") || "dragonball";
 
 
-/*
-ضع رابط فيديو الحلقة هنا عندما يكون لديك
-رابط مباشر لملف الفيديو.
-*/
+const episode =
+params.get("episode") || "1";
 
-const videos = {
 
-    1: "",
-    2: "",
-    3: "",
-    4: "",
-    5: ""
+
+/* أسماء الأنميات */
+
+const animeNames = {
+
+    dragonball:
+    "Dragon Ball Super",
+
+    onepiece:
+    "One Piece",
+
+    solo:
+    "Solo Leveling",
+
+    demonslayer:
+    "Demon Slayer"
 
 };
 
 
-const videoSource = document.getElementById("videoSource");
 
-if (videos[episode]) {
+/* إظهار اسم الأنمي ورقم الحلقة */
 
-    videoSource.src = videos[episode];
+const animeName =
+animeNames[anime] || "KATRO Anime";
 
-    document.getElementById("videoPlayer").load();
+
+document.getElementById(
+"episodeTitle"
+).textContent =
+
+animeName +
+" - الحلقة " +
+episode;
+
+
+
+/* زر العودة */
+
+const backButton =
+document.getElementById(
+"backButton"
+);
+
+
+if (anime === "dragonball") {
+
+    backButton.href =
+    "dragon-ball.html";
 
 }
 
+else if (anime === "onepiece") {
+
+    backButton.href =
+    "one-piece.html";
+
+}
+
+else if (anime === "solo") {
+
+    backButton.href =
+    "solo-leveling.html";
+
+}
+
+else if (anime === "demonslayer") {
+
+    backButton.href =
+    "demon-slayer.html";
+
+}
+
+else {
+
+    backButton.href =
+    "index.html";
+
+}
+
+
+
+/* روابط الفيديو */
+
+const videos = {
+
+
+    dragonball: {
+
+        1: "",
+        2: "",
+        3: ""
+
+    },
+
+
+    onepiece: {
+
+        1: "",
+        2: "",
+        3: ""
+
+    },
+
+
+    solo: {
+
+        1: "",
+        2: "",
+        3: ""
+
+    },
+
+
+    demonslayer: {
+
+        1: "",
+        2: "",
+        3: ""
+
+    }
+
+};
+
+
+
+/* البحث عن فيديو الحلقة */
+
+let videoUrl = "";
+
+
+if (videos[anime]) {
+
+    videoUrl =
+    videos[anime][episode] || "";
+
+}
+
+
+
+/* تشغيل الفيديو */
+
+const videoSource =
+document.getElementById(
+"videoSource"
+);
+
+
+const videoPlayer =
+document.getElementById(
+"videoPlayer"
+);
+
+
+const message =
+document.getElementById(
+"message"
+);
+
+
+if (videoUrl !== "") {
+
+    videoSource.src =
+    videoUrl;
+
+    videoPlayer.load();
+
+    message.textContent =
+    "يمكنك مشاهدة الحلقة الآن.";
+
+}
+
+else {
+
+    message.textContent =
+    "لم تتم إضافة رابط الفيديو لهذه الحلقة بعد.";
+
+}
+
+
 </script>
 
+
 </body>
+
     </html>
