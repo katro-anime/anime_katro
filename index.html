@@ -19,23 +19,18 @@ body {
     color: white;
 }
 
-/* الهيدر */
 header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
     background: #0d111c;
-    border-bottom: 1px solid #202738;
     padding: 15px 20px;
+    border-bottom: 1px solid #202738;
 }
 
 .header-content {
     max-width: 1100px;
     margin: auto;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    align-items: center;
 }
 
 .logo {
@@ -54,11 +49,12 @@ nav a {
     text-decoration: none;
 }
 
-nav a:hover {
-    color: #00b7ff;
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
 }
 
-/* البحث */
 .search-box {
     max-width: 1100px;
     margin: 20px auto;
@@ -76,16 +72,8 @@ nav a:hover {
     font-size: 15px;
 }
 
-/* المحتوى */
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-}
-
-/* الترحيب */
 .hero {
-    background: linear-gradient(135deg, #0d1628, #111827);
+    background: #0d111c;
     padding: 40px 20px;
     border-radius: 18px;
     text-align: center;
@@ -93,23 +81,19 @@ nav a:hover {
 }
 
 .hero h1 {
-    font-size: 32px;
-    margin-bottom: 12px;
     color: #00b7ff;
+    margin-bottom: 12px;
 }
 
 .hero p {
     color: #b9c0ce;
 }
 
-/* العناوين */
 .section-title {
-    font-size: 24px;
-    margin-bottom: 18px;
     color: #00b7ff;
+    margin-bottom: 18px;
 }
 
-/* شبكة الأنميات */
 .anime-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -123,18 +107,15 @@ nav a:hover {
     overflow: hidden;
     text-decoration: none;
     color: white;
-    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .anime-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 183, 255, 0.15);
 }
 
 .poster {
     width: 100%;
     height: 300px;
-    overflow: hidden;
 }
 
 .poster img {
@@ -147,10 +128,8 @@ nav a:hover {
 .anime-card h3 {
     padding: 15px;
     text-align: center;
-    font-size: 17px;
 }
 
-/* الحلقات */
 .episodes {
     margin-top: 40px;
 }
@@ -158,8 +137,8 @@ nav a:hover {
 .episode-card {
     background: #0d111c;
     padding: 15px;
-    border-radius: 10px;
     margin-bottom: 10px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -173,37 +152,26 @@ nav a:hover {
     border-radius: 8px;
 }
 
-/* الفوتر */
 footer {
     text-align: center;
     color: #777;
     padding: 35px 10px;
-    margin-top: 30px;
 }
 
-/* الهاتف */
 @media (max-width: 800px) {
     .anime-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
     .poster {
-        height: 260px;
+        height: 250px;
     }
 }
 
 @media (max-width: 500px) {
     .header-content {
         flex-direction: column;
-    }
-
-    nav {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .hero h1 {
-        font-size: 26px;
+        gap: 12px;
     }
 
     .anime-grid {
@@ -214,219 +182,202 @@ footer {
     .poster {
         height: 220px;
     }
-
-    .anime-card h3 {
-        font-size: 15px;
-        padding: 12px 5px;
-    }
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- الهيدر -->
 <header>
 
-    <div class="header-content">
+<div class="header-content">
 
-        <div class="logo">
-            KATRO Anime
-        </div>
+<div class="logo">
+KATRO Anime
+</div>
 
-        <nav>
-            <a href="index.html">الرئيسية</a>
-            <a href="#anime">الأنميات</a>
-            <a href="#episodes">الحلقات</a>
-        </nav>
+<nav>
+<a href="index.html">الرئيسية</a>
+<a href="#anime">الأنميات</a>
+<a href="#episodes">الحلقات</a>
+</nav>
 
-    </div>
+</div>
 
 </header>
 
 
-<!-- البحث -->
 <div class="search-box">
 
-    <input
-        type="text"
-        placeholder="ابحث عن الأنمي..."
-        onkeyup="searchAnime()"
-        id="searchInput"
-    >
+<input
+type="text"
+id="searchInput"
+placeholder="ابحث عن الأنمي..."
+onkeyup="searchAnime()">
 
 </div>
 
 
-<!-- المحتوى -->
 <div class="container">
 
-    <!-- الترحيب -->
-    <section class="hero">
+<section class="hero">
 
-        <h1>
-            عالم الأنمي بين يديك 🔥
-        </h1>
+<h1>
+عالم الأنمي بين يديك 🔥
+</h1>
 
-        <p>
-            KATRO Anime — عالمك الخاص للأنمي
-        </p>
+<p>
+KATRO Anime — عالمك الخاص للأنمي
+</p>
 
-    </section>
-
-
-    <!-- الأنميات -->
-    <section id="anime">
-
-        <h2 class="section-title">
-            الأنميات
-        </h2>
+</section>
 
 
-        <div class="anime-grid" id="animeGrid">
+<section id="anime">
+
+<h2 class="section-title">
+الأنميات
+</h2>
 
 
-            <!-- Demon Slayer -->
-            <a
-                href="demon-slayer.html"
-                class="anime-card"
-                data-name="Demon Slayer ديمون سلاير"
-            >
-
-                <div class="poster">
-
-                    <img
-                        src="5a02947aed465c5b6a721884a87cdeca.jpg"
-                        alt="Demon Slayer"
-                    >
-
-                </div>
-
-                <h3>
-                    Demon Slayer
-                </h3>
-
-            </a>
+<div class="anime-grid">
 
 
-            <!-- Solo Leveling -->
-            <a
-                href="solo-leveling.html"
-                class="anime-card"
-                data-name="Solo Leveling سولو لفلينغ"
-            >
+<!-- Demon Slayer -->
 
-                <div class="poster">
+<a href="demon-slayer.html" class="anime-card">
 
-                    <img
-                        src="Solo leveling .jpg"
-                        alt="Solo Leveling"
-                    >
+<div class="poster">
 
-                </div>
+<img
+src="5a02947aed465c5b6a721884a87cdeca.jpg"
+alt="Demon Slayer">
 
-                <h3>
-                    Solo Leveling
-                </h3>
+</div>
 
-            </a>
+<h3>
+Demon Slayer
+</h3>
+
+</a>
 
 
-            <!-- Dragon Ball -->
-            <a
-                href="#"
-                class="anime-card"
-                data-name="Dragon Ball دراغون بول"
-            >
+<!-- Solo Leveling -->
 
-                <div class="poster">
+<a href="solo-leveling.html" class="anime-card">
 
-                    <img
-                        src="Dragon Ball.jpg"
-                        alt="Dragon Ball"
-                    >
+<div class="poster">
 
-                </div>
+<img
+src="Solo leveling .jpg"
+alt="Solo Leveling">
 
-                <h3>
-                    Dragon Ball
-                </h3>
+</div>
 
-            </a>
+<h3>
+Solo Leveling
+</h3>
+
+</a>
 
 
-            <!-- One Piece -->
-            <a
-                href="#"
-                class="anime-card"
-                data-name="One Piece ون بيس"
-            >
+<!-- Dragon Ball -->
 
-                <div class="poster">
+<a href="#" class="anime-card">
 
-                    <img
-                        src="one_piece.jpg"
-                        alt="One Piece"
-                    >
+<div class="poster">
 
-                </div>
+<img
+src="Dragon Ball.jpg"
+alt="Dragon Ball">
 
-                <h3>
-                    One Piece
-                </h3>
+</div>
 
-            </a>
+<h3>
+Dragon Ball
+</h3>
+
+</a>
 
 
-        </div>
+<!-- One Piece -->
 
-    </section>
+<a href="one-piece.html" class="anime-card">
 
+<div class="poster">
 
-    <!-- أحدث الحلقات -->
-    <section class="episodes" id="episodes">
+<img
+src="one_piece.jpg"
+alt="One Piece">
 
-        <h2 class="section-title">
-            أحدث الحلقات
-        </h2>
+</div>
 
+<h3>
+One Piece
+</h3>
 
-        <div class="episode-card">
-
-            <span>
-                Demon Slayer — الحلقة 1
-            </span>
-
-            <a href="demon-slayer.html">
-                مشاهدة
-            </a>
-
-        </div>
+</a>
 
 
-        <div class="episode-card">
+</div>
 
-            <span>
-                Solo Leveling — الحلقة 1
-            </span>
-
-            <a href="solo-leveling.html">
-                مشاهدة
-            </a>
-
-        </div>
+</section>
 
 
-    </section>
+<section class="episodes" id="episodes">
+
+<h2 class="section-title">
+أحدث الحلقات
+</h2>
+
+
+<div class="episode-card">
+
+<span>
+Demon Slayer — الحلقة 1
+</span>
+
+<a href="demon-slayer.html">
+مشاهدة
+</a>
 
 </div>
 
 
-<!-- الفوتر -->
+<div class="episode-card">
+
+<span>
+Solo Leveling — الحلقة 1
+</span>
+
+<a href="solo-leveling.html">
+مشاهدة
+</a>
+
+</div>
+
+
+<div class="episode-card">
+
+<span>
+One Piece
+</span>
+
+<a href="one-piece.html">
+مشاهدة
+</a>
+
+</div>
+
+
+</section>
+
+</div>
+
+
 <footer>
 
-    © 2026 KATRO Anime
+© 2026 KATRO Anime
 
 </footer>
 
@@ -435,37 +386,35 @@ footer {
 
 function searchAnime() {
 
-    let input =
-        document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase();
+let input =
+document
+.getElementById("searchInput")
+.value
+.toLowerCase();
 
-    let cards =
-        document.querySelectorAll(".anime-card");
+let cards =
+document.querySelectorAll(".anime-card");
 
-    cards.forEach(function(card) {
+cards.forEach(function(card) {
 
-        let name =
-            card
-            .getAttribute("data-name")
-            .toLowerCase();
+let text =
+card.innerText.toLowerCase();
 
-        if (name.includes(input)) {
+if (text.includes(input)) {
 
-            card.style.display = "block";
+card.style.display = "block";
 
-        } else {
+} else {
 
-            card.style.display = "none";
+card.style.display = "none";
 
-        }
+}
 
-    });
+});
 
 }
 
 </script>
 
 </body>
-                      </html>
+    </html>
