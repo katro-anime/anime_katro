@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
 <title>مشاهدة | KATRO Anime</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -53,7 +55,9 @@ header {
     padding: 20px;
 }
 
+
 /* المشغل */
+
 .player {
     background: #000;
     border-radius: 15px;
@@ -68,7 +72,9 @@ video {
     background: #000;
 }
 
+
 /* معلومات الحلقة */
+
 .episode-info {
     background: #0d111c;
     border-radius: 12px;
@@ -85,7 +91,9 @@ video {
     color: #aeb6c5;
 }
 
+
 /* الخوادم */
+
 .servers {
     background: #0d111c;
     border-radius: 15px;
@@ -112,6 +120,7 @@ video {
     border-radius: 9px;
     font-size: 15px;
     cursor: pointer;
+    width: 100%;
 }
 
 .server:hover {
@@ -122,11 +131,17 @@ video {
     background: #00b7ff;
 }
 
+
+/* الفوتر */
+
 footer {
     text-align: center;
     color: #777;
     padding: 30px 10px;
 }
+
+
+/* الهاتف */
 
 @media (max-width: 600px) {
 
@@ -141,11 +156,15 @@ footer {
     .episode-info h1 {
         font-size: 20px;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -164,21 +183,30 @@ KATRO Anime
 </header>
 
 
+
 <div class="container">
+
 
 <!-- مشغل الفيديو -->
 
 <div class="player">
 
-<video id="videoPlayer" controls poster="one_piece.jpg">
+<video
+    id="videoPlayer"
+    controls
+    poster="one_piece.jpg">
 
-<source id="videoSource" src="" type="video/mp4">
+    <source
+        id="videoSource"
+        src=""
+        type="video/mp4">
 
-متصفحك لا يدعم تشغيل الفيديو.
+    متصفحك لا يدعم تشغيل الفيديو.
 
 </video>
 
 </div>
+
 
 
 <!-- معلومات الحلقة -->
@@ -196,6 +224,7 @@ KATRO Anime
 </div>
 
 
+
 <!-- الخوادم -->
 
 <div class="servers">
@@ -204,111 +233,178 @@ KATRO Anime
 خوادم المشاهدة
 </h2>
 
+
 <div class="server-list">
 
-<button class="server active" onclick="changeServer(1)">
-الخادم 1 ▶
+
+<!-- Mega - الحلقة 1 فقط -->
+
+<button
+    class="server active"
+    onclick="changeServer(1)">
+
+    Mega ▶
+
 </button>
 
-<button class="server" onclick="changeServer(2)">
-الخادم 2 ▶
+
+<!-- باقي الخوادم -->
+
+<button
+    class="server"
+    onclick="changeServer(2)">
+
+    الخادم 2 ▶
+
 </button>
 
-<button class="server" onclick="changeServer(3)">
-الخادم 3 ▶
+
+<button
+    class="server"
+    onclick="changeServer(3)">
+
+    الخادم 3 ▶
+
 </button>
 
-<button class="server" onclick="changeServer(4)">
-الخادم 4 ▶
+
+<button
+    class="server"
+    onclick="changeServer(4)">
+
+    الخادم 4 ▶
+
 </button>
 
-<button class="server" onclick="changeServer(5)">
-الخادم 5 ▶
+
+<button
+    class="server"
+    onclick="changeServer(5)">
+
+    الخادم 5 ▶
+
 </button>
 
-<button class="server" onclick="changeServer(6)">
-الخادم 6 ▶
+
+<button
+    class="server"
+    onclick="changeServer(6)">
+
+    الخادم 6 ▶
+
 </button>
+
 
 </div>
 
 </div>
 
 </div>
+
 
 
 <footer>
+
 © 2026 KATRO Anime
+
 </footer>
+
 
 
 <script>
 
-/* قراءة رقم الحلقة من الرابط */
 
-const params = new URLSearchParams(window.location.search);
+/* ================================
+   قراءة البيانات من الرابط
+================================ */
 
-const anime = params.get("anime") || "solo";
+const params =
+    new URLSearchParams(window.location.search);
 
-const episode = params.get("episode") || "1";
+
+const anime =
+    params.get("anime") || "solo";
 
 
-/* كتابة رقم الحلقة */
+const episode =
+    params.get("episode") || "1";
+
+
+
+/* ================================
+   عرض رقم الحلقة
+================================ */
 
 document.getElementById("episodeTitle").textContent =
-"أنت تشاهد الحلقة " + episode;
+    "أنت تشاهد الحلقة " + episode;
 
 
-/*
-روابط الخوادم
 
-ضع هنا روابط الفيديو التي تملك حق استخدامها.
-مثال:
-"https://example.com/video.mp4"
-*/
+/* ================================
+   رابط Mega للحلقة 1
+   من Solo Leveling
+================================ */
 
-const servers = {
-
-1: "",
-2: "",
-3: "",
-4: "",
-5: "",
-6: ""
-
-};
+const megaEpisode1 =
+"https://mega.nz/file/uF1HSQZQ#GhxjYVU5ELDW03p0oftqHXxLt-G7Z-dPzldP18Tyvw8";
 
 
-/* تغيير الخادم */
+
+/* ================================
+   تغيير الخادم
+================================ */
 
 function changeServer(serverNumber) {
 
-    const video = document.getElementById("videoPlayer");
 
-    const source = document.getElementById("videoSource");
+    /*
 
-    const url = servers[serverNumber];
+    الخادم 1 = Mega
 
-    if (!url) {
-        alert("لم يتم إضافة رابط لهذا الخادم بعد.");
+    ويعمل فقط إذا:
+
+    الأنمي = solo
+
+    الحلقة = 1
+
+    */
+
+    if (
+        serverNumber === 1 &&
+        anime === "solo" &&
+        episode === "1"
+    ) {
+
+
+        /* فتح Mega خارج الموقع */
+
+        window.open(
+            megaEpisode1,
+            "_blank"
+        );
+
+
         return;
+
     }
 
-    source.src = url;
 
-    video.load();
 
-    video.play();
+    /* ============================
+       الخوادم الأخرى
+    ============================ */
 
-    document.querySelectorAll(".server").forEach(button => {
-        button.classList.remove("active");
-    });
+    alert(
+        "لم يتم إضافة رابط لهذا الخادم بعد."
+    );
 
-    document.querySelectorAll(".server")[serverNumber - 1]
-        .classList.add("active");
 }
+
+
 
 </script>
 
+
 </body>
+
     </html>
