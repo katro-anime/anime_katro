@@ -54,6 +54,9 @@ header {
     padding: 20px;
 }
 
+
+/* معلومات الأنمي */
+
 .anime-top {
     display: flex;
     gap: 20px;
@@ -93,10 +96,14 @@ header {
     border-radius: 8px;
 }
 
+
+/* الموسم الأول */
+
 .season {
     background: #0d111c;
     border-radius: 15px;
     padding: 20px;
+    margin-bottom: 25px;
 }
 
 .season h2 {
@@ -148,11 +155,76 @@ header {
     background: #34435e;
 }
 
+
+/* قسم المواسم */
+
+.seasons {
+    background: #0d111c;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.seasons h2 {
+    color: #00b7ff;
+    margin-bottom: 20px;
+}
+
+
+/* بطاقات المواسم */
+
+.season-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.season-card {
+    background: #121827;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    transition: 0.2s;
+}
+
+.season-card:hover {
+    transform: translateY(-4px);
+    background: #172033;
+}
+
+.season-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.season-card-info {
+    padding: 15px;
+}
+
+.season-card-info h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.season-card-info p {
+    color: #9fa8b8;
+    font-size: 14px;
+}
+
+
+/* الفوتر */
+
 footer {
     text-align: center;
     color: #777;
     padding: 30px 10px;
 }
+
+
+/* الهاتف */
 
 @media (max-width: 600px) {
 
@@ -179,6 +251,14 @@ footer {
 
     .buttons {
         justify-content: center;
+    }
+
+    .season-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .season-card img {
+        height: 350px;
     }
 
 }
@@ -208,8 +288,9 @@ KATRO Anime
 <div class="container">
 
 
-<section class="anime-top">
+<!-- معلومات Solo Leveling -->
 
+<section class="anime-top">
 
 <img
 class="cover"
@@ -238,13 +319,15 @@ Solo Leveling
 
 
 
-<section class="season">
+<!-- =========================
+     الموسم الأول
+========================= -->
 
+<section class="season">
 
 <h2>
 الموسم الأول
 </h2>
-
 
 
 <!-- الحلقة 1 -->
@@ -278,7 +361,6 @@ href="#">
 </div>
 
 
-
 <!-- الحلقة 2 -->
 
 <div class="episode">
@@ -308,7 +390,6 @@ href="#">
 </div>
 
 </div>
-
 
 
 <!-- الحلقة 3 -->
@@ -342,7 +423,6 @@ href="#">
 </div>
 
 
-
 <!-- الحلقة 4 -->
 
 <div class="episode">
@@ -372,7 +452,6 @@ href="#">
 </div>
 
 </div>
-
 
 
 <!-- الحلقة 5 -->
@@ -406,7 +485,6 @@ href="#">
 </div>
 
 
-
 <!-- الحلقة 6 -->
 
 <div class="episode">
@@ -436,7 +514,6 @@ href="#">
 </div>
 
 </div>
-
 
 
 <!-- الحلقة 7 -->
@@ -470,7 +547,6 @@ href="#">
 </div>
 
 
-
 <!-- الحلقة 8 -->
 
 <div class="episode">
@@ -500,7 +576,6 @@ href="#">
 </div>
 
 </div>
-
 
 
 <!-- الحلقة 9 -->
@@ -534,7 +609,6 @@ href="#">
 </div>
 
 
-
 <!-- الحلقة 10 -->
 
 <div class="episode">
@@ -564,7 +638,6 @@ href="#">
 </div>
 
 </div>
-
 
 
 <!-- الحلقة 11 -->
@@ -598,7 +671,6 @@ href="#">
 </div>
 
 
-
 <!-- الحلقة 12 -->
 
 <div class="episode">
@@ -629,8 +701,78 @@ href="#">
 
 </div>
 
+</section>
+
+
+
+<!-- =========================
+     اختيار الموسم
+========================= -->
+
+<section class="seasons">
+
+<h2>
+المواسم
+</h2>
+
+
+<div class="season-cards">
+
+
+<!-- الموسم الأول -->
+
+<a
+class="season-card"
+href="#season1">
+
+<img
+src="Solo leveling .jpg"
+alt="الموسم الأول">
+
+<div class="season-card-info">
+
+<h3>
+الموسم الأول
+</h3>
+
+<p>
+12 حلقة
+</p>
+
+</div>
+
+</a>
+
+
+
+<!-- الموسم الثاني -->
+
+<a
+class="season-card"
+href="solo-season-2.html">
+
+<img
+src="Solo leveling season 2.jpg"
+alt="الموسم الثاني">
+
+<div class="season-card-info">
+
+<h3>
+الموسم الثاني
+</h3>
+
+<p>
+اضغط للدخول إلى حلقات الموسم الثاني</p>
+
+</div>
+
+</a>
+
+
+</div>
 
 </section>
+
 
 </div>
 
