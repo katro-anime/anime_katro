@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,6 +88,7 @@ footer {
     padding: 30px 10px;
 }
 </style>
+
 </head>
 
 <body>
@@ -113,16 +115,18 @@ KATRO Anime
 <section class="video-box">
 
 <h1 id="episodeTitle">
-Dragon Ball Super - الحلقة 1
+Dragon Ball Super - الحلقة
 </h1>
 
-<video controls>
 
-<source src="" type="video/mp4">
+<video controls id="videoPlayer">
+
+<source id="videoSource" src="" type="video/mp4">
 
 متصفحك لا يدعم تشغيل الفيديو.
 
 </video>
+
 
 <a class="back" href="dragon-ball.html">
 ⬅ العودة إلى الحلقات
@@ -137,5 +141,45 @@ Dragon Ball Super - الحلقة 1
 © 2026 KATRO Anime
 </footer>
 
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const episode = params.get("episode") || "1";
+
+
+document.getElementById("episodeTitle").textContent =
+"Dragon Ball Super - الحلقة " + episode;
+
+
+/*
+ضع رابط فيديو الحلقة هنا عندما يكون لديك
+رابط مباشر لملف الفيديو.
+*/
+
+const videos = {
+
+    1: "",
+    2: "",
+    3: "",
+    4: "",
+    5: ""
+
+};
+
+
+const videoSource = document.getElementById("videoSource");
+
+if (videos[episode]) {
+
+    videoSource.src = videos[episode];
+
+    document.getElementById("videoPlayer").load();
+
+}
+
+</script>
+
 </body>
-  </html>
+    </html>
