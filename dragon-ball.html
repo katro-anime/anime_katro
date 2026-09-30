@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dragon Ball Super | KATRO Anime</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080b12;
+    color: white;
+}
+
+header {
+    background: #0d111c;
+    padding: 15px 20px;
+    border-bottom: 1px solid #202738;
+}
+
+.header-content {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: #00b7ff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.home {
+    color: white;
+    text-decoration: none;
+    background: #151c2c;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.anime-top {
+    display: flex;
+    gap: 20px;
+    background: #0d111c;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.cover {
+    width: 180px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.info {
+    flex: 1;
+}
+
+.info h1 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.info p {
+    color: #b9c0ce;
+    line-height: 1.8;
+}
+
+.badge {
+    display: inline-block;
+    margin-top: 15px;
+    background: #17243b;
+    color: #00b7ff;
+    padding: 7px 12px;
+    border-radius: 8px;
+}
+
+.season {
+    background: #0d111c;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.season h2 {
+    color: #00b7ff;
+    margin-bottom: 18px;
+}
+
+.episode {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #121827;
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.episode-number {
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.watch,
+.download {
+    text-decoration: none;
+    color: white;
+    padding: 8px 13px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.watch {
+    background: #1687d9;
+}
+
+.download {
+    background: #263247;
+}
+
+footer {
+    text-align: center;
+    color: #777;
+    padding: 30px 10px;
+}
+
+@media (max-width: 600px) {
+
+    .anime-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cover {
+        width: 160px;
+        height: 230px;
+    }
+
+    .episode {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-content">
+
+<div class="logo">
+KATRO Anime
+</div>
+
+<a class="home" href="index.html">
+الرئيسية
+</a>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<section class="anime-top">
+
+<img
+class="cover"
+src="Dragon Ball.jpg"
+alt="Dragon Ball Super">
+
+<div class="info">
+
+<h1>
+Dragon Ball Super
+</h1>
+
+<p>
+جميع حلقات أنمي Dragon Ball Super
+مع إمكانية المشاهدة والتحميل.
+</p>
+
+<span class="badge">
+131 حلقة
+</span>
+
+</div>
+
+</section>
+
+
+<section class="season">
+
+<h2>
+جميع حلقات Dragon Ball Super
+</h2>
+
+<div id="episodes"></div>
+
+</section>
+
+</div>
+
+
+<footer>
+© 2026 KATRO Anime
+</footer>
+
+
+<script>
+
+const episodesContainer = document.getElementById("episodes");
+
+for (let i = 1; i <= 131; i++) {
+
+    const episode = document.createElement("div");
+
+    episode.className = "episode";
+
+    episode.innerHTML = `
+        <span class="episode-number">
+            الحلقة ${i}
+        </span>
+
+        <div class="buttons">
+
+            <a class="watch" href="#">
+                ▶ مشاهدة
+            </a>
+
+            <a class="download" href="#">
+                ⬇ تحميل
+            </a>
+
+        </div>
+    `;
+
+    episodesContainer.appendChild(episode);
+}
+
+</script>
+
+</body>
+  </html>
