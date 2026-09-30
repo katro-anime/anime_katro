@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>مشاهدة الحلقة | KATRO Anime</title>
-
+<title>مشاهدة | KATRO Anime</title>
 
 <style>
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -59,38 +53,73 @@ header {
     padding: 20px;
 }
 
-.video-box {
-    background: #0d111c;
-    padding: 20px;
+/* المشغل */
+.player {
+    background: #000;
     border-radius: 15px;
-}
-
-.video-box h1 {
-    color: #00b7ff;
+    overflow: hidden;
     margin-bottom: 20px;
 }
 
 video {
     width: 100%;
-    max-height: 600px;
-    background: black;
+    height: auto;
+    display: block;
+    background: #000;
+}
+
+/* معلومات الحلقة */
+.episode-info {
+    background: #0d111c;
     border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 20px;
 }
 
-.message {
-    margin-top: 15px;
-    color: #aeb7c7;
-    line-height: 1.7;
+.episode-info h1 {
+    font-size: 22px;
+    margin-bottom: 8px;
 }
 
-.back {
-    display: inline-block;
-    margin-top: 20px;
+.episode-info p {
+    color: #aeb6c5;
+}
+
+/* الخوادم */
+.servers {
+    background: #0d111c;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.servers h2 {
+    color: #00b7ff;
+    margin-bottom: 18px;
+    font-size: 20px;
+}
+
+.server-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.server {
+    border: none;
     background: #1687d9;
     color: white;
-    text-decoration: none;
-    padding: 10px 16px;
-    border-radius: 8px;
+    padding: 13px;
+    border-radius: 9px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.server:hover {
+    background: #00b7ff;
+}
+
+.server.active {
+    background: #00b7ff;
 }
 
 footer {
@@ -99,13 +128,24 @@ footer {
     padding: 30px 10px;
 }
 
-</style>
+@media (max-width: 600px) {
 
+    .container {
+        padding: 12px;
+    }
+
+    .server-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .episode-info h1 {
+        font-size: 20px;
+    }
+}
+</style>
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -124,264 +164,151 @@ KATRO Anime
 </header>
 
 
-
 <div class="container">
 
-<section class="video-box">
+<!-- مشغل الفيديو -->
 
+<div class="player">
 
-<h1 id="episodeTitle">
-جاري تحميل الحلقة...
-</h1>
+<video id="videoPlayer" controls poster="one_piece.jpg">
 
-
-<video id="videoPlayer" controls>
-
-<source
-id="videoSource"
-src=""
-type="video/mp4">
+<source id="videoSource" src="" type="video/mp4">
 
 متصفحك لا يدعم تشغيل الفيديو.
 
 </video>
 
+</div>
 
-<p
-class="message"
-id="message">
 
-صفحة المشاهدة جاهزة.
+<!-- معلومات الحلقة -->
 
+<div class="episode-info">
+
+<h1 id="episodeTitle">
+أنت تشاهد الحلقة
+</h1>
+
+<p>
+إذا لم يعمل الخادم الحالي، جرّب أحد الخوادم الأخرى.
 </p>
-
-
-<a
-class="back"
-id="backButton"
-href="index.html">
-
-⬅ العودة للحلقات
-
-</a>
-
-
-</section>
 
 </div>
 
 
+<!-- الخوادم -->
+
+<div class="servers">
+
+<h2>
+خوادم المشاهدة
+</h2>
+
+<div class="server-list">
+
+<button class="server active" onclick="changeServer(1)">
+الخادم 1 ▶
+</button>
+
+<button class="server" onclick="changeServer(2)">
+الخادم 2 ▶
+</button>
+
+<button class="server" onclick="changeServer(3)">
+الخادم 3 ▶
+</button>
+
+<button class="server" onclick="changeServer(4)">
+الخادم 4 ▶
+</button>
+
+<button class="server" onclick="changeServer(5)">
+الخادم 5 ▶
+</button>
+
+<button class="server" onclick="changeServer(6)">
+الخادم 6 ▶
+</button>
+
+</div>
+
+</div>
+
+</div>
+
 
 <footer>
-
 © 2026 KATRO Anime
-
 </footer>
-
 
 
 <script>
 
+/* قراءة رقم الحلقة من الرابط */
 
-/* قراءة المعلومات من الرابط */
+const params = new URLSearchParams(window.location.search);
 
-const params =
-new URLSearchParams(
-window.location.search
-);
+const anime = params.get("anime") || "solo";
 
-
-const anime =
-params.get("anime") || "dragonball";
+const episode = params.get("episode") || "1";
 
 
-const episode =
-params.get("episode") || "1";
+/* كتابة رقم الحلقة */
+
+document.getElementById("episodeTitle").textContent =
+"أنت تشاهد الحلقة " + episode;
 
 
+/*
+روابط الخوادم
 
-/* أسماء الأنميات */
+ضع هنا روابط الفيديو التي تملك حق استخدامها.
+مثال:
+"https://example.com/video.mp4"
+*/
 
-const animeNames = {
+const servers = {
 
-    dragonball:
-    "Dragon Ball Super",
-
-    onepiece:
-    "One Piece",
-
-    solo:
-    "Solo Leveling",
-
-    demonslayer:
-    "Demon Slayer"
+1: "",
+2: "",
+3: "",
+4: "",
+5: "",
+6: ""
 
 };
 
 
+/* تغيير الخادم */
 
-/* إظهار اسم الأنمي ورقم الحلقة */
+function changeServer(serverNumber) {
 
-const animeName =
-animeNames[anime] || "KATRO Anime";
+    const video = document.getElementById("videoPlayer");
 
+    const source = document.getElementById("videoSource");
 
-document.getElementById(
-"episodeTitle"
-).textContent =
+    const url = servers[serverNumber];
 
-animeName +
-" - الحلقة " +
-episode;
-
-
-
-/* زر العودة */
-
-const backButton =
-document.getElementById(
-"backButton"
-);
-
-
-if (anime === "dragonball") {
-
-    backButton.href =
-    "dragon-ball.html";
-
-}
-
-else if (anime === "onepiece") {
-
-    backButton.href =
-    "one-piece.html";
-
-}
-
-else if (anime === "solo") {
-
-    backButton.href =
-    "solo-leveling.html";
-
-}
-
-else if (anime === "demonslayer") {
-
-    backButton.href =
-    "demon-slayer.html";
-
-}
-
-else {
-
-    backButton.href =
-    "index.html";
-
-}
-
-
-
-/* روابط الفيديو */
-
-const videos = {
-
-
-    dragonball: {
-
-        1: "",
-        2: "",
-        3: ""
-
-    },
-
-
-    onepiece: {
-
-        1: "",
-        2: "",
-        3: ""
-
-    },
-
-
-    solo: {
-
-        1: "",
-        2: "",
-        3: ""
-
-    },
-
-
-    demonslayer: {
-
-        1: "",
-        2: "",
-        3: ""
-
+    if (!url) {
+        alert("لم يتم إضافة رابط لهذا الخادم بعد.");
+        return;
     }
 
-};
+    source.src = url;
 
+    video.load();
 
+    video.play();
 
-/* البحث عن فيديو الحلقة */
+    document.querySelectorAll(".server").forEach(button => {
+        button.classList.remove("active");
+    });
 
-let videoUrl = "";
-
-
-if (videos[anime]) {
-
-    videoUrl =
-    videos[anime][episode] || "";
-
+    document.querySelectorAll(".server")[serverNumber - 1]
+        .classList.add("active");
 }
-
-
-
-/* تشغيل الفيديو */
-
-const videoSource =
-document.getElementById(
-"videoSource"
-);
-
-
-const videoPlayer =
-document.getElementById(
-"videoPlayer"
-);
-
-
-const message =
-document.getElementById(
-"message"
-);
-
-
-if (videoUrl !== "") {
-
-    videoSource.src =
-    videoUrl;
-
-    videoPlayer.load();
-
-    message.textContent =
-    "يمكنك مشاهدة الحلقة الآن.";
-
-}
-
-else {
-
-    message.textContent =
-    "لم تتم إضافة رابط الفيديو لهذه الحلقة بعد.";
-
-}
-
 
 </script>
 
-
 </body>
-
     </html>
