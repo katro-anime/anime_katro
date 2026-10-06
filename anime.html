@@ -1,5 +1,16 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>الأنمي | KATRO Anime</title><style>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>الأنمي | KATRO Anime</title>
+
+<style>
 
 *{
     box-sizing:border-box;
@@ -57,6 +68,10 @@ header{
     margin-bottom:20px;
 }
 
+/* =========================
+   معلومات الأنمي
+========================= */
+
 .anime-info{
     background:#0d111c;
     border-radius:15px;
@@ -75,6 +90,10 @@ header{
     background:#151c2c;
 }
 
+.anime-text{
+    flex:1;
+}
+
 .anime-text h1{
     color:#00b7ff;
     margin-bottom:12px;
@@ -87,21 +106,85 @@ header{
     margin-bottom:8px;
 }
 
-.season{
-    background:#0d111c;
-    border-radius:15px;
-    padding:20px;
-}
+/* =========================
+   عنوان المواسم
+========================= */
 
-.season h2{
+.section-title{
     color:#00b7ff;
-    margin-bottom:20px;
+    font-size:23px;
+    margin-bottom:15px;
 }
 
+/* =========================
+   المواسم
+========================= */
+
+.seasons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.season-card{
+    background:#0d111c;
+    border:1px solid #202738;
+    border-radius:14px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.season-card:hover{
+    transform:translateY(-3px);
+    border-color:#00b7ff;
+}
+
+.season-card.active{
+    border:2px solid #00b7ff;
+}
+
+.season-card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    display:block;
+    background:#151c2c;
+}
+
+.season-info{
+    padding:14px;
+    text-align:center;
+}
+
+.season-info h3{
+    color:white;
+    margin-bottom:8px;
+    font-size:17px;
+}
+
+.season-info p{
+    color:#aeb6c5;
+    font-size:14px;
+}
 
 /* =========================
    الحلقات
 ========================= */
+
+.episodes-section{
+    background:#0d111c;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:25px;
+}
+
+.episodes-title{
+    color:#00b7ff;
+    margin-bottom:20px;
+    font-size:22px;
+}
 
 .episodes{
     display:grid;
@@ -123,11 +206,6 @@ header{
     color:#aeb6c5;
     font-size:15px;
 }
-
-
-/* =========================
-   أزرار الحلقة
-========================= */
 
 .episode-buttons{
     display:grid;
@@ -163,6 +241,33 @@ header{
     background:#1687d9;
 }
 
+/* =========================
+   التحميل
+========================= */
+
+.loading{
+    background:#0d111c;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    color:#aeb6c5;
+}
+
+.loading-spinner{
+    width:35px;
+    height:35px;
+    border:4px solid #202738;
+    border-top-color:#00b7ff;
+    border-radius:50%;
+    margin:0 auto 15px;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
 
 /* =========================
    غير موجود
@@ -176,6 +281,10 @@ header{
     color:#ff6b6b;
 }
 
+.not-found p{
+    color:#aeb6c5;
+    margin:12px 0 20px;
+}
 
 /* =========================
    الفوتر
@@ -187,10 +296,17 @@ footer{
     padding:30px 10px;
 }
 
-
 /* =========================
    الهاتف
 ========================= */
+
+@media(max-width:800px){
+
+    .seasons{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
 
 @media(max-width:700px){
 
@@ -204,6 +320,10 @@ footer{
         height:230px;
     }
 
+    .seasons{
+        grid-template-columns:1fr 1fr;
+    }
+
     .episodes{
         grid-template-columns:1fr 1fr;
     }
@@ -212,33 +332,115 @@ footer{
 
 @media(max-width:400px){
 
+    .seasons{
+        grid-template-columns:1fr;
+    }
+
     .episodes{
         grid-template-columns:1fr;
     }
 
 }
 
-</style></head><body><header><div class="header-content"><div class="logo">
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="header-content">
+
+<div class="logo">
 KATRO Anime
-</div><a class="home" href="index.html">
+</div>
+
+<a class="home"
+href="index.html">
 الرئيسية
-</a></div></header><div class="container"><a class="back" href="index.html">
+</a>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+
+<a class="back"
+href="index.html">
 ← العودة للأنميات
-</a><div id="animeContainer"></div></div><footer>
+</a>
+
+
+<div id="animeContainer">
+
+    <div class="loading">
+
+        <div class="loading-spinner"></div>
+
+        جاري تحميل معلومات الأنمي...
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<footer>
 © 2026 KATRO Anime
-</footer><script>
+</footer>
+
+
+<script>
+
+/* =========================================
+   إعدادات
+========================================= */
+
+const API =
+"https://api.jikan.moe/v4";
+
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+
+const requestedName =
+params.get("name");
+
+
+const container =
+document.getElementById(
+"animeContainer"
+);
 
 
 /* =========================================
-   صورة KATRO الافتراضية
+   الغلاف الافتراضي
 ========================================= */
 
 const defaultCover =
 "data:image/svg+xml;charset=UTF-8," +
 encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="700">
-<rect width="100%" height="100%" fill="#151c2c"/>
-<text x="50%" y="45%"
+<svg xmlns="http://www.w3.org/2000/svg"
+width="500"
+height="700">
+
+<rect width="100%"
+height="100%"
+fill="#151c2c"/>
+
+<text x="50%"
+y="45%"
 text-anchor="middle"
 fill="#00b7ff"
 font-size="55"
@@ -246,224 +448,594 @@ font-family="Arial"
 font-weight="bold">
 KATRO
 </text>
-<text x="50%" y="55%"
+
+<text x="50%"
+y="55%"
 text-anchor="middle"
 fill="white"
 font-size="35"
 font-family="Arial">
 ANIME
 </text>
+
 </svg>
 `);
 
 
 /* =========================================
-   قائمة الأنمي
+   تحويل الاسم إلى رابط آمن
 ========================================= */
 
-const animeList = [
+function safe(value){
 
-{name:"Naruto",episodes:"220"},
-{name:"Naruto Shippuden",episodes:"500"},
-{name:"One Piece",episodes:"مستمر"},
-{name:"Bleach",episodes:"366"},
-{name:"Bleach: Thousand-Year Blood War",episodes:"40+"},
-{name:"Dragon Ball",episodes:"153"},
-{name:"Dragon Ball Z",episodes:"291"},
-{name:"Dragon Ball Super",episodes:"131"},
-{name:"Demon Slayer",episodes:"63+"},
-{name:"Solo Leveling",episodes:"25"},
-{name:"Jujutsu Kaisen",episodes:"47"},
-{name:"Attack on Titan",episodes:"89"},
-{name:"My Hero Academia",episodes:"159+"},
-{name:"Hunter x Hunter",episodes:"148"},
-{name:"Black Clover",episodes:"170"},
-{name:"Death Note",episodes:"37"},
-{name:"Fullmetal Alchemist: Brotherhood",episodes:"64"},
-{name:"Tokyo Ghoul",episodes:"48"},
-{name:"Sword Art Online",episodes:"96+"},
-{name:"Fairy Tail",episodes:"328"},
-{name:"One Punch Man",episodes:"24+"},
-{name:"Mob Psycho 100",episodes:"37"},
-{name:"Chainsaw Man",episodes:"12"},
-{name:"Blue Lock",episodes:"38"},
-{name:"Haikyuu",episodes:"85"},
-{name:"Dr. Stone",episodes:"81+"},
-{name:"Vinland Saga",episodes:"48"},
-{name:"Code Geass",episodes:"50"},
-{name:"Steins;Gate",episodes:"24"},
-{name:"Re:Zero",episodes:"66+"},
-{name:"The Seven Deadly Sins",episodes:"100+"},
-{name:"JoJo's Bizarre Adventure",episodes:"190+"},
-{name:"Black Lagoon",episodes:"29"},
-{name:"Fire Force",episodes:"48+"},
-{name:"Assassination Classroom",episodes:"47"},
-{name:"Classroom of the Elite",episodes:"38+"},
-{name:"Overlord",episodes:"52"},
-{name:"That Time I Got Reincarnated as a Slime",episodes:"72+"},
-{name:"Mushoku Tensei",episodes:"48+"},
-{name:"The Rising of the Shield Hero",episodes:"50+"},
-{name:"Tokyo Revengers",episodes:"50"},
-{name:"Parasyte",episodes:"24"},
-{name:"Erased",episodes:"12"},
-{name:"Noragami",episodes:"25"},
-{name:"Akame ga Kill",episodes:"24"},
-{name:"Seraph of the End",episodes:"24"},
-{name:"The Promised Neverland",episodes:"23"},
-{name:"Darwin's Game",episodes:"11"},
-{name:"The God of High School",episodes:"13"},
-{name:"Tower of God",episodes:"13+"},
-{name:"Darling in the Franxx",episodes:"24"},
-{name:"The Eminence in Shadow",episodes:"32"},
-{name:"Konosuba",episodes:"31+"},
-{name:"No Game No Life",episodes:"12"},
-{name:"Your Lie in April",episodes:"22"},
-{name:"Spy x Family",episodes:"50+"},
-{name:"Frieren",episodes:"28"},
-{name:"Oshi no Ko",episodes:"24+"},
-{name:"Kaiju No. 8",episodes:"23+"},
-{name:"Mashle",episodes:"24"},
-{name:"Hell's Paradise",episodes:"13"},
-{name:"Undead Unluck",episodes:"24"},
-{name:"Zom 100",episodes:"12"},
-{name:"Pluto",episodes:"8"},
-{name:"Bungo Stray Dogs",episodes:"61+"},
-{name:"Kuroko's Basketball",episodes:"75"},
-{name:"Blue Exorcist",episodes:"60+"},
-{name:"Soul Eater",episodes:"51"},
-{name:"Inuyasha",episodes:"167"},
-{name:"Yu Yu Hakusho",episodes:"112"},
-{name:"Yu-Gi-Oh!",episodes:"224"},
-{name:"Pokemon",episodes:"1000+"},
-{name:"Fate/Zero",episodes:"25"},
-{name:"Fate/stay night",episodes:"24"},
-{name:"Fate/Apocrypha",episodes:"25"},
-{name:"Kakegurui",episodes:"24"},
-{name:"Komi Can't Communicate",episodes:"24"},
-{name:"The Quintessential Quintuplets",episodes:"24"},
-{name:"Rent-a-Girlfriend",episodes:"36+"},
-{name:"Horimiya",episodes:"13"},
-{name:"Toradora",episodes:"25"},
-{name:"My Dress-Up Darling",episodes:"12+"},
-{name:"Golden Time",episodes:"24"},
-{name:"Orange",episodes:"13"},
-{name:"Anohana",episodes:"11"},
-{name:"Clannad",episodes:"23"},
-{name:"Angel Beats",episodes:"13"},
-{name:"Charlotte",episodes:"13"},
-{name:"Plastic Memories",episodes:"13"},
-{name:"Made in Abyss",episodes:"25+"},
-{name:"To Your Eternity",episodes:"40+"},
-{name:"Ranking of Kings",episodes:"23"},
-{name:"Log Horizon",episodes:"62"},
-{name:"Saga of Tanya the Evil",episodes:"12"},
-{name:"Cautious Hero",episodes:"12"},
-{name:"Arifureta",episodes:"42+"},
-{name:"Tsukimichi",episodes:"37+"},
-{name:"The Misfit of Demon King Academy",episodes:"37+"},
-{name:"The Irregular at Magic High School",episodes:"52+"},
-{name:"The Devil is a Part-Timer",episodes:"37+"},
-{name:"Date A Live",episodes:"58"},
-{name:"High School DxD",episodes:"49"},
-{name:"D.Gray-man",episodes:"103"},
-{name:"Magi",episodes:"50"},
-{name:"Record of Ragnarok",episodes:"27+"},
-{name:"Baki",episodes:"39+"},
-{name:"Baki Hanma",episodes:"39+"},
-{name:"Kengan Ashura",episodes:"36+"},
-{name:"Hajime no Ippo",episodes:"127+"},
-{name:"Megalo Box",episodes:"26"},
-{name:"Initial D",episodes:"86"},
-{name:"Slam Dunk",episodes:"101"},
-{name:"Captain Tsubasa",episodes:"128+"},
-{name:"Inazuma Eleven",episodes:"127"},
-{name:"Ao Ashi",episodes:"24"},
-{name:"Yuri on Ice",episodes:"12"},
-{name:"Free!",episodes:"37+"},
-{name:"Sk8 the Infinity",episodes:"12"},
-{name:"Run with the Wind",episodes:"23"},
-{name:"Black Butler",episodes:"50+"},
-{name:"Hellsing",episodes:"13"},
-{name:"Hellsing Ultimate",episodes:"10"},
-{name:"Devilman Crybaby",episodes:"10"},
-{name:"Castlevania",episodes:"32"},
-{name:"Cyberpunk Edgerunners",episodes:"10"},
-{name:"Arcane",episodes:"18"},
-{name:"Dorohedoro",episodes:"12"},
-{name:"Ajin",episodes:"26"},
-{name:"Beelzebub",episodes:"60"},
-{name:"Gintama",episodes:"367"},
-{name:"Saiki K",episodes:"120+"},
-{name:"Nichijou",episodes:"26"},
-{name:"Daily Lives of High School Boys",episodes:"12"},
-{name:"Grand Blue",episodes:"12+"},
-{name:"Prison School",episodes:"12"},
-{name:"Food Wars",episodes:"86"},
-{name:"Drifters",episodes:"12"},
-{name:"Golden Kamuy",episodes:"61+"},
-{name:"Kingdom",episodes:"140+"},
-{name:"86 Eighty-Six",episodes:"23"},
-{name:"Vivy",episodes:"13"},
-{name:"Lycoris Recoil",episodes:"13"},
-{name:"Akudama Drive",episodes:"12"},
-{name:"Summertime Rendering",episodes:"25"},
-{name:"Link Click",episodes:"24+"},
-{name:"Heavenly Delusion",episodes:"13"},
-{name:"The Apothecary Diaries",episodes:"48+"},
-{name:"Delicious in Dungeon",episodes:"24"},
-{name:"The Elusive Samurai",episodes:"12+"},
-{name:"Wind Breaker",episodes:"25+"},
-{name:"Solo Leveling Season 2",episodes:"13"}
+    return String(value || "")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;");
 
-];
+}
 
 
 /* =========================================
-   قراءة اسم الأنمي
+   طلب Jikan
 ========================================= */
 
-const params =
-new URLSearchParams(window.location.search);
+async function api(url){
 
-const requestedName =
-params.get("name");
+    const response =
+    await fetch(url);
 
+    if(!response.ok){
 
-const container =
-document.getElementById("animeContainer");
+        throw new Error(
+            "API Error " +
+            response.status
+        );
+
+    }
+
+    return await response.json();
+
+}
 
 
 /* =========================================
    البحث عن الأنمي
 ========================================= */
 
-const anime =
-animeList.find(item =>
-item.name === requestedName
-);
+async function findAnime(name){
+
+    const result =
+    await api(
+        API +
+        "/anime?q=" +
+        encodeURIComponent(name) +
+        "&limit=10"
+    );
+
+
+    if(!result.data ||
+       result.data.length === 0){
+
+        return null;
+
+    }
+
+
+    /*
+       نحاول العثور على تطابق
+       قوي مع الاسم المطلوب.
+    */
+
+    const exact =
+    result.data.find(item => {
+
+        const titles = [
+
+            item.title,
+            item.title_english,
+            ...(item.title_synonyms || [])
+
+        ];
+
+        return titles
+        .filter(Boolean)
+        .some(title =>
+            title.toLowerCase() ===
+            name.toLowerCase()
+        );
+
+    });
+
+
+    return exact ||
+           result.data[0];
+
+}
 
 
 /* =========================================
-   إذا لم يوجد الأنمي
+   بيانات أنمي محددة داخل KATRO
 ========================================= */
 
-if(!anime){
+const localData = {
 
-    container.innerHTML = `
-        <div class="not-found">
+    "Solo Leveling":{
 
-            <h2>
-                الأنمي غير موجود
-            </h2>
+        image:"Solo leveling .jpg",
 
-            <br>
+        seasons:[
 
-            <a class="back" href="index.html">
-                العودة للرئيسية
-            </a>
+            {
+                name:"الموسم الأول",
+                episodes:12,
+                image:"Solo leveling .jpg",
+                watchId:"solo"
+            },
 
-        </div>
-    `;
+            {
+                name:"الموسم الثاني",
+                episodes:13,
+                image:"Solo leveling season 2.jpg",
+                watchId:"solo-s2"
+            }
+
+        ]
+
+    },
+
+
+    "Demon Slayer":{
+
+        image:"5a02947aed465c5b6a721884a87cdeca.jpg",
+
+        seasons:[
+
+            {
+                name:"الموسم الأول",
+                episodes:26,
+                image:"5a02947aed465c5b6a721884a87cdeca.jpg",
+                watchId:"Demon Slayer"
+            },
+
+            {
+                name:"الموسم الثاني",
+                episodes:11,
+                image:"5a02947aed465c5b6a721884a87cdeca.jpg",
+                watchId:"Demon Slayer"
+            },
+
+            {
+                name:"الموسم الثالث",
+                episodes:11,
+                image:"5a02947aed465c5b6a721884a87cdeca.jpg",
+                watchId:"Demon Slayer"
+            },
+
+            {
+                name:"الموسم الرابع",
+                episodes:8,
+                image:"5a02947aed465c5b6a721884a87cdeca.jpg",
+                watchId:"Demon Slayer"
+            }
+
+        ]
+
+    }
+
+};
+
+
+/* =========================================
+   أسماء يمكن دمجها
+========================================= */
+
+function normalizeTitle(title){
+
+    return String(title || "")
+    .toLowerCase()
+    .replace(/season\s*\d+/g,"")
+    .replace(/part\s*\d+/g,"")
+    .replace(/cour\s*\d+/g,"")
+    .replace(/[:\-–—]/g," ")
+    .replace(/\s+/g," ")
+    .trim();
+
+}
+
+
+/* =========================================
+   تحديد اسم الموسم
+========================================= */
+
+function seasonName(title,index){
+
+    const text =
+    String(title || "")
+    .toLowerCase();
+
+
+    if(
+        /season\s*2|2nd season|second season/.test(text)
+    ){
+        return "الموسم الثاني";
+    }
+
+
+    if(
+        /season\s*3|3rd season|third season/.test(text)
+    ){
+        return "الموسم الثالث";
+    }
+
+
+    if(
+        /season\s*4|4th season|fourth season/.test(text)
+    ){
+        return "الموسم الرابع";
+    }
+
+
+    if(
+        /season\s*5|5th season|fifth season/.test(text)
+    ){
+        return "الموسم الخامس";
+    }
+
+
+    if(
+        /season\s*6|6th season|sixth season/.test(text)
+    ){
+        return "الموسم السادس";
+    }
+
+
+    if(
+        /season\s*7|7th season|seventh season/.test(text)
+    ){
+        return "الموسم السابع";
+    }
+
+
+    return "الموسم " +
+           arabicNumber(index + 1);
+
+}
+
+
+/* =========================================
+   أرقام عربية
+========================================= */
+
+function arabicNumber(number){
+
+    const numbers = [
+
+        "الأول",
+        "الثاني",
+        "الثالث",
+        "الرابع",
+        "الخامس",
+        "السادس",
+        "السابع",
+        "الثامن",
+        "التاسع",
+        "العاشر"
+
+    ];
+
+    return numbers[number - 1] ||
+           String(number);
+
+}
+
+
+/* =========================================
+   بناء موسم افتراضي
+========================================= */
+
+function makeDefaultSeason(anime){
+
+    return {
+
+        name:"الموسم الأول",
+
+        episodes:
+        anime.episodes || 0,
+
+        image:
+        anime.images?.jpg?.large_image_url ||
+        anime.images?.jpg?.image_url ||
+        defaultCover,
+
+        watchId:
+        anime.title
+
+    };
+
+}
+
+
+/* =========================================
+   بناء قائمة المواسم
+========================================= */
+
+async function buildSeasons(anime){
+
+    /*
+       إذا كان لدينا إعداد يدوي
+       داخل KATRO، استخدمه أولاً.
+    */
+
+    const local =
+    localData[requestedName];
+
+
+    if(local){
+
+        return local.seasons;
+
+    }
+
+
+    const seasons = [];
+
+
+    /*
+       الموسم الأساسي
+    */
+
+    seasons.push({
+
+        name:"الموسم الأول",
+
+        episodes:
+        anime.episodes || 0,
+
+        image:
+        anime.images?.jpg?.large_image_url ||
+        anime.images?.jpg?.image_url ||
+        defaultCover,
+
+        watchId:
+        anime.title
+
+    });
+
+
+    /*
+       الحصول على الأعمال المرتبطة
+       بالأنمي.
+    */
+
+    try{
+
+        const relationData =
+        await api(
+            API +
+            "/anime/" +
+            anime.mal_id +
+            "/relations"
+        );
+
+
+        const sequelList = [];
+
+
+        if(relationData.data){
+
+            relationData.data.forEach(
+                relation => {
+
+                    if(
+                        relation.relation ===
+                        "Sequel"
+                    ){
+
+                        (relation.entry || [])
+                        .forEach(entry => {
+
+                            if(
+                                entry.type ===
+                                "anime"
+                            ){
+
+                                sequelList.push(
+                                    entry
+                                );
+
+                            }
+
+                        });
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /*
+           تحميل بيانات الأجزاء
+        */
+
+        for(
+            const entry of sequelList
+        ){
+
+            try{
+
+                const sequel =
+                await api(
+                    API +
+                    "/anime/" +
+                    entry.mal_id
+                );
+
+
+                const data =
+                sequel.data;
+
+
+                /*
+                   الأفلام والـOVA
+                   لا نحولها إلى موسم
+                */
+
+                if(
+                    data.type !== "TV"
+                ){
+
+                    continue;
+
+                }
+
+
+                seasons.push({
+
+                    name:
+                    seasonName(
+                        data.title,
+                        seasons.length
+                    ),
+
+                    episodes:
+                    data.episodes || 0,
+
+                    image:
+                    data.images?.jpg
+                    ?.large_image_url ||
+                    data.images?.jpg
+                    ?.image_url ||
+                    defaultCover,
+
+                    watchId:
+                    data.title
+
+                });
+
+
+            }
+            catch(error){
+
+                console.log(
+                    "تعذر تحميل جزء:",
+                    entry.mal_id
+                );
+
+            }
+
+        }
+
+    }
+    catch(error){
+
+        console.log(
+            "تعذر تحميل العلاقات"
+        );
+
+    }
+
+
+    return seasons;
+
+}
+
+
+/* =========================================
+   عرض الصفحة
+========================================= */
+
+async function loadAnime(){
+
+    if(!requestedName){
+
+        showNotFound(
+            "لم يتم تحديد اسم الأنمي."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const anime =
+        await findAnime(
+            requestedName
+        );
+
+
+        if(!anime){
+
+            showNotFound(
+                "لم يتم العثور على هذا الأنمي."
+            );
+
+            return;
+
+        }
+
+
+        const local =
+        localData[requestedName];
+
+
+        const mainImage =
+        local?.image ||
+        anime.images?.jpg
+        ?.large_image_url ||
+        anime.images?.jpg
+        ?.image_url ||
+        defaultCover;
+
+
+        const seasons =
+        await buildSeasons(
+            anime
+        );
+
+
+        renderAnime(
+            anime,
+            mainImage,
+            seasons
+        );
+
+    }
+    catch(error){
+
+        console.error(error);
+
+
+        /*
+           إذا فشل API، نستخدم
+           البيانات المحلية المعروفة.
+        */
+
+        const local =
+        localData[requestedName];
+
+
+        if(local){
+
+            renderOffline(
+                requestedName,
+                local
+            );
+
+        }
+        else{
+
+            showNotFound(
+                "تعذر تحميل معلومات الأنمي حاليًا. حاول مرة أخرى."
+            );
+
+        }
+
+    }
 
 }
 
@@ -472,30 +1044,36 @@ if(!anime){
    عرض الأنمي
 ========================================= */
 
-else{
-
-    const image =
-    anime.image || defaultCover;
-
+function renderAnime(
+    anime,
+    mainImage,
+    seasons
+){
 
     container.innerHTML = `
 
         <div class="anime-info">
 
             <img
-                src="${image}"
-                alt="${anime.name}"
-                onerror="this.src='${defaultCover}'"
+                src="${mainImage}"
+                alt="${safe(anime.title)}"
+                onerror="this.src=defaultCover"
             >
 
             <div class="anime-text">
 
                 <h1>
-                    ${anime.name}
+                    ${safe(anime.title)}
                 </h1>
 
                 <p>
-                    عدد الحلقات: ${anime.episodes}
+                    عدد المواسم:
+                    ${seasons.length}
+                </p>
+
+                <p>
+                    الحالة:
+                    ${safe(anime.status || "غير معروف")}
                 </p>
 
                 <p>
@@ -507,11 +1085,28 @@ else{
         </div>
 
 
-        <div class="season">
+        <h2 class="section-title">
+            المواسم
+        </h2>
 
-            <h2>
-                الموسم الأول
+
+        <div
+            class="seasons"
+            id="seasons">
+        </div>
+
+
+        <div
+            class="episodes-section"
+            id="episodesSection"
+            style="display:none;"
+        >
+
+            <h2
+                class="episodes-title"
+                id="episodesTitle">
             </h2>
+
 
             <div
                 class="episodes"
@@ -523,89 +1118,300 @@ else{
     `;
 
 
-    createEpisodes(anime);
+    createSeasonCards(
+        seasons
+    );
 
 }
 
 
 /* =========================================
-   إنشاء الحلقات
+   وضع عدم الاتصال
 ========================================= */
 
-function createEpisodes(anime){
+function renderOffline(
+    name,
+    local
+){
+
+    const fakeAnime = {
+
+        title:name,
+
+        status:"بيانات KATRO"
+
+    };
+
+
+    renderAnime(
+
+        fakeAnime,
+
+        local.image ||
+        defaultCover,
+
+        local.seasons
+
+    );
+
+}
+
+
+/* =========================================
+   بطاقات المواسم
+========================================= */
+
+function createSeasonCards(
+    seasons
+){
+
+    const seasonsContainer =
+    document.getElementById(
+        "seasons"
+    );
+
+
+    seasons.forEach(
+        (season,index) => {
+
+            const card =
+            document.createElement(
+                "div"
+            );
+
+
+            card.className =
+            "season-card";
+
+
+            card.innerHTML = `
+
+                <img
+                    src="${season.image || defaultCover}"
+                    alt="${safe(season.name)}"
+                    onerror="this.src=defaultCover"
+                >
+
+                <div class="season-info">
+
+                    <h3>
+                        ${safe(season.name)}
+                    </h3>
+
+                    <p>
+                        عدد الحلقات:
+                        ${season.episodes || "غير معروف"}
+                    </p>
+
+                </div>
+
+            `;
+
+
+            card.addEventListener(
+                "click",
+                function(){
+
+                    document
+                    .querySelectorAll(
+                        ".season-card"
+                    )
+                    .forEach(
+                        item =>
+                        item.classList
+                        .remove("active")
+                    );
+
+
+                    card.classList.add(
+                        "active"
+                    );
+
+
+                    createEpisodes(
+                        season
+                    );
+
+
+                    document
+                    .getElementById(
+                        "episodesSection"
+                    )
+                    .scrollIntoView({
+                        behavior:"smooth",
+                        block:"start"
+                    });
+
+                }
+            );
+
+
+            seasonsContainer
+            .appendChild(card);
+
+
+            /*
+               فتح أول موسم تلقائيًا
+            */
+
+            if(index === 0){
+
+                setTimeout(
+                    function(){
+
+                        card.click();
+
+                    },
+                    100
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   الحلقات
+========================================= */
+
+function createEpisodes(
+    season
+){
 
     const episodesContainer =
-    document.getElementById("episodes");
+    document.getElementById(
+        "episodes"
+    );
 
 
-    if(!episodesContainer){
-        return;
-    }
+    const episodesSection =
+    document.getElementById(
+        "episodesSection"
+    );
 
 
-    const match =
-    String(anime.episodes).match(/\d+/);
+    const episodesTitle =
+    document.getElementById(
+        "episodesTitle"
+    );
 
 
-    if(!match){
+    episodesContainer.innerHTML =
+    "";
+
+
+    episodesTitle.textContent =
+    season.name;
+
+
+    episodesSection.style.display =
+    "block";
+
+
+    const number =
+    parseInt(
+        String(
+            season.episodes || ""
+        ).match(/\d+/)?.[0] ||
+        "0"
+    );
+
+
+    if(!number){
 
         episodesContainer.innerHTML = `
+
             <p style="color:#aeb6c5;">
-                لا توجد حلقات مضافة لهذا العنوان حاليًا.
+
+                عدد الحلقات غير متوفر حاليًا.
+
             </p>
+
         `;
 
         return;
+
     }
 
 
-    let episodeCount =
-    parseInt(match[0]);
-
-
-    episodeCount =
-    Math.min(episodeCount,500);
+    const count =
+    Math.min(
+        number,
+        500
+    );
 
 
     for(
         let i=1;
-        i<=episodeCount;
+        i<=count;
         i++
     ){
 
         const episodeBox =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
         episodeBox.className =
         "episode";
 
 
         /*
-           رابط مشاهدة
+           مهم جدًا:
+           Solo Leveling S2
+           يستخدم solo-s2
         */
 
-        const watchURL =
-        "watch.html?anime=" +
-        encodeURIComponent(anime.name) +
-        "&episode=" +
-        encodeURIComponent(i);
+        let watchId =
+        season.watchId;
 
 
         /*
-           رابط تحميل
+           أي جزء يحمل Solo Leveling
+           Season 2 يستخدم المعرف الخاص
         */
+
+        if(
+            /solo leveling/i
+            .test(watchId || "") &&
+            /season\s*2/i
+            .test(watchId || "")
+        ){
+
+            watchId =
+            "solo-s2";
+
+        }
+
+
+        const watchURL =
+        "watch.html?anime=" +
+        encodeURIComponent(
+            watchId
+        ) +
+        "&episode=" +
+        i;
+
 
         const downloadURL =
         "download.html?anime=" +
-        encodeURIComponent(anime.name) +
+        encodeURIComponent(
+            watchId
+        ) +
         "&episode=" +
-        encodeURIComponent(i);
+        i;
 
 
         episodeBox.innerHTML = `
 
             <span class="episode-number">
+
                 الحلقة ${i}
+
             </span>
 
 
@@ -615,7 +1421,9 @@ function createEpisodes(anime){
                     class="watch-btn"
                     href="${watchURL}"
                 >
+
                     مشاهدة ▶
+
                 </a>
 
 
@@ -623,7 +1431,9 @@ function createEpisodes(anime){
                     class="download-btn"
                     href="${downloadURL}"
                 >
+
                     تحميل ⬇
+
                 </a>
 
             </div>
@@ -631,7 +1441,8 @@ function createEpisodes(anime){
         `;
 
 
-        episodesContainer.appendChild(
+        episodesContainer
+        .appendChild(
             episodeBox
         );
 
@@ -639,4 +1450,50 @@ function createEpisodes(anime){
 
 }
 
-</script></body></html>
+
+/* =========================================
+   رسالة الخطأ
+========================================= */
+
+function showNotFound(
+    message
+){
+
+    container.innerHTML = `
+
+        <div class="not-found">
+
+            <h2>
+                الأنمي غير موجود
+            </h2>
+
+            <p>
+                ${safe(message)}
+            </p>
+
+            <a
+                class="back"
+                href="index.html"
+            >
+
+                العودة للرئيسية
+
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================
+   تشغيل
+========================================= */
+
+loadAnime();
+
+</script>
+
+</body>
+    </html>
