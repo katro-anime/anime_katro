@@ -43,11 +43,24 @@ header {
     border-radius: 8px;
 }
 
+
+/* =========================
+   الإعلان
+========================= */
+
+.ad-box {
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 50px;
+}
+
+
 .container {
     max-width: 800px;
     margin: auto;
     padding: 25px 15px;
 }
+
 
 .info {
     background: #0d111c;
@@ -66,6 +79,7 @@ header {
     color: #aeb6c5;
 }
 
+
 .download-box {
     background: #0d111c;
     border-radius: 15px;
@@ -79,10 +93,12 @@ header {
     margin-bottom: 15px;
 }
 
+
 .download-list {
     display: grid;
     gap: 10px;
 }
+
 
 .download-link {
     display: block;
@@ -95,15 +111,18 @@ header {
     font-size: 16px;
 }
 
+
 .download-link:hover {
     background: #00b7ff;
 }
+
 
 .download-link.disabled {
     background: #252c3b;
     color: #777f8e;
     cursor: not-allowed;
 }
+
 
 footer {
     text-align: center;
@@ -119,11 +138,20 @@ href="index.html">
 
 الرئيسية
 
-</a></div></header><div class="container"><div class="info"><h1 id="title">
+</a></div></header><div class="container"><!-- =========================
+     الإعلان
+========================= --><div class="ad-box"><script async
+src="https://js.mbidadm.com/static/scripts.js"
+data-admpid="467369">
+</script></div><!-- =========================
+     معلومات الحلقة
+========================= --><div class="info"><h1 id="title">
 تحميل الحلقة
 </h1><p>
 اختر الجودة المناسبة للتحميل
-</p></div><div class="download-box"><h2>
+</p></div><!-- =========================
+     جودات الحلقة
+========================= --><div class="download-box"><h2>
 جودات الحلقة
 </h2><div class="download-list"><a
 id="quality480"
@@ -146,8 +174,11 @@ href="#">
 
 ⬇ تحميل 1080p
 
-</a></div></div><div class="download-box"><h2>
-الجزء كامل</h2><div class="download-list"><a
+</a></div></div><!-- =========================
+     الجزء كامل
+========================= --><div class="download-box"><h2>
+الجزء كامل
+</h2><div class="download-list"><a
 id="full720"
 class="download-link disabled"
 href="#">
@@ -159,6 +190,10 @@ href="#">
 </footer><script>
 
 
+/* =========================================
+   قراءة البيانات
+========================================= */
+
 const params =
 new URLSearchParams(window.location.search);
 
@@ -169,35 +204,46 @@ const episode =
 params.get("episode") || "";
 
 
-/* =========================
-   عنوان الصفحة
-========================= */
 
-document.getElementById("title").textContent =
-"تحميل الحلقة " + episode;
-
-
-/* =========================
+/* =========================================
    روابط التحميل
-=========================
-
-   هنا نضيف الروابط مستقبلًا.
-
-   حاليًا:
-   480p للحلقة 2 من
-   Solo Leveling الموسم الثاني
-   هو الرابط الذي أرسلته.
-========================= */
-
+========================================= */
 
 const downloads = {
 
+
     "solo-s2": {
+
+
+        /* =========================
+           الحلقة 1
+        ========================= */
+
+        "1": {
+
+            "480p":
+            "https://mega.nz/file/uF1HSQZQ#GhxjYVU5ELDW03p0oftqHXxLt-G7Z-dPzldP18Tyvw8",
+
+            "720p":
+            "",
+
+            "1080p":
+            "",
+
+            "full720":
+            ""
+
+        },
+
+
+        /* =========================
+           الحلقة 2
+        ========================= */
 
         "2": {
 
             "480p":
-            "https://pixeldrain.com/u/i5KLtXSr",
+            "https://filekosh.com/w/od90zZm5LT",
 
             "720p":
             "",
@@ -215,30 +261,43 @@ const downloads = {
 };
 
 
-/* =========================
-   دالة تشغيل الرابط
-========================= */
+
+/* =========================================
+   تفعيل زر التحميل
+========================================= */
 
 function setupDownload(id, url) {
 
     const button =
     document.getElementById(id);
 
-    if (url && url.trim() !== "") {
+
+    if (
+        url &&
+        url.trim() !== ""
+    ) {
 
         button.href = url;
 
         button.target = "_blank";
 
-        button.classList.remove("disabled");
+        button.classList.remove(
+            "disabled"
+        );
+
 
     } else {
 
+
         button.href = "#";
 
-        button.classList.add("disabled");
+        button.classList.add(
+            "disabled"
+        );
 
-        button.onclick = function(event) {
+
+        button.onclick =
+        function(event) {
 
             event.preventDefault();
 
@@ -253,11 +312,13 @@ function setupDownload(id, url) {
 }
 
 
-/* =========================
-   الحصول على روابط الحلقة
-========================= */
+
+/* =========================================
+   الحصول على بيانات الحلقة
+========================================= */
 
 let data = null;
+
 
 if (
     downloads[anime] &&
@@ -270,24 +331,28 @@ if (
 }
 
 
-/* =========================
+
+/* =========================================
    تطبيق الروابط
-========================= */
+========================================= */
 
 setupDownload(
     "quality480",
     data ? data["480p"] : ""
 );
 
+
 setupDownload(
     "quality720",
     data ? data["720p"] : ""
 );
 
+
 setupDownload(
     "quality1080",
     data ? data["1080p"] : ""
 );
+
 
 setupDownload(
     "full720",
