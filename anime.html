@@ -1,0 +1,754 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>الأنمي | KATRO Anime</title><style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#080b12;
+    color:white;
+}
+
+header{
+    background:#0d111c;
+    padding:15px 20px;
+    border-bottom:1px solid #202738;
+}
+
+.header-content{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#00b7ff;
+    font-size:25px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    gap:18px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+nav a:hover{
+    color:#00b7ff;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:25px 20px;
+}
+
+
+/* معلومات الأنمي */
+
+.anime-details{
+    background:#0d111c;
+    border-radius:18px;
+    padding:25px;
+    display:flex;
+    gap:25px;
+    margin-bottom:30px;
+}
+
+.anime-poster{
+    width:220px;
+    height:310px;
+    flex-shrink:0;
+    border-radius:14px;
+    overflow:hidden;
+    background:#121827;
+}
+
+.anime-poster img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.anime-text{
+    padding-top:10px;
+}
+
+.anime-text h1{
+    color:#00b7ff;
+    margin-bottom:18px;
+}
+
+.anime-text p{
+    color:#b9c0ce;
+    line-height:1.8;
+    margin-bottom:10px;
+}
+
+.badge{
+    display:inline-block;
+    background:#121827;
+    color:#00b7ff;
+    padding:8px 12px;
+    border-radius:8px;
+    margin-top:10px;
+}
+
+
+/* المواسم */
+
+.section-title{
+    color:#00b7ff;
+    margin-bottom:18px;
+}
+
+.season{
+    background:#0d111c;
+    border-radius:14px;
+    padding:20px;
+    margin-bottom:25px;
+}
+
+.season-title{
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+
+/* الحلقات */
+
+.episodes{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.episode{
+    background:#121827;
+    border-radius:9px;
+    padding:12px;
+    text-align:center;
+}
+
+.episode-number{
+    margin-bottom:10px;
+    color:white;
+}
+
+.watch-btn{
+    display:block;
+    background:#1687d9;
+    color:white;
+    text-decoration:none;
+    padding:8px;
+    border-radius:7px;
+}
+
+.watch-btn:hover{
+    background:#00b7ff;
+}
+
+
+/* رسالة */
+
+.message{
+    background:#0d111c;
+    border-radius:14px;
+    padding:25px;
+    text-align:center;
+    color:#b9c0ce;
+    margin-top:20px;
+}
+
+
+/* زر الرجوع */
+
+.back{
+    display:inline-block;
+    background:#1687d9;
+    color:white;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:8px;
+    margin-bottom:20px;
+}
+
+.back:hover{
+    background:#00b7ff;
+}
+
+
+footer{
+    text-align:center;
+    color:#777;
+    padding:35px 10px;
+    margin-top:30px;
+}
+
+
+/* الهاتف */
+
+@media(max-width:700px){
+
+    .header-content{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .anime-details{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+
+    .anime-poster{
+        width:200px;
+        height:280px;
+    }
+
+    .episodes{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+</style></head><body><header><div class="header-content"><div class="logo">
+KATRO Anime
+</div><nav><a href="index.html">
+الرئيسية
+</a><a href="index.html#anime">
+الأنميات
+</a></nav></div></header><div class="container"><a
+href="index.html"
+class="back">
+
+← العودة إلى الأنميات
+
+</a><!-- معلومات الأنمي --><section class="anime-details"><div class="anime-poster"><img
+id="animeImage"
+src=""
+alt="Anime">
+
+</div><div class="anime-text"><h1 id="animeName">
+جاري التحميل...
+</h1><p>
+مرحبًا بك في صفحة الأنمي على KATRO Anime.
+</p><p>
+هنا ستجد المواسم والحلقات المتوفرة لهذا الأنمي.
+</p><div
+class="badge"
+id="animeEpisodes">عدد الحلقات: -
+
+</div></div></section><!-- الحلقات --><h2 class="section-title">
+الحلقات
+</h2><div id="seasons"><div class="message">جاري تجهيز قائمة الحلقات...
+
+</div></div></div><footer>© 2026 KATRO Anime
+
+</footer><script>
+
+
+/*
+===========================================
+قائمة الأنميات
+===========================================
+*/
+
+const animeList = [
+
+{
+name:"Demon Slayer",
+episodes:"63+",
+image:"5a02947aed465c5b6a721884a87cdeca.jpg"
+},
+
+{
+name:"Solo Leveling",
+episodes:"25",
+image:"Solo leveling .jpg"
+},
+
+{
+name:"Dragon Ball",
+episodes:"153",
+image:"Dragon Ball.jpg"
+},
+
+{
+name:"One Piece",
+episodes:"مستمر",
+image:"one_piece.jpg"
+},
+
+{name:"Naruto",episodes:"220"},
+{name:"Naruto Shippuden",episodes:"500"},
+{name:"Bleach",episodes:"366"},
+{name:"Bleach: Thousand-Year Blood War",episodes:"40+"},
+{name:"Jujutsu Kaisen",episodes:"47+"},
+{name:"Attack on Titan",episodes:"89"},
+{name:"My Hero Academia",episodes:"170+"},
+{name:"Black Clover",episodes:"170"},
+{name:"Hunter x Hunter",episodes:"148"},
+{name:"Death Note",episodes:"37"},
+{name:"Fullmetal Alchemist: Brotherhood",episodes:"64"},
+{name:"Sword Art Online",episodes:"96+"},
+{name:"Tokyo Ghoul",episodes:"48"},
+{name:"One Punch Man",episodes:"24+"},
+{name:"Mob Psycho 100",episodes:"37"},
+{name:"Dr. Stone",episodes:"70+"},
+{name:"Fire Force",episodes:"48+"},
+{name:"Fairy Tail",episodes:"328"},
+{name:"Blue Lock",episodes:"38+"},
+{name:"Haikyuu!!",episodes:"85"},
+{name:"Vinland Saga",episodes:"48"},
+{name:"Chainsaw Man",episodes:"12+"},
+{name:"Spy x Family",episodes:"37+"},
+{name:"The Seven Deadly Sins",episodes:"100"},
+{name:"Code Geass",episodes:"50"},
+{name:"Steins;Gate",episodes:"24"},
+{name:"Re:Zero",episodes:"66+"},
+{name:"Overlord",episodes:"52"},
+{name:"That Time I Got Reincarnated as a Slime",episodes:"72+"},
+{name:"The Rising of the Shield Hero",episodes:"50+"},
+{name:"Mushoku Tensei",episodes:"48+"},
+{name:"Konosuba",episodes:"31+"},
+{name:"Classroom of the Elite",episodes:"38+"},
+{name:"The Eminence in Shadow",episodes:"32"},
+{name:"Tokyo Revengers",episodes:"50"},
+{name:"Parasyte",episodes:"24"},
+{name:"Erased",episodes:"12"},
+{name:"Akame ga Kill!",episodes:"24"},
+{name:"Assassination Classroom",episodes:"47"},
+{name:"Noragami",episodes:"25"},
+{name:"Blue Exorcist",episodes:"49+"},
+{name:"Soul Eater",episodes:"51"},
+{name:"Bungo Stray Dogs",episodes:"61+"},
+{name:"The Promised Neverland",episodes:"23"},
+{name:"Made in Abyss",episodes:"25+"},
+{name:"Tower of God",episodes:"13+"},
+{name:"Hell's Paradise",episodes:"13"},
+{name:"Mashle",episodes:"24"},
+{name:"Kaiju No. 8",episodes:"12"},
+{name:"Wind Breaker",episodes:"25+"},
+{name:"Sakamoto Days",episodes:"22+"},
+{name:"Dandadan",episodes:"24+"},
+{name:"Frieren: Beyond Journey's End",episodes:"28+"},
+{name:"The Apothecary Diaries",episodes:"48+"},
+{name:"Delicious in Dungeon",episodes:"24"},
+{name:"Oshi no Ko",episodes:"24+"},
+{name:"Kaguya-sama: Love Is War",episodes:"37"},
+{name:"Toradora!",episodes:"25"},
+{name:"Your Lie in April",episodes:"22"},
+{name:"Clannad",episodes:"47+"},
+{name:"Angel Beats!",episodes:"13"},
+{name:"Violet Evergarden",episodes:"13"},
+{name:"Cowboy Bebop",episodes:"26"},
+{name:"Samurai Champloo",episodes:"26"},
+{name:"Trigun",episodes:"26"},
+{name:"Neon Genesis Evangelion",episodes:"26"},
+{name:"Gurren Lagann",episodes:"27"},
+{name:"Yu Yu Hakusho",episodes:"112"},
+{name:"Inuyasha",episodes:"167+"},
+{name:"JoJo's Bizarre Adventure",episodes:"190+"},
+{name:"Hellsing",episodes:"13"},
+{name:"Hellsing Ultimate",episodes:"10"},
+{name:"Fate/Zero",episodes:"25"},
+{name:"Fate/stay night",episodes:"24"},
+{name:"Fate/Apocrypha",episodes:"25"},
+{name:"Gintama",episodes:"367"},
+{name:"Kuroko's Basketball",episodes:"75"},
+{name:"Slam Dunk",episodes:"101"},
+{name:"Initial D",episodes:"86+"},
+{name:"Kakegurui",episodes:"24"},
+{name:"Food Wars!",episodes:"86"},
+{name:"Cyberpunk: Edgerunners",episodes:"10"},
+{name:"Dorohedoro",episodes:"12"},
+{name:"Beastars",episodes:"36"},
+{name:"Paranoia Agent",episodes:"13"},
+{name:"Monster",episodes:"74"},
+{name:"Pluto",episodes:"8"},
+{name:"Odd Taxi",episodes:"13"},
+{name:"Psycho-Pass",episodes:"41+"},
+{name:"Magi",episodes:"50"},
+{name:"Record of Ragnarok",episodes:"27+"},
+{name:"Baki",episodes:"39+"},
+{name:"Baki Hanma",episodes:"39+"},
+{name:"Kengan Ashura",episodes:"50+"},
+{name:"Hajime no Ippo",episodes:"127+"},
+{name:"Ao Ashi",episodes:"24"},
+{name:"Digimon Adventure",episodes:"54"},
+{name:"Pokémon",episodes:"1200+"},
+{name:"Yu-Gi-Oh!",episodes:"224"},
+{name:"Beyblade",episodes:"51+"},
+{name:"Sailor Moon",episodes:"200"},
+{name:"Cardcaptor Sakura",episodes:"70"},
+{name:"Fruits Basket",episodes:"63"},
+{name:"Ouran High School Host Club",episodes:"26"},
+{name:"Nana",episodes:"47"},
+{name:"Kimi ni Todoke",episodes:"38+"},
+{name:"Horimiya",episodes:"13"},
+{name:"My Dress-Up Darling",episodes:"12+"},
+{name:"Rent-a-Girlfriend",episodes:"36+"},
+{name:"The Quintessential Quintuplets",episodes:"24"},
+{name:"Darling in the Franxx",episodes:"24"},
+{name:"Charlotte",episodes:"13"},
+{name:"No Game No Life",episodes:"12"},
+{name:"Log Horizon",episodes:"62+"},
+{name:"Goblin Slayer",episodes:"24+"},
+{name:"The Misfit of Demon King Academy",episodes:"37+"},
+{name:"Arifureta",episodes:"42+"},
+{name:"Tsukimichi: Moonlit Fantasy",episodes:"37+"},
+{name:"Black Summoner",episodes:"12"},
+{name:"How Not to Summon a Demon Lord",episodes:"22"},
+{name:"In Another World With My Smartphone",episodes:"24+"},
+{name:"Drifters",episodes:"12"},
+{name:"Golden Kamuy",episodes:"49+"},
+{name:"Kingdom",episodes:"140+"},
+{name:"86 Eighty-Six",episodes:"23"},
+{name:"Seraph of the End",episodes:"24"},
+{name:"Akudama Drive",episodes:"12"},
+{name:"Vivy: Fluorite Eye's Song",episodes:"13"},
+{name:"Kill la Kill",episodes:"24"},
+{name:"Tomodachi Game",episodes:"12"},
+{name:"High-Rise Invasion",episodes:"12"},
+{name:"Lookism",episodes:"8"},
+{name:"Viral Hit",episodes:"12"},
+{name:"Dragon Ball Z",episodes:"291"},
+{name:"Dragon Ball GT",episodes:"64"},
+{name:"Dragon Ball Super",episodes:"131"},
+{name:"Dragon Ball Daima",episodes:"20"},
+{name:"Boruto: Naruto Next Generations",episodes:"293"},
+{name:"Black Butler",episodes:"50+"},
+{name:"Durarara!!",episodes:"60+"},
+{name:"Baccano!",episodes:"16"},
+{name:"91 Days",episodes:"12"},
+{name:"Banana Fish",episodes:"24"},
+{name:"Great Pretender",episodes:"23"},
+{name:"Moriarty the Patriot",episodes:"24"},
+{name:"Link Click",episodes:"24+"},
+{name:"Scissor Seven",episodes:"40+"},
+{name:"Ranking of Kings",episodes:"23"},
+{name:"To Your Eternity",episodes:"40+"},
+{name:"Call of the Night",episodes:"13+"},
+{name:"The Ancient Magus' Bride",episodes:"48+"},
+{name:"Mushishi",episodes:"46"},
+{name:"Bakuman",episodes:"75"},
+{name:"Blue Period",episodes:"12"},
+{name:"Arte",episodes:"12"},
+{name:"A Place Further Than the Universe",episodes:"13"},
+{name:"Yuru Camp",episodes:"37+"},
+{name:"Non Non Biyori",episodes:"39+"},
+{name:"Grand Blue",episodes:"12+"},
+{name:"Asobi Asobase",episodes:"12"},
+{name:"Hinamatsuri",episodes:"12"},
+{name:"Komi Can't Communicate",episodes:"24"},
+{name:"Tomo-chan Is a Girl!",episodes:"13"},
+{name:"Skip and Loafer",episodes:"12"},
+{name:"A Sign of Affection",episodes:"12"},
+{name:"Blue Box",episodes:"مستمر"},
+{name:"The Fragrant Flower Blooms with Dignity",episodes:"مستمر"}
+
+];
+
+
+/*
+===========================================
+الغلاف الافتراضي
+===========================================
+*/
+
+const defaultImage =
+"data:image/svg+xml;charset=UTF-8," +
+encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg"
+width="500"
+height="700">
+
+<rect width="100%" height="100%" fill="#121827"/>
+
+<text
+x="50%"
+y="45%"
+fill="#00b7ff"
+font-size="38"
+font-family="Arial"
+text-anchor="middle">
+KATRO
+</text>
+
+<text
+x="50%"
+y="53%"
+fill="white"
+font-size="25"
+font-family="Arial"
+text-anchor="middle">
+ANIME
+</text>
+
+</svg>
+`);
+
+
+/*
+===========================================
+قراءة اسم الأنمي من الرابط
+===========================================
+*/
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const requestedName =
+params.get("name");
+
+
+/*
+===========================================
+البحث عن الأنمي
+===========================================
+*/
+
+const anime =
+animeList.find(function(item){
+
+    return item.name === requestedName;
+
+});
+
+
+/*
+===========================================
+إذا لم يتم العثور على الأنمي
+===========================================
+*/
+
+if(!anime){
+
+    document.getElementById("animeName")
+    .textContent =
+    "الأنمي غير موجود";
+
+    document.getElementById("seasons")
+    .innerHTML = `
+
+    <div class="message">
+
+    لم يتم العثور على هذا الأنمي.
+
+    <br><br>
+
+    <a
+    href="index.html"
+    class="back">
+
+    العودة للرئيسية
+
+    </a>
+
+    </div>
+
+    `;
+
+}else{
+
+
+    /*
+    =======================================
+    عرض المعلومات
+    =======================================
+    */
+
+    document.getElementById("animeName")
+    .textContent =
+    anime.name;
+
+
+    document.getElementById("animeEpisodes")
+    .textContent =
+    "عدد الحلقات: " +
+    anime.episodes;
+
+
+    const image =
+    document.getElementById("animeImage");
+
+
+    image.src =
+    anime.image || defaultImage;
+
+
+    image.alt =
+    anime.name;
+
+
+    image.onerror =
+    function(){
+
+        this.src =
+        defaultImage;
+
+    };
+
+
+    /*
+    =======================================
+    إنشاء الموسم الأول
+    =======================================
+    */
+
+    createSeason(anime);
+
+}
+
+
+/*
+===========================================
+إنشاء الحلقات
+===========================================
+*/
+
+function createSeason(anime){
+
+    const seasons =
+    document.getElementById("seasons");
+
+
+    /*
+    إذا كان عدد الحلقات غير رقمي
+    */
+
+    let count =
+    parseInt(anime.episodes);
+
+
+    if(isNaN(count)){
+
+        seasons.innerHTML = `
+
+        <div class="season">
+
+            <div class="season-title">
+                الموسم الأول
+            </div>
+
+            <div class="message">
+
+                حلقات هذا الأنمي لم تتم إضافتها
+                إلى KATRO Anime بعد.
+
+                <br><br>
+
+                سيتم إضافة روابط المشاهدة
+                والتحميل عند تجهيز الحلقات.
+
+            </div>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /*
+    لا ننشئ آلاف البطاقات
+    للأنميات الطويلة جدًا.
+    */
+
+    if(count > 500){
+
+        count = 500;
+
+    }
+
+
+    let html = `
+
+    <div class="season">
+
+        <div class="season-title">
+            الموسم الأول
+        </div>
+
+        <div class="episodes">
+    `;
+
+
+    for(
+        let i = 1;
+        i <= count;
+        i++
+    ){
+
+        html += `
+
+        <div class="episode">
+
+            <div class="episode-number">
+
+                الحلقة ${i}
+
+            </div>
+
+            <a
+            href="#"
+            class="watch-btn"
+            onclick="episodeMessage(event)">
+
+            قريبًا
+
+            </a>
+
+        </div>
+
+        `;
+
+    }
+
+
+    html += `
+
+        </div>
+
+    </div>
+
+    `;
+
+
+    seasons.innerHTML =
+    html;
+
+}
+
+
+/*
+===========================================
+زر الحلقة
+===========================================
+*/
+
+function episodeMessage(event){
+
+    event.preventDefault();
+
+    alert(
+        "رابط مشاهدة هذه الحلقة لم تتم إضافته بعد."
+    );
+
+}
+
+</script></body></html>
