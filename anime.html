@@ -1,6 +1,8 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>KATRO Anime</title><style>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>الأنمي | KATRO Anime</title><style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -10,7 +12,7 @@
 body{
     font-family:Arial,sans-serif;
     background:#080b12;
-    color:#fff;
+    color:white;
 }
 
 header{
@@ -18,12 +20,8 @@ header{
     border-bottom:1px solid #1b2638;
     padding:15px 20px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    gap:15px;
-    position:sticky;
-    top:0;
-    z-index:100;
+    align-items:center;
 }
 
 .logo{
@@ -36,20 +34,14 @@ header{
 nav{
     display:flex;
     gap:8px;
-    flex-wrap:wrap;
 }
 
 nav a{
-    color:#fff;
+    color:white;
     text-decoration:none;
     background:#111827;
     padding:9px 14px;
     border-radius:8px;
-    font-size:14px;
-}
-
-nav a:hover{
-    background:#1687d9;
 }
 
 .container{
@@ -60,25 +52,21 @@ nav a:hover{
 
 .back{
     display:inline-block;
+    color:white;
     background:#1687d9;
-    color:#fff;
-    text-decoration:none;
     padding:10px 18px;
     border-radius:8px;
+    text-decoration:none;
     margin-bottom:20px;
 }
 
-.anime-box{
+.info{
     background:#0d111c;
     border:1px solid #1b2638;
     border-radius:15px;
     padding:20px;
-}
-
-.anime-main{
     display:flex;
     gap:25px;
-    align-items:flex-start;
 }
 
 .main-cover{
@@ -87,143 +75,100 @@ nav a:hover{
     object-fit:cover;
     border-radius:12px;
     background:#111827;
-    flex-shrink:0;
 }
 
-.anime-info{
+.details{
     flex:1;
 }
 
-.anime-info h1{
+.details h1{
     color:#00b7ff;
     font-size:30px;
-    margin-bottom:15px;
-}
-
-.anime-info p{
-    color:#cbd5e1;
-    line-height:1.9;
     margin-bottom:10px;
 }
 
-.info-line{
-    background:#111827;
-    border-radius:8px;
-    padding:10px 13px;
-    margin-top:8px;
+.details p{
+    color:#cbd5e1;
+    line-height:1.9;
 }
 
-.info-line strong{
-    color:#00b7ff;
+.status{
+    display:inline-block;
+    margin-top:15px;
+    background:#1687d9;
+    padding:8px 13px;
+    border-radius:8px;
 }
 
 .section-title{
-    margin:35px 0 18px;
-    font-size:24px;
     color:#00b7ff;
+    margin:30px 0 18px;
 }
 
 .seasons{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    grid-template-columns:
+    repeat(auto-fill,minmax(180px,1fr));
     gap:18px;
 }
 
-.season-card{
-    background:#111827;
-    border:2px solid transparent;
+.season{
+    background:#0d111c;
+    border:1px solid #1b2638;
     border-radius:12px;
     overflow:hidden;
-    cursor:pointer;
+    text-decoration:none;
+    color:white;
     transition:.2s;
 }
 
-.season-card:hover{
-    transform:translateY(-4px);
-    border-color:#1687d9;
-}
-
-.season-card.active{
+.season:hover{
+    transform:translateY(-5px);
     border-color:#00b7ff;
 }
 
-.season-card img{
+.season img{
     width:100%;
     height:250px;
     object-fit:cover;
-    display:block;
+    background:#111827;
 }
 
-.season-content{
+.season-info{
     padding:12px;
 }
 
-.season-content h3{
-    font-size:17px;
+.season-info h3{
     margin-bottom:7px;
 }
 
-.season-content p{
+.season-info p{
     color:#94a3b8;
     font-size:14px;
 }
 
-.episodes-box{
-    margin-top:30px;
+.error{
+    text-align:center;
     background:#0d111c;
     border:1px solid #1b2638;
-    border-radius:15px;
-    padding:20px;
-}
-
-.episodes-title{
-    color:#00b7ff;
-    font-size:23px;
-    margin-bottom:18px;
-}
-
-.episodes{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
-    gap:10px;
-}
-
-.episode{
-    background:#1687d9;
-    color:#fff;
-    text-decoration:none;
-    padding:13px 8px;
-    border-radius:8px;
-    text-align:center;
-    font-size:14px;
-    transition:.2s;
-}
-
-.episode:hover{
-    background:#00b7ff;
-    transform:translateY(-2px);
-}
-
-.no-data{
-    text-align:center;
     padding:50px 20px;
-    color:#94a3b8;
+    border-radius:15px;
 }
 
 footer{
     text-align:center;
     color:#64748b;
-    padding:40px 15px 25px;
-    margin-top:30px;
+    padding:40px;
 }
 
 @media(max-width:700px){
 
     header{
         flex-direction:column;
+        gap:12px;
     }
 
-    .anime-main{
+    .info{
         flex-direction:column;
         align-items:center;
         text-align:center;
@@ -234,669 +179,173 @@ footer{
         height:270px;
     }
 
-    .anime-info{
-        width:100%;
-    }
-
-    .anime-info h1{
-        font-size:25px;
-    }
-
     .seasons{
         grid-template-columns:repeat(2,1fr);
+        gap:12px;
     }
 
-    .season-card img{
+    .season img{
         height:220px;
     }
 
-    .episodes{
-        grid-template-columns:repeat(2,1fr);
-    }
 }
-</style></head><body><header><a href="index.html" class="logo">KATRO Anime</a>
 
-<nav>
-<a href="index.html">الرئيسية</a>
-<a href="anime.html">الأنمي</a>
-<a href="index.html">الأحدث</a>
-</nav></header><div class="container"><a href="index.html" class="back">← العودة للرئيسية</a>
+</style></head><body><header><a href="index.html"
+class="logo">
+KATRO Anime
+</a>
 
-<div id="animeContainer"></div></div><footer>
+<nav><a href="index.html">
+الرئيسية
+</a></nav></header><div class="container"><a href="index.html"
+class="back">
+← العودة للرئيسية
+</a>
+
+<div id="page"></div></div><footer>
 © 2026 KATRO Anime
-</footer><script>
+</footer><script src="anime-data.js"></script><script>
 
-/* =========================================================
-   غلاف افتراضي
-========================================================= */
+const params =
+new URLSearchParams(
+window.location.search
+);
 
-const defaultCover =
-"data:image/svg+xml;charset=UTF-8," +
-encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="700">
-<rect width="100%" height="100%" fill="#111827"/>
-<text x="50%" y="45%" text-anchor="middle"
-fill="#00b7ff" font-size="55" font-family="Arial">
-KATRO
-</text>
-<text x="50%" y="55%" text-anchor="middle"
-fill="white" font-size="25" font-family="Arial">
-ANIME
-</text>
-</svg>
-`);
+const name =
+params.get("name");
 
+const anime =
+getAnime(name);
 
-/* =========================================================
-   بيانات الأنميات
-   لا يوجد API هنا
-========================================================= */
-
-const animeDatabase = {
-
-"Demon Slayer":{
-    title:"Demon Slayer",
-    arabic:"قاتل الشياطين",
-    cover:"5a02947aed465c5b6a721884a87cdeca.jpg",
-
-    description:"قصة تانجيرو كامادو الذي ينطلق في رحلة لمحاربة الشياطين ومحاولة إعادة أخته نيزوكو إلى طبيعتها.",
-
-    seasons:[
-        {
-            name:"الموسم الأول",
-            episodes:26,
-            cover:"5a02947aed465c5b6a721884a87cdeca.jpg",
-            watchId:"Demon Slayer"
-        },
-        {
-            name:"الموسم الثاني",
-            episodes:11,
-            cover:"5a02947aed465c5b6a721884a87cdeca.jpg",
-            watchId:"Demon Slayer"
-        },
-        {
-            name:"الموسم الثالث",
-            episodes:11,
-            cover:"5a02947aed465c5b6a721884a87cdeca.jpg",
-            watchId:"Demon Slayer"
-        },
-        {
-            name:"الموسم الرابع",
-            episodes:8,
-            cover:"5a02947aed465c5b6a721884a87cdeca.jpg",
-            watchId:"Demon Slayer"
-        }
-    ]
-},
-
-
-"Solo Leveling":{
-    title:"Solo Leveling",
-    arabic:"سولو ليفلينج",
-    cover:"Solo leveling .jpg",
-
-    description:"سونغ جين وو، أضعف صياد، يحصل على قدرة غامضة تسمح له بالتطور واكتساب القوة بشكل مستمر.",
-
-    seasons:[
-        {
-            name:"الموسم الأول",
-            episodes:12,
-            cover:"Solo leveling .jpg",
-            watchId:"solo"
-        },
-        {
-            name:"الموسم الثاني",
-            episodes:13,
-            cover:"Solo leveling season 2.jpg",
-            watchId:"solo-s2"
-        }
-    ]
-},
-
-
-"One Piece":{
-    title:"One Piece",
-    arabic:"ون بيس",
-    cover:"one_piece.jpg",
-
-    description:"رحلة لوفي وطاقمه في البحار بحثًا عن الكنز الأسطوري ون بيس.",
-
-    seasons:[
-        {
-            name:"الموسم الأول",
-            episodes:61,
-            cover:"one_piece.jpg",
-            watchId:"One Piece"
-        },
-        {
-            name:"الموسم الثاني",
-            episodes:16,
-            cover:"one_piece.jpg",
-            watchId:"One Piece"
-        },
-        {
-            name:"الموسم الثالث",
-            episodes:14,
-            cover:"one_piece.jpg",
-            watchId:"One Piece"
-        },
-        {
-            name:"الموسم الرابع",
-            episodes:13,
-            cover:"one_piece.jpg",
-            watchId:"One Piece"
-        }
-    ]
-},
-
-
-"Dragon Ball":{
-    title:"Dragon Ball",
-    arabic:"دراغون بول",
-    cover:"Dragon Ball.jpg",
-
-    description:"مغامرات غوكو وأصدقائه في عالم مليء بالقتال والمنافسات والخصوم الأقوياء.",
-
-    seasons:[
-        {
-            name:"الموسم الأول",
-            episodes:153,
-            cover:"Dragon Ball.jpg",
-            watchId:"Dragon Ball"
-        }
-    ]
-},
-
-
-"Naruto":{
-    title:"Naruto",
-    arabic:"ناروتو",
-    cover:defaultCover,
-
-    description:"رحلة ناروتو أوزوماكي ليصبح نينجا قويًا ويحصل على اعتراف قريته.",
-
-    seasons:[
-        {
-            name:"Naruto",
-            episodes:220,
-            cover:defaultCover,
-            watchId:"Naruto"
-        },
-        {
-            name:"Naruto Shippuden",
-            episodes:500,
-            cover:defaultCover,
-            watchId:"Naruto Shippuden"
-        }
-    ]
-},
-
-
-"Bleach":{
-    title:"Bleach",
-    arabic:"بليتش",
-    cover:defaultCover,
-
-    description:"إيتشيغو كوروساكي يحصل على قوى الشينيغامي ويدخل عالم الأرواح والمعارك.",
-
-    seasons:[
-        {
-            name:"Bleach",
-            episodes:366,
-            cover:defaultCover,
-            watchId:"Bleach"
-        },
-        {
-            name:"Bleach TYBW",
-            episodes:40,
-            cover:defaultCover,
-            watchId:"Bleach TYBW"
-        }
-    ]
-},
-
-
-"Jujutsu Kaisen":{
-    title:"Jujutsu Kaisen",
-    arabic:"جوجوتسو كايسن",
-    cover:defaultCover,
-
-    description:"يوجي إيتادوري يدخل عالم السحرة واللعنات بعد حادثة تغير حياته.",
-
-    seasons:[
-        {
-            name:"الموسم الأول",
-            episodes:24,
-            cover:defaultCover,
-            watchId:"Jujutsu Kaisen"
-        },
-        {
-            name:"الموسم الثاني",
-            episodes:23,
-            cover:defaultCover,
-            watchId:"Jujutsu Kaisen"
-        }
-    ]
-},
-
-
-"My Hero Academia":{
-    title:"My Hero Academia",
-    arabic:"أكاديمية بطلي",
-    cover:defaultCover,
-
-    description:"إيزوكو ميدوريا يحلم بأن يصبح بطلًا رغم ولادته دون قدرة خارقة.",
-
-    seasons:[
-        {
-            name:"الموسم الأول",
-            episodes:13,
-            cover:defaultCover,
-            watchId:"My Hero Academia"
-        },
-        {
-            name:"الموسم الثاني",
-            episodes:25,
-            cover:defaultCover,
-            watchId:"My Hero Academia"
-        },
-        {
-            name:"الموسم الثالث",
-            episodes:25,
-            cover:defaultCover,
-            watchId:"My Hero Academia"
-        },
-        {
-            name:"الموسم الرابع",
-            episodes:25,
-            cover:defaultCover,
-            watchId:"My Hero Academia"
-        },
-        {
-            name:"الموسم الخامس",
-            episodes:25,
-            cover:defaultCover,
-            watchId:"My Hero Academia"
-        },
-        {
-            name:"الموسم السادس",
-            episodes:25,
-            cover:defaultCover,
-            watchId:"My Hero Academia"
-        },
-        {
-            name:"الموسم السابع",
-            episodes:21,
-            cover:defaultCover,
-            watchId:"My Hero Academia"
-        }
-    ]
-},
-
-
-"Attack on Titan":{
-    title:"Attack on Titan",
-    arabic:"هجوم العمالقة",
-    cover:defaultCover,
-
-    description:"يعيش البشر خلف أسوار ضخمة لحمايتهم من العمالقة، لكن إيرين يكتشف أسرارًا تغير كل شيء.",
-
-    seasons:[
-        {
-            name:"الموسم الأول",
-            episodes:25,
-            cover:defaultCover,
-            watchId:"Attack on Titan"
-        },
-        {
-            name:"الموسم الثاني",
-            episodes:12,
-            cover:defaultCover,
-            watchId:"Attack on Titan"
-        },
-        {
-            name:"الموسم الثالث",
-            episodes:22,
-            cover:defaultCover,
-            watchId:"Attack on Titan"
-        },
-        {
-            name:"الموسم الرابع",
-            episodes:30,
-            cover:defaultCover,
-            watchId:"Attack on Titan"
-        }
-    ]
-},
-
-
-"Black Clover":{
-    title:"Black Clover",
-    arabic:"بلاك كلوفر",
-    cover:defaultCover,
-
-    description:"أستا، الفتى الذي لا يمتلك السحر، يحلم بأن يصبح إمبراطور السحر.",
-
-    seasons:[
-        {
-            name:"الموسم الأول",
-            episodes:170,
-            cover:defaultCover,
-            watchId:"Black Clover"
-        }
-    ]
-},
-
-
-"Hunter x Hunter":{
-    title:"Hunter x Hunter",
-    arabic:"هنتر x هنتر",
-    cover:defaultCover,
-
-    description:"غون يبدأ رحلة ليصبح صيادًا ويبحث عن والده المفقود.",
-
-    seasons:[
-        {
-            name:"Hunter x Hunter",
-            episodes:148,
-            cover:defaultCover,
-            watchId:"Hunter x Hunter"
-        }
-    ]
-},
-
-
-"Death Note":{
-    title:"Death Note",
-    arabic:"ديث نوت",
-    cover:defaultCover,
-
-    description:"لايت ياغامي يعثر على دفتر غامض يمنحه القدرة على قتل أي شخص بكتابة اسمه.",
-
-    seasons:[
-        {
-            name:"الموسم الأول",
-            episodes:37,
-            cover:defaultCover,
-            watchId:"Death Note"
-        }
-    ]
-},
-
-
-"One Punch Man":{
-    title:"One Punch Man",
-    arabic:"ون بنش مان",
-    cover:defaultCover,
-
-    description:"سايتاما بطل يستطيع هزيمة خصومه بلكمة واحدة.",
-
-    seasons:[
-        {
-            name:"الموسم الأول",
-            episodes:12,
-            cover:defaultCover,
-            watchId:"One Punch Man"
-        },
-        {
-            name:"الموسم الثاني",
-            episodes:12,
-            cover:defaultCover,
-            watchId:"One Punch Man"
-        }
-    ]
-},
-
-
-"Tokyo Ghoul":{
-    title:"Tokyo Ghoul",
-    arabic:"طوكيو غول",
-    cover:defaultCover,
-
-    description:"كانِكي يتحول إلى نصف غول بعد حادثة تغير حياته بالكامل.",
-
-    seasons:[
-        {
-            name:"الموسم الأول",
-            episodes:12,
-            cover:defaultCover,
-            watchId:"Tokyo Ghoul"
-        },
-        {
-            name:"الموسم الثاني",
-            episodes:12,
-            cover:defaultCover,
-            watchId:"Tokyo Ghoul"
-        },
-        {
-            name:"الموسم الثالث",
-            episodes:24,
-            cover:defaultCover,
-            watchId:"Tokyo Ghoul"
-        }
-    ]
-}
-
-};
-
-
-/* =========================================================
-   البحث عن اسم الأنمي
-========================================================= */
-
-const params = new URLSearchParams(window.location.search);
-
-const requestedName = params.get("name") || "";
-
-let anime = animeDatabase[requestedName];
-
-if(!anime){
-
-    const key = Object.keys(animeDatabase).find(name =>
-        name.toLowerCase() === requestedName.toLowerCase()
-    );
-
-    if(key){
-        anime = animeDatabase[key];
-    }
-}
-
-
-/* =========================================================
-   إنشاء الصفحة
-========================================================= */
-
-const container = document.getElementById("animeContainer");
+const page =
+document.getElementById("page");
 
 
 if(!anime){
 
-    container.innerHTML = `
-        <div class="anime-box no-data">
-            <h2>الأنمي غير موجود</h2>
-            <p style="margin-top:10px;">
-                لم يتم العثور على هذا الأنمي في قاعدة بيانات KATRO Anime.
+    page.innerHTML = `
+
+        <div class="error">
+
+            <h2>
+            الأنمي غير موجود
+            </h2>
+
+            <p style="margin-top:12px;color:#94a3b8;">
+            لم يتم العثور على هذا الأنمي.
             </p>
 
-            <a href="index.html"
-               class="back"
-               style="margin-top:20px;">
-               العودة للرئيسية
-            </a>
         </div>
+
     `;
 
 }else{
 
-    document.title = anime.title + " | KATRO Anime";
+    document.title =
+    anime.title +
+    " | KATRO Anime";
 
-    container.innerHTML = `
 
-        <div class="anime-box">
+    let seasonsHTML = "";
 
-            <div class="anime-main">
+
+    anime.seasons.forEach(season => {
+
+        seasonsHTML += `
+
+            <a class="season"
+               href="season.html?anime=${encodeURIComponent(name)}&season=${encodeURIComponent(season.id)}">
 
                 <img
-                    class="main-cover"
-                    src="${anime.cover}"
-                    onerror="this.src=defaultCover"
-                    alt="${anime.title}"
+                    src="${season.cover}"
+                    alt="${season.name}"
+                    onerror="this.src=anime.cover"
                 >
 
-                <div class="anime-info">
+                <div class="season-info">
 
-                    <h1>${anime.title}</h1>
-
-                    <p>
-                        ${anime.arabic}
-                    </p>
+                    <h3>
+                    ${season.name}
+                    </h3>
 
                     <p>
-                        ${anime.description}
+                    ${season.episodes} حلقة
                     </p>
-
-                    <div class="info-line">
-                        <strong>عدد المواسم:</strong>
-                        ${anime.seasons.length}
-                    </div>
-
-                    <div class="info-line">
-                        <strong>الموقع:</strong>
-                        KATRO Anime
-                    </div>
 
                 </div>
 
-            </div>
+            </a>
 
-
-            <h2 class="section-title">
-                المواسم
-            </h2>
-
-            <div class="seasons" id="seasons"></div>
-
-        </div>
-
-
-        <div class="episodes-box">
-
-            <h2 class="episodes-title" id="episodesTitle">
-                الحلقات
-            </h2>
-
-            <div class="episodes" id="episodes"></div>
-
-        </div>
-    `;
-
-
-    const seasonsContainer =
-        document.getElementById("seasons");
-
-    const episodesContainer =
-        document.getElementById("episodes");
-
-    const episodesTitle =
-        document.getElementById("episodesTitle");
-
-
-    /* =====================================================
-       إنشاء بطاقات المواسم
-    ===================================================== */
-
-    anime.seasons.forEach((season,index)=>{
-
-        const card = document.createElement("div");
-
-        card.className =
-            "season-card" +
-            (index === 0 ? " active" : "");
-
-        card.innerHTML = `
-
-            <img
-                src="${season.cover}"
-                onerror="this.src=defaultCover"
-                alt="${season.name}"
-            >
-
-            <div class="season-content">
-
-                <h3>
-                    ${season.name}
-                </h3>
-
-                <p>
-                    ${season.episodes} حلقة
-                </p>
-
-            </div>
         `;
-
-
-        card.onclick = ()=>{
-
-            document
-                .querySelectorAll(".season-card")
-                .forEach(c =>
-                    c.classList.remove("active")
-                );
-
-            card.classList.add("active");
-
-            showEpisodes(season);
-        };
-
-
-        seasonsContainer.appendChild(card);
 
     });
 
 
-    /* =====================================================
-       عرض الحلقات
-    ===================================================== */
+    page.innerHTML = `
 
-    function showEpisodes(season){
+        <div class="info">
 
-        episodesContainer.innerHTML = "";
+            <img
+                class="main-cover"
+                src="${anime.cover}"
+                alt="${anime.title}"
+                onerror="this.src='${anime.cover}'"
+            >
 
-        episodesTitle.textContent =
-            season.name +
-            " — " +
-            season.episodes +
-            " حلقة";
+            <div class="details">
+
+                <h1>
+                ${anime.title}
+                </h1>
+
+                <p>
+                ${anime.arabic}
+                </p>
+
+                <p style="margin-top:12px;">
+                اختر الموسم الذي تريد مشاهدته.
+                </p>
+
+                <div class="status">
+
+                ${anime.seasons.length}
+                مواسم
+
+                ${
+                    anime.ongoing
+                    ? " • مستمر"
+                    : ""
+                }
+
+                </div>
+
+                ${
+                    anime.totalEpisodes
+                    ? `
+                    <div class="status">
+                    ${anime.totalEpisodes} حلقة
+                    </div>
+                    `
+                    : ""
+                }
+
+            </div>
+
+        </div>
 
 
-        for(let i=1;i<=season.episodes;i++){
+        <h2 class="section-title">
+        المواسم
+        </h2>
 
-            const episode = document.createElement("a");
+        <div class="seasons">
 
-            episode.className = "episode";
+        ${seasonsHTML}
 
-            episode.href =
-                "watch.html?anime=" +
-                encodeURIComponent(season.watchId) +
-                "&episode=" +
-                i;
+        </div>
 
-            episode.textContent =
-                "الحلقة " + i;
-
-            episodesContainer.appendChild(episode);
-        }
-
-    }
-
-
-    /* أول موسم تلقائيًا */
-
-    if(anime.seasons.length > 0){
-        showEpisodes(anime.seasons[0]);
-    }
+    `;
 
 }
 
-</script></body>
-    </html>
+</script></body></html>
