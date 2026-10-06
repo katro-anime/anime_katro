@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>تحميل | KATRO Anime</title><style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080b12;
+    color: white;
+}
+
+header {
+    background: #0d111c;
+    padding: 15px 20px;
+    border-bottom: 1px solid #202738;
+}
+
+.header-content {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: #00b7ff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.home {
+    color: white;
+    text-decoration: none;
+    background: #151c2c;
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 25px 15px;
+}
+
+.info {
+    background: #0d111c;
+    border-radius: 15px;
+    padding: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.info h1 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.info p {
+    color: #aeb6c5;
+}
+
+.download-box {
+    background: #0d111c;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.download-box h2 {
+    color: #00b7ff;
+    font-size: 19px;
+    margin-bottom: 15px;
+}
+
+.download-list {
+    display: grid;
+    gap: 10px;
+}
+
+.download-link {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background: #1687d9;
+    color: white;
+    padding: 14px;
+    border-radius: 9px;
+    font-size: 16px;
+}
+
+.download-link:hover {
+    background: #00b7ff;
+}
+
+.download-link.disabled {
+    background: #252c3b;
+    color: #777f8e;
+    cursor: not-allowed;
+}
+
+footer {
+    text-align: center;
+    color: #777;
+    padding: 30px 10px;
+}
+
+</style></head><body><header><div class="header-content"><div class="logo">
+KATRO Anime
+</div><a
+class="home"
+href="index.html">
+
+الرئيسية
+
+</a></div></header><div class="container"><div class="info"><h1 id="title">
+تحميل الحلقة
+</h1><p>
+اختر الجودة المناسبة للتحميل
+</p></div><div class="download-box"><h2>
+جودات الحلقة
+</h2><div class="download-list"><a
+id="quality480"
+class="download-link disabled"
+href="#">
+
+⬇ تحميل 480p
+
+</a><a
+id="quality720"
+class="download-link disabled"
+href="#">
+
+⬇ تحميل 720p
+
+</a><a
+id="quality1080"
+class="download-link disabled"
+href="#">
+
+⬇ تحميل 1080p
+
+</a></div></div><div class="download-box"><h2>
+الجزء كامل</h2><div class="download-list"><a
+id="full720"
+class="download-link disabled"
+href="#">
+
+⬇ تحميل الجزء كامل بجودة 720p
+
+</a></div></div></div><footer>© 2026 KATRO Anime
+
+</footer><script>
+
+
+const params =
+new URLSearchParams(window.location.search);
+
+const anime =
+params.get("anime") || "";
+
+const episode =
+params.get("episode") || "";
+
+
+/* =========================
+   عنوان الصفحة
+========================= */
+
+document.getElementById("title").textContent =
+"تحميل الحلقة " + episode;
+
+
+/* =========================
+   روابط التحميل
+=========================
+
+   هنا نضيف الروابط مستقبلًا.
+
+   حاليًا:
+   480p للحلقة 2 من
+   Solo Leveling الموسم الثاني
+   هو الرابط الذي أرسلته.
+========================= */
+
+
+const downloads = {
+
+    "solo-s2": {
+
+        "2": {
+
+            "480p":
+            "https://pixeldrain.com/u/i5KLtXSr",
+
+            "720p":
+            "",
+
+            "1080p":
+            "",
+
+            "full720":
+            ""
+
+        }
+
+    }
+
+};
+
+
+/* =========================
+   دالة تشغيل الرابط
+========================= */
+
+function setupDownload(id, url) {
+
+    const button =
+    document.getElementById(id);
+
+    if (url && url.trim() !== "") {
+
+        button.href = url;
+
+        button.target = "_blank";
+
+        button.classList.remove("disabled");
+
+    } else {
+
+        button.href = "#";
+
+        button.classList.add("disabled");
+
+        button.onclick = function(event) {
+
+            event.preventDefault();
+
+            alert(
+                "رابط التحميل لهذه الجودة لم تتم إضافته بعد."
+            );
+
+        };
+
+    }
+
+}
+
+
+/* =========================
+   الحصول على روابط الحلقة
+========================= */
+
+let data = null;
+
+if (
+    downloads[anime] &&
+    downloads[anime][episode]
+) {
+
+    data =
+    downloads[anime][episode];
+
+}
+
+
+/* =========================
+   تطبيق الروابط
+========================= */
+
+setupDownload(
+    "quality480",
+    data ? data["480p"] : ""
+);
+
+setupDownload(
+    "quality720",
+    data ? data["720p"] : ""
+);
+
+setupDownload(
+    "quality1080",
+    data ? data["1080p"] : ""
+);
+
+setupDownload(
+    "full720",
+    data ? data["full720"] : ""
+);
+
+</script></body></html>
