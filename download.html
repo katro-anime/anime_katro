@@ -1,7 +1,4 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>تحميل | KATRO Anime</title><style>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>تحميل | KATRO Anime</title><style>
 
 * {
     box-sizing: border-box;
@@ -43,24 +40,17 @@ header {
     border-radius: 8px;
 }
 
-
-/* =========================
-   الإعلان
-========================= */
-
 .ad-box {
     text-align: center;
     margin-bottom: 20px;
     min-height: 50px;
 }
 
-
 .container {
     max-width: 800px;
     margin: auto;
     padding: 25px 15px;
 }
-
 
 .info {
     background: #0d111c;
@@ -72,13 +62,12 @@ header {
 
 .info h1 {
     font-size: 22px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .info p {
     color: #aeb6c5;
 }
-
 
 .download-box {
     background: #0d111c;
@@ -93,12 +82,10 @@ header {
     margin-bottom: 15px;
 }
 
-
 .download-list {
     display: grid;
     gap: 10px;
 }
-
 
 .download-link {
     display: block;
@@ -111,18 +98,15 @@ header {
     font-size: 16px;
 }
 
-
 .download-link:hover {
     background: #00b7ff;
 }
-
 
 .download-link.disabled {
     background: #252c3b;
     color: #777f8e;
     cursor: not-allowed;
 }
-
 
 footer {
     text-align: center;
@@ -132,26 +116,16 @@ footer {
 
 </style></head><body><header><div class="header-content"><div class="logo">
 KATRO Anime
-</div><a
-class="home"
-href="index.html">
-
+</div><a class="home" href="index.html">
 الرئيسية
-
-</a></div></header><div class="container"><!-- =========================
-     الإعلان
-========================= --><div class="ad-box"><script async
+</a></div></header><div class="container"><!-- الإعلان --><div class="ad-box"><script async
 src="https://js.mbidadm.com/static/scripts.js"
 data-admpid="467369">
-</script></div><!-- =========================
-     معلومات الحلقة
-========================= --><div class="info"><h1 id="title">
+</script></div><!-- معلومات الحلقة --><div class="info"><h1 id="title">
 تحميل الحلقة
-</h1><p>
+</h1><p id="episodeInfo">
 اختر الجودة المناسبة للتحميل
-</p></div><!-- =========================
-     جودات الحلقة
-========================= --><div class="download-box"><h2>
+</p></div><!-- جودات الحلقة --><div class="download-box"><h2>
 جودات الحلقة
 </h2><div class="download-list"><a
 id="quality480"
@@ -174,9 +148,7 @@ href="#">
 
 ⬇ تحميل 1080p
 
-</a></div></div><!-- =========================
-     الجزء كامل
-========================= --><div class="download-box"><h2>
+</a></div></div><!-- الجزء كامل --><div class="download-box"><h2>
 الجزء كامل
 </h2><div class="download-list"><a
 id="full720"
@@ -191,18 +163,61 @@ href="#">
 
 
 /* =========================================
-   قراءة البيانات
+   قراءة البيانات من الرابط
 ========================================= */
 
 const params =
 new URLSearchParams(window.location.search);
 
+
 const anime =
 params.get("anime") || "";
+
 
 const episode =
 params.get("episode") || "";
 
+
+/* =========================================
+   إظهار اسم الأنمي ورقم الحلقة
+========================================= */
+
+const title =
+document.getElementById("title");
+
+const episodeInfo =
+document.getElementById("episodeInfo");
+
+
+if (anime && episode) {
+
+    title.textContent =
+    "تحميل الحلقة " + episode;
+
+    episodeInfo.textContent =
+    anime + " — الحلقة " + episode;
+
+}
+
+else if (episode) {
+
+    title.textContent =
+    "تحميل الحلقة " + episode;
+
+    episodeInfo.textContent =
+    "اختر الجودة المناسبة للتحميل";
+
+}
+
+else {
+
+    title.textContent =
+    "تحميل الحلقة";
+
+    episodeInfo.textContent =
+    "لم يتم تحديد رقم الحلقة";
+
+}
 
 
 /* =========================================
@@ -215,9 +230,7 @@ const downloads = {
     "solo-s2": {
 
 
-        /* =========================
-           الحلقة 1
-        ========================= */
+        /* الحلقة 1 */
 
         "1": {
 
@@ -236,9 +249,7 @@ const downloads = {
         },
 
 
-        /* =========================
-           الحلقة 2
-        ========================= */
+        /* الحلقة 2 */
 
         "2": {
 
@@ -259,7 +270,6 @@ const downloads = {
     }
 
 };
-
 
 
 /* =========================================
@@ -286,8 +296,9 @@ function setupDownload(id, url) {
         );
 
 
-    } else {
+    }
 
+    else {
 
         button.href = "#";
 
@@ -312,7 +323,6 @@ function setupDownload(id, url) {
 }
 
 
-
 /* =========================================
    الحصول على بيانات الحلقة
 ========================================= */
@@ -329,7 +339,6 @@ if (
     downloads[anime][episode];
 
 }
-
 
 
 /* =========================================
@@ -358,5 +367,6 @@ setupDownload(
     "full720",
     data ? data["full720"] : ""
 );
+
 
 </script></body></html>
