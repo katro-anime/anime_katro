@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>KATRO Anime</title>
-
-<style>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>KATRO Anime</title><style>
 *{
     box-sizing:border-box;
     margin:0;
@@ -21,48 +10,40 @@ content="width=device-width, initial-scale=1.0">
 body{
     font-family:Arial,sans-serif;
     background:#080b12;
-    color:white;
+    color:#fff;
 }
-
-/* =========================
-   الهيدر
-========================= */
 
 header{
     background:#0d111c;
-    border-bottom:1px solid #202738;
+    border-bottom:1px solid #1b2638;
     padding:15px 20px;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
-.header-content{
-    max-width:1200px;
-    margin:auto;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:15px;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .logo{
     color:#00b7ff;
     font-size:25px;
     font-weight:bold;
-    white-space:nowrap;
+    text-decoration:none;
 }
 
 nav{
     display:flex;
     gap:8px;
+    flex-wrap:wrap;
 }
 
 nav a{
-    color:white;
+    color:#fff;
     text-decoration:none;
-    background:#151c2c;
-    padding:9px 13px;
+    background:#111827;
+    padding:9px 14px;
     border-radius:8px;
     font-size:14px;
 }
@@ -71,1387 +52,724 @@ nav a:hover{
     background:#1687d9;
 }
 
-/* =========================
-   البحث
-========================= */
-
 .search-box{
-    max-width:1200px;
-    margin:20px auto 0;
-    padding:0 20px;
+    width:92%;
+    max-width:900px;
+    margin:25px auto;
 }
 
 .search-box input{
     width:100%;
-    background:#0d111c;
-    border:1px solid #202738;
-    color:white;
     padding:15px;
-    border-radius:10px;
+    border:none;
     outline:none;
+    border-radius:10px;
+    background:#111827;
+    color:#fff;
     font-size:16px;
 }
 
-.search-box input:focus{
-    border-color:#00b7ff;
-}
-
-/* =========================
-   البطل
-========================= */
-
 .hero{
-    max-width:1200px;
+    width:92%;
+    max-width:1100px;
     margin:25px auto;
-    padding:45px 25px;
-    background:#0d111c;
-    border-radius:18px;
+    padding:35px 20px;
     text-align:center;
-    border:1px solid #202738;
+    background:#0d111c;
+    border:1px solid #1b2638;
+    border-radius:15px;
 }
 
 .hero h1{
     color:#00b7ff;
+    margin-bottom:10px;
     font-size:32px;
-    margin-bottom:12px;
 }
 
 .hero p{
-    color:#aeb6c5;
-    font-size:17px;
+    color:#94a3b8;
+    line-height:1.8;
 }
 
-/* =========================
-   الأقسام
-========================= */
-
-.section{
+.container{
+    width:92%;
     max-width:1200px;
     margin:30px auto;
-    padding:0 20px;
 }
 
 .section-title{
     color:#00b7ff;
+    margin-bottom:20px;
     font-size:24px;
-    margin-bottom:18px;
 }
 
-/* =========================
-   شبكة الأنمي
-========================= */
-
-.anime-grid{
+.grid{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:15px;
+    grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+    gap:18px;
 }
 
-/* =========================
-   بطاقة الأنمي
-========================= */
-
-.anime-card{
+.card{
     background:#0d111c;
-    border:1px solid #202738;
-    border-radius:13px;
+    border:1px solid #1b2638;
+    border-radius:12px;
     overflow:hidden;
+    text-decoration:none;
+    color:#fff;
     transition:.2s;
 }
 
-.anime-card:hover{
-    transform:translateY(-4px);
+.card:hover{
+    transform:translateY(-5px);
     border-color:#00b7ff;
 }
 
-.anime-card a{
-    color:white;
-    text-decoration:none;
-    display:block;
-}
-
-.anime-card img{
+.card img{
     width:100%;
-    height:280px;
+    height:240px;
     object-fit:cover;
     display:block;
-    background:#151c2c;
+    background:#111827;
 }
 
-.anime-info{
-    padding:13px;
+.card-content{
+    padding:12px;
 }
 
-.anime-name{
+.card h3{
     font-size:16px;
-    font-weight:bold;
-    margin-bottom:7px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    margin-bottom:6px;
 }
 
-.anime-episodes{
-    color:#aeb6c5;
+.card p{
+    color:#94a3b8;
     font-size:13px;
 }
 
-/* =========================
-   أحدث الحلقات
-========================= */
-
-.latest-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
+.loading-cover{
+    position:relative;
 }
 
-.latest-card{
-    background:#0d111c;
-    border:1px solid #202738;
-    border-radius:13px;
-    padding:15px;
+.loading-cover::after{
+    content:"جاري تحميل الغلاف...";
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#111827;
+    color:#64748b;
+    font-size:13px;
 }
 
-.latest-card h3{
-    color:#00b7ff;
-    margin-bottom:8px;
+.hidden{
+    display:none!important;
 }
-
-.latest-card p{
-    color:#aeb6c5;
-    margin-bottom:12px;
-}
-
-.latest-card a{
-    display:block;
-    background:#1687d9;
-    color:white;
-    text-decoration:none;
-    text-align:center;
-    padding:11px;
-    border-radius:8px;
-}
-
-.latest-card a:hover{
-    background:#00b7ff;
-}
-
-/* =========================
-   لا توجد نتائج
-========================= */
-
-.no-results{
-    display:none;
-    background:#0d111c;
-    border:1px solid #202738;
-    border-radius:12px;
-    padding:25px;
-    text-align:center;
-    color:#aeb6c5;
-}
-
-/* =========================
-   الفوتر
-========================= */
 
 footer{
     text-align:center;
-    color:#777;
-    padding:40px 10px;
-    margin-top:30px;
-}
-
-/* =========================
-   الهاتف
-========================= */
-
-@media(max-width:1000px){
-
-    .anime-grid{
-        grid-template-columns:repeat(4,1fr);
-    }
-
-}
-
-@media(max-width:800px){
-
-    .anime-grid{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .latest-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
+    color:#64748b;
+    padding:40px 15px 25px;
 }
 
 @media(max-width:600px){
 
-    .header-content{
+    header{
         flex-direction:column;
     }
 
-    nav{
-        width:100%;
-        justify-content:center;
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
     }
 
-    .hero{
-        margin:20px 12px;
-        padding:35px 15px;
+    .card img{
+        height:220px;
     }
 
     .hero h1{
         font-size:26px;
     }
-
-    .section{
-        padding:0 12px;
-    }
-
-    .anime-grid{
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-    }
-
-    .anime-card img{
-        height:230px;
-    }
-
-    .latest-grid{
-        grid-template-columns:1fr;
-    }
-
 }
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<!-- =========================
-     الهيدر
-========================= -->
-
-<header>
-
-<div class="header-content">
-
-<div class="logo">
+</style></head><body><header><a href="index.html" class="logo">
 KATRO Anime
-</div>
-
-<nav>
-
-<a href="index.html">
-الرئيسية
-</a>
-
-<a href="#anime">
-الأنميات
-</a>
-
-<a href="#episodes">
-أحدث الحلقات
-</a>
-
-</nav>
-
-</div>
-
-</header>
-
-
-<!-- =========================
-     البحث
-========================= -->
-
-<div class="search-box">
-
-<input
+</a><nav>
+<a href="index.html">الرئيسية</a>
+<a href="anime.html">الأنمي</a>
+<a href="#latest">الأحدث</a>
+</nav></header><div class="search-box"><input
 type="text"
 id="searchInput"
 placeholder="ابحث عن الأنمي..."
 oninput="searchAnime()"
->
 
-</div>
+«»
 
-
-<!-- =========================
-     الواجهة
-========================= -->
-
-<section class="hero">
-
-<h1>
-عالم الأنمي بين يديك 🔥
-</h1>
-
-<p>
-KATRO Anime — عالمك الخاص للأنمي
-</p>
-
-</section>
-
-
-<!-- =========================
-     قائمة الأنمي
-========================= -->
-
-<section
-class="section"
-id="anime"
->
-
-<h2 class="section-title">
-جميع الأنميات
-</h2>
-
-
-<div
-class="anime-grid"
-id="animeGrid"
->
-</div>
-
-
-<div
-class="no-results"
-id="noResults"
->
-
-لم يتم العثور على أنمي بهذا الاسم.
-
-</div>
-
-</section>
-
-
-<!-- =========================
-     أحدث الحلقات
-========================= -->
-
-<section
-class="section"
-id="episodes"
->
-
-<h2 class="section-title">
-أحدث الحلقات
-</h2>
-
-
-<div class="latest-grid">
-
-
-<div class="latest-card">
-
-<h3>
-Demon Slayer
-</h3>
-
-<p>
-شاهد أحدث حلقات Demon Slayer
-</p>
-
-<a href="anime.html?name=Demon%20Slayer">
-عرض الحلقات
-</a>
-
-</div>
-
-
-<div class="latest-card">
-
-<h3>
-Solo Leveling
-</h3>
-
-<p>
-شاهد مواسم Solo Leveling
-</p>
-
-<a href="anime.html?name=Solo%20Leveling">
-عرض المواسم
-</a>
-
-</div>
-
-
-<div class="latest-card">
-
-<h3>
-One Piece
-</h3>
-
-<p>
-شاهد حلقات One Piece
-</p>
-
-<a href="anime.html?name=One%20Piece">
-عرض الحلقات
-</a>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<footer>
+</div><section class="hero"><h1>KATRO Anime</h1><p>
+شاهد أفضل وأشهر الأنميات في مكان واحد
+</p></section><div class="container"><h2 class="section-title">
+الأنميات
+</h2><div id="animeGrid" class="grid"></div></div><footer>
 © 2026 KATRO Anime
-</footer>
+</footer><script>
 
-
-<script>
-
-/* =========================================
-   الغلاف الافتراضي
-========================================= */
+/* =====================================================
+   غلاف KATRO الافتراضي
+===================================================== */
 
 const defaultCover =
 "data:image/svg+xml;charset=UTF-8," +
 encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg"
-width="500"
-height="700">
-
-<rect
-width="100%"
-height="100%"
-fill="#151c2c"/>
-
-<text
-x="50%"
-y="45%"
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="700">
+<rect width="100%" height="100%" fill="#111827"/>
+<text x="50%" y="45%"
 text-anchor="middle"
 fill="#00b7ff"
 font-size="55"
-font-family="Arial"
-font-weight="bold">
+font-family="Arial">
 KATRO
 </text>
-
-<text
-x="50%"
-y="55%"
+<text x="50%" y="55%"
 text-anchor="middle"
 fill="white"
-font-size="35"
+font-size="25"
 font-family="Arial">
 ANIME
 </text>
-
 </svg>
 `);
 
 
-/* =========================================
-   قائمة الأنمي
-========================================= */
+/* =====================================================
+   قائمة الأنميات
+   لا تحتاج إلى إضافة الصور هنا
+===================================================== */
 
 const animeList = [
 
-{
-name:"Naruto",
-episodes:"220"
-},
-
-{
-name:"Naruto Shippuden",
-episodes:"500"
-},
-
-{
-name:"One Piece",
-episodes:"مستمر",
-image:"one_piece.jpg"
-},
-
-{
-name:"Bleach",
-episodes:"366"
-},
-
-{
-name:"Bleach: Thousand-Year Blood War",
-episodes:"40+"
-},
-
-{
-name:"Dragon Ball",
-episodes:"153",
-image:"Dragon Ball.jpg"
-},
-
-{
-name:"Dragon Ball Z",
-episodes:"291"
-},
-
-{
-name:"Dragon Ball Super",
-episodes:"131"
-},
-
-{
-name:"Demon Slayer",
-episodes:"63+",
-image:"5a02947aed465c5b6a721884a87cdeca.jpg"
-},
-
-{
-name:"Solo Leveling",
-episodes:"25",
-image:"Solo leveling .jpg"
-},
-
-{
-name:"Jujutsu Kaisen",
-episodes:"47"
-},
-
-{
-name:"Attack on Titan",
-episodes:"89"
-},
-
-{
-name:"My Hero Academia",
-episodes:"159+"
-},
-
-{
-name:"Hunter x Hunter",
-episodes:"148"
-},
-
-{
-name:"Black Clover",
-episodes:"170"
-},
-
-{
-name:"Death Note",
-episodes:"37"
-},
-
-{
-name:"Fullmetal Alchemist: Brotherhood",
-episodes:"64"
-},
-
-{
-name:"Tokyo Ghoul",
-episodes:"48"
-},
-
-{
-name:"Sword Art Online",
-episodes:"96+"
-},
-
-{
-name:"Fairy Tail",
-episodes:"328"
-},
-
-{
-name:"One Punch Man",
-episodes:"24+"
-},
-
-{
-name:"Mob Psycho 100",
-episodes:"37"
-},
-
-{
-name:"Chainsaw Man",
-episodes:"12"
-},
-
-{
-name:"Blue Lock",
-episodes:"38"
-},
-
-{
-name:"Haikyuu",
-episodes:"85"
-},
-
-{
-name:"Dr. Stone",
-episodes:"81+"
-},
-
-{
-name:"Vinland Saga",
-episodes:"48"
-},
-
-{
-name:"Code Geass",
-episodes:"50"
-},
-
-{
-name:"Steins;Gate",
-episodes:"24"
-},
-
-{
-name:"Re:Zero",
-episodes:"66+"
-},
-
-{
-name:"The Seven Deadly Sins",
-episodes:"100+"
-},
-
-{
-name:"JoJo's Bizarre Adventure",
-episodes:"190+"
-},
-
-{
-name:"Black Lagoon",
-episodes:"29"
-},
-
-{
-name:"Fire Force",
-episodes:"48+"
-},
-
-{
-name:"Assassination Classroom",
-episodes:"47"
-},
-
-{
-name:"Classroom of the Elite",
-episodes:"38+"
-},
-
-{
-name:"Overlord",
-episodes:"52"
-},
-
-{
-name:"That Time I Reincarnated as a Slime",
-episodes:"72+"
-},
-
-{
-name:"Mushoku Tensei",
-episodes:"48+"
-},
-
-{
-name:"The Rising of the Shield Hero",
-episodes:"50+"
-},
-
-{
-name:"Tokyo Revengers",
-episodes:"50"
-},
-
-{
-name:"Parasyte",
-episodes:"24"
-},
-
-{
-name:"Erased",
-episodes:"12"
-},
-
-{
-name:"Noragami",
-episodes:"25"
-},
-
-{
-name:"Akame ga Kill",
-episodes:"24"
-},
-
-{
-name:"Seraph of the End",
-episodes:"24"
-},
-
-{
-name:"The Promised Neverland",
-episodes:"23"
-},
-
-{
-name:"Darwin's Game",
-episodes:"11"
-},
-
-{
-name:"The God of High School",
-episodes:"13"
-},
-
-{
-name:"Tower of God",
-episodes:"13+"
-},
-
-{
-name:"Darling in the Franxx",
-episodes:"24"
-},
-
-{
-name:"The Eminence in Shadow",
-episodes:"32"
-},
-
-{
-name:"Konosuba",
-episodes:"31+"
-},
-
-{
-name:"No Game No Life",
-episodes:"12"
-},
-
-{
-name:"Your Lie in April",
-episodes:"22"
-},
-
-{
-name:"Spy x Family",
-episodes:"50+"
-},
-
-{
-name:"Frieren",
-episodes:"28"
-},
-
-{
-name:"Oshi no Ko",
-episodes:"24+"
-},
-
-{
-name:"Kaiju No. 8",
-episodes:"23+"
-},
-
-{
-name:"Mashle",
-episodes:"24"
-},
-
-{
-name:"Hell's Paradise",
-episodes:"13"
-},
-
-{
-name:"Undead Unluck",
-episodes:"24"
-},
-
-{
-name:"Zom 100",
-episodes:"12"
-},
-
-{
-name:"Pluto",
-episodes:"8"
-},
-
-{
-name:"Bungo Stray Dogs",
-episodes:"61+"
-},
-
-{
-name:"Kuroko's Basketball",
-episodes:"75"
-},
-
-{
-name:"Blue Exorcist",
-episodes:"60+"
-},
-
-{
-name:"Soul Eater",
-episodes:"51"
-},
-
-{
-name:"Inuyasha",
-episodes:"167"
-},
-
-{
-name:"Yu Yu Hakusho",
-episodes:"112"
-},
-
-{
-name:"Yu-Gi-Oh!",
-episodes:"224"
-},
-
-{
-name:"Pokemon",
-episodes:"1000+"
-},
-
-{
-name:"Fate/Zero",
-episodes:"25"
-},
-
-{
-name:"Fate/stay night",
-episodes:"24"
-},
-
-{
-name:"Fate/Apocrypha",
-episodes:"25"
-},
-
-{
-name:"Kakegurui",
-episodes:"24"
-},
-
-{
-name:"Komi Can't Communicate",
-episodes:"24"
-},
-
-{
-name:"The Quintessential Quintuplets",
-episodes:"24"
-},
-
-{
-name:"Rent-a-Girlfriend",
-episodes:"36+"
-},
-
-{
-name:"Horimiya",
-episodes:"13"
-},
-
-{
-name:"Toradora",
-episodes:"25"
-},
-
-{
-name:"My Dress-Up Darling",
-episodes:"12+"
-},
-
-{
-name:"Golden Time",
-episodes:"24"
-},
-
-{
-name:"Orange",
-episodes:"13"
-},
-
-{
-name:"Anohana",
-episodes:"11"
-},
-
-{
-name:"Clannad",
-episodes:"23"
-},
-
-{
-name:"Angel Beats",
-episodes:"13"
-},
-
-{
-name:"Charlotte",
-episodes:"13"
-},
-
-{
-name:"Plastic Memories",
-episodes:"13"
-},
-
-{
-name:"Made in Abyss",
-episodes:"25+"
-},
-
-{
-name:"To Your Eternity",
-episodes:"40+"
-},
-
-{
-name:"Ranking of Kings",
-episodes:"23"
-},
-
-{
-name:"Log Horizon",
-episodes:"62"
-},
-
-{
-name:"Saga of Tanya the Evil",
-episodes:"12"
-},
-
-{
-name:"Cautious Hero",
-episodes:"12"
-},
-
-{
-name:"Arifureta",
-episodes:"42+"
-},
-
-{
-name:"Tsukimichi",
-episodes:"37+"
-},
-
-{
-name:"The Misfit of Demon King Academy",
-episodes:"37+"
-},
-
-{
-name:"The Irregular at Magic High School",
-episodes:"52+"
-},
-
-{
-name:"The Devil is a Part-Timer",
-episodes:"37+"
-},
-
-{
-name:"Date A Live",
-episodes:"58"
-},
-
-{
-name:"High School DxD",
-episodes:"49"
-},
-
-{
-name:"D.Gray-man",
-episodes:"103"
-},
-
-{
-name:"Magi",
-episodes:"50"
-},
-
-{
-name:"Record of Ragnarok",
-episodes:"27+"
-},
-
-{
-name:"Baki",
-episodes:"39+"
-},
-
-{
-name:"Baki Hanma",
-episodes:"39+"
-},
-
-{
-name:"Kengan Ashura",
-episodes:"36+"
-},
-
-{
-name:"Hajime no Ippo",
-episodes:"127+"
-},
-
-{
-name:"Megalo Box",
-episodes:"26"
-},
-
-{
-name:"Initial D",
-episodes:"86"
-},
-
-{
-name:"Slam Dunk",
-episodes:"101"
-},
-
-{
-name:"Captain Tsubasa",
-episodes:"128+"
-},
-
-{
-name:"Inazuma Eleven",
-episodes:"127"
-},
-
-{
-name:"Ao Ashi",
-episodes:"24"
-},
-
-{
-name:"Yuri on Ice",
-episodes:"12"
-},
-
-{
-name:"Free!",
-episodes:"37+"
-},
-
-{
-name:"Sk8 the Infinity",
-episodes:"12"
-},
-
-{
-name:"Run with the Wind",
-episodes:"23"
-},
-
-{
-name:"Black Butler",
-episodes:"50+"
-},
-
-{
-name:"Hellsing",
-episodes:"13"
-},
-
-{
-name:"Hellsing Ultimate",
-episodes:"10"
-},
-
-{
-name:"Devilman Crybaby",
-episodes:"10"
-},
-
-{
-name:"Castlevania",
-episodes:"32"
-},
-
-{
-name:"Cyberpunk Edgerunners",
-episodes:"10"
-},
-
-{
-name:"Arcane",
-episodes:"18"
-},
-
-{
-name:"Dorohedoro",
-episodes:"12"
-},
-
-{
-name:"Ajin",
-episodes:"26"
-},
-
-{
-name:"Beelzebub",
-episodes:"60"
-},
-
-{
-name:"Gintama",
-episodes:"367"
-},
-
-{
-name:"Saiki K",
-episodes:"120+"
-},
-
-{
-name:"Nichijou",
-episodes:"26"
-},
-
-{
-name:"Daily Lives of High School Boys",
-episodes:"12"
-},
-
-{
-name:"Grand Blue",
-episodes:"12+"
-},
-
-{
-name:"Prison School",
-episodes:"12"
-},
-
-{
-name:"Food Wars",
-episodes:"86"
-},
-
-{
-name:"Drifters",
-episodes:"12"
-},
-
-{
-name:"Golden Kamuy",
-episodes:"61+"
-},
-
-{
-name:"Kingdom",
-episodes:"140+"
-},
-
-{
-name:"86 Eighty-Six",
-episodes:"23"
-},
-
-{
-name:"Vivy",
-episodes:"13"
-},
-
-{
-name:"Lycoris Recoil",
-episodes:"13"
-},
-
-{
-name:"Akudama Drive",
-episodes:"12"
-},
-
-{
-name:"Summertime Rendering",
-episodes:"25"
-},
-
-{
-name:"Link Click",
-episodes:"24+"
-},
-
-{
-name:"Heavenly Delusion",
-episodes:"13"
-},
-
-{
-name:"The Apothecary Diaries",
-episodes:"48+"
-},
-
-{
-name:"Delicious in Dungeon",
-episodes:"24"
-},
-
-{
-name:"The Elusive Samurai",
-episodes:"12+"
-},
-
-{
-name:"Wind Breaker",
-episodes:"25+"
-}
+"Demon Slayer",
+"Solo Leveling",
+"One Piece",
+"Dragon Ball",
+"Naruto",
+"Naruto Shippuden",
+"Bleach",
+"Jujutsu Kaisen",
+"Attack on Titan",
+"My Hero Academia",
+"Black Clover",
+"Hunter x Hunter",
+"Death Note",
+"One Punch Man",
+"Tokyo Ghoul",
+"Fullmetal Alchemist: Brotherhood",
+"Dragon Ball Z",
+"Dragon Ball Super",
+"Dragon Ball GT",
+"Boruto",
+"Fairy Tail",
+"Seven Deadly Sins",
+"Chainsaw Man",
+"Spy x Family",
+"Haikyuu",
+"Blue Lock",
+"Vinland Saga",
+"Mob Psycho 100",
+"JoJo's Bizarre Adventure",
+"Code Geass",
+"Steins;Gate",
+"Re:Zero",
+"Sword Art Online",
+"Overlord",
+"That Time I Got Reincarnated as a Slime",
+"Dr. Stone",
+"Fire Force",
+"Tokyo Revengers",
+"Parasyte",
+"Akame ga Kill!",
+"Assassination Classroom",
+"Classroom of the Elite",
+"Noragami",
+"Erased",
+"Your Lie in April",
+"Toradora!",
+"Made in Abyss",
+"Monster",
+"Devilman Crybaby",
+"Pluto",
+"Cyberpunk: Edgerunners",
+"Death Parade",
+"Samurai Champloo",
+"Trigun",
+"Cowboy Bebop",
+"Yu Yu Hakusho",
+"Inuyasha",
+"Rurouni Kenshin",
+"Fate/Zero",
+"Fate/stay night",
+"Fate/stay night: Unlimited Blade Works",
+"Fate/Apocrypha",
+"Fate/Grand Order",
+"Black Lagoon",
+"Hellsing",
+"Hellsing Ultimate",
+"Claymore",
+"Elfen Lied",
+"Future Diary",
+"Seraph of the End",
+"Blue Exorcist",
+"Fire Force Season 2",
+"Food Wars!",
+"Dr. Stone",
+"Undead Unluck",
+"Dandadan",
+"Kaiju No. 8",
+"Wind Breaker",
+"Solo Leveling Season 2",
+"Delicious in Dungeon",
+"Frieren: Beyond Journey's End",
+"The Apothecary Diaries",
+"Oshi no Ko",
+"Zom 100",
+"Summer Time Rendering",
+"86 Eighty-Six",
+"Violet Evergarden",
+"Cyberpunk Edgerunners",
+"Ranking of Kings",
+"To Your Eternity",
+"Tower of God",
+"God of High School",
+"The Seven Deadly Sins",
+"Record of Ragnarok",
+"Baki",
+"Baki Hanma",
+"Kengan Ashura",
+"Kenichi",
+"Initial D",
+"Great Teacher Onizuka",
+"Yu-Gi-Oh!",
+"Digimon Adventure",
+"Pokémon",
+"Shaman King",
+"Saint Seiya",
+"Captain Tsubasa",
+"Detective Conan",
+"Case Closed",
+"Doraemon",
+"Crayon Shin-chan",
+"Slam Dunk",
+"Kuroko's Basketball",
+"Yuri on Ice",
+"Free!",
+"Run with the Wind",
+"Initial D First Stage",
+"Initial D Second Stage",
+"Initial D Third Stage",
+"Initial D Fourth Stage",
+"Initial D Fifth Stage",
+"Initial D Final Stage",
+"Blue Period",
+"Bakuman",
+"Barakamon",
+"Beelzebub",
+"Black Butler",
+"Durarara!!",
+"Golden Kamuy",
+"Great Pretender",
+"Grimgar",
+"Kill la Kill",
+"Konosuba",
+"Log Horizon",
+"Made in Abyss",
+"Magi",
+"March Comes in Like a Lion",
+"Noragami Aragoto",
+"Overlord II",
+"Overlord III",
+"Overlord IV",
+"Prison School",
+"Promised Neverland",
+"Ranking of Kings",
+"Shangri-La Frontier",
+"Solo Leveling",
+"86",
+"Ajin",
+"Another",
+"Angel Beats!",
+"Banana Fish",
+"Beastars",
+"Beelzebub",
+"Berserk",
+"Blood Blockade Battlefront",
+"Charlotte",
+"Darling in the Franxx",
+"Devilman Crybaby",
+"Durarara",
+"FLCL",
+"From the New World",
+"Gangsta",
+"Gintama",
+"Golden Time",
+"Grave of the Fireflies",
+"Great Pretender",
+"Horimiya",
+"ID: INVADED",
+"Kakegurui",
+"Kiznaiver",
+"Land of the Lustrous",
+"Link Click",
+"Made in Abyss",
+"Megalobox",
+"Odd Taxi",
+"Orange",
+"Ping Pong the Animation",
+"Plastic Memories",
+"Ranking of Kings",
+"ReLIFE",
+"Scum's Wish",
+"Serial Experiments Lain",
+"Shiki",
+"Shinsekai Yori",
+"Summertime Render",
+"Talentless Nana",
+"Texhnolyze",
+"The Ancient Magus' Bride",
+"The Promised Neverland",
+"The Rising of the Shield Hero",
+"The World's Finest Assassin",
+"Welcome to the NHK",
+"Wotakoi",
+"Wonder Egg Priority",
+"Yona of the Dawn",
+"Zom 100",
+"Zankyou no Terror",
+"Akudama Drive",
+"91 Days",
+"Another",
+"Arifureta",
+"Assassination Classroom",
+"Banished from the Hero's Party",
+"Beast Tamer",
+"Classroom of the Elite",
+"Dark Gathering",
+"Dead Mount Death Play",
+"Death March",
+"Don't Toy with Me, Miss Nagatoro",
+"Durarara!!x2",
+"Edens Zero",
+"Engage Kiss",
+"Golden Kamuy",
+"Higehiro",
+"Insomniacs After School",
+"Lycoris Recoil",
+"Masamune-kun's Revenge",
+"Mieruko-chan",
+"More than a Married Couple",
+"My Dress-Up Darling",
+"My Happy Marriage",
+"Nier Automata",
+"Plunderer",
+"Ragna Crimson",
+"Rent-a-Girlfriend",
+"Rising of the Shield Hero",
+"Rokudo's Bad Girls",
+"Ron Kamonohashi",
+"Shangri-La Frontier",
+"Sousou no Frieren",
+"The Eminence in Shadow",
+"The Faraway Paladin",
+"The God of High School",
+"The Misfit of Demon King Academy",
+"The Wrong Way to Use Healing Magic",
+"Tsukimichi",
+"Undead Unluck",
+"Wind Breaker",
+"World Trigger",
+"Yamada-kun at Lv999",
+"Zom 100"
 
 ];
 
 
-/* =========================================
-   إنشاء البطاقات
-========================================= */
+/* =====================================================
+   إزالة التكرار
+===================================================== */
 
-const animeGrid =
-document.getElementById(
-    "animeGrid"
-);
+const uniqueAnimeList =
+[...new Set(animeList)];
 
 
-function createAnimeCards(
-    list
-){
+/* =====================================================
+   تحويل الاسم إلى رابط صفحة الأنمي
+===================================================== */
 
-    animeGrid.innerHTML = "";
+function animeLink(name){
 
+    /*
+       Solo Leveling Season 2 لا يظهر كأنمي مستقل
+    */
 
-    list.forEach(
-        anime => {
-
-            const card =
-            document.createElement(
-                "div"
-            );
-
-
-            card.className =
-            "anime-card";
-
-
-            const image =
-            anime.image ||
-            defaultCover;
-
-
-            card.innerHTML = `
-
-                <a
-                    href="anime.html?name=${encodeURIComponent(anime.name)}"
-                >
-
-                    <img
-                        src="${image}"
-                        alt="${anime.name}"
-                        onerror="this.src=defaultCover"
-                    >
-
-                    <div class="anime-info">
-
-                        <div class="anime-name">
-
-                            ${anime.name}
-
-                        </div>
-
-                        <div class="anime-episodes">
-
-                            الحلقات:
-                            ${anime.episodes}
-
-                        </div>
-
-                    </div>
-
-                </a>
-
-            `;
-
-
-            animeGrid.appendChild(
-                card
-            );
-
-        }
-    );
-
-
-    if(list.length === 0){
-
-        document.getElementById(
-            "noResults"
-        ).style.display = "block";
-
+    if(name === "Solo Leveling Season 2"){
+        return "anime.html?name=" +
+        encodeURIComponent("Solo Leveling");
     }
-    else{
 
-        document.getElementById(
-            "noResults"
-        ).style.display = "none";
+    return "anime.html?name=" +
+    encodeURIComponent(name);
+}
+
+
+/* =====================================================
+   إنشاء البطاقات فورًا
+===================================================== */
+
+const grid =
+document.getElementById("animeGrid");
+
+
+function createCards(list){
+
+    grid.innerHTML = "";
+
+    list.forEach((name,index)=>{
+
+        const card =
+        document.createElement("a");
+
+        card.className = "card";
+
+        card.href = animeLink(name);
+
+        const image =
+        document.createElement("img");
+
+        image.src = defaultCover;
+
+        image.alt = name;
+
+        image.dataset.name = name;
+
+        image.className = "loading-cover";
+
+        const content =
+        document.createElement("div");
+
+        content.className = "card-content";
+
+        content.innerHTML = `
+            <h3>${name}</h3>
+            <p>KATRO Anime</p>
+        `;
+
+        card.appendChild(image);
+        card.appendChild(content);
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   عرض الأنميات مباشرة
+===================================================== */
+
+createCards(uniqueAnimeList);
+
+
+/* =====================================================
+   ذاكرة الأغلفة
+===================================================== */
+
+function getCache(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem("katroAnimeCovers") || "{}"
+        );
+
+    }catch(e){
+
+        return {};
 
     }
 
 }
 
 
-/* =========================================
+function saveCache(cache){
+
+    try{
+
+        localStorage.setItem(
+            "katroAnimeCovers",
+            JSON.stringify(cache)
+        );
+
+    }catch(e){}
+
+}
+
+
+/* =====================================================
+   جلب غلاف واحد
+   الصفحة لا تنتظر الغلاف
+===================================================== */
+
+async function getCover(name){
+
+    const cache = getCache();
+
+    if(cache[name]){
+        return cache[name];
+    }
+
+    try{
+
+        const response =
+        await fetch(
+            "https://api.jikan.moe/v4/anime?q=" +
+            encodeURIComponent(name) +
+            "&limit=1"
+        );
+
+        if(!response.ok){
+            return null;
+        }
+
+        const json =
+        await response.json();
+
+        if(
+            json.data &&
+            json.data.length &&
+            json.data[0].images &&
+            json.data[0].images.jpg
+        ){
+
+            const image =
+            json.data[0].images.jpg.large_image_url ||
+            json.data[0].images.jpg.image_url;
+
+            if(image){
+
+                cache[name] = image;
+
+                saveCache(cache);
+
+                return image;
+
+            }
+
+        }
+
+    }catch(error){
+
+        return null;
+
+    }
+
+    return null;
+
+}
+
+
+/* =====================================================
+   تحميل الأغلفة بهدوء
+   3 طلبات فقط في نفس الوقت
+===================================================== */
+
+async function loadCovers(){
+
+    const images =
+    [...document.querySelectorAll(".card img")];
+
+    let index = 0;
+
+    async function worker(){
+
+        while(index < images.length){
+
+            const current =
+            images[index++];
+
+            const name =
+            current.dataset.name;
+
+            /*
+               لا نبحث عن الموسم الثاني كأنمي مستقل
+            */
+
+            if(name === "Solo Leveling Season 2"){
+                continue;
+            }
+
+            const cover =
+            await getCover(name);
+
+            if(cover){
+
+                current.src = cover;
+
+                current.classList.remove(
+                    "loading-cover"
+                );
+
+            }else{
+
+                current.src = defaultCover;
+
+                current.classList.remove(
+                    "loading-cover"
+                );
+
+            }
+
+        }
+
+    }
+
+    await Promise.all([
+        worker(),
+        worker(),
+        worker()
+    ]);
+
+}
+
+
+loadCovers();
+
+
+/* =====================================================
    البحث
-========================================= */
+===================================================== */
 
 function searchAnime(){
 
     const value =
-    document.getElementById(
-        "searchInput"
-    ).value
+    document
+    .getElementById("searchInput")
+    .value
     .toLowerCase()
     .trim();
 
-
     const filtered =
-    animeList.filter(
-        anime =>
-        anime.name
-        .toLowerCase()
-        .includes(value)
+    uniqueAnimeList.filter(name =>
+        name.toLowerCase().includes(value)
     );
 
+    createCards(filtered);
 
-    createAnimeCards(
-        filtered
-    );
+    /*
+       إعادة تحميل الأغلفة للنتائج
+    */
+
+    loadCovers();
 
 }
 
-
-/* =========================================
-   التشغيل
-========================================= */
-
-createAnimeCards(
-    animeList
-);
-
-</script>
-
-
-</body>
-
+</script></body>
     </html>
