@@ -1,7 +1,16 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport"
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>الأنمي | KATRO Anime</title><style>
+<title>الأنمي | KATRO Anime</title>
+
+<style>
 
 *{
     box-sizing:border-box;
@@ -17,261 +26,206 @@ body{
 
 header{
     background:#0d111c;
+    padding:18px;
+    text-align:center;
     border-bottom:1px solid #1b2638;
-    padding:15px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
 }
 
 .logo{
     color:#00b7ff;
-    font-size:25px;
+    font-size:27px;
     font-weight:bold;
-    text-decoration:none;
-}
-
-nav{
-    display:flex;
-    gap:8px;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    background:#111827;
-    padding:9px 14px;
-    border-radius:8px;
 }
 
 .container{
-    width:92%;
-    max-width:1100px;
-    margin:30px auto;
+    max-width:1000px;
+    margin:auto;
+    padding:25px 15px;
 }
 
-.back{
-    display:inline-block;
-    color:white;
-    background:#1687d9;
-    padding:10px 18px;
-    border-radius:8px;
-    text-decoration:none;
+.anime-info{
+    background:#0d111c;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+}
+
+.anime-cover{
+    width:220px;
+    max-width:100%;
+    border-radius:12px;
+    margin-bottom:15px;
+}
+
+.anime-title{
+    font-size:27px;
+    margin-bottom:8px;
+}
+
+.anime-status{
+    color:#00b7ff;
     margin-bottom:20px;
 }
 
-.info{
-    background:#0d111c;
-    border:1px solid #1b2638;
-    border-radius:15px;
-    padding:20px;
-    display:flex;
-    gap:25px;
-}
-
-.main-cover{
-    width:220px;
-    height:310px;
-    object-fit:cover;
-    border-radius:12px;
-    background:#111827;
-}
-
-.details{
-    flex:1;
-}
-
-.details h1{
-    color:#00b7ff;
-    font-size:30px;
-    margin-bottom:10px;
-}
-
-.details p{
-    color:#cbd5e1;
-    line-height:1.9;
-}
-
-.status{
-    display:inline-block;
-    margin-top:15px;
-    background:#1687d9;
-    padding:8px 13px;
-    border-radius:8px;
-}
-
 .section-title{
-    color:#00b7ff;
-    margin:30px 0 18px;
+    margin:30px 0 15px;
+    font-size:23px;
 }
 
 .seasons{
     display:grid;
-    grid-template-columns:
-    repeat(auto-fill,minmax(180px,1fr));
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
 }
 
-.season{
-    background:#0d111c;
-    border:1px solid #1b2638;
-    border-radius:12px;
-    overflow:hidden;
+.season-card{
+    display:block;
     text-decoration:none;
     color:white;
+    background:#0d111c;
+    border:1px solid #1c2b3d;
+    border-radius:14px;
+    padding:20px;
     transition:.2s;
 }
 
-.season:hover{
-    transform:translateY(-5px);
+.season-card:hover{
     border-color:#00b7ff;
+    transform:translateY(-3px);
 }
 
-.season img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
-    background:#111827;
+.season-name{
+    font-size:19px;
+    font-weight:bold;
+    margin-bottom:10px;
 }
 
-.season-info{
-    padding:12px;
+.season-count{
+    color:#aab5c5;
 }
 
-.season-info h3{
-    margin-bottom:7px;
-}
-
-.season-info p{
-    color:#94a3b8;
-    font-size:14px;
-}
-
-.error{
-    text-align:center;
-    background:#0d111c;
-    border:1px solid #1b2638;
-    padding:50px 20px;
-    border-radius:15px;
+.movie{
+    color:#ffcc00;
 }
 
 footer{
     text-align:center;
-    color:#64748b;
-    padding:40px;
+    color:#758195;
+    padding:30px 15px;
 }
 
-@media(max-width:700px){
-
-    header{
-        flex-direction:column;
-        gap:12px;
-    }
-
-    .info{
-        flex-direction:column;
-        align-items:center;
-        text-align:center;
-    }
-
-    .main-cover{
-        width:190px;
-        height:270px;
-    }
-
-    .seasons{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
-
-    .season img{
-        height:220px;
-    }
-
+.error{
+    text-align:center;
+    padding:50px 10px;
 }
 
-</style></head><body><header><a href="index.html"
-class="logo">
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
 KATRO Anime
-</a>
+</div>
 
-<nav><a href="index.html">
-الرئيسية
-</a></nav></header><div class="container"><a href="index.html"
-class="back">
-← العودة للرئيسية
-</a>
+</header>
 
-<div id="page"></div></div><footer>
+<div class="container">
+
+<div id="content"></div>
+
+</div>
+
+<footer>
 © 2026 KATRO Anime
-</footer><script src="anime-data.js"></script><script>
+</footer>
+
+<script src="anime-data.js"></script>
+
+<script>
 
 const params =
-new URLSearchParams(
-window.location.search
-);
+new URLSearchParams(window.location.search);
 
-const name =
-params.get("name");
+const animeId =
+params.get("anime");
 
 const anime =
-getAnime(name);
+getAnimeById(animeId);
 
-const page =
-document.getElementById("page");
-
+const content =
+document.getElementById("content");
 
 if(!anime){
 
-    page.innerHTML = `
-
+    content.innerHTML = `
         <div class="error">
-
-            <h2>
-            الأنمي غير موجود
-            </h2>
-
-            <p style="margin-top:12px;color:#94a3b8;">
-            لم يتم العثور على هذا الأنمي.
-            </p>
-
+            <h2>الأنمي غير موجود</h2>
+            <p>تأكد من الرابط.</p>
         </div>
-
     `;
 
 }else{
 
     document.title =
-    anime.title +
-    " | KATRO Anime";
+        anime.titleAr + " | KATRO Anime";
 
+    let html = `
 
-    let seasonsHTML = "";
+        <div class="anime-info">
 
+            <img
+                class="anime-cover"
+                src="${anime.cover}"
+                alt="${anime.titleAr}"
+                onerror="this.style.display='none'"
+            >
 
-    anime.seasons.forEach(season => {
+            <div class="anime-title">
+                ${anime.titleAr}
+            </div>
 
-        seasonsHTML += `
+            <div class="anime-status">
+                ${anime.status}
+            </div>
 
-            <a class="season"
-               href="season.html?anime=${encodeURIComponent(name)}&season=${encodeURIComponent(season.id)}">
+        </div>
 
-                <img
-                    src="${season.cover}"
-                    alt="${season.name}"
-                    onerror="this.src=anime.cover"
-                >
+        <h2 class="section-title">
+            المواسم والأجزاء
+        </h2>
 
-                <div class="season-info">
+        <div class="seasons">
+    `;
 
-                    <h3>
-                    ${season.name}
-                    </h3>
+    anime.seasons.forEach((season,index)=>{
 
-                    <p>
-                    ${season.episodes} حلقة
-                    </p>
+        const movieClass =
+            season.movie ? "movie" : "";
 
+        const countText =
+            season.movie
+            ? "فيلم"
+            : season.episodes > 0
+                ? `${season.episodes} حلقة`
+                : "قريبًا";
+
+        html += `
+
+            <a
+                class="season-card"
+                href="season.html?anime=${anime.id}&season=${season.id}"
+            >
+
+                <div class="season-name ${movieClass}">
+                    ${season.nameAr}
+                </div>
+
+                <div class="season-count">
+                    ${countText}
                 </div>
 
             </a>
@@ -280,72 +234,15 @@ if(!anime){
 
     });
 
-
-    page.innerHTML = `
-
-        <div class="info">
-
-            <img
-                class="main-cover"
-                src="${anime.cover}"
-                alt="${anime.title}"
-                onerror="this.src='${anime.cover}'"
-            >
-
-            <div class="details">
-
-                <h1>
-                ${anime.title}
-                </h1>
-
-                <p>
-                ${anime.arabic}
-                </p>
-
-                <p style="margin-top:12px;">
-                اختر الموسم الذي تريد مشاهدته.
-                </p>
-
-                <div class="status">
-
-                ${anime.seasons.length}
-                مواسم
-
-                ${
-                    anime.ongoing
-                    ? " • مستمر"
-                    : ""
-                }
-
-                </div>
-
-                ${
-                    anime.totalEpisodes
-                    ? `
-                    <div class="status">
-                    ${anime.totalEpisodes} حلقة
-                    </div>
-                    `
-                    : ""
-                }
-
-            </div>
-
+    html += `
         </div>
-
-
-        <h2 class="section-title">
-        المواسم
-        </h2>
-
-        <div class="seasons">
-
-        ${seasonsHTML}
-
-        </div>
-
     `;
 
+    content.innerHTML = html;
 }
 
-</script></body></html>
+</script>
+
+</body>
+
+</html>
