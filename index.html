@@ -1,419 +1,605 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>KATRO Anime</title><style>
 
-<title>KATRO Anime</title>
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #080b12;
-    color: white;
+body{
+    font-family:Arial,sans-serif;
+    background:#080b12;
+    color:white;
 }
 
-header {
-    background: #0d111c;
-    padding: 15px 20px;
-    border-bottom: 1px solid #202738;
+header{
+    background:#0d111c;
+    padding:15px 20px;
+    border-bottom:1px solid #202738;
 }
 
-.header-content {
-    max-width: 1100px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header-content{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.logo {
-    color: #00b7ff;
-    font-size: 25px;
-    font-weight: bold;
+.logo{
+    color:#00b7ff;
+    font-size:25px;
+    font-weight:bold;
 }
 
-nav {
-    display: flex;
-    gap: 18px;
+nav{
+    display:flex;
+    gap:18px;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
+nav a{
+    color:white;
+    text-decoration:none;
 }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
+nav a:hover{
+    color:#00b7ff;
 }
 
-.search-box {
-    max-width: 1100px;
-    margin: 20px auto;
-    padding: 0 20px;
+.search-box{
+    max-width:1200px;
+    margin:20px auto;
+    padding:0 20px;
 }
 
-.search-box input {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    background: #121827;
-    color: white;
-    font-size: 15px;
+.search-box input{
+    width:100%;
+    padding:15px;
+    border:none;
+    outline:none;
+    border-radius:10px;
+    background:#121827;
+    color:white;
+    font-size:16px;
 }
 
-.hero {
-    background: #0d111c;
-    padding: 40px 20px;
-    border-radius: 18px;
-    text-align: center;
-    margin-bottom: 30px;
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
 }
 
-.hero h1 {
-    color: #00b7ff;
-    margin-bottom: 12px;
+.hero{
+    background:#0d111c;
+    padding:40px 20px;
+    border-radius:18px;
+    text-align:center;
+    margin-bottom:30px;
 }
 
-.hero p {
-    color: #b9c0ce;
+.hero h1{
+    color:#00b7ff;
+    margin-bottom:12px;
 }
 
-.section-title {
-    color: #00b7ff;
-    margin-bottom: 18px;
+.hero p{
+    color:#b9c0ce;
 }
 
-.anime-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+.section-title{
+    color:#00b7ff;
+    margin-bottom:18px;
 }
 
-.anime-card {
-    display: block;
-    background: #0d111c;
-    border-radius: 14px;
-    overflow: hidden;
-    text-decoration: none;
-    color: white;
+.anime-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
 }
 
-.anime-card:hover {
-    transform: translateY(-5px);
+.anime-card{
+    display:block;
+    background:#0d111c;
+    border-radius:14px;
+    overflow:hidden;
+    text-decoration:none;
+    color:white;
+    transition:.2s;
 }
 
-.poster {
-    width: 100%;
-    height: 300px;
+.anime-card:hover{
+    transform:translateY(-5px);
 }
 
-.poster img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+.poster{
+    width:100%;
+    height:300px;
+    background:#121827;
+    overflow:hidden;
 }
 
-.anime-card h3 {
-    padding: 15px;
-    text-align: center;
+.poster img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
-.episodes {
-    margin-top: 40px;
+.anime-info{
+    padding:12px;
+    text-align:center;
 }
 
-.episode-card {
-    background: #0d111c;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.anime-info h3{
+    font-size:15px;
+    margin-bottom:8px;
 }
 
-.episode-card a {
-    background: #1687d9;
-    color: white;
-    text-decoration: none;
-    padding: 8px 14px;
-    border-radius: 8px;
+.episodes-count{
+    color:#9fa8b8;
+    font-size:13px;
 }
 
-footer {
-    text-align: center;
-    color: #777;
-    padding: 35px 10px;
+.loading{
+    text-align:center;
+    padding:40px;
+    color:#00b7ff;
+    font-size:18px;
+    grid-column:1/-1;
 }
 
-@media (max-width: 800px) {
-    .anime-grid {
-        grid-template-columns: repeat(2, 1fr);
+.no-results{
+    display:none;
+    text-align:center;
+    padding:40px;
+    color:#aaa;
+    grid-column:1/-1;
+}
+
+.episodes{
+    margin-top:40px;
+}
+
+.episode-card{
+    background:#0d111c;
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.episode-card a{
+    background:#1687d9;
+    color:white;
+    text-decoration:none;
+    padding:8px 14px;
+    border-radius:8px;
+}
+
+footer{
+    text-align:center;
+    color:#777;
+    padding:35px 10px;
+    margin-top:30px;
+}
+
+@media(max-width:1000px){
+
+    .anime-grid{
+        grid-template-columns:repeat(4,1fr);
     }
 
-    .poster {
-        height: 250px;
-    }
 }
 
-@media (max-width: 500px) {
-    .header-content {
-        flex-direction: column;
-        gap: 12px;
+@media(max-width:800px){
+
+    .anime-grid{
+        grid-template-columns:repeat(3,1fr);
     }
 
-    .anime-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+    .poster{
+        height:260px;
     }
 
-    .poster {
-        height: 220px;
-    }
 }
-</style>
-</head>
 
-<body>
+@media(max-width:600px){
 
-<header>
+    .header-content{
+        flex-direction:column;
+        gap:12px;
+    }
 
-<div class="header-content">
+    .anime-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
 
-<div class="logo">
+    .poster{
+        height:240px;
+    }
+
+}
+
+</style></head><body><header><div class="header-content"><div class="logo">
 KATRO Anime
-</div>
-
-<nav>
+</div><nav>
 <a href="index.html">الرئيسية</a>
 <a href="#anime">الأنميات</a>
 <a href="#episodes">الحلقات</a>
-</nav>
-
-</div>
-
-</header>
-
-
-<div class="search-box">
-
-<input
+</nav></div></header><div class="search-box"><input
 type="text"
 id="searchInput"
 placeholder="ابحث عن الأنمي..."
 onkeyup="searchAnime()">
 
-</div>
-
-
-<div class="container">
-
-<section class="hero">
-
-<h1>
+</div><div class="container"><section class="hero"><h1>
 عالم الأنمي بين يديك 🔥
-</h1>
-
-<p>
+</h1><p>
 KATRO Anime — عالمك الخاص للأنمي
-</p>
-
-</section>
-
-
-<section id="anime">
-
-<h2 class="section-title">
+</p></section><section id="anime"><h2 class="section-title">
 الأنميات
-</h2>
+</h2><div class="anime-grid" id="animeGrid"><!-- الأنميات الموجودة عندك --><a href="demon-slayer.html"
+class="anime-card">
 
-
-<div class="anime-grid">
-
-
-<!-- Demon Slayer -->
-
-<a href="demon-slayer.html" class="anime-card">
-
-<div class="poster">
-
-<img
+<div class="poster"><img
 src="5a02947aed465c5b6a721884a87cdeca.jpg"
 alt="Demon Slayer">
 
-</div>
+</div><div class="anime-info"><h3>Demon Slayer</h3><div class="episodes-count">
+عدد الحلقات: 63+
+</div></div></a><a href="solo-leveling.html"
+class="anime-card">
 
-<h3>
-Demon Slayer
-</h3>
-
-</a>
-
-
-<!-- Solo Leveling -->
-
-<a href="solo-leveling.html" class="anime-card">
-
-<div class="poster">
-
-<img
+<div class="poster"><img
 src="Solo leveling .jpg"
 alt="Solo Leveling">
 
-</div>
+</div><div class="anime-info"><h3>Solo Leveling</h3><div class="episodes-count">
+عدد الحلقات: 25
+</div></div></a><a href="dragon-ball.html"
+class="anime-card">
 
-<h3>
-Solo Leveling
-</h3>
-
-</a>
-
-
-<!-- Dragon Ball -->
-
-<a href="dragon-ball.html" class="anime-card">
-<div class="poster">
-
-<img
+<div class="poster"><img
 src="Dragon Ball.jpg"
 alt="Dragon Ball">
 
-</div>
+</div><div class="anime-info"><h3>Dragon Ball</h3><div class="episodes-count">
+عدد الحلقات: 153
+</div></div></a><a href="one-piece.html"
+class="anime-card">
 
-<h3>
-Dragon Ball
-</h3>
-
-</a>
-
-
-<!-- One Piece -->
-
-<a href="one-piece.html" class="anime-card">
-
-<div class="poster">
-
-<img
+<div class="poster"><img
 src="one_piece.jpg"
 alt="One Piece">
 
-</div>
-
-<h3>
-One Piece
-</h3>
-
-</a>
-
-
-</div>
-
-</section>
-
-
-<section class="episodes" id="episodes">
-
-<h2 class="section-title">
+</div><div class="anime-info"><h3>One Piece</h3><div class="episodes-count">
+عدد الحلقات: مستمر
+</div></div></a><div class="loading" id="loading">
+جاري تحميل أكثر من 200 أنمي...
+</div><div class="no-results" id="noResults">
+لم يتم العثور على أنمي بهذا الاسم.
+</div></div></section><section class="episodes" id="episodes"><h2 class="section-title">
 أحدث الحلقات
-</h2>
-
-
-<div class="episode-card">
-
-<span>
+</h2><div class="episode-card"><span>
 Demon Slayer — الحلقة 1
-</span>
-
-<a href="demon-slayer.html">
+</span><a href="demon-slayer.html">
 مشاهدة
-</a>
-
-</div>
-
-
-<div class="episode-card">
-
-<span>
+</a></div><div class="episode-card"><span>
 Solo Leveling — الحلقة 1
-</span>
-
-<a href="solo-leveling.html">
+</span><a href="solo-leveling.html">
 مشاهدة
-</a>
-
-</div>
-
-
-<div class="episode-card">
-
-<span>
+</a></div><div class="episode-card"><span>
 One Piece
-</span>
-
-<a href="one-piece.html">
+</span><a href="one-piece.html">
 مشاهدة
-</a>
+</a></div></section></div><footer>© 2026 KATRO Anime
 
-</div>
+</footer><script>
 
+/* =========================================
+   تحميل أكثر من 200 أنمي
+========================================= */
 
-</section>
+const animeGrid =
+document.getElementById("animeGrid");
 
-</div>
-
-
-<footer>
-
-© 2026 KATRO Anime
-
-</footer>
+const loading =
+document.getElementById("loading");
 
 
-<script>
+async function loadAnime(){
 
-function searchAnime() {
+    try{
 
-let input =
-document
-.getElementById("searchInput")
-.value
-.toLowerCase();
+        let allAnime = [];
 
-let cards =
-document.querySelectorAll(".anime-card");
+        let page = 1;
 
-cards.forEach(function(card) {
+        /*
+         نطلب 25 أنمي في كل مرة
+         حتى نصل إلى 200 أنمي
+        */
 
-let text =
-card.innerText.toLowerCase();
+        while(allAnime.length < 200 && page <= 8){
 
-if (text.includes(input)) {
+            const response =
+            await fetch(
+                "https://api.jikan.moe/v4/top/anime?page=" + page
+            );
 
-card.style.display = "block";
+            const data =
+            await response.json();
 
-} else {
+            if(data.data){
 
-card.style.display = "none";
+                allAnime =
+                allAnime.concat(data.data);
+
+            }
+
+            page++;
+
+            /*
+             تأخير بسيط حتى لا يتم
+             إرسال الطلبات بسرعة كبيرة
+            */
+
+            await new Promise(
+                resolve => setTimeout(resolve,1000)
+            );
+
+        }
+
+
+        /*
+         إزالة الأنميات الموجودة أصلًا
+         في الصفحة
+        */
+
+        const existingNames = [
+
+            "Demon Slayer",
+
+            "Solo Leveling",
+
+            "Dragon Ball",
+
+            "One Piece"
+
+        ];
+
+
+        allAnime =
+        allAnime.filter(anime => {
+
+            return !existingNames.some(name =>
+
+                anime.title
+                .toLowerCase()
+                .includes(name.toLowerCase())
+
+            );
+
+        });
+
+
+        /*
+         نأخذ أول 200 أنمي
+        */
+
+        allAnime =
+        allAnime.slice(0,200);
+
+
+        allAnime.forEach(
+            anime => {
+
+                createAnimeCard(anime);
+
+            }
+        );
+
+
+        loading.style.display =
+        "none";
+
+
+    }catch(error){
+
+        loading.innerHTML =
+        "تعذر تحميل قائمة الأنمي حاليًا. حاول تحديث الصفحة.";
+
+        console.log(error);
+
+    }
 
 }
 
-});
+
+/* =========================================
+   إنشاء بطاقة الأنمي
+========================================= */
+
+function createAnimeCard(anime){
+
+    const card =
+    document.createElement("a");
+
+    card.className =
+    "anime-card";
+
+    /*
+     الأنمي الجديد لا يملك صفحة مشاهدة
+     محلية حتى الآن، لذلك نمنع الانتقال
+     ونتركه كبطاقة معلومات.
+    */
+
+    card.href = "#";
+
+    card.onclick =
+    function(event){
+
+        event.preventDefault();
+
+    };
+
+
+    const poster =
+    document.createElement("div");
+
+    poster.className =
+    "poster";
+
+
+    const img =
+    document.createElement("img");
+
+    img.src =
+    anime.images.jpg.large_image_url ||
+    anime.images.jpg.image_url;
+
+    img.alt =
+    anime.title;
+
+
+    img.onerror =
+    function(){
+
+        this.style.display =
+        "none";
+
+    };
+
+
+    poster.appendChild(img);
+
+
+    const info =
+    document.createElement("div");
+
+    info.className =
+    "anime-info";
+
+
+    const title =
+    document.createElement("h3");
+
+    title.textContent =
+    anime.title;
+
+
+    const episodes =
+    document.createElement("div");
+
+    episodes.className =
+    "episodes-count";
+
+
+    if(anime.episodes){
+
+        episodes.textContent =
+        "عدد الحلقات: " +
+        anime.episodes;
+
+    }else{
+
+        episodes.textContent =
+        "عدد الحلقات: مستمر";
+
+    }
+
+
+    info.appendChild(title);
+
+    info.appendChild(episodes);
+
+
+    card.appendChild(poster);
+
+    card.appendChild(info);
+
+
+    animeGrid.appendChild(card);
 
 }
 
-</script>
 
-</body>
+/* =========================================
+   البحث
+========================================= */
+
+function searchAnime(){
+
+    let input =
+    document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+
+
+    let cards =
+    document.querySelectorAll(
+        ".anime-card"
+    );
+
+
+    let found = 0;
+
+
+    cards.forEach(
+        function(card){
+
+            let text =
+            card.innerText.toLowerCase();
+
+
+            if(text.includes(input)){
+
+                card.style.display =
+                "block";
+
+                found++;
+
+            }else{
+
+                card.style.display =
+                "none";
+
+            }
+
+        }
+    );
+
+
+    const noResults =
+    document.getElementById("noResults");
+
+
+    if(found === 0){
+
+        noResults.style.display =
+        "block";
+
+    }else{
+
+        noResults.style.display =
+        "none";
+
+    }
+
+}
+
+
+/* تشغيل تحميل الأنميات */
+
+loadAnime();
+
+</script></body>
     </html>
