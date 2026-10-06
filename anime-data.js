@@ -1,579 +1,313 @@
-const KATRO_ANIME = {
+const ANIME_DATA = [
 
-"One Piece": {
-    title: "One Piece",
-    arabic: "ون بيس",
-    cover: "covers/one-piece.jpg",
-    ongoing: true,
-    totalEpisodes: 1180,
-
-    seasons: [
-        {
-            id: "s1",
-            name: "الموسم الأول",
-            episodes: 61,
-            cover: "covers/one-piece-s1.jpg"
-        },
-        {
-            id: "s2",
-            name: "الموسم الثاني",
-            episodes: 74,
-            cover: "covers/one-piece-s2.jpg"
-        },
-        {
-            id: "s3",
-            name: "الموسم الثالث",
-            episodes: 72,
-            cover: "covers/one-piece-s3.jpg"
-        },
-        {
-            id: "s4",
-            name: "الموسم الرابع",
-            episodes: 73,
-            cover: "covers/one-piece-s4.jpg"
-        },
-        {
-            id: "s5",
-            name: "الموسم الخامس",
-            episodes: 69,
-            cover: "covers/one-piece-s5.jpg"
-        },
-        {
-            id: "s6",
-            name: "الموسم السادس",
-            episodes: 73,
-            cover: "covers/one-piece-s6.jpg"
-        },
-        {
-            id: "s7",
-            name: "الموسم السابع",
-            episodes: 73,
-            cover: "covers/one-piece-s7.jpg"
-        },
-        {
-            id: "s8",
-            name: "الموسم الثامن",
-            episodes: 72,
-            cover: "covers/one-piece-s8.jpg"
-        },
-        {
-            id: "s9",
-            name: "الموسم التاسع",
-            episodes: 72,
-            cover: "covers/one-piece-s9.jpg"
-        },
-        {
-            id: "s10",
-            name: "الموسم العاشر",
-            episodes: 72,
-            cover: "covers/one-piece-s10.jpg"
-        },
-        {
-            id: "s11",
-            name: "الموسم الحادي عشر",
-            episodes: 72,
-            cover: "covers/one-piece-s11.jpg"
-        },
-        {
-            id: "s12",
-            name: "الموسم الثاني عشر",
-            episodes: 72,
-            cover: "covers/one-piece-s12.jpg"
-        },
-        {
-            id: "s13",
-            name: "الموسم الثالث عشر",
-            episodes: 72,
-            cover: "covers/one-piece-s13.jpg"
-        },
-        {
-            id: "s14",
-            name: "الموسم الرابع عشر",
-            episodes: 72,
-            cover: "covers/one-piece-s14.jpg"
-        },
-        {
-            id: "s15",
-            name: "الموسم الخامس عشر",
-            episodes: 72,
-            cover: "covers/one-piece-s15.jpg"
-        },
-        {
-            id: "s16",
-            name: "الموسم السادس عشر",
-            episodes: 72,
-            cover: "covers/one-piece-s16.jpg"
-        }
-    ]
-},
-
-
-"Solo Leveling": {
-    title: "Solo Leveling",
-    arabic: "سولو ليفلينج",
-    cover: "covers/solo-leveling.jpg",
-    totalEpisodes: 25,
-
-    seasons: [
-        {
-            id: "s1",
-            name: "الموسم الأول",
-            episodes: 12,
-            cover: "covers/solo-leveling-s1.jpg",
-            watchId: "solo"
-        },
-        {
-            id: "s2",
-            name: "الموسم الثاني",
-            episodes: 13,
-            cover: "covers/solo-leveling-s2.jpg",
-            watchId: "solo-s2"
-        }
-    ]
-},
-
-
-"Demon Slayer": {
-    title: "Demon Slayer",
-    arabic: "قاتل الشياطين",
-    cover: "covers/demon-slayer.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "الموسم الأول",
-            episodes: 26,
-            cover: "covers/demon-slayer-s1.jpg",
-            watchId: "Demon Slayer"
-        },
-        {
-            id: "s2",
-            name: "الموسم الثاني",
-            episodes: 11,
-            cover: "covers/demon-slayer-s2.jpg",
-            watchId: "Demon Slayer"
-        },
-        {
-            id: "s3",
-            name: "الموسم الثالث",
-            episodes: 11,
-            cover: "covers/demon-slayer-s3.jpg",
-            watchId: "Demon Slayer"
-        },
-        {
-            id: "s4",
-            name: "الموسم الرابع",
-            episodes: 8,
-            cover: "covers/demon-slayer-s4.jpg",
-            watchId: "Demon Slayer"
-        }
-    ]
-},
-
-
-"Naruto": {
-    title: "Naruto",
-    arabic: "ناروتو",
-    cover: "covers/naruto.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "Naruto",
-            episodes: 220,
-            cover: "covers/naruto-s1.jpg",
-            watchId: "Naruto"
-        },
-        {
-            id: "s2",
-            name: "Naruto Shippuden",
-            episodes: 500,
-            cover: "covers/naruto-s2.jpg",
-            watchId: "Naruto Shippuden"
-        }
-    ]
-},
-
-
-"Bleach": {
-    title: "Bleach",
-    arabic: "بليتش",
-    cover: "covers/bleach.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "Bleach",
-            episodes: 366,
-            cover: "covers/bleach-s1.jpg",
-            watchId: "Bleach"
-        },
-        {
-            id: "s2",
-            name: "Thousand-Year Blood War",
-            episodes: 40,
-            cover: "covers/bleach-tybw.jpg",
-            watchId: "Bleach TYBW"
-        }
-    ]
-},
-
-
-"Jujutsu Kaisen": {
-    title: "Jujutsu Kaisen",
-    arabic: "جوجوتسو كايسن",
-    cover: "covers/jujutsu-kaisen.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "الموسم الأول",
-            episodes: 24,
-            cover: "covers/jujutsu-kaisen-s1.jpg",
-            watchId: "Jujutsu Kaisen"
-        },
-        {
-            id: "s2",
-            name: "الموسم الثاني",
-            episodes: 23,
-            cover: "covers/jujutsu-kaisen-s2.jpg",
-            watchId: "Jujutsu Kaisen"
-        }
-    ]
-},
-
-
-"Attack on Titan": {
-    title: "Attack on Titan",
-    arabic: "هجوم العمالقة",
-    cover: "covers/attack-on-titan.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "الموسم الأول",
-            episodes: 25,
-            cover: "covers/attack-on-titan-s1.jpg",
-            watchId: "Attack on Titan"
-        },
-        {
-            id: "s2",
-            name: "الموسم الثاني",
-            episodes: 12,
-            cover: "covers/attack-on-titan-s2.jpg",
-            watchId: "Attack on Titan"
-        },
-        {
-            id: "s3",
-            name: "الموسم الثالث",
-            episodes: 22,
-            cover: "covers/attack-on-titan-s3.jpg",
-            watchId: "Attack on Titan"
-        },
-        {
-            id: "s4",
-            name: "الموسم الرابع",
-            episodes: 30,
-            cover: "covers/attack-on-titan-s4.jpg",
-            watchId: "Attack on Titan"
-        }
-    ]
-},
-
-
-"My Hero Academia": {
-    title: "My Hero Academia",
-    arabic: "أكاديمية بطلي",
-    cover: "covers/my-hero-academia.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "الموسم الأول",
-            episodes: 13,
-            cover: "covers/my-hero-academia-s1.jpg"
-        },
-        {
-            id: "s2",
-            name: "الموسم الثاني",
-            episodes: 25,
-            cover: "covers/my-hero-academia-s2.jpg"
-        },
-        {
-            id: "s3",
-            name: "الموسم الثالث",
-            episodes: 25,
-            cover: "covers/my-hero-academia-s3.jpg"
-        },
-        {
-            id: "s4",
-            name: "الموسم الرابع",
-            episodes: 25,
-            cover: "covers/my-hero-academia-s4.jpg"
-        },
-        {
-            id: "s5",
-            name: "الموسم الخامس",
-            episodes: 25,
-            cover: "covers/my-hero-academia-s5.jpg"
-        },
-        {
-            id: "s6",
-            name: "الموسم السادس",
-            episodes: 25,
-            cover: "covers/my-hero-academia-s6.jpg"
-        },
-        {
-            id: "s7",
-            name: "الموسم السابع",
-            episodes: 21,
-            cover: "covers/my-hero-academia-s7.jpg"
-        }
-    ]
-},
-
-
-"Dragon Ball": {
-    title: "Dragon Ball",
-    arabic: "دراغون بول",
-    cover: "covers/dragon-ball.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "Dragon Ball",
-            episodes: 153,
-            cover: "covers/dragon-ball-s1.jpg"
-        },
-        {
-            id: "s2",
-            name: "Dragon Ball Z",
-            episodes: 291,
-            cover: "covers/dragon-ball-z.jpg"
-        },
-        {
-            id: "s3",
-            name: "Dragon Ball GT",
-            episodes: 64,
-            cover: "covers/dragon-ball-gt.jpg"
-        },
-        {
-            id: "s4",
-            name: "Dragon Ball Super",
-            episodes: 131,
-            cover: "covers/dragon-ball-super.jpg"
-        }
-    ]
-},
-
-
-"Black Clover": {
-    title: "Black Clover",
-    arabic: "بلاك كلوفر",
-    cover: "covers/black-clover.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "الموسم الأول",
-            episodes: 170,
-            cover: "covers/black-clover-s1.jpg"
-        }
-    ]
-},
-
-
-"Hunter x Hunter": {
-    title: "Hunter x Hunter",
-    arabic: "هنتر x هنتر",
-    cover: "covers/hunter-x-hunter.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "Hunter x Hunter",
-            episodes: 148,
-            cover: "covers/hunter-x-hunter-s1.jpg"
-        }
-    ]
-},
-
-
-"Death Note": {
-    title: "Death Note",
-    arabic: "ديث نوت",
-    cover: "covers/death-note.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "الموسم الأول",
-            episodes: 37,
-            cover: "covers/death-note-s1.jpg"
-        }
-    ]
-},
-
-
-"One Punch Man": {
-    title: "One Punch Man",
-    arabic: "ون بنش مان",
-    cover: "covers/one-punch-man.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "الموسم الأول",
-            episodes: 12,
-            cover: "covers/one-punch-man-s1.jpg"
-        },
-        {
-            id: "s2",
-            name: "الموسم الثاني",
-            episodes: 12,
-            cover: "covers/one-punch-man-s2.jpg"
-        }
-    ]
-},
-
-
-"Tokyo Ghoul": {
-    title: "Tokyo Ghoul",
-    arabic: "طوكيو غول",
-    cover: "covers/tokyo-ghoul.jpg",
-
-    seasons: [
-        {
-            id: "s1",
-            name: "الموسم الأول",
-            episodes: 12,
-            cover: "covers/tokyo-ghoul-s1.jpg"
-        },
-        {
-            id: "s2",
-            name: "Tokyo Ghoul √A",
-            episodes: 12,
-            cover: "covers/tokyo-ghoul-s2.jpg"
-        },
-        {
-            id: "s3",
-            name: "Tokyo Ghoul:re",
-            episodes: 24,
-            cover: "covers/tokyo-ghoul-s3.jpg"
-        }
-    ]
-}
-
-};
-
-/* =====================================================
-أسماء إضافية تظهر في الرئيسية
-الأنمي الذي ليس له بيانات مواسم بعد
-يأخذ موسمًا واحدًا مؤقتًا.
-===================================================== */
-
-const EXTRA_ANIME = [
-"Blue Lock",
-"Chainsaw Man",
-"Spy x Family",
-"Haikyuu",
-"Vinland Saga",
-"Mob Psycho 100",
-"JoJo's Bizarre Adventure",
-"Code Geass",
-"Steins;Gate",
-"Re:Zero",
-"Sword Art Online",
-"Overlord",
-"Dr. Stone",
-"Fire Force",
-"Tokyo Revengers",
-"Parasyte",
-"Akame ga Kill!",
-"Assassination Classroom",
-"Classroom of the Elite",
-"Noragami",
-"Erased",
-"Your Lie in April",
-"Made in Abyss",
-"Monster",
-"Cyberpunk: Edgerunners",
-"Frieren",
-"The Apothecary Diaries",
-"Oshi no Ko",
-"Kaiju No. 8",
-"Wind Breaker",
-"Dandadan",
-"Record of Ragnarok",
-"Baki",
-"Kengan Ashura",
-"Detective Conan",
-"Yu-Gi-Oh!",
-"Digimon",
-"Pokémon",
-"Slam Dunk",
-"Kuroko's Basketball",
-"The Seven Deadly Sins",
-"Fairy Tail",
-"Magi",
-"Gintama",
-"Soul Eater",
-"Blue Exorcist",
-"Food Wars",
-"The Promised Neverland"
-];
-
-EXTRA_ANIME.forEach(name => {
-
-if(!KATRO_ANIME[name]){
-
-    KATRO_ANIME[name] = {
-
-        title: name,
-
-        arabic: name,
-
-        cover: "covers/" +
-            name
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g,"-")
-            .replace(/^-|-$/g,"") +
-            ".jpg",
+    {
+        id: "one-piece",
+        title: "One Piece",
+        titleAr: "ون بيس",
+        cover: "one_piece.jpg",
+        status: "مستمر",
 
         seasons: [
-
             {
-                id:"s1",
-                name:"الموسم الأول",
-                episodes:12,
-                cover:"covers/" +
-                    name
-                    .toLowerCase()
-                    .replace(/[^a-z0-9]+/g,"-")
-                    .replace(/^-|-$/g,"") +
-                    "-s1.jpg"
+                id: "main",
+                name: "One Piece",
+                nameAr: "ون بيس",
+                episodes: 1180,
+                ongoing: true
             }
-
         ]
+    },
 
-    };
+    {
+        id: "demon-slayer",
+        title: "Demon Slayer",
+        titleAr: "قاتل الشياطين",
+        cover: "5a02947aed465c5b6a721884a87cdeca.jpg",
+        status: "مستمر",
 
+        seasons: [
+            {
+                id: "season-1",
+                name: "Tanjiro Kamado, Unwavering Resolve Arc",
+                nameAr: "قوس تانجيرو كامادو",
+                episodes: 26
+            },
+            {
+                id: "mugen-train-tv",
+                name: "Mugen Train Arc",
+                nameAr: "قوس قطار اللانهاية - التلفزيوني",
+                episodes: 7
+            },
+            {
+                id: "entertainment-district",
+                name: "Entertainment District Arc",
+                nameAr: "قوس حي الترفيه",
+                episodes: 11
+            },
+            {
+                id: "swordsmith-village",
+                name: "Swordsmith Village Arc",
+                nameAr: "قوس قرية صانعي السيوف",
+                episodes: 11
+            },
+            {
+                id: "hashira-training",
+                name: "Hashira Training Arc",
+                nameAr: "قوس تدريب الهاشيرا",
+                episodes: 8
+            },
+            {
+                id: "infinity-castle",
+                name: "Infinity Castle",
+                nameAr: "قلعة اللانهاية - الفيلم",
+                episodes: 1,
+                movie: true
+            }
+        ]
+    },
+
+    {
+        id: "solo-leveling",
+        title: "Solo Leveling",
+        titleAr: "سولو ليفلينج",
+        cover: "Solo leveling .jpg",
+        status: "مستمر",
+
+        seasons: [
+            {
+                id: "season-1",
+                name: "Season 1",
+                nameAr: "الموسم الأول",
+                episodes: 12,
+                watchId: "solo"
+            },
+            {
+                id: "season-2",
+                name: "Season 2",
+                nameAr: "الموسم الثاني",
+                episodes: 13,
+                watchId: "solo-s2",
+                cover: "Solo leveling season 2.jpg"
+            }
+        ]
+    },
+
+    {
+        id: "naruto",
+        title: "Naruto",
+        titleAr: "ناروتو",
+        cover: "naruto.jpg",
+        status: "مكتمل",
+
+        seasons: [
+            {
+                id: "naruto",
+                name: "Naruto",
+                nameAr: "ناروتو",
+                episodes: 220
+            },
+            {
+                id: "shippuden",
+                name: "Naruto: Shippuden",
+                nameAr: "ناروتو شيبودن",
+                episodes: 500
+            }
+        ]
+    },
+
+    {
+        id: "bleach",
+        title: "Bleach",
+        titleAr: "بليتش",
+        cover: "bleach.jpg",
+        status: "مستمر",
+
+        seasons: [
+            {
+                id: "original",
+                name: "Bleach",
+                nameAr: "بليتش الأصلي",
+                episodes: 366
+            },
+            {
+                id: "tybw-1",
+                name: "The Blood Warfare",
+                nameAr: "حرب الألف عام - الجزء الأول",
+                episodes: 13
+            },
+            {
+                id: "tybw-2",
+                name: "The Separation",
+                nameAr: "حرب الألف عام - الجزء الثاني",
+                episodes: 13
+            },
+            {
+                id: "tybw-3",
+                name: "The Conflict",
+                nameAr: "حرب الألف عام - الجزء الثالث",
+                episodes: 14
+            },
+            {
+                id: "tybw-4",
+                name: "The Calamity",
+                nameAr: "حرب الألف عام - الجزء الرابع",
+                episodes: 10
+            }
+        ]
+    },
+
+    {
+        id: "my-hero-academia",
+        title: "My Hero Academia",
+        titleAr: "أكاديمية بطلي",
+        cover: "my-hero-academia.jpg",
+        status: "مكتمل",
+
+        seasons: [
+            {
+                id: "season-1",
+                name: "Season 1",
+                nameAr: "الموسم الأول",
+                episodes: 13
+            },
+            {
+                id: "season-2",
+                name: "Season 2",
+                nameAr: "الموسم الثاني",
+                episodes: 25
+            },
+            {
+                id: "season-3",
+                name: "Season 3",
+                nameAr: "الموسم الثالث",
+                episodes: 25
+            },
+            {
+                id: "season-4",
+                name: "Season 4",
+                nameAr: "الموسم الرابع",
+                episodes: 25
+            },
+            {
+                id: "season-5",
+                name: "Season 5",
+                nameAr: "الموسم الخامس",
+                episodes: 25
+            },
+            {
+                id: "season-6",
+                name: "Season 6",
+                nameAr: "الموسم السادس",
+                episodes: 25
+            },
+            {
+                id: "season-7",
+                name: "Season 7",
+                nameAr: "الموسم السابع",
+                episodes: 21
+            },
+            {
+                id: "season-8",
+                name: "Final Season",
+                nameAr: "الموسم الثامن - الأخير",
+                episodes: 11
+            }
+        ]
+    },
+
+    {
+        id: "jujutsu-kaisen",
+        title: "Jujutsu Kaisen",
+        titleAr: "جوجوتسو كايسن",
+        cover: "jujutsu-kaisen.jpg",
+        status: "مستمر",
+
+        seasons: [
+            {
+                id: "season-1",
+                name: "Season 1",
+                nameAr: "الموسم الأول",
+                episodes: 24
+            },
+            {
+                id: "season-2",
+                name: "Season 2",
+                nameAr: "الموسم الثاني",
+                episodes: 23
+            },
+            {
+                id: "season-3",
+                name: "Culling Game - Part 1",
+                nameAr: "لعبة الإبادة - الجزء الأول",
+                episodes: 12
+            }
+        ]
+    },
+
+    {
+        id: "dragon-ball",
+        title: "Dragon Ball",
+        titleAr: "دراغون بول",
+        cover: "Dragon Ball.jpg",
+        status: "مكتمل",
+
+        seasons: [
+            {
+                id: "dragon-ball",
+                name: "Dragon Ball",
+                nameAr: "دراغون بول",
+                episodes: 153
+            },
+            {
+                id: "dragon-ball-z",
+                name: "Dragon Ball Z",
+                nameAr: "دراغون بول Z",
+                episodes: 291
+            },
+            {
+                id: "dragon-ball-gt",
+                name: "Dragon Ball GT",
+                nameAr: "دراغون بول GT",
+                episodes: 64
+            },
+            {
+                id: "dragon-ball-super",
+                name: "Dragon Ball Super",
+                nameAr: "دراغون بول سوبر",
+                episodes: 131
+            },
+            {
+                id: "dragon-ball-daima",
+                name: "Dragon Ball DAIMA",
+                nameAr: "دراغون بول دايما",
+                episodes: 20
+            }
+        ]
+    }
+
+];
+
+
+/* ==============================
+   دوال البيانات
+============================== */
+
+function getAnimeById(id) {
+    return ANIME_DATA.find(anime => anime.id === id);
 }
 
-});
+function getSeasonById(anime, seasonId) {
+    if (!anime) return null;
 
-/* =====================================================
-أدوات عامة
-===================================================== */
-
-function getAnime(name){
-
-return KATRO_ANIME[name] || null;
-
+    return anime.seasons.find(
+        season => season.id === seasonId
+    );
 }
 
-function getAnimeNames(){
+function getSeasonIndex(anime, seasonId) {
+    if (!anime) return -1;
 
-return Object.keys(KATRO_ANIME);
-
-  }
+    return anime.seasons.findIndex(
+        season => season.id === seasonId
+    );
+                }
