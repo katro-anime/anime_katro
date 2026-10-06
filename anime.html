@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>الأنمي | KATRO Anime</title><style>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>الأنمي | KATRO Anime</title><style>
 
 *{
     box-sizing:border-box;
@@ -97,9 +98,14 @@ header{
     margin-bottom:20px;
 }
 
+
+/* =========================
+   الحلقات
+========================= */
+
 .episodes{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:12px;
 }
 
@@ -115,22 +121,52 @@ header{
     display:block;
     margin-bottom:10px;
     color:#aeb6c5;
+    font-size:15px;
+}
+
+
+/* =========================
+   أزرار الحلقة
+========================= */
+
+.episode-buttons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.watch-btn,
+.download-btn{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:10px 5px;
+    border-radius:8px;
+    font-size:14px;
+    transition:.2s;
 }
 
 .watch-btn{
-    display:block;
-    width:100%;
     background:#1687d9;
-    color:white;
-    text-decoration:none;
-    padding:10px;
-    border-radius:8px;
-    transition:.2s;
 }
 
 .watch-btn:hover{
     background:#00b7ff;
 }
+
+.download-btn{
+    background:#151c2c;
+    border:1px solid #1687d9;
+}
+
+.download-btn:hover{
+    background:#1687d9;
+}
+
+
+/* =========================
+   غير موجود
+========================= */
 
 .not-found{
     background:#0d111c;
@@ -140,11 +176,21 @@ header{
     color:#ff6b6b;
 }
 
+
+/* =========================
+   الفوتر
+========================= */
+
 footer{
     text-align:center;
     color:#777;
     padding:30px 10px;
 }
+
+
+/* =========================
+   الهاتف
+========================= */
 
 @media(max-width:700px){
 
@@ -159,7 +205,15 @@ footer{
     }
 
     .episodes{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:400px){
+
+    .episodes{
+        grid-template-columns:1fr;
     }
 
 }
@@ -173,6 +227,7 @@ KATRO Anime
 </a><div id="animeContainer"></div></div><footer>
 © 2026 KATRO Anime
 </footer><script>
+
 
 /* =========================================
    صورة KATRO الافتراضية
@@ -259,14 +314,10 @@ const animeList = [
 {name:"The God of High School",episodes:"13"},
 {name:"Tower of God",episodes:"13+"},
 {name:"Darling in the Franxx",episodes:"24"},
-{name:"Classroom of the Elite",episodes:"38+"},
 {name:"The Eminence in Shadow",episodes:"32"},
 {name:"Konosuba",episodes:"31+"},
 {name:"No Game No Life",episodes:"12"},
 {name:"Your Lie in April",episodes:"22"},
-{name:"Your Name",episodes:"فيلم"},
-{name:"Weathering With You",episodes:"فيلم"},
-{name:"A Silent Voice",episodes:"فيلم"},
 {name:"Spy x Family",episodes:"50+"},
 {name:"Frieren",episodes:"28"},
 {name:"Oshi no Ko",episodes:"24+"},
@@ -280,59 +331,42 @@ const animeList = [
 {name:"Kuroko's Basketball",episodes:"75"},
 {name:"Blue Exorcist",episodes:"60+"},
 {name:"Soul Eater",episodes:"51"},
-{name:"Noragami Aragoto",episodes:"13"},
 {name:"Inuyasha",episodes:"167"},
-{name:"Inuyasha: The Final Act",episodes:"26"},
 {name:"Yu Yu Hakusho",episodes:"112"},
 {name:"Yu-Gi-Oh!",episodes:"224"},
-{name:"Digimon Adventure",episodes:"54"},
 {name:"Pokemon",episodes:"1000+"},
 {name:"Fate/Zero",episodes:"25"},
 {name:"Fate/stay night",episodes:"24"},
 {name:"Fate/Apocrypha",episodes:"25"},
-{name:"Fate/Grand Order",episodes:"30+"},
 {name:"Kakegurui",episodes:"24"},
 {name:"Komi Can't Communicate",episodes:"24"},
 {name:"The Quintessential Quintuplets",episodes:"24"},
 {name:"Rent-a-Girlfriend",episodes:"36+"},
 {name:"Horimiya",episodes:"13"},
 {name:"Toradora",episodes:"25"},
-{name:"Rascal Does Not Dream of Bunny Girl Senpai",episodes:"13+"},
-{name:"The Angel Next Door Spoils Me Rotten",episodes:"12"},
 {name:"My Dress-Up Darling",episodes:"12+"},
-{name:"Domestic Girlfriend",episodes:"12"},
 {name:"Golden Time",episodes:"24"},
 {name:"Orange",episodes:"13"},
 {name:"Anohana",episodes:"11"},
 {name:"Clannad",episodes:"23"},
-{name:"Clannad After Story",episodes:"24"},
 {name:"Angel Beats",episodes:"13"},
 {name:"Charlotte",episodes:"13"},
 {name:"Plastic Memories",episodes:"13"},
-{name:"Akatsuki no Yona",episodes:"24"},
-{name:"Yona of the Dawn",episodes:"24"},
 {name:"Made in Abyss",episodes:"25+"},
-{name:"The Ancient Magus' Bride",episodes:"48+"},
 {name:"To Your Eternity",episodes:"40+"},
 {name:"Ranking of Kings",episodes:"23"},
-{name:"The Faraway Paladin",episodes:"24"},
-{name:"Grimgar",episodes:"12"},
 {name:"Log Horizon",episodes:"62"},
 {name:"Saga of Tanya the Evil",episodes:"12"},
 {name:"Cautious Hero",episodes:"12"},
 {name:"Arifureta",episodes:"42+"},
 {name:"Tsukimichi",episodes:"37+"},
 {name:"The Misfit of Demon King Academy",episodes:"37+"},
-{name:"The Strongest Magician in the Demon Lord's Army Was a Human",episodes:"12"},
 {name:"The Irregular at Magic High School",episodes:"52+"},
 {name:"The Devil is a Part-Timer",episodes:"37+"},
 {name:"Date A Live",episodes:"58"},
 {name:"High School DxD",episodes:"49"},
 {name:"D.Gray-man",episodes:"103"},
-{name:"D.Gray-man Hallow",episodes:"13"},
 {name:"Magi",episodes:"50"},
-{name:"Magi: Sinbad no Bouken",episodes:"13"},
-{name:"The Seven Deadly Sins: Four Knights of the Apocalypse",episodes:"36+"},
 {name:"Record of Ragnarok",episodes:"27+"},
 {name:"Baki",episodes:"39+"},
 {name:"Baki Hanma",episodes:"39+"},
@@ -348,7 +382,6 @@ const animeList = [
 {name:"Free!",episodes:"37+"},
 {name:"Sk8 the Infinity",episodes:"12"},
 {name:"Run with the Wind",episodes:"23"},
-{name:"Kuroshitsuji",episodes:"50+"},
 {name:"Black Butler",episodes:"50+"},
 {name:"Hellsing",episodes:"13"},
 {name:"Hellsing Ultimate",episodes:"10"},
@@ -366,7 +399,6 @@ const animeList = [
 {name:"Grand Blue",episodes:"12+"},
 {name:"Prison School",episodes:"12"},
 {name:"Food Wars",episodes:"86"},
-{name:"The Disastrous Life of Saiki K",episodes:"120+"},
 {name:"Drifters",episodes:"12"},
 {name:"Golden Kamuy",episodes:"61+"},
 {name:"Kingdom",episodes:"140+"},
@@ -374,7 +406,6 @@ const animeList = [
 {name:"Vivy",episodes:"13"},
 {name:"Lycoris Recoil",episodes:"13"},
 {name:"Akudama Drive",episodes:"12"},
-{name:"Cyberpunk: Edgerunners",episodes:"10"},
 {name:"Summertime Rendering",episodes:"25"},
 {name:"Link Click",episodes:"24+"},
 {name:"Heavenly Delusion",episodes:"13"},
@@ -420,11 +451,17 @@ if(!anime){
 
     container.innerHTML = `
         <div class="not-found">
-            <h2>الأنمي غير موجود</h2>
+
+            <h2>
+                الأنمي غير موجود
+            </h2>
+
             <br>
+
             <a class="back" href="index.html">
                 العودة للرئيسية
             </a>
+
         </div>
     `;
 
@@ -446,14 +483,16 @@ else{
         <div class="anime-info">
 
             <img
-            src="${image}"
-            alt="${anime.name}"
-            onerror="this.src='${defaultCover}'"
+                src="${image}"
+                alt="${anime.name}"
+                onerror="this.src='${defaultCover}'"
             >
 
             <div class="anime-text">
 
-                <h1>${anime.name}</h1>
+                <h1>
+                    ${anime.name}
+                </h1>
 
                 <p>
                     عدد الحلقات: ${anime.episodes}
@@ -475,11 +514,12 @@ else{
             </h2>
 
             <div
-            class="episodes"
-            id="episodes">
+                class="episodes"
+                id="episodes">
             </div>
 
         </div>
+
     `;
 
 
@@ -503,14 +543,6 @@ function createEpisodes(anime){
     }
 
 
-    /*
-       نأخذ الرقم الأول من عدد الحلقات.
-       مثال:
-       220
-       63+
-       48+
-    */
-
     const match =
     String(anime.episodes).match(/\d+/);
 
@@ -531,10 +563,6 @@ function createEpisodes(anime){
     parseInt(match[0]);
 
 
-    /*
-       حماية من إنشاء عدد ضخم جدًا
-    */
-
     episodeCount =
     Math.min(episodeCount,500);
 
@@ -552,18 +580,53 @@ function createEpisodes(anime){
         "episode";
 
 
+        /*
+           رابط مشاهدة
+        */
+
+        const watchURL =
+        "watch.html?anime=" +
+        encodeURIComponent(anime.name) +
+        "&episode=" +
+        encodeURIComponent(i);
+
+
+        /*
+           رابط تحميل
+        */
+
+        const downloadURL =
+        "download.html?anime=" +
+        encodeURIComponent(anime.name) +
+        "&episode=" +
+        encodeURIComponent(i);
+
+
         episodeBox.innerHTML = `
 
             <span class="episode-number">
                 الحلقة ${i}
             </span>
 
-            <a
-                class="watch-btn"
-                href="watch.html?anime=${encodeURIComponent(anime.name)}&episode=${i}"
-            >
-                مشاهدة ▶
-            </a>
+
+            <div class="episode-buttons">
+
+                <a
+                    class="watch-btn"
+                    href="${watchURL}"
+                >
+                    مشاهدة ▶
+                </a>
+
+
+                <a
+                    class="download-btn"
+                    href="${downloadURL}"
+                >
+                    تحميل ⬇
+                </a>
+
+            </div>
 
         `;
 
