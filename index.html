@@ -1,7 +1,4 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>KATRO Anime</title><style>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>KATRO Anime</title><style>
 
 *{
     box-sizing:border-box;
@@ -118,7 +115,6 @@ nav a:hover{
     width:100%;
     height:300px;
     background:#121827;
-    overflow:hidden;
 }
 
 .poster img{
@@ -141,14 +137,6 @@ nav a:hover{
 .episodes-count{
     color:#9fa8b8;
     font-size:13px;
-}
-
-.loading{
-    text-align:center;
-    padding:40px;
-    color:#00b7ff;
-    font-size:18px;
-    grid-column:1/-1;
 }
 
 .no-results{
@@ -228,15 +216,17 @@ footer{
 
 </style></head><body><header><div class="header-content"><div class="logo">
 KATRO Anime
-</div><nav>
-<a href="index.html">الرئيسية</a>
-<a href="#anime">الأنميات</a>
-<a href="#episodes">الحلقات</a>
-</nav></div></header><div class="search-box"><input
+</div><nav><a href="index.html">
+الرئيسية
+</a><a href="#anime">
+الأنميات
+</a><a href="#episodes">
+الحلقات
+</a></nav></div></header><div class="search-box"><input
 type="text"
 id="searchInput"
 placeholder="ابحث عن الأنمي..."
-onkeyup="searchAnime()">
+oninput="searchAnime()">
 
 </div><div class="container"><section class="hero"><h1>
 عالم الأنمي بين يديك 🔥
@@ -244,47 +234,16 @@ onkeyup="searchAnime()">
 KATRO Anime — عالمك الخاص للأنمي
 </p></section><section id="anime"><h2 class="section-title">
 الأنميات
-</h2><div class="anime-grid" id="animeGrid"><!-- الأنميات الموجودة عندك --><a href="demon-slayer.html"
-class="anime-card">
+</h2><div
+class="anime-grid"
+id="animeGrid">
+</div><div
+class="no-results"
+id="noResults">لم يتم العثور على أنمي بهذا الاسم.
 
-<div class="poster"><img
-src="5a02947aed465c5b6a721884a87cdeca.jpg"
-alt="Demon Slayer">
-
-</div><div class="anime-info"><h3>Demon Slayer</h3><div class="episodes-count">
-عدد الحلقات: 63+
-</div></div></a><a href="solo-leveling.html"
-class="anime-card">
-
-<div class="poster"><img
-src="Solo leveling .jpg"
-alt="Solo Leveling">
-
-</div><div class="anime-info"><h3>Solo Leveling</h3><div class="episodes-count">
-عدد الحلقات: 25
-</div></div></a><a href="dragon-ball.html"
-class="anime-card">
-
-<div class="poster"><img
-src="Dragon Ball.jpg"
-alt="Dragon Ball">
-
-</div><div class="anime-info"><h3>Dragon Ball</h3><div class="episodes-count">
-عدد الحلقات: 153
-</div></div></a><a href="one-piece.html"
-class="anime-card">
-
-<div class="poster"><img
-src="one_piece.jpg"
-alt="One Piece">
-
-</div><div class="anime-info"><h3>One Piece</h3><div class="episodes-count">
-عدد الحلقات: مستمر
-</div></div></a><div class="loading" id="loading">
-جاري تحميل أكثر من 200 أنمي...
-</div><div class="no-results" id="noResults">
-لم يتم العثور على أنمي بهذا الاسم.
-</div></div></section><section class="episodes" id="episodes"><h2 class="section-title">
+</div></section><section
+class="episodes"
+id="episodes"><h2 class="section-title">
 أحدث الحلقات
 </h2><div class="episode-card"><span>
 Demon Slayer — الحلقة 1
@@ -302,241 +261,524 @@ One Piece
 
 </footer><script>
 
+/*
+=================================================
+قائمة الأنميات
+=================================================
+*/
+
+const animeList = [
+
+/* الأنميات الموجودة عندك */
+
+{
+name:"Demon Slayer",
+episodes:"63+",
+image:"5a02947aed465c5b6a721884a87cdeca.jpg",
+link:"demon-slayer.html"
+},
+
+{
+name:"Solo Leveling",
+episodes:"25",
+image:"Solo leveling .jpg",
+link:"solo-leveling.html"
+},
+
+{
+name:"Dragon Ball",
+episodes:"153",
+image:"Dragon Ball.jpg",
+link:"dragon-ball.html"
+},
+
+{
+name:"One Piece",
+episodes:"مستمر",
+image:"one_piece.jpg",
+link:"one-piece.html"
+},
+
+
 /* =========================================
-   تحميل أكثر من 200 أنمي
+   الأنميات الجديدة
 ========================================= */
 
-const animeGrid =
-document.getElementById("animeGrid");
+{name:"Naruto",episodes:"220"},
+{name:"Naruto Shippuden",episodes:"500"},
+{name:"Bleach",episodes:"366"},
+{name:"Bleach: Thousand-Year Blood War",episodes:"40+"},
+{name:"Jujutsu Kaisen",episodes:"47+"},
+{name:"Attack on Titan",episodes:"89"},
+{name:"My Hero Academia",episodes:"170+"},
+{name:"Black Clover",episodes:"170"},
+{name:"Hunter x Hunter",episodes:"148"},
+{name:"Death Note",episodes:"37"},
+{name:"Fullmetal Alchemist: Brotherhood",episodes:"64"},
+{name:"Sword Art Online",episodes:"96+"},
+{name:"Tokyo Ghoul",episodes:"48"},
+{name:"One Punch Man",episodes:"24+"},
+{name:"Mob Psycho 100",episodes:"37"},
+{name:"Demon Slayer: Mugen Train",episodes:"7"},
+{name:"Dr. Stone",episodes:"70+"},
+{name:"Fire Force",episodes:"48+"},
+{name:"Fairy Tail",episodes:"328"},
+{name:"Blue Lock",episodes:"38+"},
+{name:"Haikyuu!!",episodes:"85"},
+{name:"Vinland Saga",episodes:"48"},
+{name:"Chainsaw Man",episodes:"12+"},
+{name:"Spy x Family",episodes:"37+"},
+{name:"The Seven Deadly Sins",episodes:"100"},
+{name:"Code Geass",episodes:"50"},
+{name:"Steins;Gate",episodes:"24"},
+{name:"Re:Zero",episodes:"66+"},
+{name:"Overlord",episodes:"52"},
+{name:"That Time I Got Reincarnated as a Slime",episodes:"72+"},
+{name:"The Rising of the Shield Hero",episodes:"50+"},
+{name:"Mushoku Tensei",episodes:"48+"},
+{name:"Konosuba",episodes:"31+"},
+{name:"Classroom of the Elite",episodes:"38+"},
+{name:"The Eminence in Shadow",episodes:"32"},
+{name:"Tokyo Revengers",episodes:"50"},
+{name:"Parasyte",episodes:"24"},
+{name:"Erased",episodes:"12"},
+{name:"Akame ga Kill!",episodes:"24"},
+{name:"Assassination Classroom",episodes:"47"},
+{name:"Noragami",episodes:"25"},
+{name:"Blue Exorcist",episodes:"49+"},
+{name:"Soul Eater",episodes:"51"},
+{name:"Fire Force",episodes:"48+"},
+{name:"Bungo Stray Dogs",episodes:"61+"},
+{name:"The Promised Neverland",episodes:"23"},
+{name:"Made in Abyss",episodes:"25+"},
+{name:"The God of High School",episodes:"13"},
+{name:"Tower of God",episodes:"13+"},
+{name:"Hell's Paradise",episodes:"13"},
+{name:"Mashle",episodes:"24"},
+{name:"Kaiju No. 8",episodes:"12"},
+{name:"Wind Breaker",episodes:"25+"},
+{name:"Solo Leveling Season 2",episodes:"13"},
+{name:"Sakamoto Days",episodes:"22+"},
+{name:"Dandadan",episodes:"24+"},
+{name:"Frieren: Beyond Journey's End",episodes:"28+"},
+{name:"The Apothecary Diaries",episodes:"48+"},
+{name:"Delicious in Dungeon",episodes:"24"},
+{name:"Oshi no Ko",episodes:"24+"},
+{name:"Kaguya-sama: Love Is War",episodes:"37"},
+{name:"Toradora!",episodes:"25"},
+{name:"Your Lie in April",episodes:"22"},
+{name:"Clannad",episodes:"47+"},
+{name:"Angel Beats!",episodes:"13"},
+{name:"Violet Evergarden",episodes:"13"},
+{name:"A Silent Voice",episodes:"فيلم"},
+{name:"Your Name",episodes:"فيلم"},
+{name:"Weathering With You",episodes:"فيلم"},
+{name:"I Want to Eat Your Pancreas",episodes:"فيلم"},
+{name:"Suzume",episodes:"فيلم"},
+{name:"Akira",episodes:"فيلم"},
+{name:"Ghost in the Shell",episodes:"فيلم"},
+{name:"Perfect Blue",episodes:"فيلم"},
+{name:"Cowboy Bebop",episodes:"26"},
+{name:"Samurai Champloo",episodes:"26"},
+{name:"Trigun",episodes:"26"},
+{name:"Neon Genesis Evangelion",episodes:"26"},
+{name:"Gurren Lagann",episodes:"27"},
+{name:"Yu Yu Hakusho",episodes:"112"},
+{name:"Inuyasha",episodes:"167+"},
+{name:"Rurouni Kenshin",episodes:"94+"},
+{name:"JoJo's Bizarre Adventure",episodes:"190+"},
+{name:"Hellsing",episodes:"13"},
+{name:"Hellsing Ultimate",episodes:"10"},
+{name:"Fate/Zero",episodes:"25"},
+{name:"Fate/stay night",episodes:"24"},
+{name:"Fate/stay night: Unlimited Blade Works",episodes:"26"},
+{name:"Fate/Apocrypha",episodes:"25"},
+{name:"Fate/Grand Order",episodes:"عدة أجزاء"},
+{name:"Katekyo Hitman Reborn!",episodes:"203"},
+{name:"Gintama",episodes:"367"},
+{name:"Kuroko's Basketball",episodes:"75"},
+{name:"Slam Dunk",episodes:"101"},
+{name:"Captain Tsubasa",episodes:"128+"},
+{name:"Initial D",episodes:"86+"},
+{name:"Yuri!!! on Ice",episodes:"12"},
+{name:"Free!",episodes:"37+"},
+{name:"Kakegurui",episodes:"24"},
+{name:"Food Wars!",episodes:"86"},
+{name:"The Disastrous Life of Saiki K.",episodes:"120+"},
+{name:"Nichijou",episodes:"26"},
+{name:"Lucky Star",episodes:"24"},
+{name:"K-On!",episodes:"39"},
+{name:"Bocchi the Rock!",episodes:"12"},
+{name:"Lycoris Recoil",episodes:"13"},
+{name:"Zom 100",episodes:"12"},
+{name:"Cyberpunk: Edgerunners",episodes:"10"},
+{name:"Arcane",episodes:"18"},
+{name:"Castlevania",episodes:"32"},
+{name:"Devilman Crybaby",episodes:"10"},
+{name:"Dorohedoro",episodes:"12"},
+{name:"Beastars",episodes:"36"},
+{name:"Ajin",episodes:"26"},
+{name:"Darwin's Game",episodes:"11"},
+{name:"Deadman Wonderland",episodes:"12"},
+{name:"Elfen Lied",episodes:"13"},
+{name:"Future Diary",episodes:"26"},
+{name:"Another",episodes:"12"},
+{name:"Shiki",episodes:"22"},
+{name:"Higurashi When They Cry",episodes:"50+"},
+{name:"Monster",episodes:"74"},
+{name:"20th Century Boys",episodes:"فيلم"},
+{name:"Pluto",episodes:"8"},
+{name:"Odd Taxi",episodes:"13"},
+{name:"Terror in Resonance",episodes:"11"},
+{name:"Psycho-Pass",episodes:"41+"},
+{name:"Ghost in the Shell: Stand Alone Complex",episodes:"52"},
+{name:"Serial Experiments Lain",episodes:"13"},
+{name:"Paranoia Agent",episodes:"13"},
+{name:"Magi",episodes:"50"},
+{name:"Magi: Sinbad no Bouken",episodes:"13"},
+{name:"The Seven Deadly Sins: Four Knights of the Apocalypse",episodes:"24+"},
+{name:"Record of Ragnarok",episodes:"27+"},
+{name:"Baki",episodes:"39+"},
+{name:"Baki Hanma",episodes:"39+"},
+{name:"Kengan Ashura",episodes:"50+"},
+{name:"Hajime no Ippo",episodes:"127+"},
+{name:"Megalo Box",episodes:"26"},
+{name:"Ashita no Joe",episodes:"126"},
+{name:"Run with the Wind",episodes:"23"},
+{name:"Ao Ashi",episodes:"24"},
+{name:"Yowamushi Pedal",episodes:"100+"},
+{name:"The Prince of Tennis",episodes:"178+"},
+{name:"Inazuma Eleven",episodes:"127"},
+{name:"Digimon Adventure",episodes:"54"},
+{name:"Pokémon",episodes:"1200+"},
+{name:"Yu-Gi-Oh!",episodes:"224"},
+{name:"Yu-Gi-Oh! GX",episodes:"180"},
+{name:"Yu-Gi-Oh! 5D's",episodes:"154"},
+{name:"Beyblade",episodes:"51+"},
+{name:"Bakugan Battle Brawlers",episodes:"52"},
+{name:"Sailor Moon",episodes:"200"},
+{name:"Cardcaptor Sakura",episodes:"70"},
+{name:"Fruits Basket",episodes:"63"},
+{name:"Ouran High School Host Club",episodes:"26"},
+{name:"Nana",episodes:"47"},
+{name:"Lovely Complex",episodes:"24"},
+{name:"Maid Sama!",episodes:"26"},
+{name:"Kimi ni Todoke",episodes:"38+"},
+{name:"Horimiya",episodes:"13"},
+{name:"My Dress-Up Darling",episodes:"12+"},
+{name:"Rent-a-Girlfriend",episodes:"36+"},
+{name:"The Quintessential Quintuplets",episodes:"24"},
+{name:"Rascal Does Not Dream of Bunny Girl Senpai",episodes:"13+"},
+{name:"Darling in the Franxx",episodes:"24"},
+{name:"Plastic Memories",episodes:"13"},
+{name:"Charlotte",episodes:"13"},
+{name:"The Angel Next Door Spoils Me Rotten",episodes:"12"},
+{name:"A Couple of Cuckoos",episodes:"24"},
+{name:"Masamune-kun's Revenge",episodes:"24"},
+{name:"The Dangers in My Heart",episodes:"25"},
+{name:"Insomniacs After School",episodes:"13"},
+{name:"Tsuki ga Kirei",episodes:"12"},
+{name:"Wotakoi",episodes:"11"},
+{name:"Golden Time",episodes:"24"},
+{name:"Orange",episodes:"13"},
+{name:"Anohana",episodes:"11"},
+{name:"Scum's Wish",episodes:"12"},
+{name:"Domestic Girlfriend",episodes:"12"},
+{name:"Kokoro Connect",episodes:"17"},
+{name:"Rascal Does Not Dream of a Dreaming Girl",episodes:"فيلم"},
+{name:"Kiznaiver",episodes:"12"},
+{name:"A Certain Magical Index",episodes:"74+"},
+{name:"A Certain Scientific Railgun",episodes:"73+"},
+{name:"The Irregular at Magic High School",episodes:"52+"},
+{name:"No Game No Life",episodes:"12"},
+{name:"Log Horizon",episodes:"62+"},
+{name:"Grimgar: Ashes and Illusions",episodes:"12"},
+{name:"Goblin Slayer",episodes:"24+"},
+{name:"Is It Wrong to Try to Pick Up Girls in a Dungeon?",episodes:"59+"},
+{name:"The Misfit of Demon King Academy",episodes:"37+"},
+{name:"The Devil Is a Part-Timer!",episodes:"37"},
+{name:"Cautious Hero",episodes:"12"},
+{name:"Arifureta",episodes:"42+"},
+{name:"Tsukimichi: Moonlit Fantasy",episodes:"37+"},
+{name:"The Faraway Paladin",episodes:"24"},
+{name:"The World's Finest Assassin Gets Reincarnated in Another World",episodes:"12"},
+{name:"The Strongest Magician in the Demon Lord's Army Was a Human",episodes:"12"},
+{name:"The Unwanted Undead Adventurer",episodes:"12"},
+{name:"The Wrong Way to Use Healing Magic",episodes:"13"},
+{name:"Chillin' in Another World with Level 2 Super Cheat Powers",episodes:"12"},
+{name:"The New Gate",episodes:"12"},
+{name:"Black Summoner",episodes:"12"},
+{name:"The 8th Son? Are You Kidding Me?",episodes:"12"},
+{name:"How Not to Summon a Demon Lord",episodes:"22"},
+{name:"In Another World With My Smartphone",episodes:"24+"},
+{name:"The Fruit of Evolution",episodes:"24"},
+{name:"Wise Man's Grandchild",episodes:"12"},
+{name:"Death March to the Parallel World Rhapsody",episodes:"12"},
+{name:"The Aristocrat's Otherworldly Adventure",episodes:"12"},
+{name:"Am I Actually the Strongest?",episodes:"12"},
+{name:"The Reincarnation of the Strongest Exorcist in Another World",episodes:"13"},
+{name:"The Executioner and Her Way of Life",episodes:"12"},
+{name:"The Dungeon of Black Company",episodes:"12"},
+{name:"Kemono Michi",episodes:"12"},
+{name:"Problem Children Are Coming from Another World, Aren't They?",episodes:"10"},
+{name:"Drifters",episodes:"12"},
+{name:"Golden Kamuy",episodes:"49+"},
+{name:"Kingdom",episodes:"140+"},
+{name:"86 Eighty-Six",episodes:"23"},
+{name:"Aldnoah.Zero",episodes:"24"},
+{name:"Eighty Six",episodes:"23"},
+{name:"Seraph of the End",episodes:"24"},
+{name:"Kabaneri of the Iron Fortress",episodes:"12"},
+{name:"Akudama Drive",episodes:"12"},
+{name:"Vivy: Fluorite Eye's Song",episodes:"13"},
+{name:"ID: INVADED",episodes:"13"},
+{name:"Deca-Dence",episodes:"12"},
+{name:"Astra Lost in Space",episodes:"12"},
+{name:"Space Dandy",episodes:"26"},
+{name:"Kill la Kill",episodes:"24"},
+{name:"Darling in the Franxx",episodes:"24"},
+{name:"Kill Me Baby",episodes:"13"},
+{name:"Assassination Classroom",episodes:"47"},
+{name:"Classroom of the Elite",episodes:"38+"},
+{name:"Tomodachi Game",episodes:"12"},
+{name:"Battle Game in 5 Seconds",episodes:"12"},
+{name:"Darwin's Game",episodes:"11"},
+{name:"High-Rise Invasion",episodes:"12"},
+{name:"The God of High School",episodes:"13"},
+{name:"Lookism",episodes:"8"},
+{name:"Viral Hit",episodes:"12"},
+{name:"Solo Leveling",episodes:"25"},
+{name:"Tower of God",episodes:"13+"},
+{name:"The Beginning After the End",episodes:"مستمر"},
+{name:"Sung Jin-Woo Special",episodes:"خاص"},
+{name:"Dragon Ball Z",episodes:"291"},
+{name:"Dragon Ball GT",episodes:"64"},
+{name:"Dragon Ball Super",episodes:"131"},
+{name:"Dragon Ball Daima",episodes:"20"},
+{name:"Boruto: Naruto Next Generations",episodes:"293"},
+{name:"Black Butler",episodes:"50+"},
+{name:"K",episodes:"26"},
+{name:"Durarara!!",episodes:"60+"},
+{name:"Baccano!",episodes:"16"},
+{name:"Gangsta.",episodes:"12"},
+{name:"91 Days",episodes:"12"},
+{name:"Banana Fish",episodes:"24"},
+{name:"Great Pretender",episodes:"23"},
+{name:"Moriarty the Patriot",episodes:"24"},
+{name:"Link Click",episodes:"24+"},
+{name:"Heaven Official's Blessing",episodes:"24+"},
+{name:"The Daily Life of the Immortal King",episodes:"52+"},
+{name:"Scissor Seven",episodes:"40+"},
+{name:"Ranking of Kings",episodes:"23"},
+{name:"To Your Eternity",episodes:"40+"},
+{name:"Land of the Lustrous",episodes:"12"},
+{name:"Houseki no Kuni",episodes:"12"},
+{name:"Call of the Night",episodes:"13+"},
+{name:"The Ancient Magus' Bride",episodes:"48+"},
+{name:"Mushishi",episodes:"46"},
+{name:"Natsume's Book of Friends",episodes:"70+"},
+{name:"The Tatami Galaxy",episodes:"11"},
+{name:"March Comes in Like a Lion",episodes:"44"},
+{name:"Ping Pong the Animation",episodes:"11"},
+{name:"Barakamon",episodes:"12"},
+{name:"Silver Spoon",episodes:"22"},
+{name:"Space Brothers",episodes:"99+"},
+{name:"Bakuman",episodes:"75"},
+{name:"Blue Period",episodes:"12"},
+{name:"Arte",episodes:"12"},
+{name:"Keep Your Hands Off Eizouken!",episodes:"12"},
+{name:"A Place Further Than the Universe",episodes:"13"},
+{name:"Yuru Camp",episodes:"37+"},
+{name:"Non Non Biyori",episodes:"39+"},
+{name:"Laid-Back Camp",episodes:"37+"},
+{name:"Nichijou",episodes:"26"},
+{name:"Azumanga Daioh",episodes:"26"},
+{name:"Daily Lives of High School Boys",episodes:"12"},
+{name:"Grand Blue",episodes:"12+"},
+{name:"Asobi Asobase",episodes:"12"},
+{name:"Hinamatsuri",episodes:"12"},
+{name:"Gekkan Shoujo Nozaki-kun",episodes:"12"},
+{name:"Komi Can't Communicate",episodes:"24"},
+{name:"Kubo Won't Let Me Be Invisible",episodes:"12"},
+{name:"Tomo-chan Is a Girl!",episodes:"13"},
+{name:"My Love Story with Yamada-kun at Lv999",episodes:"13"},
+{name:"Skip and Loafer",episodes:"12"},
+{name:"A Sign of Affection",episodes:"12"},
+{name:"Blue Box",episodes:"مستمر"},
+{name:"The Fragrant Flower Blooms with Dignity",episodes:"مستمر"}
 
-const loading =
-document.getElementById("loading");
+];
 
 
-async function loadAnime(){
+/*
+=================================================
+صورة الغلاف الافتراضية
+=================================================
+*/
 
-    try{
+const defaultImage =
+"data:image/svg+xml;charset=UTF-8," +
+encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg"
+width="500"
+height="700">
 
-        let allAnime = [];
+<rect width="100%" height="100%" fill="#121827"/>
 
-        let page = 1;
+<text
+x="50%"
+y="45%"
+fill="#00b7ff"
+font-size="34"
+font-family="Arial"
+text-anchor="middle">
+KATRO
+</text>
+
+<text
+x="50%"
+y="53%"
+fill="white"
+font-size="24"
+font-family="Arial"
+text-anchor="middle">
+ANIME
+</text>
+
+</svg>
+`);
+
+
+/*
+=================================================
+إنشاء البطاقات
+=================================================
+*/
+
+function createAnimeCards(){
+
+    const grid =
+    document.getElementById("animeGrid");
+
+    grid.innerHTML = "";
+
+    animeList.forEach(function(anime){
+
+        const card =
+        document.createElement("a");
+
+        card.className =
+        "anime-card";
 
         /*
-         نطلب 25 أنمي في كل مرة
-         حتى نصل إلى 200 أنمي
+        الأنميات التي لها صفحات حاليًا
         */
 
-        while(allAnime.length < 200 && page <= 8){
+        if(anime.link){
 
-            const response =
-            await fetch(
-                "https://api.jikan.moe/v4/top/anime?page=" + page
-            );
+            card.href =
+            anime.link;
 
-            const data =
-            await response.json();
-
-            if(data.data){
-
-                allAnime =
-                allAnime.concat(data.data);
-
-            }
-
-            page++;
+        }else{
 
             /*
-             تأخير بسيط حتى لا يتم
-             إرسال الطلبات بسرعة كبيرة
+            الصفحة العامة التي سننشئها
+            في الخطوة التالية
             */
 
-            await new Promise(
-                resolve => setTimeout(resolve,1000)
-            );
+            card.href =
+            "anime.html?name=" +
+            encodeURIComponent(anime.name);
 
         }
 
 
-        /*
-         إزالة الأنميات الموجودة أصلًا
-         في الصفحة
-        */
+        const poster =
+        document.createElement("div");
 
-        const existingNames = [
-
-            "Demon Slayer",
-
-            "Solo Leveling",
-
-            "Dragon Ball",
-
-            "One Piece"
-
-        ];
+        poster.className =
+        "poster";
 
 
-        allAnime =
-        allAnime.filter(anime => {
-
-            return !existingNames.some(name =>
-
-                anime.title
-                .toLowerCase()
-                .includes(name.toLowerCase())
-
-            );
-
-        });
+        const img =
+        document.createElement("img");
 
 
         /*
-         نأخذ أول 200 أنمي
+        إذا كان للأنمي غلاف موجود
+        استخدمه، وإلا استخدم الغلاف المؤقت
         */
 
-        allAnime =
-        allAnime.slice(0,200);
+        img.src =
+        anime.image || defaultImage;
+
+        img.alt =
+        anime.name;
 
 
-        allAnime.forEach(
-            anime => {
+        img.onerror =
+        function(){
 
-                createAnimeCard(anime);
+            this.src =
+            defaultImage;
 
-            }
-        );
-
-
-        loading.style.display =
-        "none";
+        };
 
 
-    }catch(error){
-
-        loading.innerHTML =
-        "تعذر تحميل قائمة الأنمي حاليًا. حاول تحديث الصفحة.";
-
-        console.log(error);
-
-    }
-
-}
+        poster.appendChild(img);
 
 
-/* =========================================
-   إنشاء بطاقة الأنمي
-========================================= */
+        const info =
+        document.createElement("div");
 
-function createAnimeCard(anime){
-
-    const card =
-    document.createElement("a");
-
-    card.className =
-    "anime-card";
-
-    /*
-     الأنمي الجديد لا يملك صفحة مشاهدة
-     محلية حتى الآن، لذلك نمنع الانتقال
-     ونتركه كبطاقة معلومات.
-    */
-
-    card.href = "#";
-
-    card.onclick =
-    function(event){
-
-        event.preventDefault();
-
-    };
+        info.className =
+        "anime-info";
 
 
-    const poster =
-    document.createElement("div");
+        const title =
+        document.createElement("h3");
 
-    poster.className =
-    "poster";
-
-
-    const img =
-    document.createElement("img");
-
-    img.src =
-    anime.images.jpg.large_image_url ||
-    anime.images.jpg.image_url;
-
-    img.alt =
-    anime.title;
+        title.textContent =
+        anime.name;
 
 
-    img.onerror =
-    function(){
+        const episodes =
+        document.createElement("div");
 
-        this.style.display =
-        "none";
-
-    };
-
-
-    poster.appendChild(img);
-
-
-    const info =
-    document.createElement("div");
-
-    info.className =
-    "anime-info";
-
-
-    const title =
-    document.createElement("h3");
-
-    title.textContent =
-    anime.title;
-
-
-    const episodes =
-    document.createElement("div");
-
-    episodes.className =
-    "episodes-count";
-
-
-    if(anime.episodes){
+        episodes.className =
+        "episodes-count";
 
         episodes.textContent =
         "عدد الحلقات: " +
         anime.episodes;
 
-    }else{
 
-        episodes.textContent =
-        "عدد الحلقات: مستمر";
+        info.appendChild(title);
 
-    }
+        info.appendChild(episodes);
 
 
-    info.appendChild(title);
+        card.appendChild(poster);
 
-    info.appendChild(episodes);
-
-
-    card.appendChild(poster);
-
-    card.appendChild(info);
+        card.appendChild(info);
 
 
-    animeGrid.appendChild(card);
+        grid.appendChild(card);
+
+    });
 
 }
 
 
-/* =========================================
-   البحث
-========================================= */
+/*
+=================================================
+البحث
+=================================================
+*/
 
 function searchAnime(){
 
-    let input =
+    const input =
     document
     .getElementById("searchInput")
     .value
@@ -544,7 +786,7 @@ function searchAnime(){
     .trim();
 
 
-    let cards =
+    const cards =
     document.querySelectorAll(
         ".anime-card"
     );
@@ -553,29 +795,27 @@ function searchAnime(){
     let found = 0;
 
 
-    cards.forEach(
-        function(card){
+    cards.forEach(function(card){
 
-            let text =
-            card.innerText.toLowerCase();
+        const text =
+        card.innerText.toLowerCase();
 
 
-            if(text.includes(input)){
+        if(text.includes(input)){
 
-                card.style.display =
-                "block";
+            card.style.display =
+            "block";
 
-                found++;
+            found++;
 
-            }else{
+        }else{
 
-                card.style.display =
-                "none";
-
-            }
+            card.style.display =
+            "none";
 
         }
-    );
+
+    });
 
 
     const noResults =
@@ -597,9 +837,10 @@ function searchAnime(){
 }
 
 
-/* تشغيل تحميل الأنميات */
+/*
+تشغيل الموقع
+*/
 
-loadAnime();
+createAnimeCards();
 
-</script></body>
-    </html>
+</script></body></html>
