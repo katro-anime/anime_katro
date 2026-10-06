@@ -49,6 +49,22 @@ header {
     padding: 20px;
 }
 
+
+/* =========================
+   الإعلان
+========================= */
+
+.ad-box {
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 50px;
+}
+
+
+/* =========================
+   المشغل
+========================= */
+
 .player {
     background: #000;
     border-radius: 15px;
@@ -56,12 +72,18 @@ header {
     margin-bottom: 20px;
 }
 
-video {
+.player iframe {
     width: 100%;
-    height: auto;
+    height: 560px;
+    border: 0;
     display: block;
     background: #000;
 }
+
+
+/* =========================
+   معلومات الحلقة
+========================= */
 
 .episode-info {
     background: #0d111c;
@@ -79,21 +101,25 @@ video {
     color: #aeb6c5;
 }
 
+
+/* =========================
+   التحميل
+========================= */
+
 .download-box {
     background: #0d111c;
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
-    text-align: center;
 }
 
 .download-button {
     display: block;
-    width: 100%;
+    text-align: center;
     background: #1687d9;
     color: white;
     text-decoration: none;
-    padding: 13px;
+    padding: 14px;
     border-radius: 9px;
     font-size: 16px;
 }
@@ -101,6 +127,11 @@ video {
 .download-button:hover {
     background: #00b7ff;
 }
+
+
+/* =========================
+   الخوادم
+========================= */
 
 .servers {
     background: #0d111c;
@@ -135,16 +166,30 @@ video {
     background: #00b7ff;
 }
 
+
+/* =========================
+   الفوتر
+========================= */
+
 footer {
     text-align: center;
     color: #777;
     padding: 30px 10px;
 }
 
+
+/* =========================
+   الهاتف
+========================= */
+
 @media (max-width: 600px) {
 
     .container {
         padding: 12px;
+    }
+
+    .player iframe {
+        height: 230px;
     }
 
     .server-list {
@@ -161,24 +206,26 @@ footer {
 KATRO Anime
 </div><a class="home" href="index.html">
 الرئيسية
-</a></div></header><div class="container"><div class="player"><video
+</a></div></header><div class="container"><!-- =========================
+     الإعلان
+========================= --><div class="ad-box"><script async
+src="https://js.mbidadm.com/static/scripts.js"
+data-admpid="467369">
+</script></div><!-- =========================
+     مشغل الفيديو
+========================= --><div class="player"><iframe
 id="videoPlayer"
-controls
-poster="Solo leveling .jpg">
-
-<source
-id="videoSource"
 src=""
-type="video/mp4">
-
-متصفحك لا يدعم تشغيل الفيديو.
-
-</video></div><div class="episode-info"><h1 id="episodeTitle">
+allow="autoplay; fullscreen"
+allowfullscreen>
+</iframe></div><!-- =========================
+     معلومات الحلقة
+========================= --><div class="episode-info"><h1 id="episodeTitle">
 أنت تشاهد الحلقة
 </h1><p id="episodeDescription">
 إذا لم يعمل الخادم الحالي، جرّب أحد الخوادم الأخرى.
 </p></div><!-- =========================
-     زر التحميل
+     التحميل
 ========================= --><div class="download-box"><a
 id="downloadButton"
 class="download-button"
@@ -186,7 +233,9 @@ href="#">
 
 ⬇ تحميل الحلقة
 
-</a></div><div class="servers"><h2>
+</a></div><!-- =========================
+     الخوادم
+========================= --><div class="servers"><h2>
 خوادم المشاهدة
 </h2><div class="server-list"><button
 class="server"
@@ -228,6 +277,11 @@ onclick="changeServer(6)">
 
 </footer><script>
 
+
+/* =========================================
+   قراءة بيانات الحلقة
+========================================= */
+
 const params =
 new URLSearchParams(window.location.search);
 
@@ -238,17 +292,53 @@ const episode =
 params.get("episode") || "";
 
 
-/* =========================
-   معلومات الحلقة
-========================= */
+
+/* =========================================
+   عنوان الحلقة
+========================================= */
 
 document.getElementById("episodeTitle").textContent =
 "أنت تشاهد الحلقة " + episode;
 
 
-/* =========================
-   صفحة التحميل
-========================= */
+
+/* =========================================
+   روابط المشاهدة
+========================================= */
+
+const filekoshSeason2Episode2 =
+"https://filekosh.com/embed/od90zZm5LT";
+
+
+
+/* =========================================
+   تحديد المشغل
+========================================= */
+
+const videoPlayer =
+document.getElementById("videoPlayer");
+
+
+/*
+   الحلقة 2 من الموسم الثاني
+   Solo Leveling
+*/
+
+if (
+    anime === "solo-s2" &&
+    episode === "2"
+) {
+
+    videoPlayer.src =
+    filekoshSeason2Episode2;
+
+}
+
+
+
+/* =========================================
+   زر التحميل
+========================================= */
 
 document.getElementById("downloadButton").href =
 "download.html?anime=" +
@@ -257,39 +347,60 @@ encodeURIComponent(anime) +
 encodeURIComponent(episode);
 
 
-/* =========================
-   Mega - Solo Leveling S2
-   الحلقة 1 فقط
-========================= */
+
+/* =========================================
+   Mega - الحلقة 1 الموسم الثاني
+========================================= */
 
 const megaSeason2Episode1 =
 "https://mega.nz/file/uF1HSQZQ#GhxjYVU5ELDW03p0oftqHXxLt-G7Z-dPzldP18Tyvw8";
 
 
+
+/* =========================================
+   تغيير الخادم
+========================================= */
+
 function changeServer(serverNumber) {
 
+
+    /* ================================
+       SERVER 1 - MEGA
+    ================================= */
+
     if (serverNumber === 1) {
+
 
         if (
             anime === "solo-s2" &&
             episode === "1"
         ) {
 
+
             window.open(
                 megaSeason2Episode1,
                 "_blank"
             );
 
+
             return;
+
         }
+
 
         alert(
             "رابط Mega لهذه الحلقة لم تتم إضافته بعد."
         );
 
         return;
+
     }
 
+
+
+    /* ================================
+       باقي الخوادم
+    ================================= */
 
     if (serverNumber >= 2) {
 
@@ -298,6 +409,7 @@ function changeServer(serverNumber) {
         );
 
         return;
+
     }
 
 }
