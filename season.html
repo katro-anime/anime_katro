@@ -1,0 +1,374 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>الموسم | KATRO Anime</title><style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#080b12;
+    color:white;
+}
+
+header{
+    background:#0d111c;
+    border-bottom:1px solid #1b2638;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#00b7ff;
+    font-size:25px;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    background:#111827;
+    padding:9px 14px;
+    border-radius:8px;
+}
+
+.container{
+    width:92%;
+    max-width:1100px;
+    margin:30px auto;
+}
+
+.back{
+    display:inline-block;
+    background:#1687d9;
+    color:white;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    margin-bottom:20px;
+}
+
+.season-header{
+    background:#0d111c;
+    border:1px solid #1b2638;
+    border-radius:15px;
+    padding:20px;
+    display:flex;
+    gap:22px;
+    align-items:center;
+}
+
+.season-cover{
+    width:190px;
+    height:270px;
+    object-fit:cover;
+    border-radius:12px;
+    background:#111827;
+}
+
+.season-info{
+    flex:1;
+}
+
+.season-info h1{
+    color:#00b7ff;
+    margin-bottom:10px;
+}
+
+.season-info p{
+    color:#94a3b8;
+    margin-bottom:8px;
+}
+
+.season-nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:15px;
+}
+
+.season-nav a{
+    color:white;
+    text-decoration:none;
+    background:#111827;
+    padding:8px 12px;
+    border-radius:7px;
+}
+
+.season-nav a.active{
+    background:#1687d9;
+}
+
+.title{
+    color:#00b7ff;
+    margin:30px 0 18px;
+}
+
+.episodes{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fill,minmax(130px,1fr));
+    gap:10px;
+}
+
+.episode{
+    background:#1687d9;
+    color:white;
+    text-decoration:none;
+    padding:14px 8px;
+    text-align:center;
+    border-radius:8px;
+    transition:.2s;
+}
+
+.episode:hover{
+    background:#00b7ff;
+    transform:translateY(-2px);
+}
+
+footer{
+    text-align:center;
+    color:#64748b;
+    padding:40px;
+}
+
+@media(max-width:700px){
+
+    header{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .season-header{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .season-cover{
+        width:180px;
+        height:250px;
+    }
+
+    .episodes{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+</style></head><body><header><a href="index.html"
+class="logo">
+KATRO Anime
+</a>
+
+<nav><a href="index.html">
+الرئيسية
+</a></nav></header><div class="container"><div id="page"></div></div><footer>
+© 2026 KATRO Anime
+</footer><script src="anime-data.js"></script><script>
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const animeName =
+params.get("anime");
+
+const seasonId =
+params.get("season");
+
+const anime =
+getAnime(animeName);
+
+
+const page =
+document.getElementById("page");
+
+
+if(!anime){
+
+    page.innerHTML = `
+
+        <div class="season-header">
+
+            <div>
+
+                <h2>
+                الأنمي غير موجود
+                </h2>
+
+                <br>
+
+                <a class="back"
+                   href="index.html">
+                العودة للرئيسية
+                </a>
+
+            </div>
+
+        </div>
+
+    `;
+
+}else{
+
+    const season =
+    anime.seasons.find(
+        s => s.id === seasonId
+    );
+
+
+    if(!season){
+
+        page.innerHTML = `
+
+            <div class="season-header">
+
+                <div>
+
+                    <h2>
+                    الموسم غير موجود
+                    </h2>
+
+                    <br>
+
+                    <a class="back"
+                    href="anime.html?name=${encodeURIComponent(animeName)}">
+                    العودة للأنمي
+                    </a>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }else{
+
+        document.title =
+        anime.title +
+        " - " +
+        season.name +
+        " | KATRO Anime";
+
+
+        let seasonNavigation = "";
+
+
+        anime.seasons.forEach(s => {
+
+            seasonNavigation += `
+
+                <a
+                class="${s.id === season.id ? "active" : ""}"
+                href="season.html?anime=${encodeURIComponent(animeName)}&season=${encodeURIComponent(s.id)}">
+
+                ${s.name}
+
+                </a>
+
+            `;
+
+        });
+
+
+        let episodesHTML = "";
+
+
+        for(
+            let i = 1;
+            i <= season.episodes;
+            i++
+        ){
+
+            const watchId =
+            season.watchId ||
+            anime.title;
+
+
+            episodesHTML += `
+
+                <a
+                class="episode"
+                href="watch.html?anime=${encodeURIComponent(watchId)}&episode=${i}">
+
+                الحلقة ${i}
+
+                </a>
+
+            `;
+
+        }
+
+
+        page.innerHTML = `
+
+            <a
+            class="back"
+            href="anime.html?name=${encodeURIComponent(animeName)}">
+
+            ← جميع المواسم
+
+            </a>
+
+
+            <div class="season-header">
+
+                <img
+                class="season-cover"
+                src="${season.cover}"
+                alt="${season.name}"
+                onerror="this.src='${anime.cover}'"
+                >
+
+                <div class="season-info">
+
+                    <h1>
+                    ${anime.title}
+                    </h1>
+
+                    <p>
+                    ${season.name}
+                    </p>
+
+                    <p>
+                    ${season.episodes} حلقة
+                    </p>
+
+
+                    <div class="season-nav">
+
+                    ${seasonNavigation}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h2 class="title">
+            حلقات ${season.name}
+            </h2>
+
+
+            <div class="episodes">
+
+            ${episodesHTML}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+</script></body></html>
