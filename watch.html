@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>مشاهدة | KATRO Anime</title>
-
-<style>
+<title>مشاهدة | KATRO Anime</title><style>
 
 * {
     box-sizing: border-box;
@@ -58,11 +49,6 @@ header {
     padding: 20px;
 }
 
-
-/* =========================
-   المشغل
-========================= */
-
 .player {
     background: #000;
     border-radius: 15px;
@@ -76,11 +62,6 @@ video {
     display: block;
     background: #000;
 }
-
-
-/* =========================
-   معلومات الحلقة
-========================= */
 
 .episode-info {
     background: #0d111c;
@@ -98,10 +79,28 @@ video {
     color: #aeb6c5;
 }
 
+.download-box {
+    background: #0d111c;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
-/* =========================
-   الخوادم
-========================= */
+.download-button {
+    display: block;
+    width: 100%;
+    background: #1687d9;
+    color: white;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 9px;
+    font-size: 16px;
+}
+
+.download-button:hover {
+    background: #00b7ff;
+}
 
 .servers {
     background: #0d111c;
@@ -136,25 +135,11 @@ video {
     background: #00b7ff;
 }
 
-.server.active {
-    background: #00b7ff;
-}
-
-
-/* =========================
-   الفوتر
-========================= */
-
 footer {
     text-align: center;
     color: #777;
     padding: 30px 10px;
 }
-
-
-/* =========================
-   الهاتف
-========================= */
 
 @media (max-width: 600px) {
 
@@ -172,42 +157,11 @@ footer {
 
 }
 
-</style>
-
-</head>
-
-
-<body>
-
-
-<header>
-
-<div class="header-content">
-
-<div class="logo">
+</style></head><body><header><div class="header-content"><div class="logo">
 KATRO Anime
-</div>
-
-<a class="home" href="index.html">
+</div><a class="home" href="index.html">
 الرئيسية
-</a>
-
-</div>
-
-</header>
-
-
-
-<div class="container">
-
-
-<!-- =========================
-     مشغل الفيديو
-========================= -->
-
-<div class="player">
-
-<video
+</a></div></header><div class="container"><div class="player"><video
 id="videoPlayer"
 controls
 poster="Solo leveling .jpg">
@@ -219,236 +173,123 @@ type="video/mp4">
 
 متصفحك لا يدعم تشغيل الفيديو.
 
-</video>
-
-</div>
-
-
-
-<!-- =========================
-     معلومات الحلقة
-========================= -->
-
-<div class="episode-info">
-
-<h1 id="episodeTitle">
+</video></div><div class="episode-info"><h1 id="episodeTitle">
 أنت تشاهد الحلقة
-</h1>
-
-<p id="episodeDescription">
+</h1><p id="episodeDescription">
 إذا لم يعمل الخادم الحالي، جرّب أحد الخوادم الأخرى.
-</p>
+</p></div><!-- =========================
+     زر التحميل
+========================= --><div class="download-box"><a
+id="downloadButton"
+class="download-button"
+href="#">
 
-</div>
+⬇ تحميل الحلقة
 
-
-
-<!-- =========================
-     الخوادم
-========================= -->
-
-<div class="servers">
-
-<h2>
+</a></div><div class="servers"><h2>
 خوادم المشاهدة
-</h2>
-
-
-<div class="server-list">
-
-
-<!-- =========================
-     SERVER 1 - MEGA
-========================= -->
-
-<button
+</h2><div class="server-list"><button
 class="server"
-id="megaServer"
 onclick="changeServer(1)">
 
 Mega ▶
 
-</button>
-
-
-
-<!-- =========================
-     SERVER 2
-========================= -->
-
-<button
+</button><button
 class="server"
 onclick="changeServer(2)">
 
 الخادم 2 ▶
 
-</button>
-
-
-
-<!-- =========================
-     SERVER 3
-========================= -->
-
-<button
+</button><button
 class="server"
 onclick="changeServer(3)">
 
 الخادم 3 ▶
 
-</button>
-
-
-
-<!-- =========================
-     SERVER 4
-========================= -->
-
-<button
+</button><button
 class="server"
 onclick="changeServer(4)">
 
 الخادم 4 ▶
 
-</button>
-
-
-
-<!-- =========================
-     SERVER 5
-========================= -->
-
-<button
+</button><button
 class="server"
 onclick="changeServer(5)">
 
 الخادم 5 ▶
 
-</button>
-
-
-
-<!-- =========================
-     SERVER 6
-========================= -->
-
-<button
+</button><button
 class="server"
 onclick="changeServer(6)">
 
 الخادم 6 ▶
 
-</button>
+</button></div></div></div><footer>© 2026 KATRO Anime
 
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<footer>
-
-© 2026 KATRO Anime
-
-</footer>
-
-
-
-<script>
-
-
-/* =========================================
-   قراءة بيانات الحلقة من الرابط
-========================================= */
+</footer><script>
 
 const params =
 new URLSearchParams(window.location.search);
 
-
 const anime =
 params.get("anime") || "";
-
 
 const episode =
 params.get("episode") || "";
 
 
-
-/* =========================================
-   عرض رقم الحلقة
-========================================= */
+/* =========================
+   معلومات الحلقة
+========================= */
 
 document.getElementById("episodeTitle").textContent =
 "أنت تشاهد الحلقة " + episode;
 
 
+/* =========================
+   صفحة التحميل
+========================= */
 
-/* =========================================
-   رابط Mega الحالي
-========================================= */
+document.getElementById("downloadButton").href =
+"download.html?anime=" +
+encodeURIComponent(anime) +
+"&episode=" +
+encodeURIComponent(episode);
+
+
+/* =========================
+   Mega - Solo Leveling S2
+   الحلقة 1 فقط
+========================= */
 
 const megaSeason2Episode1 =
 "https://mega.nz/file/uF1HSQZQ#GhxjYVU5ELDW03p0oftqHXxLt-G7Z-dPzldP18Tyvw8";
 
 
-
-/* =========================================
-   تغيير الخادم
-========================================= */
-
 function changeServer(serverNumber) {
 
-
-    /* =====================================
-       الخادم 1 = Mega
-       
-       الزر ظاهر دائمًا
-       
-       لكن الرابط يعمل فقط:
-       
-       Solo Leveling
-       الموسم الثاني
-       الحلقة 1
-    ===================================== */
-
     if (serverNumber === 1) {
-
 
         if (
             anime === "solo-s2" &&
             episode === "1"
         ) {
 
-
             window.open(
                 megaSeason2Episode1,
                 "_blank"
             );
 
-
             return;
-
         }
-
-
-        /* باقي الأنميات والحلقات */
 
         alert(
             "رابط Mega لهذه الحلقة لم تتم إضافته بعد."
         );
 
-
         return;
     }
 
-
-
-    /* =====================================
-       الخوادم الأخرى
-    ===================================== */
 
     if (serverNumber >= 2) {
 
@@ -457,14 +298,8 @@ function changeServer(serverNumber) {
         );
 
         return;
-
     }
 
 }
 
-</script>
-
-
-</body>
-
-    </html>
+</script></body></html>
