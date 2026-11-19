@@ -601,15 +601,6 @@ return Object.keys(KATRO_ANIME);
 
       anime.cover = image;
 
-      // استخدام غلاف الأنمي كبديل لأغلفة المواسم
-      if (Array.isArray(anime.seasons)) {
-        anime.seasons.forEach(function (season) {
-          if (!season.cover || season.cover.startsWith("covers/")) {
-            season.cover = image;
-          }
-        });
-      }
-
       // تحديث صور الصفحة الرئيسية وصفحة الأنمي
       document.querySelectorAll("img").forEach(function (img) {
         if (
