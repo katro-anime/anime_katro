@@ -619,10 +619,6 @@ return Object.keys(KATRO_ANIME);
           img.src = image;
         }
       });
-
-      // تحديث أغلفة بطاقات المواسم
-      document.querySelectorAll(".seasons .season img").forEach(function (img) {
-        img.src = image;
       });
     });
 
