@@ -189,13 +189,204 @@ function getAnime(name) {
     return KATRO_ANIME[name] || null;
 }
 
-function getAnimeNames() {
-    return Object.keys(KATRO_ANIME);
-}
+function getAnimeNames() 
+/* =========================================
+   KATRO AUTO ANIME COVERS
+   نظام جلب الأغلفة مع التحقق من الأسماء
+========================================= */
 
-/* =========================================
-   
-/* =========================================
+(function () {
+    const API = "https://graphql.anilist.co";
+    const CACHE_KEY = "katro_anime_covers_v4";
+    const CACHE_TIME = 30 * 24 * 60 * 60 * 1000;
+
+    const ALIASES = {
+        "Demon Slayer": [
+            "Demon Slayer: Kimetsu no Yaiba",
+            "Kimetsu no Yaiba"
+        ],
+        "Haikyuu": ["Haikyuu", "Haikyuu!!"],
+        "Pokémon": ["Pokemon", "Pocket Monsters"],
+        "JoJo's Bizarre Adventure": [
+            "JoJo's Bizarre Adventure",
+            "JoJo no Kimyou na Bouken"
+        ],
+        "One Piece": ["One Piece"],
+        "Solo Leveling": ["Solo Leveling"],
+        "Naruto": ["Naruto"],
+        "Bleach": ["Bleach"],
+        "Jujutsu Kaisen": ["Jujutsu Kaisen"],
+        "Attack on Titan": [
+            "Attack on Titan",
+            "Shingeki no Kyojin"
+        ]
+    };
+
+    function normalize(value) {
+        return String(value || "")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]/g, "");
+    }
+
+    function isExactMatch(name, media) {
+        const titles = [
+            media.title && media.title.english,
+            media.title && media.title.romaji,
+            media.title && media.title.native
+        ].concat(media.synonyms || []);
+
+        const accepted = [name].concat(ALIASES[name] || [])
+            .map(normalize);
+
+        return titles.some(function (title) {
+            return accepted.includes(normalize(title));
+        });
+    }
+
+    function applyCovers(covers) {
+        Object.keys(covers).forEach(function (name) {
+            const anime = getAnime(name);
+            if (!anime || !covers[name]) return;
+
+            anime.cover = covers[name];
+
+            document.querySelectorAll("img").forEach(function (img) {
+                if (
+                    img.alt === anime.title ||
+                    img.alt === anime.arabic
+                ) {
+                    img.src = covers[name];
+                }
+            });
+        });
+    }
+
+    async function fetchBatch(names) {
+        const fields = names.map(function (name, index) {
+            return `
+                a${index}: Page(page: 1, perPage: 1) {
+                    media(
+                        search: ${JSON.stringify(name)},
+                        type: ANIME,
+                        sort: SEARCH_MATCH,
+                        isAdult: false
+                    ) {
+                        title {
+                            english
+                            romaji
+                            native
+                        }
+                        synonyms
+                        coverImage {
+                            extraLarge
+                            large
+                        }
+                    }
+                }
+            `;
+        }).join("\n");
+
+        const response = await fetch(API, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                query: `query { ${fields} }`
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error("AniList request failed");
+        }
+
+        const result = await response.json();
+
+        if (!result.data) {
+            throw new Error("AniList returned no data");
+        }
+
+        const covers = {};
+
+        names.forEach(function (name, index) {
+            const page = result.data["a" + index];
+            const media = page && page.media && page.media[0];
+
+            if (!media || !isExactMatch(name, media)) return;
+
+            const image = media.coverImage &&
+                (media.coverImage.extraLarge ||
+                 media.coverImage.large);
+
+            if (image) {
+                covers[name] = image;
+            }
+        });
+
+        return covers;
+    }
+
+    async function fetchAllCovers() {
+        const names = getAnimeNames();
+        const allCovers = {};
+
+        for (let i = 0; i < names.length; i += 8) {
+            const batch = names.slice(i, i + 8);
+            const covers = await fetchBatch(batch);
+
+            Object.assign(allCovers, covers);
+        }
+
+        return allCovers;
+    }
+
+    async function start() {
+        try {
+            const saved = JSON.parse(
+                localStorage.getItem(CACHE_KEY) || "null"
+            );
+
+            if (
+                saved &&
+                saved.time &&
+                Date.now() - saved.time < CACHE_TIME
+            ) {
+                applyCovers(saved.covers || {});
+            }
+        } catch (error) {
+            console.log("KATRO: Cache unavailable");
+        }
+
+        try {
+            const covers = await fetchAllCovers();
+
+            applyCovers(covers);
+
+            localStorage.setItem(
+                CACHE_KEY,
+                JSON.stringify({
+                    time: Date.now(),
+                    covers: covers
+                })
+            );
+
+            console.log("KATRO: Covers updated successfully");
+
+        } catch (error) {
+            console.log("KATRO: Cover update failed", error);
+        }
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", start);
+    } else {
+        start();
+    }
+})();
+
    KATRO AUTO ANIME COVERS
    مطابقة دقيقة للأغلفة من AniList
 ========================================= */
