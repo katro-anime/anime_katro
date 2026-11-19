@@ -577,3 +577,164 @@ function getAnimeNames(){
 return Object.keys(KATRO_ANIME);
 
         }
+
+/* =========================================
+   KATRO AUTO ANIME COVERS
+   جلب أغلفة الأنميات تلقائياً من AniList
+========================================= */
+
+(function () {
+  const CACHE_KEY = "katro_anime_covers_v1";
+  const CACHE_TIME = 30 * 24 * 60 * 60 * 1000;
+  const API = "https://graphql.anilist.co";
+
+  function applyCovers(covers) {
+    if (typeof getAnimeNames !== "function") return;
+
+    const names = getAnimeNames();
+
+    names.forEach(function (name) {
+      const anime = getAnime(name);
+      const image = covers[name];
+
+      if (!anime || !image) return;
+
+      anime.cover = image;
+
+      // استخدام غلاف الأنمي كبديل لأغلفة المواسم
+      if (Array.isArray(anime.seasons)) {
+        anime.seasons.forEach(function (season) {
+          if (!season.cover || season.cover.startsWith("covers/")) {
+            season.cover = image;
+          }
+        });
+      }
+
+      // تحديث صور الصفحة الرئيسية وصفحة الأنمي
+      document.querySelectorAll("img").forEach(function (img) {
+        if (
+          img.alt === anime.title ||
+          img.alt === anime.arabic
+        ) {
+          img.src = image;
+        }
+      });
+
+      // تحديث أغلفة بطاقات المواسم
+      document.querySelectorAll(".seasons .season img").forEach(function (img) {
+        img.src = image;
+      });
+    });
+
+    // تحديث صورة صفحة الموسم
+    const params = new URLSearchParams(location.search);
+    const currentName = params.get("anime") || params.get("name");
+    const currentAnime = currentName && getAnime(currentName);
+    const poster = document.querySelector(".poster");
+
+    if (currentAnime && poster && currentAnime.cover) {
+      poster.src = currentAnime.cover;
+    }
+  }
+
+  async function fetchCovers() {
+    const names = getAnimeNames();
+    const covers = {};
+
+    // طلب واحد يجلب نتائج جميع الأنميات
+    const fields = names.map(function (name, index) {
+      return `
+        a${index}: Page(page:1,perPage:1) {
+          media(
+            search: ${JSON.stringify(name)},
+            type: ANIME,
+            sort: SEARCH_MATCH
+          ) {
+            title { english romaji }
+            coverImage { extraLarge large }
+          }
+        }
+      `;
+    }).join("\n");
+
+    const query = `query { ${fields} }`;
+
+    const response = await fetch(API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({ query })
+    });
+
+    if (!response.ok) {
+      throw new Error("Anime cover API error");
+    }
+
+    const result = await response.json();
+
+    if (!result.data) {
+      throw new Error("No anime data returned");
+    }
+
+    names.forEach(function (name, index) {
+      const page = result.data["a" + index];
+      const media = page && page.media && page.media[0];
+
+      if (media && media.coverImage) {
+        const image =
+          media.coverImage.extraLarge ||
+          media.coverImage.large;
+
+        if (image) covers[name] = image;
+      }
+    });
+
+    return covers;
+  }
+
+  document.addEventListener("DOMContentLoaded", async function () {
+    let cached = null;
+
+    // تحميل الأغلفة المحفوظة إن وجدت
+    try {
+      const saved = JSON.parse(
+        localStorage.getItem(CACHE_KEY) || "null"
+      );
+
+      if (
+        saved &&
+        saved.time &&
+        Date.now() - saved.time < CACHE_TIME
+      ) {
+        cached = saved.covers;
+        applyCovers(cached);
+      }
+    } catch (error) {
+      console.log("KATRO cache unavailable");
+    }
+
+    // تحديث الأغلفة من قاعدة البيانات
+    try {
+      const covers = await fetchCovers();
+
+      applyCovers(covers);
+
+      localStorage.setItem(
+        CACHE_KEY,
+        JSON.stringify({
+          time: Date.now(),
+          covers: covers
+        })
+      );
+
+      console.log("KATRO: Anime covers updated!");
+    } catch (error) {
+      console.log(
+        "KATRO: Using available covers.",
+        error
+      );
+    }
+  });
+})();
