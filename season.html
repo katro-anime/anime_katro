@@ -1,427 +1,136 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>الحلقات | KATRO Anime</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KATRO Anime - الحلقات</title>
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    font-family:Arial,sans-serif;
-    background:#080b12;
-    color:white;
-}
-
-header{
-    background:#0d111c;
-    padding:18px;
-    text-align:center;
-    border-bottom:1px solid #1b2638;
-}
-
-.logo{
-    color:#00b7ff;
-    font-size:27px;
-    font-weight:bold;
-}
-
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:20px 15px;
-}
-
-.back{
-    display:inline-block;
-    color:#00b7ff;
-    text-decoration:none;
-    margin-bottom:20px;
-}
-
-.anime-title{
-    color:#00b7ff;
-    font-size:18px;
-    margin-bottom:8px;
-}
-
-.season-title{
-    font-size:27px;
-    margin-bottom:8px;
-}
-
-.info{
-    color:#9da9bb;
-    margin-bottom:25px;
-}
-
-.navigation-title{
-    font-size:21px;
-    margin-bottom:12px;
-}
-
-.season-navigation{
-    display:flex;
-    gap:10px;
-    overflow-x:auto;
-    padding-bottom:10px;
-    margin-bottom:30px;
-}
-
-.nav-item{
-    flex:0 0 auto;
-    text-decoration:none;
-    color:white;
-    background:#0d111c;
-    border:1px solid #1d2a3c;
-    border-radius:10px;
-    padding:12px 15px;
-}
-
-.nav-item.active{
-    background:#1687d9;
-    border-color:#1687d9;
-}
-
-.episodes-title{
-    font-size:22px;
-    margin-bottom:15px;
-}
-
-.episodes{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fill,minmax(150px,1fr));
-    gap:10px;
-}
-
-.episode{
-    display:block;
-    text-decoration:none;
-    text-align:center;
-    background:#0d111c;
-    color:white;
-    border:1px solid #1c2b3d;
-    border-radius:10px;
-    padding:15px 8px;
-    transition:.2s;
-}
-
-.episode:hover{
-    border-color:#00b7ff;
-    transform:translateY(-2px);
-}
-
-.movie-box{
-    background:#0d111c;
-    border:1px solid #1c2b3d;
-    border-radius:15px;
-    padding:30px;
-    text-align:center;
-}
-
-.movie-button{
-    display:inline-block;
-    margin-top:20px;
-    background:#1687d9;
-    color:white;
-    text-decoration:none;
-    padding:13px 25px;
-    border-radius:9px;
-}
-
-.error{
-    text-align:center;
-    padding:50px 10px;
-}
-
-footer{
-    text-align:center;
-    color:#758195;
-    padding:30px 15px;
-}
-
+*{box-sizing:border-box}
+body{margin:0;background:#080b12;color:white;font-family:Arial,sans-serif}
+header{padding:18px 5%;background:#101725;border-bottom:1px solid #19365c;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:bold;color:#28a9ff;text-decoration:none}
+.home{color:white;text-decoration:none;background:#17263b;padding:10px 15px;border-radius:9px}
+.container{max-width:1100px;margin:auto;padding:22px 16px}
+.hero{display:flex;gap:20px;align-items:center;background:#101725;padding:18px;border-radius:15px;flex-wrap:wrap}
+.poster{width:150px;height:200px;object-fit:cover;border-radius:10px}
+.info{flex:1;min-width:200px}
+h1{color:#38b5ff;margin:0 0 10px}
+.info p{color:#aabbd0;line-height:1.7}
+h2{color:#38b5ff;margin-top:30px}
+.season-list{display:flex;gap:10px;flex-wrap:wrap}
+.season-link{background:#17263b;color:white;padding:10px 15px;border-radius:9px;text-decoration:none}
+.season-link.active{background:#087fc4}
+.episodes{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:13px}
+.episode{background:#111c2c;border:1px solid #1b3555;border-radius:11px;padding:18px 10px;text-align:center;text-decoration:none;color:white;transition:.2s}
+.episode:hover{border-color:#28a9ff;transform:translateY(-3px)}
+.number{font-size:25px;color:#38b5ff;font-weight:bold;margin-bottom:8px}
+.watch{display:inline-block;background:#087fc4;padding:8px 15px;border-radius:8px;margin-top:8px}
+.message{background:#151e2c;padding:16px;border-radius:10px;color:#ffc56b}
+footer{text-align:center;padding:25px;color:#8292a8}
 </style>
-
 </head>
-
 <body>
 
 <header>
-
-<div class="logo">
-KATRO Anime
-</div>
-
+<a class="logo" href="index.html">KATRO Anime</a>
+<a class="home" href="index.html">الرئيسية</a>
 </header>
 
-<div class="container">
+<main class="container">
+<div id="content">جاري تحميل الحلقات...</div>
+</main>
 
-<div id="content"></div>
-
-</div>
-
-<footer>
-© 2026 KATRO Anime
-</footer>
+<footer>KATRO Anime</footer>
 
 <script src="anime-data.js"></script>
-
 <script>
-
-const params =
-new URLSearchParams(window.location.search);
-
-const animeId =
-params.get("anime");
-
-const seasonId =
-params.get("season");
-
-const anime =
-getAnimeById(animeId);
-
-const content =
-document.getElementById("content");
-
-if(!anime){
-
-    content.innerHTML = `
-        <div class="error">
-            <h2>الأنمي غير موجود</h2>
-        </div>
-    `;
-
-}else{
-
-    const season =
-        getSeasonById(anime,seasonId);
-
-    if(!season){
-
-        content.innerHTML = `
-            <div class="error">
-                <h2>الجزء غير موجود</h2>
-            </div>
-        `;
-
-    }else{
-
-        document.title =
-            season.nameAr +
-            " | " +
-            anime.titleAr +
-            " | KATRO Anime";
-
-        let html = `
-
-            <a
-                class="back"
-                href="anime.html?anime=${anime.id}"
-            >
-                ← العودة إلى صفحة الأنمي
-            </a>
-
-            <div class="anime-title">
-                ${anime.titleAr}
-            </div>
-
-            <h1 class="season-title">
-                ${season.nameAr}
-            </h1>
-
-            <div class="info">
-        `;
-
-        if(season.movie){
-
-            html += `
-                فيلم
-            `;
-
-        }else if(season.episodes > 0){
-
-            html += `
-                ${season.episodes} حلقة
-            `;
-
-        }else{
-
-            html += `
-                قريبًا
-            `;
-
-        }
-
-        html += `
-            </div>
-
-            <div class="navigation-title">
-                الأجزاء والمواسم
-            </div>
-
-            <div class="season-navigation">
-        `;
-
-        anime.seasons.forEach(otherSeason=>{
-
-            const active =
-                otherSeason.id === season.id
-                ? "active"
-                : "";
-
-            const count =
-                otherSeason.movie
-                ? "فيلم"
-                : otherSeason.episodes > 0
-                    ? `${otherSeason.episodes} حلقة`
-                    : "قريبًا";
-
-            html += `
-
-                <a
-                    class="nav-item ${active}"
-                    href="season.html?anime=${anime.id}&season=${otherSeason.id}"
-                >
-                    ${otherSeason.nameAr}
-                    <br>
-                    <small>${count}</small>
-                </a>
-
-            `;
-
-        });
-
-        html += `
-            </div>
-        `;
-
-
-        /* =========================
-           فيلم
-        ========================= */
-
-        if(season.movie){
-
-            html += `
-
-                <div class="movie-box">
-
-                    <h2>
-                        ${season.nameAr}
-                    </h2>
-
-                    <p style="margin-top:12px;color:#9da9bb;">
-                        هذا الجزء فيلم وليس حلقات تلفزيونية.
-                    </p>
-
-                </div>
-
-            `;
-
-        }
-
-
-        /* =========================
-           موسم / حلقات
-        ========================= */
-
-        else if(season.episodes > 0){
-
-            html += `
-
-                <div class="episodes-title">
-                    الحلقات
-                </div>
-
-                <div class="episodes">
-            `;
-
-            for(
-                let episode = 1;
-                episode <= season.episodes;
-                episode++
-            ){
-
-                let watchAnime =
-                    anime.id;
-
-                /*
-                 * Solo Leveling
-                 * الموسم الثاني يستخدم solo-s2
-                 */
-
-                if(
-                    anime.id === "solo-leveling" &&
-                    season.id === "season-2"
-                ){
-                    watchAnime = "solo-s2";
-                }
-
-                html += `
-
-                    <a
-                        class="episode"
-                        href="watch.html?anime=${watchAnime}&episode=${episode}"
-                    >
-                        الحلقة ${episode}
-                    </a>
-
-                `;
-
-            }
-
-            html += `
-                </div>
-            `;
-
-        }
-
-
-        /* =========================
-           لا توجد حلقات بعد
-        ========================= */
-
-        else{
-
-            html += `
-
-                <div class="movie-box">
-
-                    <h2>
-                        لم تبدأ الحلقات بعد
-                    </h2>
-
-                </div>
-
-            `;
-
-        }
-
-
-        html += `
-
-            `;
-
-        content.innerHTML = html;
-
-    }
-
+const params = new URLSearchParams(location.search);
+const animeName = params.get("anime") || params.get("name") || "";
+const seasonId = params.get("season") || "";
+const content = document.getElementById("content");
+
+function safe(value){
+ return String(value ?? "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
 }
 
+function error(message){
+ content.innerHTML = `<div class="message">${safe(message)}</div>`;
+}
+
+if(typeof getAnime !== "function"){
+ error("تعذر تحميل بيانات الأنمي. تأكد من وجود anime-data.js.");
+}else{
+ const anime = getAnime(animeName);
+
+ if(!anime){
+  error("لم يتم العثور على الأنمي. ارجع إلى الرئيسية واختره من جديد.");
+ }else{
+  const seasons = Array.isArray(anime.seasons) ? anime.seasons : [];
+  const season = seasons.find(item => item.id === seasonId);
+
+  if(!season){
+   error("لم يتم العثور على هذا الموسم. ارجع إلى صفحة الأنمي واختر الموسم.");
+  }else{
+   const title = anime.arabic || anime.title || animeName;
+   const seasonTitle = season.name || "الموسم";
+   const cover = season.cover || anime.cover || "";
+   const episodeCount = Math.max(0, Number(season.episodes) || 0);
+   const watchAnime = season.watchId || animeName;
+
+   content.innerHTML = `
+    <section class="hero">
+     <img class="poster" src="${safe(cover)}" alt="${safe(seasonTitle)}"
+       onerror="this.style.display='none'">
+     <div class="info">
+      <h1>${safe(title)}</h1>
+      <h3>${safe(seasonTitle)}</h3>
+      <p>اختر الحلقة التي تريد مشاهدتها.</p>
+      <p>عدد الحلقات: ${episodeCount}</p>
+     </div>
+    </section>
+
+    <h2>المواسم</h2>
+    <div class="season-list" id="seasonList"></div>
+
+    <h2>الحلقات</h2>
+    <div class="episodes" id="episodes"></div>
+   `;
+
+   const seasonList = document.getElementById("seasonList");
+
+   seasons.forEach(item => {
+    const link = document.createElement("a");
+    link.className = "season-link" + (item.id === seasonId ? " active" : "");
+    link.href = `season.html?anime=${encodeURIComponent(animeName)}&season=${encodeURIComponent(item.id)}`;
+    link.textContent = item.name || item.id;
+    seasonList.appendChild(link);
+   });
+
+   const episodesArea = document.getElementById("episodes");
+
+   if(episodeCount === 0){
+    episodesArea.innerHTML = '<div class="message">لم تتم إضافة حلقات هذا الموسم بعد.</div>';
+   }else{
+    for(let i = 1; i <= episodeCount; i++){
+     const link = document.createElement("a");
+     link.className = "episode";
+     link.href = `watch.html?anime=${encodeURIComponent(watchAnime)}&episode=${i}`;
+
+     link.innerHTML = `
+      <div class="number">${i}</div>
+      <div>الحلقة ${i}</div>
+      <span class="watch">مشاهدة</span>
+     `;
+
+     episodesArea.appendChild(link);
+    }
+   }
+  }
+ }
+}
 </script>
-
 </body>
-
-    </html>
+</html>
