@@ -1,189 +1,223 @@
 
-const KATRO_ANIME = {
-"One Piece": {
-    title: "One Piece",
-    arabic: "ون بيس",
-    cover: "covers/one-piece.jpg",
-    ongoing: true,
-    totalEpisodes: 1180,
-    seasons: [
-        { id: "s1", name: "الموسم الأول", episodes: 61, cover: "covers/one-piece-s1.jpg" },
-        { id: "s2", name: "الموسم الثاني", episodes: 74, cover: "covers/one-piece-s2.jpg" },
-        { id: "s3", name: "الموسم الثالث", episodes: 72, cover: "covers/one-piece-s3.jpg" },
-        { id: "s4", name: "الموسم الرابع", episodes: 73, cover: "covers/one-piece-s4.jpg" },
-        { id: "s5", name: "الموسم الخامس", episodes: 69, cover: "covers/one-piece-s5.jpg" },
-        { id: "s6", name: "الموسم السادس", episodes: 73, cover: "covers/one-piece-s6.jpg" },
-        { id: "s7", name: "الموسم السابع", episodes: 73, cover: "covers/one-piece-s7.jpg" },
-        { id: "s8", name: "الموسم الثامن", episodes: 72, cover: "covers/one-piece-s8.jpg" },
-        { id: "s9", name: "الموسم التاسع", episodes: 72, cover: "covers/one-piece-s9.jpg" },
-        { id: "s10", name: "الموسم العاشر", episodes: 72, cover: "covers/one-piece-s10.jpg" },
-        { id: "s11", name: "الموسم الحادي عشر", episodes: 72, cover: "covers/one-piece-s11.jpg" },
-        { id: "s12", name: "الموسم الثاني عشر", episodes: 72, cover: "covers/one-piece-s12.jpg" },
-        { id: "s13", name: "الموسم الثالث عشر", episodes: 72, cover: "covers/one-piece-s13.jpg" },
-        { id: "s14", name: "الموسم الرابع عشر", episodes: 72, cover: "covers/one-piece-s14.jpg" },
-        { id: "s15", name: "الموسم الخامس عشر", episodes: 72, cover: "covers/one-piece-s15.jpg" },
-        { id: "s16", name: "الموسم السادس عشر", episodes: 72, cover: "covers/one-piece-s16.jpg" }
-    ]
-},
-"Solo Leveling": {
-    title: "Solo Leveling",
-    arabic: "سولو ليفلينج",
-    cover: "covers/solo-leveling.jpg",
-    totalEpisodes: 25,
-    seasons: [
-        { id: "s1", name: "الموسم الأول", episodes: 12, cover: "covers/solo-leveling-s1.jpg", watchId: "solo" },
-        { id: "s2", name: "الموسم الثاني", episodes: 13, cover: "covers/solo-leveling-s2.jpg", watchId: "solo-s2" }
-    ]
-},
-"Demon Slayer": {
-    title: "Demon Slayer",
-    arabic: "قاتل الشياطين",
-    cover: "covers/demon-slayer.jpg",
-    seasons: [
-        { id: "s1", name: "الموسم الأول", episodes: 26, cover: "covers/demon-slayer-s1.jpg", watchId: "Demon Slayer" },
-        { id: "s2", name: "الموسم الثاني", episodes: 11, cover: "covers/demon-slayer-s2.jpg", watchId: "Demon Slayer" },
-        { id: "s3", name: "الموسم الثالث", episodes: 11, cover: "covers/demon-slayer-s3.jpg", watchId: "Demon Slayer" },
-        { id: "s4", name: "الموسم الرابع", episodes: 8, cover: "covers/demon-slayer-s4.jpg", watchId: "Demon Slayer" }
-    ]
-},
-"Naruto": {
-    title: "Naruto",
-    arabic: "ناروتو",
-    cover: "covers/naruto.jpg",
-    seasons: [
-        { id: "s1", name: "Naruto", episodes: 220, cover: "covers/naruto-s1.jpg", watchId: "Naruto" },
-        { id: "s2", name: "Naruto Shippuden", episodes: 500, cover: "covers/naruto-s2.jpg", watchId: "Naruto Shippuden" }
-    ]
-},
-"Bleach": {
-    title: "Bleach",
-    arabic: "بليتش",
-    cover: "covers/bleach.jpg",
-    seasons: [
-        { id: "s1", name: "Bleach", episodes: 366, cover: "covers/bleach-s1.jpg", watchId: "Bleach" },
-        { id: "s2", name: "Thousand-Year Blood War", episodes: 40, cover: "covers/bleach-tybw.jpg", watchId: "Bleach TYBW" }
-    ]
-},
-"Jujutsu Kaisen": {
-    title: "Jujutsu Kaisen",
-    arabic: "جوجوتسو كايسن",
-    cover: "covers/jujutsu-kaisen.jpg",
-    seasons: [
-        { id: "s1", name: "الموسم الأول", episodes: 24, cover: "covers/jujutsu-kaisen-s1.jpg", watchId: "Jujutsu Kaisen" },
-        { id: "s2", name: "الموسم الثاني", episodes: 23, cover: "covers/jujutsu-kaisen-s2.jpg", watchId: "Jujutsu Kaisen" }
-    ]
-},
-"Attack on Titan": {
-    title: "Attack on Titan",
-    arabic: "هجوم العمالقة",
-    cover: "covers/attack-on-titan.jpg",
-    seasons: [
-        { id: "s1", name: "الموسم الأول", episodes: 25, cover: "covers/attack-on-titan-s1.jpg", watchId: "Attack on Titan" },
-        { id: "s2", name: "الموسم الثاني", episodes: 12, cover: "covers/attack-on-titan-s2.jpg", watchId: "Attack on Titan" },
-        { id: "s3", name: "الموسم الثالث", episodes: 22, cover: "covers/attack-on-titan-s3.jpg", watchId: "Attack on Titan" },
-        { id: "s4", name: "الموسم الرابع", episodes: 30, cover: "covers/attack-on-titan-s4.jpg", watchId: "Attack on Titan" }
-    ]
-},
-"My Hero Academia": {
-    title: "My Hero Academia",
-    arabic: "أكاديمية بطلي",
-    cover: "covers/my-hero-academia.jpg",
-    seasons: [
-        { id: "s1", name: "الموسم الأول", episodes: 13, cover: "covers/my-hero-academia-s1.jpg" },
-        { id: "s2", name: "الموسم الثاني", episodes: 25, cover: "covers/my-hero-academia-s2.jpg" },
-        { id: "s3", name: "الموسم الثالث", episodes: 25, cover: "covers/my-hero-academia-s3.jpg" },
-        { id: "s4", name: "الموسم الرابع", episodes: 25, cover: "covers/my-hero-academia-s4.jpg" },
-        { id: "s5", name: "الموسم الخامس", episodes: 25, cover: "covers/my-hero-academia-s5.jpg" },
-        { id: "s6", name: "الموسم السادس", episodes: 25, cover: "covers/my-hero-academia-s6.jpg" },
-        { id: "s7", name: "الموسم السابع", episodes: 21, cover: "covers/my-hero-academia-s7.jpg" }
-    ]
-},
-"Dragon Ball": {
-    title: "Dragon Ball",
-    arabic: "دراغون بول",
-    cover: "covers/dragon-ball.jpg",
-    seasons: [
-        { id: "s1", name: "Dragon Ball", episodes: 153, cover: "covers/dragon-ball-s1.jpg" },
-        { id: "s2", name: "Dragon Ball Z", episodes: 291, cover: "covers/dragon-ball-z.jpg" },
-        { id: "s3", name: "Dragon Ball GT", episodes: 64, cover: "covers/dragon-ball-gt.jpg" },
-        { id: "s4", name: "Dragon Ball Super", episodes: 131, cover: "covers/dragon-ball-super.jpg" }
-    ]
-},
-"Black Clover": {
-    title: "Black Clover",
-    arabic: "بلاك كلوفر",
-    cover: "covers/black-clover.jpg",
-    seasons: [{ id: "s1", name: "الموسم الأول", episodes: 170, cover: "covers/black-clover-s1.jpg" }]
-},
-"Hunter x Hunter": {
-    title: "Hunter x Hunter",
-    arabic: "هنتر x هنتر",
-    cover: "covers/hunter-x-hunter.jpg",
-    seasons: [{ id: "s1", name: "Hunter x Hunter", episodes: 148, cover: "covers/hunter-x-hunter-s1.jpg" }]
-},
-"Death Note": {
-    title: "Death Note",
-    arabic: "ديث نوت",
-    cover: "covers/death-note.jpg",
-    seasons: [{ id: "s1", name: "الموسم الأول", episodes: 37, cover: "covers/death-note-s1.jpg" }]
-},
-"One Punch Man": {
-    title: "One Punch Man",
-    arabic: "ون بنش مان",
-    cover: "covers/one-punch-man.jpg",
-    seasons: [
-        { id: "s1", name: "الموسم الأول", episodes: 12, cover: "covers/one-punch-man-s1.jpg" },
-        { id: "s2", name: "الموسم الثاني", episodes: 12, cover: "covers/one-punch-man-s2.jpg" }
-    ]
-},
-"Tokyo Ghoul": {
-    title: "Tokyo Ghoul",
-    arabic: "طوكيو غول",
-    cover: "covers/tokyo-ghoul.jpg",
-    seasons: [
-        { id: "s1", name: "الموسم الأول", episodes: 12, cover: "covers/tokyo-ghoul-s1.jpg" },
-        { id: "s2", name: "Tokyo Ghoul √A", episodes: 12, cover: "covers/tokyo-ghoul-s2.jpg" },
-        { id: "s3", name: "Tokyo Ghoul:re", episodes: 24, cover: "covers/tokyo-ghoul-s3.jpg" }
-    ]
-}
-};
+/* =========================================
+   KATRO ANIME DATABASE
+   English titles + automatic AniList data
+========================================= */
 
-/* الأنميات الإضافية */
-const EXTRA_ANIME = [
-"Blue Lock","Chainsaw Man","Spy x Family","Haikyuu","Vinland Saga",
-"Mob Psycho 100","JoJo's Bizarre Adventure","Code Geass","Steins;Gate",
-"Re:Zero","Sword Art Online","Overlord","Dr. Stone","Fire Force",
-"Tokyo Revengers","Parasyte","Akame ga Kill!","Assassination Classroom",
-"Classroom of the Elite","Noragami","Erased","Your Lie in April",
-"Made in Abyss","Monster","Cyberpunk: Edgerunners","Frieren",
-"The Apothecary Diaries","Oshi no Ko","Kaiju No. 8","Wind Breaker",
-"Dandadan","Record of Ragnarok","Baki","Kengan Ashura","Detective Conan",
-"Yu-Gi-Oh!","Digimon","Pokémon","Slam Dunk","Kuroko's Basketball",
-"The Seven Deadly Sins","Fairy Tail","Magi","Gintama","Soul Eater",
-"Blue Exorcist","Food Wars","The Promised Neverland"
+const KATRO_ANIME = {};
+
+const ANIME_LIST = [
+    {
+        title: "One Piece",
+        episodes: 0,
+        ongoing: true,
+        seasons: [
+            { id: "s1", name: "One Piece", episodes: 0 }
+        ]
+    },
+    {
+        title: "Solo Leveling",
+        episodes: 25,
+        seasons: [
+            {
+                id: "s1",
+                name: "Season 1",
+                episodes: 12,
+                watchId: "solo"
+            },
+            {
+                id: "s2",
+                name: "Season 2",
+                episodes: 13,
+                watchId: "solo-s2"
+            }
+        ]
+    },
+    {
+        title: "Demon Slayer",
+        episodes: 0,
+        seasons: [
+            { id: "s1", name: "Demon Slayer", episodes: 0, watchId: "Demon Slayer" }
+        ]
+    },
+    {
+        title: "Naruto",
+        episodes: 720,
+        seasons: [
+            { id: "s1", name: "Naruto", episodes: 220, watchId: "Naruto" },
+            { id: "s2", name: "Naruto Shippuden", episodes: 500, watchId: "Naruto Shippuden" }
+        ]
+    },
+    {
+        title: "Bleach",
+        episodes: 406,
+        seasons: [
+            { id: "s1", name: "Bleach", episodes: 366, watchId: "Bleach" },
+            { id: "s2", name: "Bleach: Thousand-Year Blood War", episodes: 40, watchId: "Bleach TYBW" }
+        ]
+    },
+    {
+        title: "Jujutsu Kaisen",
+        episodes: 47,
+        seasons: [
+            { id: "s1", name: "Season 1", episodes: 24, watchId: "Jujutsu Kaisen" },
+            { id: "s2", name: "Season 2", episodes: 23, watchId: "Jujutsu Kaisen" }
+        ]
+    },
+    {
+        title: "Attack on Titan",
+        episodes: 89,
+        seasons: [
+            { id: "s1", name: "Season 1", episodes: 25, watchId: "Attack on Titan" },
+            { id: "s2", name: "Season 2", episodes: 12, watchId: "Attack on Titan" },
+            { id: "s3", name: "Season 3", episodes: 22, watchId: "Attack on Titan" },
+            { id: "s4", name: "The Final Season", episodes: 30, watchId: "Attack on Titan" }
+        ]
+    },
+    {
+        title: "My Hero Academia",
+        episodes: 0,
+        seasons: [
+            { id: "s1", name: "My Hero Academia", episodes: 0 }
+        ]
+    },
+    {
+        title: "Dragon Ball",
+        episodes: 639,
+        seasons: [
+            { id: "s1", name: "Dragon Ball", episodes: 153 },
+            { id: "s2", name: "Dragon Ball Z", episodes: 291 },
+            { id: "s3", name: "Dragon Ball GT", episodes: 64 },
+            { id: "s4", name: "Dragon Ball Super", episodes: 131 }
+        ]
+    },
+    {
+        title: "Black Clover",
+        episodes: 170,
+        seasons: [
+            { id: "s1", name: "Black Clover", episodes: 170 }
+        ]
+    },
+    {
+        title: "Hunter x Hunter",
+        episodes: 148,
+        seasons: [
+            { id: "s1", name: "Hunter x Hunter", episodes: 148 }
+        ]
+    },
+    {
+        title: "Death Note",
+        episodes: 37,
+        seasons: [
+            { id: "s1", name: "Death Note", episodes: 37 }
+        ]
+    },
+    {
+        title: "One Punch Man",
+        episodes: 24,
+        seasons: [
+            { id: "s1", name: "Season 1", episodes: 12 },
+            { id: "s2", name: "Season 2", episodes: 12 }
+        ]
+    },
+    {
+        title: "Tokyo Ghoul",
+        episodes: 48,
+        seasons: [
+            { id: "s1", name: "Tokyo Ghoul", episodes: 12 },
+            { id: "s2", name: "Tokyo Ghoul √A", episodes: 12 },
+            { id: "s3", name: "Tokyo Ghoul:re", episodes: 24 }
+        ]
+    }
 ];
 
-EXTRA_ANIME.forEach(function (name) {
-    if (!KATRO_ANIME[name]) {
-        const slug = name.toLowerCase()
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/^-|-$/g, "");
+/* Additional anime titles */
+const EXTRA_ANIME = [
+    "Blue Lock",
+    "Chainsaw Man",
+    "Spy x Family",
+    "Haikyuu!!",
+    "Vinland Saga",
+    "Mob Psycho 100",
+    "JoJo's Bizarre Adventure",
+    "Code Geass",
+    "Steins;Gate",
+    "Re:Zero",
+    "Sword Art Online",
+    "Overlord",
+    "Dr. Stone",
+    "Fire Force",
+    "Tokyo Revengers",
+    "Parasyte",
+    "Akame ga Kill!",
+    "Assassination Classroom",
+    "Classroom of the Elite",
+    "Noragami",
+    "Erased",
+    "Your Lie in April",
+    "Made in Abyss",
+    "Monster",
+    "Cyberpunk: Edgerunners",
+    "Frieren: Beyond Journey's End",
+    "The Apothecary Diaries",
+    "Oshi no Ko",
+    "Kaiju No. 8",
+    "Wind Breaker",
+    "Dandadan",
+    "Record of Ragnarok",
+    "Baki",
+    "Kengan Ashura",
+    "Detective Conan",
+    "Yu-Gi-Oh!",
+    "Digimon",
+    "Pokémon",
+    "Slam Dunk",
+    "Kuroko's Basketball",
+    "The Seven Deadly Sins",
+    "Fairy Tail",
+    "Magi",
+    "Gintama",
+    "Soul Eater",
+    "Blue Exorcist",
+    "Food Wars",
+    "The Promised Neverland"
+];
 
-        KATRO_ANIME[name] = {
-            title: name,
-            arabic: name,
-            cover: "covers/" + slug + ".jpg",
-            seasons: [{
-                id: "s1",
-                name: "الموسم الأول",
-                episodes: 12,
-                cover: "covers/" + slug + "-s1.jpg"
-            }]
-        };
-    }
+/* Build database */
+ANIME_LIST.forEach(function (anime) {
+    KATRO_ANIME[anime.title] = {
+        title: anime.title,
+        arabic: anime.title,
+        cover: "",
+        totalEpisodes: anime.episodes,
+        ongoing: anime.ongoing || false,
+        seasons: anime.seasons
+    };
 });
 
-/* أدوات عامة */
+/* Add remaining anime without invented episode counts */
+EXTRA_ANIME.forEach(function (name) {
+    if (KATRO_ANIME[name]) return;
+
+    KATRO_ANIME[name] = {
+        title: name,
+        arabic: name,
+        cover: "",
+        totalEpisodes: 0,
+        seasons: [
+            {
+                id: "s1",
+                name: "Complete Series",
+                episodes: 0
+            }
+        ]
+    };
+});
+
+/* =========================================
+   DATABASE FUNCTIONS
+========================================= */
+
 function getAnime(name) {
     return KATRO_ANIME[name] || null;
 }
@@ -193,35 +227,23 @@ function getAnimeNames() {
 }
 
 /* =========================================
-   KATRO AUTO ANIME COVERS
-   نظام جلب الأغلفة مع التحقق من الأسماء
+   ANILIST AUTOMATIC DATA
 ========================================= */
 
 (function () {
     const API = "https://graphql.anilist.co";
-    const CACHE_KEY = "katro_anime_covers_v4";
-    const CACHE_TIME = 30 * 24 * 60 * 60 * 1000;
+    const CACHE_KEY = "katro_anime_database_v5";
+    const CACHE_TIME = 7 * 24 * 60 * 60 * 1000;
 
     const ALIASES = {
-        "Demon Slayer": [
-            "Demon Slayer: Kimetsu no Yaiba",
-            "Kimetsu no Yaiba"
-        ],
-        "Haikyuu": ["Haikyuu", "Haikyuu!!"],
+        "Demon Slayer": ["Kimetsu no Yaiba"],
+        "Attack on Titan": ["Shingeki no Kyojin"],
+        "Haikyuu!!": ["Haikyu"],
+        "Frieren: Beyond Journey's End": ["Sousou no Frieren"],
+        "The Apothecary Diaries": ["Kusuriya no Hitorigoto"],
         "Pokémon": ["Pokemon", "Pocket Monsters"],
-        "JoJo's Bizarre Adventure": [
-            "JoJo's Bizarre Adventure",
-            "JoJo no Kimyou na Bouken"
-        ],
-        "One Piece": ["One Piece"],
-        "Solo Leveling": ["Solo Leveling"],
-        "Naruto": ["Naruto"],
-        "Bleach": ["Bleach"],
-        "Jujutsu Kaisen": ["Jujutsu Kaisen"],
-        "Attack on Titan": [
-            "Attack on Titan",
-            "Shingeki no Kyojin"
-        ]
+        "Parasyte": ["Kiseijuu"],
+        "Hunter x Hunter": ["Hunter x Hunter (2011)"]
     };
 
     function normalize(value) {
@@ -232,45 +254,63 @@ function getAnimeNames() {
             .replace(/[^a-z0-9]/g, "");
     }
 
-    function isExactMatch(name, media) {
+    function exactMatch(name, media) {
         const titles = [
             media.title && media.title.english,
             media.title && media.title.romaji,
-            media.title && media.title.native
-        ].concat(media.synonyms || []);
+            ...(media.synonyms || [])
+        ];
 
-        const accepted = [name].concat(ALIASES[name] || [])
+        const accepted = [name, ...(ALIASES[name] || [])]
             .map(normalize);
 
         return titles.some(function (title) {
-            return accepted.includes(normalize(title));
+            return title && accepted.includes(normalize(title));
         });
     }
 
-    function applyCovers(covers) {
-        Object.keys(covers).forEach(function (name) {
+    function applyData(data) {
+        Object.keys(data).forEach(function (name) {
             const anime = getAnime(name);
-            if (!anime || !covers[name]) return;
+            const item = data[name];
 
-            anime.cover = covers[name];
+            if (!anime || !item) return;
 
-            document.querySelectorAll("img").forEach(function (img) {
+            if (item.cover) {
+                anime.cover = item.cover;
+            }
+
+            if (item.episodes > 0) {
+                anime.totalEpisodes = item.episodes;
+
+                /* Update only automatically generated series */
                 if (
-                    img.alt === anime.title ||
-                    img.alt === anime.arabic
+                    anime.seasons.length === 1 &&
+                    anime.seasons[0].name === "Complete Series"
                 ) {
-                    img.src = covers[name];
+                    anime.seasons[0].episodes = item.episodes;
                 }
-            });
+
+                if (
+                    anime.seasons.length === 1 &&
+                    anime.seasons[0].name !== "Complete Series" &&
+                    anime.seasons[0].episodes === 0
+                ) {
+                    anime.seasons[0].episodes = item.episodes;
+                }
+            }
         });
     }
 
     async function fetchBatch(names) {
         const fields = names.map(function (name, index) {
+            const searchName =
+                (ALIASES[name] && ALIASES[name][0]) || name;
+
             return `
-                a${index}: Page(page: 1, perPage: 1) {
+                a${index}: Page(page: 1, perPage: 5) {
                     media(
-                        search: ${JSON.stringify(name)},
+                        search: ${JSON.stringify(searchName)},
                         type: ANIME,
                         sort: SEARCH_MATCH,
                         isAdult: false
@@ -278,9 +318,9 @@ function getAnimeNames() {
                         title {
                             english
                             romaji
-                            native
                         }
                         synonyms
+                        episodes
                         coverImage {
                             extraLarge
                             large
@@ -308,41 +348,44 @@ function getAnimeNames() {
         const result = await response.json();
 
         if (!result.data) {
-            throw new Error("AniList returned no data");
+            throw new Error("AniList data unavailable");
         }
 
-        const covers = {};
+        const output = {};
 
         names.forEach(function (name, index) {
             const page = result.data["a" + index];
-            const media = page && page.media && page.media[0];
+            const results = page && page.media ? page.media : [];
 
-            if (!media || !isExactMatch(name, media)) return;
+            const media = results.find(function (item) {
+                return exactMatch(name, item);
+            });
 
-            const image = media.coverImage &&
-                (media.coverImage.extraLarge ||
-                 media.coverImage.large);
+            if (!media) return;
 
-            if (image) {
-                covers[name] = image;
-            }
+            output[name] = {
+                episodes: media.episodes || 0,
+                cover:
+                    media.coverImage &&
+                    (media.coverImage.extraLarge ||
+                     media.coverImage.large)
+            };
         });
 
-        return covers;
+        return output;
     }
 
-    async function fetchAllCovers() {
+    async function fetchAll() {
         const names = getAnimeNames();
-        const allCovers = {};
+        const output = {};
 
-        for (let i = 0; i < names.length; i += 8) {
-            const batch = names.slice(i, i + 8);
-            const covers = await fetchBatch(batch);
-
-            Object.assign(allCovers, covers);
+        for (let i = 0; i < names.length; i += 5) {
+            const batch = names.slice(i, i + 5);
+            const result = await fetchBatch(batch);
+            Object.assign(output, result);
         }
 
-        return allCovers;
+        return output;
     }
 
     async function start() {
@@ -356,29 +399,28 @@ function getAnimeNames() {
                 saved.time &&
                 Date.now() - saved.time < CACHE_TIME
             ) {
-                applyCovers(saved.covers || {});
+                applyData(saved.data || {});
             }
         } catch (error) {
             console.log("KATRO: Cache unavailable");
         }
 
         try {
-            const covers = await fetchAllCovers();
+            const data = await fetchAll();
 
-            applyCovers(covers);
+            applyData(data);
 
             localStorage.setItem(
                 CACHE_KEY,
                 JSON.stringify({
                     time: Date.now(),
-                    covers: covers
+                    data: data
                 })
             );
 
-            console.log("KATRO: Covers updated successfully");
-
+            console.log("KATRO: Anime data updated");
         } catch (error) {
-            console.log("KATRO: Cover update failed", error);
+            console.log("KATRO: AniList update failed", error);
         }
     }
 
