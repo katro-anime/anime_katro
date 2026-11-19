@@ -308,8 +308,75 @@ xmlns="http://www.w3.org/2000/svg">
 © 2026 KATRO Anime
 
 </footer>
+    <script src="./anime-data.js"></script>
 
-<script src="anime-data.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const grid = document.getElementById("animeGrid");
+    const search = document.getElementById("search");
+
+    if (typeof getAnimeNames !== "function" ||
+        typeof getAnime !== "function") {
+        grid.innerHTML =
+            "<p>تعذر تحميل بيانات الأنمي. تأكد من ملف anime-data.js</p>";
+        return;
+    }
+
+    function render(list) {
+        grid.innerHTML = "";
+
+        if (!list.length) {
+            grid.innerHTML = "<p>لا توجد نتائج.</p>";
+            return;
+        }
+
+        list.forEach(function(name) {
+            const anime = getAnime(name);
+            if (!anime) return;
+
+            const card = document.createElement("a");
+            card.className = "card";
+            card.href = "anime.html?name=" +
+                encodeURIComponent(name);
+
+            const img = document.createElement("img");
+            img.src = anime.cover || "";
+            img.alt = anime.title || name;
+
+            const info = document.createElement("div");
+            info.className = "card-info";
+
+            const title = document.createElement("h3");
+            title.textContent = anime.arabic || anime.title || name;
+
+            const seasons = document.createElement("p");
+            seasons.textContent =
+                (anime.seasons || []).length + " موسم";
+
+            info.appendChild(title);
+            info.appendChild(seasons);
+            card.appendChild(img);
+            card.appendChild(info);
+            grid.appendChild(card);
+        });
+    }
+
+    function searchAnime() {
+        const value = search.value.trim().toLowerCase();
+
+        const results = getAnimeNames().filter(function(name) {
+            const anime = getAnime(name);
+            return name.toLowerCase().includes(value) ||
+                (anime.arabic || "").toLowerCase().includes(value);
+        });
+
+        render(results);
+    }
+
+    search.addEventListener("input", searchAnime);
+    render(getAnimeNames());
+});
+</script>
 
 <script>
 const grid = document.getElementById("animeGrid");
