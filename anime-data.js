@@ -608,10 +608,6 @@ return Object.keys(KATRO_ANIME);
           img.alt === anime.arabic
         ) {
           img.src = image;
-        }
-      });
-      });
-    });
 
     // تحديث صورة صفحة الموسم
     const params = new URLSearchParams(location.search);
@@ -622,7 +618,38 @@ return Object.keys(KATRO_ANIME);
     if (currentAnime && poster && currentAnime.cover) {
       poster.src = currentAnime.cover;
     }
+ function applyCovers(covers) {
+  const names = getAnimeNames();
+
+  names.forEach(function (name) {
+    const anime = getAnime(name);
+    const image = covers[name];
+
+    if (!anime || !image) return;
+
+    // تحديث غلاف الأنمي الرئيسي فقط
+    anime.cover = image;
+
+    document.querySelectorAll("img").forEach(function (img) {
+      if (
+        img.alt === anime.title ||
+        img.alt === anime.arabic
+      ) {
+        img.src = image;
+      }
+    });
+  });
+
+  // تحديث صورة صفحة الموسم
+  const params = new URLSearchParams(location.search);
+  const currentName = params.get("anime") || params.get("name");
+  const currentAnime = currentName && getAnime(currentName);
+  const poster = document.querySelector(".poster");
+
+  if (currentAnime && poster && currentAnime.cover) {
+    poster.src = currentAnime.cover;
   }
+ } }
 
   async function fetchCovers() {
     const names = getAnimeNames();
