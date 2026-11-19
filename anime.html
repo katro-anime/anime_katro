@@ -1,248 +1,133 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>الأنمي | KATRO Anime</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KATRO Anime</title>
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-body{
-    font-family:Arial,sans-serif;
-    background:#080b12;
-    color:white;
-}
-
-header{
-    background:#0d111c;
-    padding:18px;
-    text-align:center;
-    border-bottom:1px solid #1b2638;
-}
-
-.logo{
-    color:#00b7ff;
-    font-size:27px;
-    font-weight:bold;
-}
-
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:25px 15px;
-}
-
-.anime-info{
-    background:#0d111c;
-    border-radius:15px;
-    padding:20px;
-    text-align:center;
-}
-
-.anime-cover{
-    width:220px;
-    max-width:100%;
-    border-radius:12px;
-    margin-bottom:15px;
-}
-
-.anime-title{
-    font-size:27px;
-    margin-bottom:8px;
-}
-
-.anime-status{
-    color:#00b7ff;
-    margin-bottom:20px;
-}
-
-.section-title{
-    margin:30px 0 15px;
-    font-size:23px;
-}
-
-.seasons{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
-}
-
-.season-card{
-    display:block;
-    text-decoration:none;
-    color:white;
-    background:#0d111c;
-    border:1px solid #1c2b3d;
-    border-radius:14px;
-    padding:20px;
-    transition:.2s;
-}
-
-.season-card:hover{
-    border-color:#00b7ff;
-    transform:translateY(-3px);
-}
-
-.season-name{
-    font-size:19px;
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-.season-count{
-    color:#aab5c5;
-}
-
-.movie{
-    color:#ffcc00;
-}
-
-footer{
-    text-align:center;
-    color:#758195;
-    padding:30px 15px;
-}
-
-.error{
-    text-align:center;
-    padding:50px 10px;
-}
-
+*{box-sizing:border-box}
+body{margin:0;background:#080b12;color:#fff;font-family:Arial,sans-serif}
+header{padding:18px 5%;background:#101725;border-bottom:1px solid #19365c;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{font-size:25px;font-weight:bold;color:#28a9ff;text-decoration:none}
+.home{color:#fff;text-decoration:none;background:#17263b;padding:10px 15px;border-radius:9px}
+.container{max-width:1100px;margin:auto;padding:25px 16px}
+.hero{display:flex;gap:25px;align-items:center;flex-wrap:wrap;background:#101725;padding:20px;border-radius:16px}
+.poster{width:220px;height:310px;object-fit:cover;border-radius:12px;background:#17263b}
+.info{flex:1;min-width:220px}
+h1{font-size:30px;margin:0 0 10px;color:#38b5ff}
+.english{color:#aabbd0;font-size:17px}
+.description{color:#c4d0df;line-height:1.8}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.tag{background:#1b2b42;padding:8px 12px;border-radius:8px;color:#bfe5ff}
+h2{margin-top:35px;color:#38b5ff}
+.seasons{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:15px}
+.season{background:#111c2c;border:1px solid #1b3555;border-radius:12px;overflow:hidden;text-decoration:none;color:white;transition:.2s}
+.season:hover{transform:translateY(-4px);border-color:#28a9ff}
+.season img{width:100%;height:180px;object-fit:cover;background:#17263b}
+.season-info{padding:13px}
+.season-info h3{margin:0 0 8px}
+.season-info p{margin:0;color:#aabbd0;font-size:14px}
+.empty{background:#151e2c;padding:18px;border-radius:10px;color:#ffc56b}
+footer{text-align:center;padding:25px;color:#8292a8}
+.social{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:15px}
+.social a{color:#38b5ff;text-decoration:none}
 </style>
-
 </head>
-
 <body>
 
 <header>
-
-<div class="logo">
-KATRO Anime
-</div>
-
+<a class="logo" href="index.html">KATRO Anime</a>
+<a class="home" href="index.html">الرئيسية</a>
 </header>
 
-<div class="container">
-
-<div id="content"></div>
-
-</div>
+<main class="container">
+<div id="content">جاري تحميل الأنمي...</div>
+</main>
 
 <footer>
-© 2026 KATRO Anime
+KATRO Anime
+<div class="social">
+<a href="https://www.tiktok.com/@katro10k" target="_blank">TikTok</a>
+<a href="https://youtube.com/@katro10k" target="_blank">YouTube</a>
+</div>
 </footer>
 
 <script src="anime-data.js"></script>
-
 <script>
+const params = new URLSearchParams(location.search);
+const animeName = params.get("name") || params.get("anime") || "";
+const content = document.getElementById("content");
 
-const params =
-new URLSearchParams(window.location.search);
-
-const animeId =
-params.get("anime");
-
-const anime =
-getAnimeById(animeId);
-
-const content =
-document.getElementById("content");
-
-if(!anime){
-
-    content.innerHTML = `
-        <div class="error">
-            <h2>الأنمي غير موجود</h2>
-            <p>تأكد من الرابط.</p>
-        </div>
-    `;
-
-}else{
-
-    document.title =
-        anime.titleAr + " | KATRO Anime";
-
-    let html = `
-
-        <div class="anime-info">
-
-            <img
-                class="anime-cover"
-                src="${anime.cover}"
-                alt="${anime.titleAr}"
-                onerror="this.style.display='none'"
-            >
-
-            <div class="anime-title">
-                ${anime.titleAr}
-            </div>
-
-            <div class="anime-status">
-                ${anime.status}
-            </div>
-
-        </div>
-
-        <h2 class="section-title">
-            المواسم والأجزاء
-        </h2>
-
-        <div class="seasons">
-    `;
-
-    anime.seasons.forEach((season,index)=>{
-
-        const movieClass =
-            season.movie ? "movie" : "";
-
-        const countText =
-            season.movie
-            ? "فيلم"
-            : season.episodes > 0
-                ? `${season.episodes} حلقة`
-                : "قريبًا";
-
-        html += `
-
-            <a
-                class="season-card"
-                href="season.html?anime=${anime.id}&season=${season.id}"
-            >
-
-                <div class="season-name ${movieClass}">
-                    ${season.nameAr}
-                </div>
-
-                <div class="season-count">
-                    ${countText}
-                </div>
-
-            </a>
-
-        `;
-
-    });
-
-    html += `
-        </div>
-    `;
-
-    content.innerHTML = html;
+function safe(value){
+ return String(value ?? "").replace(/[&<>"']/g, c => ({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
 }
 
+function showError(message){
+ content.innerHTML = `<div class="empty">${safe(message)}</div>`;
+}
+
+if(typeof getAnime !== "function"){
+ showError("لم يتم العثور على ملف بيانات الأنمي anime-data.js.");
+}else{
+ const anime = getAnime(animeName);
+
+ if(!anime){
+  showError("لم يتم العثور على هذا الأنمي. ارجع إلى الصفحة الرئيسية واختر الأنمي مرة أخرى.");
+ }else{
+  const seasons = Array.isArray(anime.seasons) ? anime.seasons : [];
+  const cover = anime.cover || "";
+  const title = anime.arabic || anime.title || animeName;
+
+  content.innerHTML = `
+   <section class="hero">
+    <img class="poster" src="${safe(cover)}" alt="${safe(title)}"
+      onerror="this.style.display='none'">
+    <div class="info">
+     <h1>${safe(title)}</h1>
+     <div class="english">${safe(anime.title || "")}</div>
+     <p class="description">شاهد تفاصيل المواسم والحلقات الخاصة بهذا الأنمي على KATRO Anime.</p>
+     <div class="meta">
+      <span class="tag">عدد المواسم: ${seasons.length}</span>
+      ${anime.ongoing ? '<span class="tag">مستمر</span>' : ""}
+      ${anime.totalEpisodes ? `<span class="tag">الحلقات: ${safe(anime.totalEpisodes)}</span>` : ""}
+     </div>
+    </div>
+   </section>
+
+   <h2>مواسم الأنمي</h2>
+   <section class="seasons" id="seasons"></section>
+  `;
+
+  const seasonArea = document.getElementById("seasons");
+
+  if(seasons.length === 0){
+   seasonArea.innerHTML = '<div class="empty">لم تتم إضافة المواسم لهذا الأنمي بعد.</div>';
+  }else{
+   seasons.forEach((season, index) => {
+    const card = document.createElement("a");
+    card.className = "season";
+    card.href = `season.html?anime=${encodeURIComponent(animeName)}&season=${encodeURIComponent(season.id || "")}`;
+
+    const image = season.cover || cover;
+    const seasonTitle = season.name || `الموسم ${index + 1}`;
+    const episodes = Array.isArray(season.episodes) ? season.episodes.length : (season.episodes || 0);
+
+    card.innerHTML = `
+     <img src="${safe(image)}" alt="${safe(seasonTitle)}"
+       onerror="this.src='${safe(cover)}';this.onerror=null">
+     <div class="season-info">
+      <h3>${safe(seasonTitle)}</h3>
+      <p>${safe(episodes)} حلقة</p>
+     </div>
+    `;
+    seasonArea.appendChild(card);
+   });
+  }
+ }
+}
 </script>
-
 </body>
-
 </html>
