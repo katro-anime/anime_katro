@@ -4,219 +4,233 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KATRO Anime</title><script src="config.js"></script>
+<title>KATRO Anime</title>
+<script src="./config.js"></script>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-    font-family:Arial,sans-serif;
-    background:#080b12;
-    color:#fff;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-header{
-    background:#0d111c;
-    border-bottom:1px solid #1b2638;
-    padding:15px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    position:sticky;
-    top:0;
-    z-index:100;
+body {
+    font-family: Arial, sans-serif;
+    background: #080b12;
+    color: #fff;
 }
 
-.logo{
-    color:#00b7ff;
-    font-size:25px;
-    font-weight:bold;
-    text-decoration:none;
+header {
+    background: #0d111c;
+    border-bottom: 1px solid #1b2638;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-nav{
-    display:flex;
-    gap:8px;
+.logo {
+    color: #00b7ff;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    background:#111827;
-    padding:9px 14px;
-    border-radius:8px;
+nav {
+    display: flex;
+    gap: 8px;
 }
 
-nav a:hover{
-    background:#1687d9;
+nav a {
+    color: white;
+    text-decoration: none;
+    background: #111827;
+    padding: 9px 14px;
+    border-radius: 8px;
 }
 
-.search{
-    width:92%;
-    max-width:1000px;
-    margin:25px auto;
+nav a:hover {
+    background: #1687d9;
 }
 
-.search input{
-    width:100%;
-    padding:15px;
-    border:1px solid #1b2638;
-    outline:0;
-    border-radius:10px;
-    background:#111827;
-    color:white;
-    font-size:16px;
+.search {
+    width: 92%;
+    max-width: 1000px;
+    margin: 25px auto;
 }
 
-.hero{
-    width:92%;
-    max-width:1100px;
-    margin:20px auto;
-    padding:40px 20px;
-    background:#0d111c;
-    border:1px solid #1b2638;
-    border-radius:15px;
-    text-align:center;
+.search input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #1b2638;
+    outline: 0;
+    border-radius: 10px;
+    background: #111827;
+    color: white;
+    font-size: 16px;
 }
 
-.hero h1{
-    color:#00b7ff;
-    font-size:32px;
-    margin-bottom:10px;
+.hero {
+    width: 92%;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 40px 20px;
+    background: #0d111c;
+    border: 1px solid #1b2638;
+    border-radius: 15px;
+    text-align: center;
 }
 
-.hero p{
-    color:#94a3b8;
+.hero h1 {
+    color: #00b7ff;
+    font-size: 32px;
+    margin-bottom: 10px;
 }
 
-.container{
-    width:92%;
-    max-width:1200px;
-    margin:30px auto;
+.hero p {
+    color: #94a3b8;
 }
 
-.title{
-    color:#00b7ff;
-    margin-bottom:20px;
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 30px auto;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-    gap:18px;
+.title {
+    color: #00b7ff;
+    margin-bottom: 20px;
 }
 
-.card{
-    background:#0d111c;
-    border:1px solid #1b2638;
-    border-radius:12px;
-    overflow:hidden;
-    text-decoration:none;
-    color:white;
-    transition:.2s;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 18px;
 }
 
-.card:hover{
-    transform:translateY(-5px);
-    border-color:#00b7ff;
+.card {
+    background: #0d111c;
+    border: 1px solid #1b2638;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    transition: .2s;
 }
 
-.poster{
-    width:100%;
-    height:240px;
-    object-fit:cover;
-    display:block;
-    background:#111827;
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #00b7ff;
 }
 
-.card-info{
-    padding:12px;
+.poster {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    background: #111827;
 }
 
-.card-info h3{
-    font-size:16px;
-    margin-bottom:6px;
+.card-info {
+    padding: 12px;
 }
 
-.card-info p{
-    color:#94a3b8;
-    font-size:13px;
+.card-info h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
 }
 
-.loading{
-    text-align:center;
-    padding:25px;
-    color:#38b5ff;
+.card-info p {
+    color: #94a3b8;
+    font-size: 13px;
 }
 
-.social-section{
-    margin-top:25px;
-    padding:25px 10px;
-    border-top:1px solid #1b2638;
-    text-align:center;
+.loading {
+    text-align: center;
+    padding: 25px;
+    color: #38b5ff;
 }
 
-.social-section h3{
-    color:#00b7ff;
-    margin-bottom:25px;
+.social-section {
+    margin-top: 25px;
+    padding: 25px 10px;
+    border-top: 1px solid #1b2638;
+    text-align: center;
 }
 
-.social-links{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:45px;
-    flex-wrap:wrap;
+.social-section h3 {
+    color: #00b7ff;
+    margin-bottom: 25px;
 }
 
-.social-item{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:12px;
-    text-decoration:none;
-    color:white;
-    transition:.2s;
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    flex-wrap: wrap;
 }
 
-.social-item:hover{
-    transform:translateY(-5px);
+.social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: white;
+    transition: .2s;
 }
 
-.social-icon{
-    width:55px;
-    height:55px;
+.social-item:hover {
+    transform: translateY(-5px);
 }
 
-.tiktok-icon{fill:white}
-.youtube-icon{fill:#ff0033}
-
-.social-name{
-    font-size:16px;
-    font-weight:bold;
+.social-icon {
+    width: 55px;
+    height: 55px;
 }
 
-.social-url{
-    color:#00b7ff;
-    font-size:13px;
+.tiktok-icon {
+    fill: white;
 }
 
-footer{
-    text-align:center;
-    color:#64748b;
-    padding:30px 15px;
+.youtube-icon {
+    fill: #ff0033;
 }
 
-@media(max-width:600px){
-    header{flex-direction:column}
+.social-name {
+    font-size: 16px;
+    font-weight: bold;
+}
 
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
+.social-url {
+    color: #00b7ff;
+    font-size: 13px;
+}
+
+footer {
+    text-align: center;
+    color: #64748b;
+    padding: 30px 15px;
+}
+
+@media(max-width:600px) {
+    header {
+        flex-direction: column;
     }
 
-    .poster{height:220px}
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .poster {
+        height: 220px;
+    }
 }
 </style>
 </head>
@@ -224,161 +238,162 @@ footer{
 <body>
 
 <header>
-<a href="index.html" class="logo">KATRO Anime</a>
+    <a href="index.html" class="logo">KATRO Anime</a>
 
-<nav>
-<a href="index.html">الرئيسية</a>
-<a href="index.html">الأنمي</a>
-</nav>
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="index.html">الأنمي</a>
+    </nav>
 </header>
 
 <div class="search">
-<input id="search" type="text" placeholder="ابحث عن الأنمي...">
+    <input id="search" type="text" placeholder="ابحث عن الأنمي...">
 </div>
 
 <section class="hero">
-<h1>KATRO Anime</h1>
-<p>أفضل الأنميات في مكان واحد</p>
+    <h1>KATRO Anime</h1>
+    <p>أفضل الأنميات في مكان واحد</p>
 </section>
 
 <div class="container">
-<h2 class="title">جميع الأنميات</h2>
-<div id="animeGrid" class="grid">
-<div class="loading">جاري تحميل الأنميات...</div>
-</div>
+    <h2 class="title">جميع الأنميات</h2>
+
+    <div id="animeGrid" class="grid">
+        <div class="loading">جاري تحميل الأنميات...</div>
+    </div>
 </div>
 
 <footer>
 
-<div class="social-section">
-<h3>تابع KATRO Anime</h3>
+    <div class="social-section">
+        <h3>تابع KATRO Anime</h3>
 
-<div class="social-links">
+        <div class="social-links">
 
-<a class="social-item"
-href="https://www.tiktok.com/@katro10k"
-target="_blank"
-rel="noopener noreferrer">
+            <a class="social-item"
+               href="https://www.tiktok.com/@katro10k"
+               target="_blank"
+               rel="noopener noreferrer">
 
-<svg class="social-icon tiktok-icon"
-viewBox="0 0 24 24"
-xmlns="http://www.w3.org/2000/svg">
-<path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.5v13.67a2.9 2.9 0 0 1-2.9 2.9 2.9 2.9 0 0 1-2.9-2.9 2.9 2.9 0 0 1 2.9-2.9c.28 0 .55.04.8.12V9.32a6.4 6.4 0 00-.8-.05A6.4 6.4 0 0 0 3 15.67a6.4 6.4 0 0 0 6.42 6.4 6.4 6.4 0 00 6.4-6.4V9.1a8.2 8.2 0 00 4.8 1.54V7.13a4.8 4.8 0 0 1-1.03-.44z"/>
-</svg>
+                <svg class="social-icon tiktok-icon"
+                     viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.5v13.67a2.9 2.9 0 0 1-2.9 2.9 2.9 2.9 0 0 1-2.9-2.9 2.9 2.9 0 0 1 2.9-2.9c.28 0 .55.04.8.12V9.32a6.4 6.4 0 00-.8-.05A6.4 6.4 0 0 0 3 15.67a6.4 6.4 0 0 0 6.42 6.4 6.4 6.4 0 0 0 6.4-6.4V9.1a8.2 8.2 0 0 0 4.8 1.54V7.13a4.8 4.8 0 0 1-1.03-.44z"/>
+                </svg>
 
-<span class="social-name">TikTok</span>
-<span class="social-url">@katro10k</span>
-</a>
+                <span class="social-name">TikTok</span>
+                <span class="social-url">@katro10k</span>
+            </a>
 
-<a class="social-item"
-href="https://youtube.com/@katro10k"
-target="_blank"
-rel="noopener noreferrer">
+            <a class="social-item"
+               href="https://youtube.com/@katro10k"
+               target="_blank"
+               rel="noopener noreferrer">
 
-<svg class="social-icon youtube-icon"
-viewBox="0 0 24 24"
-xmlns="http://www.w3.org/2000/svg">
-<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/>
-</svg>
+                <svg class="social-icon youtube-icon"
+                     viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/>
+                </svg>
 
-<span class="social-name">YouTube</span>
-<span class="social-url">@katro10k</span>
-</a>
+                <span class="social-name">YouTube</span>
+                <span class="social-url">@katro10k</span>
+            </a>
 
-</div>
-</div>
+        </div>
+    </div>
 
-© 2026 KATRO Anime
+    © 2026 KATRO Anime
 </footer>
 
 <script src="./anime-data.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded", function() {
 
-const grid=document.getElementById("animeGrid");
-const search=document.getElementById("search");
+    const grid = document.getElementById("animeGrid");
+    const search = document.getElementById("search");
 
-function makeCard(name){
+    function makeCard(name) {
 
-const anime=getAnime(name);
-if(!anime)return null;
+        const anime = getAnime(name);
 
-const card=document.createElement("a");
-card.className="card";
-card.href="anime.html?name="+encodeURIComponent(name);
+        if (!anime) return null;
 
-const img=document.createElement("img");
-img.className="poster";
-img.alt=name;
-img.loading="lazy";
+        const card = document.createElement("a");
+        card.className = "card";
+        card.href = "anime.html?name=" + encodeURIComponent(name);
 
-function updateCover(){
-if(anime.cover){
-img.src=anime.cover;
-}else{
-img.removeAttribute("src");
-}
-}
+        const img = document.createElement("img");
+        img.className = "poster";
+        img.alt = name;
+        img.loading = "lazy";
 
-updateCover();
+        if (anime.cover) {
+            img.src = anime.cover;
+        }
 
-const info=document.createElement("div");
-info.className="card-info";
+        const info = document.createElement("div");
+        info.className = "card-info";
 
-const title=document.createElement("h3");
-title.textContent=anime.title;
+        const title = document.createElement("h3");
+        title.textContent = anime.title;
 
-const seasons=document.createElement("p");
-seasons.textContent=(anime.seasons||[]).length+" موسم";
+        const seasons = document.createElement("p");
+        seasons.textContent = (anime.seasons || []).length + " موسم";
 
-info.appendChild(title);
-info.appendChild(seasons);
+        info.appendChild(title);
+        info.appendChild(seasons);
 
-card.appendChild(img);
-card.appendChild(info);
+        card.appendChild(img);
+        card.appendChild(info);
 
-return card;
-}
+        return card;
+    }
 
-function render(names){
+    function render(names) {
 
-grid.innerHTML="";
+        grid.innerHTML = "";
 
-if(!names.length){
-grid.innerHTML="<p>لا توجد نتائج.</p>";
-return;
-}
+        if (!names.length) {
+            grid.innerHTML = "<p>لا توجد نتائج.</p>";
+            return;
+        }
 
-names.forEach(name=>{
-const card=makeCard(name);
-if(card)grid.appendChild(card);
-});
-}
+        names.forEach(name => {
+            const card = makeCard(name);
+            if (card) grid.appendChild(card);
+        });
+    }
 
-function searchAnime(){
-const value=search.value.trim().toLowerCase();
+    function searchAnime() {
 
-const results=getAnimeNames().filter(name=>{
-const anime=getAnime(name);
-return name.toLowerCase().includes(value)||
-(anime.title||"").toLowerCase().includes(value);
-});
+        const value = search.value.trim().toLowerCase();
 
-render(results);
-}
+        const results = getAnimeNames().filter(name => {
 
-search.addEventListener("input",searchAnime);
+            const anime = getAnime(name);
 
-render(getAnimeNames());
+            return name.toLowerCase().includes(value) ||
+                (anime.title || "").toLowerCase().includes(value);
+        });
 
-/* Redraw when AniList covers finish loading */
-document.addEventListener("KATRO_DATA_UPDATED",function(){
-searchAnime();
-});
+        render(results);
+    }
+
+    search.addEventListener("input", searchAnime);
+
+    render(getAnimeNames());
+
+    document.addEventListener("KATRO_DATA_UPDATED", function() {
+        searchAnime();
+    });
 
 });
 </script>
+
+<!-- ربط تسجيل الدخول بحساب MyAnimeList -->
+<script src="./mal.js"></script>
 
 </body>
 </html>
