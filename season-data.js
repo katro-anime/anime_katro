@@ -8,12 +8,12 @@
 window.KATRO_SEASONS = {
 
   "One Piece": [
-    { name: "One Piece - Ongoing Series", episodes: 0, search: "One Piece" }
+    { name: "One Piece - Ongoing Series", episodes: 0, availableEpisodes: 0, search: "One Piece" }
   ],
 
   "Solo Leveling": [
-    { name: "Season 1 - Solo Leveling", episodes: 12, search: "Ore dake Level Up na Ken" },
-    { name: "Solo Leveling Season 2", episodes: 13, search: "Ore dake Level Up na Ken Season 2" }
+    { id: "solo-leveling-season-1", name: "Season 1 - Solo Leveling", episodes: 12, availableEpisodes: 12, search: "Ore dake Level Up na Ken", watchId: "solo" },
+    { id: "solo-leveling-season-2", name: "Solo Leveling Season 2", episodes: 13, availableEpisodes: 13, search: "Ore dake Level Up na Ken Season 2", watchId: "solo-s2" }
   ],
 
   "Demon Slayer": [
@@ -286,7 +286,7 @@ window.KATRO_SEASONS = {
   ],
 
   "Detective Conan": [
-    { name: "Detective Conan - Ongoing Series", episodes: 0, search: "Meitantei Conan" }
+    { name: "Detective Conan - Ongoing Series", episodes: 0, availableEpisodes: 0, search: "Meitantei Conan" }
   ],
 
   "Yu-Gi-Oh!": [
@@ -298,7 +298,7 @@ window.KATRO_SEASONS = {
   ],
 
   "Pokémon": [
-    { name: "Pokémon - Ongoing Series", episodes: 0, search: "Pokemon" }
+    { name: "Pokémon - Ongoing Series", episodes: 0, availableEpisodes: 0, search: "Pokemon" }
   ],
 
   "Slam Dunk": [
