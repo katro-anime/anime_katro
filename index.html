@@ -7,16 +7,12 @@
 <title>KATRO Anime</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
     font-family:Arial,sans-serif;
     background:#080b12;
-    color:white;
+    color:#fff;
 }
 
 header{
@@ -65,7 +61,7 @@ nav a:hover{
 .search input{
     width:100%;
     padding:15px;
-    border:0;
+    border:1px solid #1b2638;
     outline:0;
     border-radius:10px;
     background:#111827;
@@ -126,7 +122,7 @@ nav a:hover{
     border-color:#00b7ff;
 }
 
-.card img{
+.poster{
     width:100%;
     height:240px;
     object-fit:cover;
@@ -148,11 +144,17 @@ nav a:hover{
     font-size:13px;
 }
 
-/* Social Media */
+.loading{
+    text-align:center;
+    padding:25px;
+    color:#38b5ff;
+}
+
 .social-section{
     margin-top:25px;
     padding:25px 10px;
     border-top:1px solid #1b2638;
+    text-align:center;
 }
 
 .social-section h3{
@@ -187,13 +189,8 @@ nav a:hover{
     height:55px;
 }
 
-.tiktok-icon{
-    fill:white;
-}
-
-.youtube-icon{
-    fill:#ff0033;
-}
+.tiktok-icon{fill:white}
+.youtube-icon{fill:#ff0033}
 
 .social-name{
     font-size:16px;
@@ -212,18 +209,14 @@ footer{
 }
 
 @media(max-width:600px){
-    header{
-        flex-direction:column;
-    }
+    header{flex-direction:column}
 
     .grid{
         grid-template-columns:repeat(2,1fr);
         gap:12px;
     }
 
-    .card img{
-        height:220px;
-    }
+    .poster{height:220px}
 }
 </style>
 </head>
@@ -240,11 +233,7 @@ footer{
 </header>
 
 <div class="search">
-<input
-id="search"
-type="text"
-placeholder="ابحث عن الأنمي..."
-oninput="searchAnime()">
+<input id="search" type="text" placeholder="ابحث عن الأنمي...">
 </div>
 
 <section class="hero">
@@ -254,21 +243,19 @@ oninput="searchAnime()">
 
 <div class="container">
 <h2 class="title">جميع الأنميات</h2>
-<div id="animeGrid" class="grid"></div>
+<div id="animeGrid" class="grid">
+<div class="loading">جاري تحميل الأنميات...</div>
+</div>
 </div>
 
 <footer>
 
-<!-- Social Media Links -->
 <div class="social-section">
-
 <h3>تابع KATRO Anime</h3>
 
 <div class="social-links">
 
-<!-- TikTok -->
-<a
-class="social-item"
+<a class="social-item"
 href="https://www.tiktok.com/@katro10k"
 target="_blank"
 rel="noopener noreferrer">
@@ -276,178 +263,121 @@ rel="noopener noreferrer">
 <svg class="social-icon tiktok-icon"
 viewBox="0 0 24 24"
 xmlns="http://www.w3.org/2000/svg">
-<path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.5v13.67a2.9 2.9 0 0 1-2.9 2.9 2.9 2.9 0 0 1-2.9-2.9 2.9 2.9 0 0 1 2.9-2.9c.28 0 .55.04.8.12V9.32a6.4 6.4 0 0 0-.8-.05A6.4 6.4 0 0 0 3 15.67a6.4 6.4 0 0 0 6.42 6.4 6.4 6.4 0 0 0 6.4-6.4V9.1a8.2 8.2 0 0 0 4.8 1.54V7.13a4.8 4.8 0 0 1-1.03-.44z"/>
+<path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.5v13.67a2.9 2.9 0 0 1-2.9 2.9 2.9 2.9 0 0 1-2.9-2.9 2.9 2.9 0 0 1 2.9-2.9c.28 0 .55.04.8.12V9.32a6.4 6.4 0 00-.8-.05A6.4 6.4 0 0 0 3 15.67a6.4 6.4 0 0 0 6.42 6.4 6.4 6.4 0 00 6.4-6.4V9.1a8.2 8.2 0 00 4.8 1.54V7.13a4.8 4.8 0 0 1-1.03-.44z"/>
 </svg>
 
 <span class="social-name">TikTok</span>
 <span class="social-url">@katro10k</span>
-
 </a>
 
-<!-- YouTube -->
-<a
-class="social-item"
-href="https://youtube.com/@katro10k?si=W7vw3C24dvkHce2L"
+<a class="social-item"
+href="https://youtube.com/@katro10k"
 target="_blank"
 rel="noopener noreferrer">
 
 <svg class="social-icon youtube-icon"
 viewBox="0 0 24 24"
 xmlns="http://www.w3.org/2000/svg">
-<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/>
+<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/>
 </svg>
 
 <span class="social-name">YouTube</span>
 <span class="social-url">@katro10k</span>
-
 </a>
 
 </div>
 </div>
 
 © 2026 KATRO Anime
-
 </footer>
-    <script src="./anime-data.js"></script>
+
+<script src="./anime-data.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const grid = document.getElementById("animeGrid");
-    const search = document.getElementById("search");
+document.addEventListener("DOMContentLoaded",function(){
 
-    if (typeof getAnimeNames !== "function" ||
-        typeof getAnime !== "function") {
-        grid.innerHTML =
-            "<p>تعذر تحميل بيانات الأنمي. تأكد من ملف anime-data.js</p>";
-        return;
-    }
+const grid=document.getElementById("animeGrid");
+const search=document.getElementById("search");
 
-    function render(list) {
-        grid.innerHTML = "";
+function makeCard(name){
 
-        if (!list.length) {
-            grid.innerHTML = "<p>لا توجد نتائج.</p>";
-            return;
-        }
+const anime=getAnime(name);
+if(!anime)return null;
 
-        list.forEach(function(name) {
-            const anime = getAnime(name);
-            if (!anime) return;
+const card=document.createElement("a");
+card.className="card";
+card.href="anime.html?name="+encodeURIComponent(name);
 
-            const card = document.createElement("a");
-            card.className = "card";
-            card.href = "anime.html?name=" +
-                encodeURIComponent(name);
+const img=document.createElement("img");
+img.className="poster";
+img.alt=name;
+img.loading="lazy";
 
-            const img = document.createElement("img");
-            img.src = anime.cover || "";
-            img.alt = anime.title || name;
-
-            const info = document.createElement("div");
-            info.className = "card-info";
-
-            const title = document.createElement("h3");
-            title.textContent = anime.arabic || anime.title || name;
-
-            const seasons = document.createElement("p");
-            seasons.textContent =
-                (anime.seasons || []).length + " موسم";
-
-            info.appendChild(title);
-            info.appendChild(seasons);
-            card.appendChild(img);
-            card.appendChild(info);
-            grid.appendChild(card);
-        });
-    }
-
-    function searchAnime() {
-        const value = search.value.trim().toLowerCase();
-
-        const results = getAnimeNames().filter(function(name) {
-            const anime = getAnime(name);
-            return name.toLowerCase().includes(value) ||
-                (anime.arabic || "").toLowerCase().includes(value);
-        });
-
-        render(results);
-    }
-
-    search.addEventListener("input", searchAnime);
-    render(getAnimeNames());
-});
-</script>
-
-<script>
-const grid = document.getElementById("animeGrid");
-
-function slug(name){
-    return encodeURIComponent(name);
+function updateCover(){
+if(anime.cover){
+img.src=anime.cover;
+}else{
+img.removeAttribute("src");
+}
 }
 
-function render(list){
-    grid.innerHTML = "";
+updateCover();
 
-    list.forEach(name => {
-        const anime = getAnime(name);
-        if(!anime) return;
+const info=document.createElement("div");
+info.className="card-info";
 
-        const card = document.createElement("a");
-        card.className = "card";
-        card.href = "anime.html?name=" + slug(name);
+const title=document.createElement("h3");
+title.textContent=anime.title;
 
-        const img = document.createElement("img");
-        img.src = anime.cover;
-        img.alt = anime.title;
+const seasons=document.createElement("p");
+seasons.textContent=(anime.seasons||[]).length+" موسم";
 
-        img.onerror = function(){
-            this.src =
-            "data:image/svg+xml;charset=UTF-8," +
-            encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg"
-            width="500" height="700">
-            <rect width="100%" height="100%"
-            fill="#111827"/>
-            <text x="50%" y="48%"
-            text-anchor="middle"
-            fill="#00b7ff"
-            font-size="50"
-            font-family="Arial">
-            KATRO
-            </text>
-            </svg>
-            `);
-        };
+info.appendChild(title);
+info.appendChild(seasons);
 
-        const info = document.createElement("div");
-        info.className = "card-info";
+card.appendChild(img);
+card.appendChild(info);
 
-        info.innerHTML = `
-            <h3>${anime.title}</h3>
-            <p>${anime.seasons.length} موسم</p>
-        `;
+return card;
+}
 
-        card.appendChild(img);
-        card.appendChild(info);
-        grid.appendChild(card);
-    });
+function render(names){
+
+grid.innerHTML="";
+
+if(!names.length){
+grid.innerHTML="<p>لا توجد نتائج.</p>";
+return;
+}
+
+names.forEach(name=>{
+const card=makeCard(name);
+if(card)grid.appendChild(card);
+});
 }
 
 function searchAnime(){
-    const value = document
-        .getElementById("search")
-        .value
-        .toLowerCase()
-        .trim();
+const value=search.value.trim().toLowerCase();
 
-    const result = getAnimeNames().filter(name =>
-        name.toLowerCase().includes(value)
-    );
+const results=getAnimeNames().filter(name=>{
+const anime=getAnime(name);
+return name.toLowerCase().includes(value)||
+(anime.title||"").toLowerCase().includes(value);
+});
 
-    render(result);
+render(results);
 }
 
+search.addEventListener("input",searchAnime);
+
 render(getAnimeNames());
+
+/* Redraw when AniList covers finish loading */
+document.addEventListener("KATRO_DATA_UPDATED",function(){
+searchAnime();
+});
+
+});
 </script>
 
 </body>
