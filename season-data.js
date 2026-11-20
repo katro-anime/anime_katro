@@ -1,8 +1,8 @@
 
 /* ==========================================
-   KATRO ANIME — COMPLETE SEASON DATABASE
-   English anime and season titles
-   Episode counts for listed TV seasons
+   KATRO ANIME
+   Complete season database
+   62 anime titles
 ========================================== */
 
 window.KATRO_SEASONS = {
@@ -11,7 +11,7 @@ window.KATRO_SEASONS = {
     { name: "One Piece - Ongoing Series", episodes: 0, search: "One Piece" }
   ],
 
-    "Solo Leveling": [
+  "Solo Leveling": [
     { name: "Season 1 - Solo Leveling", episodes: 12, search: "Ore dake Level Up na Ken" },
     { name: "Solo Leveling Season 2", episodes: 13, search: "Ore dake Level Up na Ken Season 2" }
   ],
@@ -31,12 +31,16 @@ window.KATRO_SEASONS = {
 
   "Bleach": [
     { name: "Bleach - Original Series", episodes: 366, search: "Bleach" },
-    { name: "Thousand-Year Blood War", episodes: 0, search: "Bleach Sennen Kessen-hen" }
+    { name: "Thousand-Year Blood War - The Blood Warfare", episodes: 13, search: "Bleach Sennen Kessen-hen" },
+    { name: "Thousand-Year Blood War - The Separation", episodes: 13, search: "Bleach Sennen Kessen-hen Ketsubetsu-tan" },
+    { name: "Thousand-Year Blood War - The Conflict", episodes: 14, search: "Bleach Sennen Kessen-hen Soukoku-tan" },
+    { name: "Thousand-Year Blood War - The Calamity", episodes: 10, search: "Bleach Sennen Kessen-hen Kashin-tan" }
   ],
 
   "Jujutsu Kaisen": [
     { name: "Season 1", episodes: 24, search: "Jujutsu Kaisen" },
-    { name: "Season 2", episodes: 23, search: "Jujutsu Kaisen Season 2" }
+    { name: "Season 2", episodes: 23, search: "Jujutsu Kaisen Season 2" },
+    { name: "Season 3 - The Culling Game Part 1", episodes: 12, search: "Jujutsu Kaisen Shimetsu Kaiyuu Zenpen" }
   ],
 
   "Attack on Titan": [
@@ -55,7 +59,8 @@ window.KATRO_SEASONS = {
     { name: "Season 4", episodes: 25, search: "Boku no Hero Academia 4th Season" },
     { name: "Season 5", episodes: 25, search: "Boku no Hero Academia 5th Season" },
     { name: "Season 6", episodes: 25, search: "Boku no Hero Academia 6th Season" },
-    { name: "Season 7", episodes: 21, search: "Boku no Hero Academia 7th Season" }
+    { name: "Season 7", episodes: 21, search: "Boku no Hero Academia 7th Season" },
+    { name: "Final Season - Season 8", episodes: 11, search: "Boku no Hero Academia Final Season" }
   ],
 
   "Dragon Ball": [
@@ -80,7 +85,8 @@ window.KATRO_SEASONS = {
 
   "One Punch Man": [
     { name: "Season 1", episodes: 12, search: "One Punch Man" },
-    { name: "Season 2", episodes: 12, search: "One Punch Man 2" }
+    { name: "Season 2", episodes: 12, search: "One Punch Man 2" },
+    { name: "Season 3", episodes: 12, search: "One Punch Man Season 3" }
   ],
 
   "Tokyo Ghoul": [
@@ -101,7 +107,8 @@ window.KATRO_SEASONS = {
 
   "Spy x Family": [
     { name: "Season 1", episodes: 25, search: "Spy x Family" },
-    { name: "Season 2", episodes: 12, search: "Spy x Family Season 2" }
+    { name: "Season 2", episodes: 12, search: "Spy x Family Season 2" },
+    { name: "Season 3", episodes: 13, search: "Spy x Family Season 3" }
   ],
 
   "Haikyuu!!": [
@@ -143,7 +150,8 @@ window.KATRO_SEASONS = {
   "Re:Zero": [
     { name: "Season 1", episodes: 25, search: "Re Zero kara Hajimeru Isekai Seikatsu" },
     { name: "Season 2", episodes: 25, search: "Re Zero kara Hajimeru Isekai Seikatsu 2nd Season" },
-    { name: "Season 3", episodes: 16, search: "Re Zero kara Hajimeru Isekai Seikatsu 3rd Season" }
+    { name: "Season 3", episodes: 16, search: "Re Zero kara Hajimeru Isekai Seikatsu 3rd Season" },
+    { name: "Season 4", episodes: 19, search: "Re Zero kara Hajimeru Isekai Seikatsu 4th Season" }
   ],
 
   "Sword Art Online": [
@@ -163,12 +171,17 @@ window.KATRO_SEASONS = {
   "Dr. Stone": [
     { name: "Season 1", episodes: 24, search: "Dr Stone" },
     { name: "Season 2 - Stone Wars", episodes: 11, search: "Dr Stone Stone Wars" },
-    { name: "Season 3 - New World", episodes: 22, search: "Dr Stone New World" }
+    { name: "Season 3 - New World", episodes: 22, search: "Dr Stone New World" },
+    { name: "Season 4 - Science Future Part 1", episodes: 12, search: "Dr Stone Science Future" },
+    { name: "Season 4 - Science Future Part 2", episodes: 12, search: "Dr Stone Science Future Part 2" },
+    { name: "Season 4 - Science Future Part 3", episodes: 13, search: "Dr Stone Science Future Part 3" }
   ],
 
   "Fire Force": [
     { name: "Season 1", episodes: 24, search: "Enen no Shouboutai" },
-    { name: "Season 2", episodes: 24, search: "Enen no Shouboutai Ni no Shou" }
+    { name: "Season 2", episodes: 24, search: "Enen no Shouboutai Ni no Shou" },
+    { name: "Season 3 - Part 1", episodes: 12, search: "Enen no Shouboutai San no Shou" },
+    { name: "Season 3 - Part 2", episodes: 13, search: "Enen no Shouboutai San no Shou Part 2" }
   ],
 
   "Tokyo Revengers": [
@@ -223,20 +236,25 @@ window.KATRO_SEASONS = {
   ],
 
   "Frieren: Beyond Journey's End": [
-    { name: "Season 1", episodes: 28, search: "Sousou no Frieren" }
+    { name: "Season 1", episodes: 28, search: "Sousou no Frieren" },
+    { name: "Season 2", episodes: 10, search: "Sousou no Frieren Season 2" }
   ],
 
   "The Apothecary Diaries": [
-    { name: "Season 1", episodes: 24, search: "Kusuriya no Hitorigoto" }
+    { name: "Season 1", episodes: 24, search: "Kusuriya no Hitorigoto" },
+    { name: "Season 2", episodes: 24, search: "Kusuriya no Hitorigoto Season 2" },
+    { name: "Season 3", episodes: 24, search: "Kusuriya no Hitorigoto Season 3" }
   ],
 
   "Oshi no Ko": [
     { name: "Season 1", episodes: 11, search: "Oshi no Ko" },
-    { name: "Season 2", episodes: 13, search: "Oshi no Ko 2nd Season" }
+    { name: "Season 2", episodes: 13, search: "Oshi no Ko 2nd Season" },
+    { name: "Season 3", episodes: 11, search: "Oshi no Ko 3rd Season" }
   ],
 
   "Kaiju No. 8": [
-    { name: "Season 1", episodes: 12, search: "Kaijuu 8-gou" }
+    { name: "Season 1", episodes: 12, search: "Kaijuu 8-gou" },
+    { name: "Season 2", episodes: 11, search: "Kaijuu 8-gou Season 2" }
   ],
 
   "Wind Breaker": [
@@ -245,12 +263,14 @@ window.KATRO_SEASONS = {
   ],
 
   "Dandadan": [
-    { name: "Season 1", episodes: 12, search: "Dandadan" }
+    { name: "Season 1", episodes: 12, search: "Dandadan" },
+    { name: "Season 2", episodes: 12, search: "Dandadan Season 2" }
   ],
 
   "Record of Ragnarok": [
     { name: "Season 1", episodes: 12, search: "Shuumatsu no Walkure" },
-    { name: "Season 2", episodes: 15, search: "Shuumatsu no Walkure II" }
+    { name: "Season 2", episodes: 15, search: "Shuumatsu no Walkure II" },
+    { name: "Season 3", episodes: 15, search: "Shuumatsu no Walkure III" }
   ],
 
   "Baki": [
@@ -301,7 +321,8 @@ window.KATRO_SEASONS = {
   "Fairy Tail": [
     { name: "Season 1 - Fairy Tail", episodes: 175, search: "Fairy Tail" },
     { name: "Season 2 - Fairy Tail (2014)", episodes: 102, search: "Fairy Tail 2014" },
-    { name: "Final Season", episodes: 51, search: "Fairy Tail Final Series" }
+    { name: "Final Season", episodes: 51, search: "Fairy Tail Final Series" },
+    { name: "Fairy Tail: 100 Years Quest", episodes: 25, search: "Fairy Tail 100 Years Quest" }
   ],
 
   "Magi": [
@@ -325,7 +346,10 @@ window.KATRO_SEASONS = {
 
   "Blue Exorcist": [
     { name: "Season 1", episodes: 25, search: "Ao no Exorcist" },
-    { name: "Season 2 - Kyoto Saga", episodes: 12, search: "Ao no Exorcist Kyoto Fujouou-hen" }
+    { name: "Season 2 - Kyoto Saga", episodes: 12, search: "Ao no Exorcist Kyoto Fujouou-hen" },
+    { name: "Season 3 - Shimane Illuminati Saga", episodes: 12, search: "Ao no Exorcist Shimane Illuminati-hen" },
+    { name: "Season 4 - Beyond the Snow Saga", episodes: 12, search: "Ao no Exorcist Yuki no Hate-hen" },
+    { name: "Season 5 - The Blue Night Saga", episodes: 12, search: "Ao no Exorcist Yosuga-hen" }
   ],
 
   "Food Wars": [
