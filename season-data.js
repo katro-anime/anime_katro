@@ -13,8 +13,7 @@ window.KATRO_SEASONS = {
 
   "Solo Leveling": [
     { name: "Season 1 - Solo Leveling", episodes: 12, search: "Ore dake Level Up na Ken" },
-    { name: "Season 2 - Arise from the Shadow", episodes: 13, search: "Ore dake Level Up na Ken Season 2" }
-  ],
+    { name: "Solo Leveling Season 2", episodes: 13, search: "Ore dake Level Up na Ken Season 2" }
 
   "Demon Slayer": [
     { name: "Season 1 - Unwavering Resolve Arc", episodes: 26, search: "Kimetsu no Yaiba" },
