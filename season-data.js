@@ -11,10 +11,11 @@ window.KATRO_SEASONS = {
     { name: "One Piece - Ongoing Series", episodes: 0, search: "One Piece" }
   ],
 
-  "Solo Leveling": [
+    "Solo Leveling": [
     { name: "Season 1 - Solo Leveling", episodes: 12, search: "Ore dake Level Up na Ken" },
     { name: "Solo Leveling Season 2", episodes: 13, search: "Ore dake Level Up na Ken Season 2" }
-,]
+  ],
+
   "Demon Slayer": [
     { name: "Season 1 - Unwavering Resolve Arc", episodes: 26, search: "Kimetsu no Yaiba" },
     { name: "Season 2 - Mugen Train Arc", episodes: 7, search: "Kimetsu no Yaiba Mugen Ressha-hen" },
