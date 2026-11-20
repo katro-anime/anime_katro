@@ -5,35 +5,199 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KATRO Anime</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#080b12;color:#fff;font-family:Arial,sans-serif}
-header{padding:18px 5%;background:#101725;border-bottom:1px solid #19365c;display:flex;justify-content:space-between;align-items:center;gap:12px}
-.logo{font-size:25px;font-weight:bold;color:#28a9ff;text-decoration:none}
-.home{color:#fff;text-decoration:none;background:#17263b;padding:10px 15px;border-radius:9px}
-.container{max-width:1100px;margin:auto;padding:25px 16px}
-.hero{display:flex;gap:25px;align-items:center;flex-wrap:wrap;background:#101725;padding:20px;border-radius:16px}
-.poster{width:220px;height:310px;object-fit:cover;border-radius:12px;background:#17263b}
-.info{flex:1;min-width:220px}
-h1{font-size:30px;margin:0 0 10px;color:#38b5ff}
-.english{color:#aabbd0;font-size:17px}
-.description{color:#c4d0df;line-height:1.8}
-.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
-.tag{background:#1b2b42;padding:8px 12px;border-radius:8px;color:#bfe5ff}
-h2{margin-top:35px;color:#38b5ff}
-.seasons{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:15px}
-.season{background:#111c2c;border:1px solid #1b3555;border-radius:12px;overflow:hidden;text-decoration:none;color:white;transition:.2s}
-.season:hover{transform:translateY(-4px);border-color:#28a9ff}
-.season img{width:100%;height:180px;object-fit:cover;background:#17263b}
-.season-info{padding:13px}
-.season-info h3{margin:0 0 8px}
-.season-info p{margin:0;color:#aabbd0;font-size:14px}
-.empty{background:#151e2c;padding:18px;border-radius:10px;color:#ffc56b}
-footer{text-align:center;padding:25px;color:#8292a8}
-.social{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:15px}
-.social a{color:#38b5ff;text-decoration:none}
+
+body{
+ margin:0;
+ background:#080b12;
+ color:#fff;
+ font-family:Arial,sans-serif
+}
+
+header{
+ padding:18px 5%;
+ background:#101725;
+ border-bottom:1px solid #19365c;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px
+}
+
+.logo{
+ font-size:25px;
+ font-weight:bold;
+ color:#28a9ff;
+ text-decoration:none
+}
+
+.home{
+ color:#fff;
+ text-decoration:none;
+ background:#17263b;
+ padding:10px 15px;
+ border-radius:9px
+}
+
+.container{
+ max-width:1100px;
+ margin:auto;
+ padding:25px 16px
+}
+
+.hero{
+ display:flex;
+ gap:25px;
+ align-items:center;
+ flex-wrap:wrap;
+ background:#101725;
+ padding:20px;
+ border-radius:16px
+}
+
+.poster{
+ width:220px;
+ height:310px;
+ object-fit:cover;
+ border-radius:12px;
+ background:#17263b
+}
+
+.info{
+ flex:1;
+ min-width:220px
+}
+
+h1{
+ font-size:30px;
+ margin:0 0 10px;
+ color:#38b5ff
+}
+
+.english{
+ color:#aabbd0;
+ font-size:17px
+}
+
+.description{
+ color:#c4d0df;
+ line-height:1.8
+}
+
+.meta{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-top:15px
+}
+
+.tag{
+ background:#1b2b42;
+ padding:8px 12px;
+ border-radius:8px;
+ color:#bfe5ff
+}
+
+h2{
+ margin-top:35px;
+ color:#38b5ff
+}
+
+.seasons{
+ display:grid;
+ grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+ gap:15px
+}
+
+.season{
+ background:#111c2c;
+ border:1px solid #1b3555;
+ border-radius:12px;
+ overflow:hidden;
+ text-decoration:none;
+ color:white;
+ transition:.2s
+}
+
+.season:hover{
+ transform:translateY(-4px);
+ border-color:#28a9ff
+}
+
+.season img{
+ width:100%;
+ height:180px;
+ object-fit:cover;
+ background:#17263b;
+ display:block
+}
+
+/* بديل عند عدم وجود غلاف خاص بالجزء */
+.season-placeholder{
+ height:180px;
+ background:linear-gradient(145deg,#101b2b,#152e4b 55%,#07101c);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ padding:15px;
+ color:#38b5ff;
+ font-weight:bold;
+ font-size:20px
+}
+
+.season-placeholder span{
+ display:block;
+ opacity:.65;
+ font-size:12px;
+ margin-top:8px;
+ color:#aabbd0
+}
+
+.season-info{
+ padding:13px
+}
+
+.season-info h3{
+ margin:0 0 8px
+}
+
+.season-info p{
+ margin:0;
+ color:#aabbd0;
+ font-size:14px
+}
+
+.empty{
+ background:#151e2c;
+ padding:18px;
+ border-radius:10px;
+ color:#ffc56b
+}
+
+footer{
+ text-align:center;
+ padding:25px;
+ color:#8292a8
+}
+
+.social{
+ display:flex;
+ justify-content:center;
+ gap:12px;
+ flex-wrap:wrap;
+ margin-top:15px
+}
+
+.social a{
+ color:#38b5ff;
+ text-decoration:none
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -47,6 +211,7 @@ footer{text-align:center;padding:25px;color:#8292a8}
 
 <footer>
 KATRO Anime
+
 <div class="social">
 <a href="https://www.tiktok.com/@katro10k" target="_blank">TikTok</a>
 <a href="https://youtube.com/@katro10k" target="_blank">YouTube</a>
@@ -54,6 +219,7 @@ KATRO Anime
 </footer>
 
 <script src="anime-data.js"></script>
+
 <script>
 const params = new URLSearchParams(location.search);
 const animeName = params.get("name") || params.get("anime") || "";
@@ -61,7 +227,11 @@ const content = document.getElementById("content");
 
 function safe(value){
  return String(value ?? "").replace(/[&<>"']/g, c => ({
- "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
  }[c]));
 }
 
@@ -69,65 +239,148 @@ function showError(message){
  content.innerHTML = `<div class="empty">${safe(message)}</div>`;
 }
 
+function createPlaceholder(title){
+ const div = document.createElement("div");
+ div.className = "season-placeholder";
+
+ const inner = document.createElement("div");
+ inner.textContent = title;
+
+ const brand = document.createElement("span");
+ brand.textContent = "KATRO Anime";
+
+ inner.appendChild(brand);
+ div.appendChild(inner);
+
+ return div;
+}
+
 if(typeof getAnime !== "function"){
+
  showError("لم يتم العثور على ملف بيانات الأنمي anime-data.js.");
+
 }else{
+
  const anime = getAnime(animeName);
 
  if(!anime){
-  showError("لم يتم العثور على هذا الأنمي. ارجع إلى الصفحة الرئيسية واختر الأنمي مرة أخرى.");
+
+  showError("لم يتم العثور على الأنمي.");
+
  }else{
+
   const seasons = Array.isArray(anime.seasons) ? anime.seasons : [];
   const cover = anime.cover || "";
   const title = anime.arabic || anime.title || animeName;
 
   content.innerHTML = `
    <section class="hero">
-    <img class="poster" src="${safe(cover)}" alt="${safe(title)}"
-      onerror="this.style.display='none'">
+
+    <img class="poster"
+         src="${safe(cover)}"
+         alt="${safe(title)}"
+         onerror="this.style.display='none'">
+
     <div class="info">
+
      <h1>${safe(title)}</h1>
-     <div class="english">${safe(anime.title || "")}</div>
-     <p class="description">شاهد تفاصيل المواسم والحلقات الخاصة بهذا الأنمي على KATRO Anime.</p>
-     <div class="meta">
-      <span class="tag">عدد المواسم: ${seasons.length}</span>
-      ${anime.ongoing ? '<span class="tag">مستمر</span>' : ""}
-      ${anime.totalEpisodes ? `<span class="tag">الحلقات: ${safe(anime.totalEpisodes)}</span>` : ""}
+
+     <div class="english">
+      ${safe(anime.title || "")}
      </div>
+
+     <p class="description">
+      شاهد تفاصيل المواسم والحلقات الخاصة بهذا الأنمي على KATRO Anime.
+     </p>
+
+     <div class="meta">
+
+      <span class="tag">
+       عدد المواسم: ${seasons.length}
+      </span>
+
+      ${anime.ongoing
+       ? '<span class="tag">مستمر</span>'
+       : ''}
+
+      ${anime.totalEpisodes
+       ? `<span class="tag">الحلقات: ${safe(anime.totalEpisodes)}</span>`
+       : ''}
+
+     </div>
+
     </div>
    </section>
 
-   <h2>مواسم الأنمي</h2>
+   <h2>مواسم الأنمي وأجزاؤه</h2>
+
    <section class="seasons" id="seasons"></section>
   `;
 
   const seasonArea = document.getElementById("seasons");
 
   if(seasons.length === 0){
-   seasonArea.innerHTML = '<div class="empty">لم تتم إضافة المواسم لهذا الأنمي بعد.</div>';
+
+   seasonArea.innerHTML =
+    '<div class="empty">لم تتم إضافة الأجزاء بعد.</div>';
+
   }else{
-   seasons.forEach((season, index) => {
+
+   seasons.forEach((season,index)=>{
+
     const card = document.createElement("a");
+
     card.className = "season";
-    card.href = `season.html?anime=${encodeURIComponent(animeName)}&season=${encodeURIComponent(season.id || "")}`;
 
-    const image = season.cover || cover;
-    const seasonTitle = season.name || `الموسم ${index + 1}`;
-    const episodes = Array.isArray(season.episodes) ? season.episodes.length : (season.episodes || 0);
+    card.href =
+     `season.html?anime=${encodeURIComponent(animeName)}&season=${encodeURIComponent(season.id || "")}`;
 
-    card.innerHTML = `
-     <img src="${safe(image)}" alt="${safe(seasonTitle)}"
-       onerror="this.src='${safe(cover)}';this.onerror=null">
-     <div class="season-info">
-      <h3>${safe(seasonTitle)}</h3>
-      <p>${safe(episodes)} حلقة</p>
-     </div>
+    const seasonTitle =
+     season.name || `Season ${index + 1}`;
+
+    const episodes =
+     Array.isArray(season.episodes)
+      ? season.episodes.length
+      : (season.episodes || 0);
+
+    /* لا نستخدم الغلاف الرئيسي للأنمي كغلاف للجزء */
+    if(season.cover){
+
+     const img = document.createElement("img");
+     img.src = season.cover;
+     img.alt = seasonTitle;
+
+     img.onerror = ()=>{
+      img.replaceWith(createPlaceholder(seasonTitle));
+     };
+
+     card.appendChild(img);
+
+    }else{
+
+     card.appendChild(createPlaceholder(seasonTitle));
+
+    }
+
+    const info = document.createElement("div");
+    info.className = "season-info";
+
+    info.innerHTML = `
+     <h3>${safe(seasonTitle)}</h3>
+     <p>${safe(episodes)} Episodes</p>
     `;
+
+    card.appendChild(info);
     seasonArea.appendChild(card);
+
    });
+
   }
+
  }
+
 }
 </script>
+
 </body>
 </html>
