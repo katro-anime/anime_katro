@@ -5,13 +5,14 @@
   const CLIENT = CLIENT_ID;
   const REDIRECT = MAL_REDIRECT_URI;
 
+  const WORKER =
+    "https://katro-mal-api.mmmzzz126038.workers.dev";
+
   const AUTH_URL =
     "https://myanimelist.net/v1/oauth2/authorize";
 
-  const TOKEN_URL =
-    "https://myanimelist.net/v1/oauth2/token";
-
-  const API = "https://api.myanimelist.net/v2";
+  const TOKEN_URL = WORKER + "/v1/oauth2/token";
+  const API = WORKER + "/v2";
 
   const SESSION_KEY = "KATRO_MAL_SESSION";
   const FLOW_KEY = "KATRO_MAL_FLOW";
@@ -105,13 +106,8 @@
   function createElement(tag, className, value) {
     const element = document.createElement(tag);
 
-    if (className) {
-      element.className = className;
-    }
-
-    if (value !== undefined) {
-      element.textContent = value;
-    }
+    if (className) element.className = className;
+    if (value !== undefined) element.textContent = value;
 
     return element;
   }
@@ -138,7 +134,6 @@
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~";
 
     const bytes = new Uint8Array(64);
-
     crypto.getRandomValues(bytes);
 
     return Array.from(
@@ -180,11 +175,33 @@
     message.textContent = text;
   }
 
+  async function readResponse(response) {
+    const text = await response.text();
+
+    let data;
+
+    try {
+      data = JSON.parse(text);
+    } catch {
+      data = { message: text };
+    }
+
+    if (!response.ok) {
+      throw new Error(
+        data.message ||
+        data.error ||
+        "فشل الاتصال. رمز الخطأ: " + response.status
+      );
+    }
+
+    return data;
+  }
+
   async function exchangeCode(code, verifier) {
     const body = new URLSearchParams({
       client_id: CLIENT,
       grant_type: "authorization_code",
-      code: code,
+      code,
       code_verifier: verifier,
       redirect_uri: REDIRECT
     });
@@ -192,24 +209,21 @@
     const response = await fetch(TOKEN_URL, {
       method: "POST",
       headers: {
-        "Content-Type":
-          "application/x-www-form-urlencoded"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: body
+      body
     });
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(
-        data.message || "فشل تسجيل الدخول."
-      );
-    }
-
-    return data;
+    return await readResponse(response);
   }
 
   async function refreshToken(session) {
+    if (!session.refresh_token) {
+      throw new Error(
+        "لا يوجد رمز تجديد. سجّل الدخول من جديد."
+      );
+    }
+
     const body = new URLSearchParams({
       client_id: CLIENT,
       grant_type: "refresh_token",
@@ -219,23 +233,18 @@
     const response = await fetch(TOKEN_URL, {
       method: "POST",
       headers: {
-        "Content-Type":
-          "application/x-www-form-urlencoded"
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      body: body
+      body
     });
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error("انتهت جلسة MyAnimeList.");
-    }
+    const data = await readResponse(response);
 
     const updated = {
       ...session,
       ...data,
       expires_at:
-        Date.now() + Number(data.expires_in) * 1000
+        Date.now() + Number(data.expires_in || 3600) * 1000
     };
 
     saveSession(updated);
@@ -253,31 +262,23 @@
       active = await refreshToken(active);
     }
 
-    let response = await fetch(API + path, {
-      headers: {
-        Authorization:
-          "Bearer " + active.access_token
-      }
-    });
-
-    if (response.status === 401) {
-      active = await refreshToken(active);
-
-      response = await fetch(API + path, {
+    async function sendRequest(current) {
+      return await fetch(API + path, {
+        method: "GET",
         headers: {
-          Authorization:
-            "Bearer " + active.access_token
+          Authorization: "Bearer " + current.access_token
         }
       });
     }
 
-    const data = await response.json();
+    let response = await sendRequest(active);
 
-    if (!response.ok) {
-      throw new Error(
-        data.message || "تعذر جلب بيانات الحساب."
-      );
+    if (response.status === 401) {
+      active = await refreshToken(active);
+      response = await sendRequest(active);
     }
+
+    const data = await readResponse(response);
 
     return {
       data,
@@ -286,10 +287,10 @@
   }
 
   function login(panel) {
-    if (!CLIENT) {
+    if (!CLIENT || !REDIRECT) {
       showMessage(
         panel,
-        "Client ID غير موجود.",
+        "إعدادات MyAnimeList غير مكتملة.",
         true
       );
       return;
@@ -345,7 +346,7 @@
         createElement(
           "strong",
           "",
-          item.node.title || "Unknown Anime"
+          item.node?.title || "Unknown Anime"
         )
       );
 
@@ -380,7 +381,6 @@
       );
 
       button.onclick = () => login(panel);
-
       panel.appendChild(button);
 
       showMessage(
@@ -399,10 +399,13 @@
 
     logout.onclick = () => {
       localStorage.removeItem(SESSION_KEY);
+      localStorage.removeItem(FLOW_KEY);
       location.reload();
     };
 
     panel.appendChild(logout);
+
+    showMessage(panel, "جاري تحميل حسابك وقائمة الأنمي...");
 
     try {
       const profile = await apiRequest(
@@ -418,14 +421,9 @@
       );
 
       if (profile.data.picture) {
-        const avatar = createElement(
-          "img",
-          "mal-avatar"
-        );
-
+        const avatar = createElement("img", "mal-avatar");
         avatar.src = profile.data.picture;
         avatar.alt = "Profile";
-
         profileBox.appendChild(avatar);
       }
 
@@ -433,7 +431,7 @@
         createElement(
           "strong",
           "",
-          profile.data.name
+          profile.data.name || "MyAnimeList User"
         )
       );
 
@@ -441,7 +439,7 @@
 
       showMessage(
         panel,
-        "تم ربط حسابك بنجاح. قائمة الأنمي:"
+        "تم تحميل الحساب بنجاح. قائمة الأنمي:"
       );
 
       const result = await apiRequest(
@@ -466,7 +464,7 @@
     } catch (error) {
       showMessage(
         panel,
-        error.message,
+        error.message || "فشل تحميل بيانات MyAnimeList.",
         true
       );
     }
@@ -479,12 +477,20 @@
       createElement("h2", "", "MyAnimeList")
     );
 
-    const params = new URLSearchParams(
-      location.search
-    );
+    const params = new URLSearchParams(location.search);
 
     const code = params.get("code");
     const state = params.get("state");
+    const oauthError = params.get("error");
+
+    if (oauthError) {
+      showMessage(
+        panel,
+        "رفض MyAnimeList إكمال تسجيل الدخول: " + oauthError,
+        true
+      );
+      return;
+    }
 
     if (code) {
       try {
@@ -502,6 +508,8 @@
             "تعذر التحقق من تسجيل الدخول. أعد المحاولة."
           );
         }
+
+        showMessage(panel, "جاري إكمال تسجيل الدخول...");
 
         const token = await exchangeCode(
           code,
@@ -524,7 +532,11 @@
         );
 
       } catch (error) {
-        showMessage(panel, error.message, true);
+        showMessage(
+          panel,
+          error.message || "فشل إكمال تسجيل الدخول.",
+          true
+        );
 
         const retry = createElement(
           "button",
@@ -533,7 +545,6 @@
         );
 
         retry.onclick = () => login(panel);
-
         panel.appendChild(retry);
 
         return;
@@ -544,10 +555,7 @@
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener(
-      "DOMContentLoaded",
-      init
-    );
+    document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
   }
