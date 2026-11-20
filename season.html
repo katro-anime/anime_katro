@@ -158,7 +158,6 @@ footer{
   width:130px;
   height:180px
  }
-
  .episodes{
   grid-template-columns:repeat(2,1fr)
  }
@@ -185,18 +184,10 @@ footer{
 <script>
 "use strict";
 
-/* ================================
-   URL DATA
-================================ */
-
 const params = new URLSearchParams(location.search);
 const animeName = params.get("anime") || params.get("name") || "";
 const seasonId = params.get("season") || "";
 const content = document.getElementById("content");
-
-/* ================================
-   HELPERS
-================================ */
 
 function safe(value){
  return String(value ?? "").replace(/[&<>"']/g,c=>({
@@ -220,10 +211,6 @@ function error(message){
  content.innerHTML =
   `<div class="message">${safe(message)}</div>`;
 }
-
-/* ================================
-   SEASON DATABASE
-================================ */
 
 function getSeasons(anime){
 
@@ -261,10 +248,6 @@ function getSeasons(anime){
   ? oldAnime.seasons
   : [];
 }
-
-/* ================================
-   PAGE
-================================ */
 
 function render(){
 
@@ -334,10 +317,6 @@ function render(){
   poster.style.display="none";
  };
 
- /* ================================
-    SEASON NAVIGATION
- ================================ */
-
  const seasonList = document.getElementById("seasonList");
 
  seasons.forEach(item=>{
@@ -357,10 +336,6 @@ function render(){
 
  });
 
- /* ================================
-    EPISODES
- ================================ */
-
  const episodesArea = document.getElementById("episodes");
 
  if(episodeCount<=0){
@@ -379,7 +354,7 @@ function render(){
   link.className = "episode";
 
   link.href =
-   `watch.html?anime=${encodeURIComponent(watchAnime)}&episode=${i}`;
+   `watch.html?anime=${encodeURIComponent(watchAnime)}&episode=${i}&season=${encodeURIComponent(season.id)}&seasonName=${encodeURIComponent(season.name)}&sourceAnime=${encodeURIComponent(animeName)}`;
 
   link.innerHTML = `
    <div class="number">${i}</div>
@@ -393,12 +368,7 @@ function render(){
 
 }
 
-/* ================================
-   START
-================================ */
-
 render();
-
 </script>
 
 </body>
