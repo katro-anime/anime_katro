@@ -5,12 +5,8 @@
   const CLIENT = CLIENT_ID;
   const REDIRECT = MAL_REDIRECT_URI;
 
-  const WORKER =
-    "https://katro-mal-api.mmmzzz126038.workers.dev";
-
-  const AUTH_URL =
-    "https://myanimelist.net/v1/oauth2/authorize";
-
+  const WORKER = "https://katro-mal-api.mmmzzz126038.workers.dev";
+  const AUTH_URL = "https://myanimelist.net/v1/oauth2/authorize";
   const TOKEN_URL = WORKER + "/v1/oauth2/token";
   const API = WORKER + "/v2";
 
@@ -18,7 +14,6 @@
   const FLOW_KEY = "KATRO_MAL_FLOW";
 
   const style = document.createElement("style");
-
   style.textContent = `
     .mal-panel {
       width:92%;
@@ -78,26 +73,63 @@
       display:grid;
       grid-template-columns:repeat(
         auto-fill,
-        minmax(190px,1fr)
+        minmax(245px,1fr)
       );
       gap:12px;
       margin-top:15px;
     }
 
     .mal-item {
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      min-width:0;
       background:#111827;
       border:1px solid #26364d;
       padding:12px;
       border-radius:10px;
     }
 
-    .mal-item strong {
-      display:block;
-      margin-bottom:8px;
+    .mal-poster {
+      width:88px;
+      height:124px;
+      flex:0 0 88px;
+      object-fit:cover;
+      border-radius:7px;
+      background:#26364d;
     }
 
-    .mal-item small {
+    .mal-info {
+      min-width:0;
+      flex:1;
+    }
+
+    .mal-item strong {
+      display:block;
+      margin:2px 0 10px;
+      line-height:1.5;
+      overflow-wrap:anywhere;
+    }
+
+    .mal-meta {
+      display:block;
       color:#aabbd0;
+      font-size:12px;
+      line-height:1.9;
+    }
+
+    .mal-score {
+      color:#ffd166;
+    }
+
+    @media(max-width:420px) {
+      .mal-grid {
+        grid-template-columns:1fr;
+      }
+
+      .mal-item {
+        padding:10px;
+      }
     }
   `;
 
@@ -244,7 +276,8 @@
       ...session,
       ...data,
       expires_at:
-        Date.now() + Number(data.expires_in || 3600) * 1000
+        Date.now() +
+        Number(data.expires_in || 3600) * 1000
     };
 
     saveSession(updated);
@@ -266,7 +299,8 @@
       return await fetch(API + path, {
         method: "GET",
         headers: {
-          Authorization: "Bearer " + current.access_token
+          Authorization:
+            "Bearer " + current.access_token
         }
       });
     }
@@ -340,30 +374,74 @@
     }
 
     items.forEach(item => {
-      const card = createElement("div", "mal-item");
+      const anime = item.node || {};
+      const status = item.list_status || {};
 
-      card.appendChild(
+      const card = createElement("article", "mal-item");
+
+      const poster = createElement("img", "mal-poster");
+
+      poster.alt = anime.title || "Anime poster";
+      poster.loading = "lazy";
+
+      poster.src =
+        anime.main_picture?.medium ||
+        anime.main_picture?.large ||
+        "";
+
+      poster.onerror = () => {
+        poster.style.visibility = "hidden";
+      };
+
+      card.appendChild(poster);
+
+      const info = createElement("div", "mal-info");
+
+      info.appendChild(
         createElement(
           "strong",
           "",
-          item.node?.title || "Unknown Anime"
+          anime.title || "Unknown Anime"
         )
       );
 
-      const status = item.list_status || {};
+      const totalEpisodes = Number(
+        anime.num_episodes || 0
+      );
 
-      card.appendChild(
+      const watchedEpisodes = Number(
+        status.num_episodes_watched || 0
+      );
+
+      const episodeText = totalEpisodes > 0
+        ? watchedEpisodes + " / " + totalEpisodes
+        : watchedEpisodes + " / غير معروف";
+
+      info.appendChild(
         createElement(
-          "small",
-          "",
-          "الحالة: " + (status.status || "غير محدد") +
-          " | الحلقات: " +
-          (status.num_episodes_watched || 0) +
-          " | التقييم: " +
-          (status.score || 0) + "/10"
+          "span",
+          "mal-meta",
+          "الحالة: " + (status.status || "غير محدد")
         )
       );
 
+      info.appendChild(
+        createElement(
+          "span",
+          "mal-meta",
+          "الحلقات: " + episodeText
+        )
+      );
+
+      info.appendChild(
+        createElement(
+          "span",
+          "mal-meta mal-score",
+          "التقييم: " + (status.score || 0) + "/10"
+        )
+      );
+
+      card.appendChild(info);
       grid.appendChild(card);
     });
 
@@ -405,7 +483,10 @@
 
     panel.appendChild(logout);
 
-    showMessage(panel, "جاري تحميل حسابك وقائمة الأنمي...");
+    showMessage(
+      panel,
+      "جاري تحميل حسابك وقائمة الأنمي..."
+    );
 
     try {
       const profile = await apiRequest(
@@ -421,9 +502,14 @@
       );
 
       if (profile.data.picture) {
-        const avatar = createElement("img", "mal-avatar");
+        const avatar = createElement(
+          "img",
+          "mal-avatar"
+        );
+
         avatar.src = profile.data.picture;
         avatar.alt = "Profile";
+
         profileBox.appendChild(avatar);
       }
 
@@ -443,7 +529,7 @@
       );
 
       const result = await apiRequest(
-        "/users/@me/animelist?fields=list_status&limit=100",
+        "/users/@me/animelist?fields=list_status,main_picture,num_episodes&limit=100",
         profile.session
       );
 
@@ -464,7 +550,8 @@
     } catch (error) {
       showMessage(
         panel,
-        error.message || "فشل تحميل بيانات MyAnimeList.",
+        error.message ||
+        "فشل تحميل بيانات MyAnimeList.",
         true
       );
     }
@@ -486,7 +573,8 @@
     if (oauthError) {
       showMessage(
         panel,
-        "رفض MyAnimeList إكمال تسجيل الدخول: " + oauthError,
+        "رفض MyAnimeList إكمال تسجيل الدخول: " +
+        oauthError,
         true
       );
       return;
@@ -509,7 +597,10 @@
           );
         }
 
-        showMessage(panel, "جاري إكمال تسجيل الدخول...");
+        showMessage(
+          panel,
+          "جاري إكمال تسجيل الدخول..."
+        );
 
         const token = await exchangeCode(
           code,
@@ -534,7 +625,8 @@
       } catch (error) {
         showMessage(
           panel,
-          error.message || "فشل إكمال تسجيل الدخول.",
+          error.message ||
+          "فشل إكمال تسجيل الدخول.",
           true
         );
 
@@ -555,7 +647,10 @@
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener(
+      "DOMContentLoaded",
+      init
+    );
   } else {
     init();
   }
