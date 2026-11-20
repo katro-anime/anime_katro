@@ -1,417 +1,472 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport"
-content="width=device-width, initial-scale=1.0">
 
-<title>مشاهدة | KATRO Anime</title><style>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مشاهدة | KATRO Anime</title>
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+<style>
+*{
+ box-sizing:border-box;
+ margin:0;
+ padding:0
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #080b12;
-    color: white;
+body{
+ font-family:Arial,sans-serif;
+ background:#080b12;
+ color:white
 }
 
-header {
-    background: #0d111c;
-    padding: 15px 20px;
-    border-bottom: 1px solid #202738;
+header{
+ background:#0d111c;
+ padding:15px 20px;
+ border-bottom:1px solid #202738
 }
 
-.header-content {
-    max-width: 1000px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header-content{
+ max-width:1000px;
+ margin:auto;
+ display:flex;
+ align-items:center;
+ justify-content:space-between
 }
 
-.logo {
-    color: #00b7ff;
-    font-size: 24px;
-    font-weight: bold;
+.logo{
+ color:#00b7ff;
+ font-size:24px;
+ font-weight:bold;
+ text-decoration:none
 }
 
-.home {
-    color: white;
-    text-decoration: none;
-    background: #151c2c;
-    padding: 8px 15px;
-    border-radius: 8px;
+.home{
+ color:white;
+ text-decoration:none;
+ background:#151c2c;
+ padding:8px 15px;
+ border-radius:8px
 }
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
+.container{
+ max-width:1000px;
+ margin:auto;
+ padding:20px
 }
 
-
-/* =========================
-   الإعلان
-========================= */
-
-.ad-box {
-    text-align: center;
-    margin-bottom: 20px;
-    min-height: 50px;
+.player{
+ background:#000;
+ border-radius:15px;
+ overflow:hidden;
+ margin-bottom:20px
 }
 
-
-/* =========================
-   المشغل
-========================= */
-
-.player {
-    background: #000;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 20px;
+.player iframe{
+ width:100%;
+ height:560px;
+ border:0;
+ display:block;
+ background:#000
 }
 
-.player iframe {
-    width: 100%;
-    height: 560px;
-    border: 0;
-    display: block;
-    background: #000;
+.episode-info{
+ background:#0d111c;
+ border-radius:12px;
+ padding:18px;
+ margin-bottom:20px
 }
 
-
-/* =========================
-   معلومات الحلقة
-========================= */
-
-.episode-info {
-    background: #0d111c;
-    border-radius: 12px;
-    padding: 18px;
-    margin-bottom: 20px;
+.episode-info h1{
+ font-size:22px;
+ margin-bottom:10px;
+ color:#38b5ff
 }
 
-.episode-info h1 {
-    font-size: 22px;
-    margin-bottom: 8px;
+.episode-info p{
+ color:#aeb6c5;
+ margin-top:8px;
+ line-height:1.7
 }
 
-.episode-info p {
-    color: #aeb6c5;
+.download-box{
+ background:#0d111c;
+ border-radius:15px;
+ padding:20px;
+ margin-bottom:20px
 }
 
-
-/* =========================
-   التحميل
-========================= */
-
-.download-box {
-    background: #0d111c;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
+.download-button{
+ display:block;
+ text-align:center;
+ background:#1687d9;
+ color:white;
+ text-decoration:none;
+ padding:14px;
+ border-radius:9px;
+ font-size:16px
 }
 
-.download-button {
-    display: block;
-    text-align: center;
-    background: #1687d9;
-    color: white;
-    text-decoration: none;
-    padding: 14px;
-    border-radius: 9px;
-    font-size: 16px;
+.download-button:hover{
+ background:#00b7ff
 }
 
-.download-button:hover {
-    background: #00b7ff;
+.servers{
+ background:#0d111c;
+ border-radius:15px;
+ padding:20px
 }
 
-
-/* =========================
-   الخوادم
-========================= */
-
-.servers {
-    background: #0d111c;
-    border-radius: 15px;
-    padding: 20px;
+.servers h2{
+ color:#00b7ff;
+ margin-bottom:18px;
+ font-size:20px
 }
 
-.servers h2 {
-    color: #00b7ff;
-    margin-bottom: 18px;
-    font-size: 20px;
+.server-list{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px
 }
 
-.server-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+.server{
+ border:none;
+ background:#1687d9;
+ color:white;
+ padding:13px;
+ border-radius:9px;
+ font-size:15px;
+ cursor:pointer;
+ width:100%
 }
 
-.server {
-    border: none;
-    background: #1687d9;
-    color: white;
-    padding: 13px;
-    border-radius: 9px;
-    font-size: 15px;
-    cursor: pointer;
-    width: 100%;
+.server:hover{
+ background:#00b7ff
 }
 
-.server:hover {
-    background: #00b7ff;
+.server.active{
+ background:#075e9d;
+ outline:2px solid #38b5ff
 }
 
-
-/* =========================
-   الفوتر
-========================= */
-
-footer {
-    text-align: center;
-    color: #777;
-    padding: 30px 10px;
+.message{
+ background:#151e2c;
+ padding:15px;
+ border-radius:10px;
+ margin-bottom:15px;
+ color:#ffc56b;
+ line-height:1.7
 }
 
-
-/* =========================
-   الهاتف
-========================= */
-
-@media (max-width: 600px) {
-
-    .container {
-        padding: 12px;
-    }
-
-    .player iframe {
-        height: 230px;
-    }
-
-    .server-list {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .episode-info h1 {
-        font-size: 20px;
-    }
-
+footer{
+ text-align:center;
+ color:#777;
+ padding:30px 10px
 }
 
-</style></head><body><header><div class="header-content"><div class="logo">
+@media(max-width:600px){
+ .container{
+  padding:12px
+ }
+
+ .player iframe{
+  height:230px
+ }
+
+ .server-list{
+  grid-template-columns:1fr 1fr
+ }
+
+ .episode-info h1{
+  font-size:20px
+ }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-content">
+
+<a class="logo" href="index.html">
 KATRO Anime
-</div><a class="home" href="index.html">
+</a>
+
+<a class="home" href="index.html">
 الرئيسية
-</a></div></header><div class="container"><!-- =========================
-     الإعلان
-========================= --><div class="ad-box"><script async
-src="https://js.mbidadm.com/static/scripts.js"
-data-admpid="467369">
-</script></div><!-- =========================
-     مشغل الفيديو
-========================= --><div class="player"><iframe
+</a>
+
+</div>
+</header>
+
+<div class="container">
+
+<div class="player">
+<iframe
 id="videoPlayer"
 src=""
 allow="autoplay; fullscreen"
 allowfullscreen>
-</iframe></div><!-- =========================
-     معلومات الحلقة
-========================= --><div class="episode-info"><h1 id="episodeTitle">
-أنت تشاهد الحلقة
-</h1><p id="episodeDescription">
+</iframe>
+</div>
+
+<div id="message" class="message" style="display:none"></div>
+
+<div class="episode-info">
+
+<h1 id="episodeTitle">جاري تحميل الحلقة...</h1>
+
+<p id="episodeDescription">
 إذا لم يعمل الخادم الحالي، جرّب أحد الخوادم الأخرى.
-</p></div><!-- =========================
-     التحميل
-========================= --><div class="download-box"><a
+</p>
+
+</div>
+
+<div class="download-box">
+
+<a
 id="downloadButton"
 class="download-button"
 href="#">
 
 ⬇ تحميل الحلقة
 
-</a></div><!-- =========================
-     الخوادم
-========================= --><div class="servers"><h2>
-خوادم المشاهدة
-</h2><div class="server-list"><button
-class="server"
-onclick="changeServer(1)">
+</a>
 
+</div>
+
+<div class="servers">
+
+<h2>خوادم المشاهدة</h2>
+
+<div class="server-list">
+
+<button class="server" onclick="changeServer(1)">
 Mega ▶
+</button>
 
-</button><button
-class="server"
-onclick="changeServer(2)">
-
+<button class="server" onclick="changeServer(2)">
 الخادم 2 ▶
+</button>
 
-</button><button
-class="server"
-onclick="changeServer(3)">
-
+<button class="server" onclick="changeServer(3)">
 الخادم 3 ▶
+</button>
 
-</button><button
-class="server"
-onclick="changeServer(4)">
-
+<button class="server" onclick="changeServer(4)">
 الخادم 4 ▶
+</button>
 
-</button><button
-class="server"
-onclick="changeServer(5)">
-
+<button class="server" onclick="changeServer(5)">
 الخادم 5 ▶
+</button>
 
-</button><button
-class="server"
-onclick="changeServer(6)">
-
+<button class="server" onclick="changeServer(6)">
 الخادم 6 ▶
+</button>
 
-</button></div></div></div><footer>© 2026 KATRO Anime
+</div>
+</div>
 
-</footer><script>
+</div>
 
+<footer>
+© 2026 KATRO Anime
+</footer>
 
-/* =========================================
-   قراءة بيانات الحلقة
-========================================= */
+<script>
 
-const params =
-new URLSearchParams(window.location.search);
+/* =================================
+   قراءة بيانات الرابط
+================================= */
 
-const anime =
-params.get("anime") || "";
+const params = new URLSearchParams(location.search);
 
-const episode =
-params.get("episode") || "";
-
-
-
-/* =========================================
-   عنوان الحلقة
-========================================= */
-
-document.getElementById("episodeTitle").textContent =
-"أنت تشاهد الحلقة " + episode;
+const anime = params.get("anime") || "";
+const episode = params.get("episode") || "";
+const season = params.get("season") || "";
+const seasonName = params.get("seasonName") || "";
+const sourceAnime = params.get("sourceAnime") || anime;
 
 
+/* =================================
+   العناصر
+================================= */
 
-/* =========================================
-   روابط المشاهدة
-========================================= */
+const videoPlayer = document.getElementById("videoPlayer");
+const episodeTitle = document.getElementById("episodeTitle");
+const episodeDescription = document.getElementById("episodeDescription");
+const downloadButton = document.getElementById("downloadButton");
+const messageBox = document.getElementById("message");
+const serverButtons = document.querySelectorAll(".server");
+
+
+/* =================================
+   عرض بيانات الحلقة
+================================= */
+
+episodeTitle.textContent =
+ anime + " — " +
+ (seasonName ? seasonName + " — " : "") +
+ "Episode " + episode;
+
+episodeDescription.textContent =
+ "Anime: " + sourceAnime +
+ " | Season: " + (seasonName || season || "غير محدد") +
+ " | Episode: " + episode;
+
+
+/* =================================
+   روابط المشاهدة الحالية
+================================= */
+
+/* Solo Leveling Season 2 Episode 2 */
 
 const filekoshSeason2Episode2 =
 "https://filekosh.com/embed/od90zZm5LT";
 
 
-
-/* =========================================
-   تحديد المشغل
-========================================= */
-
-const videoPlayer =
-document.getElementById("videoPlayer");
-
-
-/*
-   الحلقة 2 من الموسم الثاني
-   Solo Leveling
-*/
-
-if (
-    anime === "solo-s2" &&
-    episode === "2"
-) {
-
-    videoPlayer.src =
-    filekoshSeason2Episode2;
-
-}
-
-
-
-/* =========================================
-   زر التحميل
-========================================= */
-
-document.getElementById("downloadButton").href =
-"download.html?anime=" +
-encodeURIComponent(anime) +
-"&episode=" +
-encodeURIComponent(episode);
-
-
-
-/* =========================================
-   Mega - الحلقة 1 الموسم الثاني
-========================================= */
+/* Solo Leveling Season 2 Episode 1 — Mega */
 
 const megaSeason2Episode1 =
 "https://mega.nz/file/uF1HSQZQ#GhxjYVU5ELDW03p0oftqHXxLt-G7Z-dPzldP18Tyvw8";
 
 
+/* =================================
+   تحديد روابط الحلقة
+================================= */
 
-/* =========================================
-   تغيير الخادم
-========================================= */
+function getEpisodeLinks(){
 
-function changeServer(serverNumber) {
+ const links = {
+  1:"",
+  2:"",
+  3:"",
+  4:"",
+  5:"",
+  6:""
+ };
 
+ /* Solo Leveling Season 2 Episode 1 */
 
-    /* ================================
-       SERVER 1 - MEGA
-    ================================= */
+ if(
+  (anime === "solo-s2" || sourceAnime === "Solo Leveling") &&
+  episode === "1" &&
+  (
+   season === "solo-leveling-season-2" ||
+   seasonName === "Solo Leveling Season 2"
+  )
+ ){
 
-    if (serverNumber === 1) {
+  links[1] = megaSeason2Episode1;
 
+ }
 
-        if (
-            anime === "solo-s2" &&
-            episode === "1"
-        ) {
+ /* Solo Leveling Season 2 Episode 2 */
 
+ if(
+  (anime === "solo-s2" || sourceAnime === "Solo Leveling") &&
+  episode === "2" &&
+  (
+   season === "solo-leveling-season-2" ||
+   seasonName === "Solo Leveling Season 2"
+  )
+ ){
 
-            window.open(
-                megaSeason2Episode1,
-                "_blank"
-            );
+  links[2] = filekoshSeason2Episode2;
 
+ }
 
-            return;
-
-        }
-
-
-        alert(
-            "رابط Mega لهذه الحلقة لم تتم إضافته بعد."
-        );
-
-        return;
-
-    }
-
-
-
-    /* ================================
-       باقي الخوادم
-    ================================= */
-
-    if (serverNumber >= 2) {
-
-        alert(
-            "لم يتم إضافة رابط لهذا الخادم بعد."
-        );
-
-        return;
-
-    }
+ return links;
 
 }
 
-</script></body></html>
+
+/* =================================
+   الروابط
+================================= */
+
+const episodeLinks = getEpisodeLinks();
+
+
+/* =================================
+   تشغيل الخادم
+================================= */
+
+function changeServer(serverNumber){
+
+ const link = episodeLinks[serverNumber];
+
+ serverButtons.forEach((button,index)=>{
+  button.classList.toggle(
+   "active",
+   index + 1 === serverNumber
+  );
+ });
+
+ if(!link){
+
+  messageBox.style.display="block";
+
+  messageBox.textContent =
+   "لم تتم إضافة رابط مشاهدة لهذه الحلقة على هذا الخادم حتى الآن.";
+
+  return;
+
+ }
+
+ messageBox.style.display="none";
+
+ if(serverNumber === 1){
+
+  window.open(link,"_blank");
+
+  return;
+
+ }
+
+ videoPlayer.src = link;
+
+}
+
+
+/* =================================
+   تحميل الحلقة
+================================= */
+
+downloadButton.href =
+"download.html?anime=" +
+encodeURIComponent(anime) +
+"&episode=" +
+encodeURIComponent(episode) +
+"&season=" +
+encodeURIComponent(season) +
+"&seasonName=" +
+encodeURIComponent(seasonName);
+
+
+/* =================================
+   تشغيل تلقائي للخادم المتوفر
+================================= */
+
+if(episodeLinks[2]){
+
+ changeServer(2);
+
+}else if(episodeLinks[1]){
+
+ changeServer(1);
+
+}else{
+
+ messageBox.style.display="block";
+
+ messageBox.textContent =
+ "لم تتم إضافة رابط مشاهدة لهذه الحلقة بعد. يمكنك اختيار خادم آخر عند إضافة روابط إليه.";
+
+}
+
+</script>
+
+</body>
+</html>
