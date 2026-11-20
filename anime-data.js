@@ -1,8 +1,9 @@
 
 /* =========================================
-   KATRO ANIME DATABASE - CLEAN VERSION
-   Official anime covers via AniList
+   KATRO ANIME DATABASE
+   Ordered anime list
    English titles
+   Official AniList covers
 ========================================= */
 
 const KATRO_ANIME = {};
@@ -73,59 +74,67 @@ const ANIME_NAMES = [
 ];
 
 /* =========================================
-   CREATE DATABASE
+   CREATE DATABASE IN FIXED ORDER
 ========================================= */
 
-ANIME_NAMES.forEach(function(name) {
+ANIME_NAMES.forEach(function(name, index) {
+
     KATRO_ANIME[name] = {
+        order: index + 1,
         title: name,
         arabic: name,
         cover: "",
         anilistId: null,
         totalEpisodes: 0,
-        seasons: [
-            {
-                id: "s1",
-                name: "Season 1",
-                episodes: 0,
-                cover: ""
-            }
-        ]
+        seasons: []
     };
+
 });
 
-/* Solo Leveling known seasons */
+/* =========================================
+   SOLO LEVELING
+========================================= */
+
 KATRO_ANIME["Solo Leveling"].seasons = [
     {
         id: "s1",
-        name: "Season 1",
+        name: "Solo Leveling",
         episodes: 12,
+        cover: "",
         watchId: "solo"
     },
     {
         id: "s2",
-        name: "Season 2",
+        name: "Solo Leveling Season 2",
         episodes: 13,
+        cover: "",
         watchId: "solo-s2"
     }
 ];
+
 KATRO_ANIME["Solo Leveling"].totalEpisodes = 25;
 
-/* Naruto */
+/* =========================================
+   NARUTO SERIES
+========================================= */
+
 KATRO_ANIME["Naruto"].seasons = [
     {
         id: "s1",
         name: "Naruto",
         episodes: 220,
+        cover: "",
         watchId: "Naruto"
     },
     {
         id: "s2",
         name: "Naruto Shippuden",
         episodes: 500,
+        cover: "",
         watchId: "Naruto Shippuden"
     }
 ];
+
 KATRO_ANIME["Naruto"].totalEpisodes = 720;
 
 /* =========================================
@@ -137,18 +146,19 @@ function getAnime(name) {
 }
 
 function getAnimeNames() {
-    return Object.keys(KATRO_ANIME);
+    return ANIME_NAMES.slice();
 }
 
 /* =========================================
-   ANILIST OFFICIAL COVER DATA
+   ANILIST COVER SYSTEM
 ========================================= */
 
 (function() {
 
     const API = "https://graphql.anilist.co";
-    const CACHE_KEY = "KATRO_ANIME_DATA_V6";
-    const CACHE_TIME = 24 * 60 * 60 * 1000;
+
+    /* New cache version */
+    const CACHE_KEY = "KATRO_ANIME_DATA_V7";
 
     const ALIASES = {
         "Demon Slayer": "Kimetsu no Yaiba",
@@ -158,7 +168,60 @@ function getAnimeNames() {
         "The Apothecary Diaries": "Kusuriya no Hitorigoto",
         "Pokémon": "Pokemon",
         "Parasyte": "Kiseijuu",
-        "Hunter x Hunter": "Hunter x Hunter"
+        "Hunter x Hunter": "Hunter x Hunter",
+        "The Seven Deadly Sins": "Nanatsu no Taizai",
+        "Blue Exorcist": "Ao no Exorcist",
+        "The Promised Neverland": "Yakusoku no Neverland",
+        "Your Lie in April": "Shigatsu wa Kimi no Uso",
+        "Mob Psycho 100": "Mob Psycho 100",
+        "One Piece": "One Piece",
+        "Solo Leveling": "Ore dake Level Up na Ken",
+        "Naruto": "Naruto",
+        "Bleach": "Bleach",
+        "Jujutsu Kaisen": "Jujutsu Kaisen",
+        "My Hero Academia": "Boku no Hero Academia",
+        "Black Clover": "Black Clover",
+        "Death Note": "Death Note",
+        "One Punch Man": "One Punch Man",
+        "Tokyo Ghoul": "Tokyo Ghoul",
+        "Blue Lock": "Blue Lock",
+        "Chainsaw Man": "Chainsaw Man",
+        "Spy x Family": "Spy x Family",
+        "Vinland Saga": "Vinland Saga",
+        "JoJo's Bizarre Adventure": "JoJo no Kimyou na Bouken",
+        "Code Geass": "Code Geass",
+        "Steins;Gate": "Steins Gate",
+        "Re:Zero": "Re Zero",
+        "Sword Art Online": "Sword Art Online",
+        "Overlord": "Overlord",
+        "Dr. Stone": "Dr Stone",
+        "Fire Force": "Enen no Shouboutai",
+        "Tokyo Revengers": "Tokyo Revengers",
+        "Akame ga Kill!": "Akame ga Kill",
+        "Assassination Classroom": "Ansatsu Kyoushitsu",
+        "Classroom of the Elite": "Youkoso Jitsuryoku Shijou Shugi no Kyoushitsu e",
+        "Noragami": "Noragami",
+        "Erased": "Boku dake ga Inai Machi",
+        "Made in Abyss": "Made in Abyss",
+        "Monster": "Monster",
+        "Cyberpunk: Edgerunners": "Cyberpunk Edgerunners",
+        "Oshi no Ko": "Oshi no Ko",
+        "Kaiju No. 8": "Kaijuu 8-gou",
+        "Wind Breaker": "Wind Breaker",
+        "Dandadan": "Dandadan",
+        "Record of Ragnarok": "Shuumatsu no Walküre",
+        "Baki": "Baki",
+        "Kengan Ashura": "Kengan Ashura",
+        "Detective Conan": "Detective Conan",
+        "Yu-Gi-Oh!": "Yu-Gi-Oh",
+        "Digimon": "Digimon Adventure",
+        "Slam Dunk": "Slam Dunk",
+        "Kuroko's Basketball": "Kuroko no Basket",
+        "Fairy Tail": "Fairy Tail",
+        "Magi": "Magi",
+        "Gintama": "Gintama",
+        "Soul Eater": "Soul Eater",
+        "Food Wars": "Shokugeki no Souma"
     };
 
     function normalize(text) {
@@ -170,52 +233,76 @@ function getAnimeNames() {
     }
 
     function matchAnime(name, media) {
+
         const wanted = normalize(name);
+        const alias = normalize(ALIASES[name] || name);
+
         const titles = [
             media.title?.english,
             media.title?.romaji,
             media.title?.native,
             ...(media.synonyms || [])
-        ];
+        ].filter(Boolean);
 
         return titles.some(function(title) {
-            return normalize(title) === wanted;
+
+            const normalized = normalize(title);
+
+            return normalized === wanted ||
+                   normalized === alias;
+
         });
     }
 
+    /* =====================================
+       APPLY COVER DATA
+    ===================================== */
+
     function applyData(data) {
+
         Object.keys(data).forEach(function(name) {
+
             const anime = getAnime(name);
             const item = data[name];
 
             if (!anime || !item) return;
 
             anime.cover = item.cover || anime.cover;
-            anime.anilistId = item.id || null;
+            anime.anilistId = item.id || anime.anilistId;
 
             if (item.episodes > 0) {
+
                 anime.totalEpisodes = item.episodes;
 
+                /* Only fill an unknown episode count */
                 if (
                     anime.seasons.length === 1 &&
                     anime.seasons[0].episodes === 0
                 ) {
                     anime.seasons[0].episodes = item.episodes;
                 }
+
             }
+
         });
 
         document.dispatchEvent(
             new Event("KATRO_DATA_UPDATED")
         );
+
     }
 
+    /* =====================================
+       SEARCH ANILIST
+    ===================================== */
+
     async function searchAnime(name) {
+
         const queryName = ALIASES[name] || name;
 
         const query = `
         query {
-            Page(perPage: 10) {
+            Page(perPage: 15) {
                 media(
                     search: ${JSON.stringify(queryName)}
                     type: ANIME
@@ -223,13 +310,17 @@ function getAnimeNames() {
                     isAdult: false
                 ) {
                     id
+
                     title {
                         english
                         romaji
                         native
                     }
+
                     synonyms
+
                     episodes
+
                     coverImage {
                         extraLarge
                         large
@@ -239,12 +330,18 @@ function getAnimeNames() {
         }`;
 
         const response = await fetch(API, {
+
             method: "POST",
+
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
-            body: JSON.stringify({ query })
+
+            body: JSON.stringify({
+                query: query
+            })
+
         });
 
         if (!response.ok) {
@@ -252,7 +349,9 @@ function getAnimeNames() {
         }
 
         const json = await response.json();
-        const mediaList = json?.data?.Page?.media || [];
+
+        const mediaList =
+            json?.data?.Page?.media || [];
 
         const exact = mediaList.find(function(media) {
             return matchAnime(name, media);
@@ -261,45 +360,74 @@ function getAnimeNames() {
         if (!exact) return null;
 
         return {
+
             id: exact.id,
+
             cover:
                 exact.coverImage?.extraLarge ||
                 exact.coverImage?.large ||
                 "",
+
             episodes: exact.episodes || 0
+
         };
+
     }
 
+    /* =====================================
+       LOAD ALL ANIME
+    ===================================== */
+
     async function loadAll() {
+
         const output = {};
+
         const usedIds = new Set();
 
         for (const name of ANIME_NAMES) {
+
             try {
+
                 const item = await searchAnime(name);
 
                 if (!item) continue;
 
-                /* Prevent accidentally assigning the same anime result */
+                /* Avoid assigning the same anime to two entries */
                 if (usedIds.has(item.id)) continue;
 
                 usedIds.add(item.id);
+
                 output[name] = item;
 
-                await new Promise(resolve => setTimeout(resolve, 350));
+                await new Promise(function(resolve) {
+                    setTimeout(resolve, 300);
+                });
 
-            } catch (error) {
-                console.warn("KATRO cover failed:", name);
+            } catch(error) {
+
+                console.warn(
+                    "KATRO cover failed:",
+                    name
+                );
+
             }
+
         }
 
         return output;
+
     }
+
+    /* =====================================
+       START DATABASE
+    ===================================== */
 
     async function start() {
 
-        /* Load saved data first */
+        /* Load saved covers first */
+
         try {
+
             const saved = JSON.parse(
                 localStorage.getItem(CACHE_KEY) || "null"
             );
@@ -307,12 +435,17 @@ function getAnimeNames() {
             if (saved && saved.data) {
                 applyData(saved.data);
             }
+
         } catch(error) {
+
             console.warn("KATRO cache error");
+
         }
 
-        /* Refresh from AniList */
+        /* Refresh official covers */
+
         try {
+
             const freshData = await loadAll();
 
             applyData(freshData);
@@ -325,11 +458,19 @@ function getAnimeNames() {
                 })
             );
 
-            console.log("KATRO: Anime covers updated");
+            console.log(
+                "KATRO: Anime database updated"
+            );
 
         } catch(error) {
-            console.error("KATRO update failed", error);
+
+            console.error(
+                "KATRO update failed",
+                error
+            );
+
         }
+
     }
 
     start();
