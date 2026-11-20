@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KATRO Anime - الحلقات</title>
+<title>KATRO Anime - Episodes</title>
 
 <style>
 *{box-sizing:border-box}
@@ -173,7 +173,7 @@ footer{
 </header>
 
 <main class="container">
-<div id="content">جاري تحميل الحلقات...</div>
+<div id="content">Loading episodes...</div>
 </main>
 
 <footer>KATRO Anime</footer>
@@ -188,6 +188,8 @@ const params = new URLSearchParams(location.search);
 const animeName = params.get("anime") || params.get("name") || "";
 const seasonId = params.get("season") || "";
 const content = document.getElementById("content");
+
+const ANILIST_API = "https://graphql.anilist.co";
 
 function safe(value){
  return String(value ?? "").replace(/[&<>"']/g,c=>({
@@ -205,6 +207,14 @@ function slug(text){
   .trim()
   .replace(/[^a-z0-9]+/g,"-")
   .replace(/^-|-$/g,"");
+}
+
+function normalize(text){
+ return String(text || "")
+  .toLowerCase()
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g,"")
+  .replace(/[^a-z0-9]/g,"");
 }
 
 function error(message){
@@ -249,7 +259,91 @@ function getSeasons(anime){
   : [];
 }
 
-function render(){
+/* ======================================
+   FETCH THE POSTER FOR THIS SEASON
+====================================== */
+
+async function fetchSeasonCover(search){
+
+ if(!search) return "";
+
+ const query = `
+ query ($search:String) {
+  Page(perPage:12) {
+   media(search:$search,type:ANIME,sort:SEARCH_MATCH) {
+    title {
+     english
+     romaji
+     native
+    }
+    coverImage {
+     extraLarge
+     large
+    }
+   }
+  }
+ }
+ `;
+
+ try{
+
+  const response = await fetch(ANILIST_API,{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json",
+    "Accept":"application/json"
+   },
+   body:JSON.stringify({
+    query,
+    variables:{search}
+   })
+  });
+
+  if(!response.ok) return "";
+
+  const json = await response.json();
+
+  const list =
+   json?.data?.Page?.media || [];
+
+  if(!list.length) return "";
+
+  const wanted = normalize(search);
+
+  /* Try to find a title that matches the season search */
+  const exact = list.find(item=>{
+
+   const titles = [
+    item.title?.english,
+    item.title?.romaji,
+    item.title?.native
+   ].filter(Boolean);
+
+   return titles.some(title=>
+    normalize(title) === wanted
+   );
+
+  });
+
+  const selected = exact || list[0];
+
+  return selected?.coverImage?.extraLarge ||
+         selected?.coverImage?.large ||
+         "";
+
+ }catch(e){
+
+  console.log("Season poster error:",search,e);
+  return "";
+
+ }
+}
+
+/* ======================================
+   RENDER PAGE
+====================================== */
+
+async function render(){
 
  if(typeof getAnime !== "function"){
   error("تعذر تحميل anime-data.js");
@@ -277,15 +371,17 @@ function render(){
  const title = anime.arabic || anime.title || animeName;
  const seasonTitle = season.name || "Season";
  const episodeCount = Math.max(0,Number(season.episodes)||0);
- const cover = season.cover || anime.cover || "";
  const watchAnime = season.watchId || animeName;
+
+ /* Use season poster first, then main anime cover */
+ const initialCover = season.cover || anime.cover || "";
 
  content.innerHTML = `
   <section class="hero">
 
    <img class="poster"
     id="seasonPoster"
-    src="${safe(cover)}"
+    src="${safe(initialCover)}"
     alt="${safe(seasonTitle)}">
 
    <div class="info">
@@ -317,6 +413,23 @@ function render(){
   poster.style.display="none";
  };
 
+ /* Search for a season-specific poster */
+ if(season.search){
+
+  fetchSeasonCover(season.search).then(cover=>{
+
+   if(cover && poster){
+
+    poster.style.display="";
+    poster.src=cover;
+
+   }
+
+  });
+
+ }
+
+ /* Render season buttons */
  const seasonList = document.getElementById("seasonList");
 
  seasons.forEach(item=>{
@@ -336,6 +449,7 @@ function render(){
 
  });
 
+ /* Render episodes */
  const episodesArea = document.getElementById("episodes");
 
  if(episodeCount<=0){
